@@ -14,14 +14,20 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
+    let disposable = vscode.commands.registerCommand('sasscodeplugin.saySassVersion', () => {
         // The code you place here will be executed every time your command is executed
 
         // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
+        vscode.window.showInformationMessage('Hello Sass Version !');
     });
-
     context.subscriptions.push(disposable);
+    let disposeCompileAll = vscode.commands.registerCommand('sasscodeplugin.compileAll', () => {
+        // The code you place here will be executed every time your command is executed
+
+        // Display a message box to the user
+        vscode.window.showInformationMessage('Compile All!');
+    });
+    context.subscriptions.push(disposeCompileAll);
 }
 
 // this method is called when your extension is deactivated

@@ -10,14 +10,19 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:sasscodeplugin.saySassVersion",
+        "onCommand:sasscodeplugin.compileAll"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "sasscodeplugin.saySassVersion",
+                "title": "SassCode: Sass Compiler Version"
+            },
+            {
+                "command": "sasscodeplugin.compileAll",
+                "title": "SassCode: Compile All"
             }
         ]
     },
