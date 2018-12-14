@@ -37,16 +37,20 @@ export class DartSassCompiler {
         return "";
     }
 
-    xformIncludePath(projectRoot: vscode.Uri, includePath: string[]): string[] {
-        const output:string[] = [];
+    xformPath(projectRoot: vscode.Uri, entry: string): string {
+        if (path.isAbsolute(entry)) {
+            return entry;
+        }
         // TODO: For now - it is assumed the URI is a file system
         const basedir = projectRoot.fsPath;
+        return path.join(basedir, entry);
+    }
+
+    xformPaths(projectRoot: vscode.Uri, includePath: string[]): string[] {
+        const output:string[] = [];
+        const self = this;
         includePath.forEach(function(entry: string){
-            if (path.isAbsolute(entry)) {
-                output.push(entry);
-                return;
-            }
-            output.push(path.join(basedir, entry));
+            output.push(self.xformPath(projectRoot, entry));
         });
         return output;
     }
@@ -56,20 +60,22 @@ export class DartSassCompiler {
         if (configuration.has('includePath')) {
             includePath = configuration.get<string[]>('includePath', []);
         }
-        const xformedIncludePath = this.xformIncludePath(projectRoot, includePath);
-        this.compile(document.fileName, projectRoot.fsPath, xformedIncludePath);
+        const xformedIncludePath = this.xformPaths(projectRoot, includePath);
+        const sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', projectRoot.fsPath);
+        const xformedWorkingDirectory = this.xformPath(projectRoot, sassWorkingDirectory);
+        this.compile(document.fileName, xformedWorkingDirectory, xformedIncludePath);
     }
 
-    handleSassOutput(err: sass.SassException, result: sass.Result, output: string, compilerResult: CompilerResult): void {
+    handleSassOutput(err: sass.SassException, result: sass.Result, output: string, compilerResult: CompilerResult): boolean {
         if (err) {
             const fileonly = path.basename(err.file);
             const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
             vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
             console.error(`${err.file}:${formattedMessage}`);
             compilerResult.onFailure();
-            return;
+            return false;
         }
-        fs.writeFile(output, result.css, (err) => {
+        fs.writeFile(output, result.css, (err: NodeJS.ErrnoException) => {
             if (err) {
                 vscode.window.showErrorMessage('Error while writing to css file');
                 console.error(err);
@@ -78,6 +84,7 @@ export class DartSassCompiler {
             }
             compilerResult.onSuccess();
         });
+        return true;
     }
 
     compileToFile(input: string, compressed: boolean, output: string,
@@ -88,10 +95,12 @@ export class DartSassCompiler {
             file: input,
             importer: packageImporter(options),
             includePaths: includePaths,
-            outputStyle: compressed ? 'compressed': 'expanded'
+            outputStyle: compressed ? 'compressed': 'expanded',
+            outFile: output
         }, function (err: sass.SassException, result: sass.Result) {
             self.handleSassOutput(err, result, output, compilerResult);
         });
+
     }
 
     getOptions(cwd: string) : IPackageImporterOptions {
@@ -124,13 +133,13 @@ export class DartSassCompiler {
 
             },
             onSuccess() {
-                console.log(`Compiled ${input} to ${output}`);
+                console.debug(`Compiled ${input} to ${output}`);
                 const tmpResult :CompilerResult = {
                     onFailure() {
 
                     },
                     onSuccess() {
-                        console.log(`Compiled ${input} to ${compressedOutput}`);
+                        console.debug(`Compiled ${input} to ${compressedOutput}`);
                     }
                 };
                 self.compileToFile(input, true, compressedOutput, options, includePaths, tmpResult);

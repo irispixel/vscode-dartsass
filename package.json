@@ -33,7 +33,12 @@
                 "sasscodeplugin.includePath": {
                     "type": "string[]",
                     "default": "[]",
-                    "description": "Sets the includePath for the given scss compiler."
+                    "description": "Sets the includePath for the given scss compiler. Defaults to empty list."
+                },
+                "sasscodeplugin.sassWorkingDirectory": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Sets the cwd - current working directory for node-sass-package-importer. Defaults to project root directory."
                 }
             }
         }
