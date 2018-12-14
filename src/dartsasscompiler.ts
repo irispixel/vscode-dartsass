@@ -75,7 +75,7 @@ export class DartSassCompiler {
             const fileonly = path.basename(err.file);
             const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
             vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
-            console.error(`${err.file}:${formattedMessage}`);
+            console.error(`${err.formatted}`);
             compilerResult.onFailure();
             return false;
         }

@@ -20,10 +20,6 @@
             {
                 "command": "sasscodeplugin.saySassVersion",
                 "title": "SassCode: Sass Compiler Version"
-            },
-            {
-                "command": "sasscodeplugin.compileAll",
-                "title": "SassCode: Compile All"
             }
         ],
         "configuration": {
