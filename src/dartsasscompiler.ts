@@ -28,20 +28,20 @@ export class DartSassCompiler {
     }
 
     public compileAll() : boolean {
-        vscode.window.showInformationMessage('Compile All the files inside the given workspace sass compiler!');
+        vscode.window.showErrorMessage('To Compile All the sass files inside the given workspace. Not yet implemented');
         return false;
     }
 
     public sayVersion() : string {
-        vscode.window.showInformationMessage(`Sass Version to be printed here`);
+        vscode.window.showErrorMessage(`To print sass library version automatically imported from package. Not yet implemented`);
         return "";
     }
 
     xformPath(projectRoot: vscode.Uri, entry: string): string {
+        // TODO: For now - it is assumed the URI is a file system
         if (path.isAbsolute(entry)) {
             return entry;
         }
-        // TODO: For now - it is assumed the URI is a file system
         const basedir = projectRoot.fsPath;
         return path.join(basedir, entry);
     }
@@ -61,6 +61,7 @@ export class DartSassCompiler {
             includePath = configuration.get<string[]>('includePath', []);
         }
         const xformedIncludePath = this.xformPaths(projectRoot, includePath);
+        // TODO: For now - it is assumed the URI is a file system
         const sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', projectRoot.fsPath);
         const xformedWorkingDirectory = this.xformPath(projectRoot, sassWorkingDirectory);
         this.compile(document.fileName, xformedWorkingDirectory, xformedIncludePath);
