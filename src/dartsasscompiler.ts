@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 import sass = require("sass");
+import packageImporter = require('node-sass-package-importer');
 
 export interface CompilerResult {
 
@@ -39,28 +40,34 @@ export class DartSassCompiler {
         this.compile(document.fileName);
     }
 
-    compileToFile(input: string, compressed: boolean, output: string, compilerResult: CompilerResult) {
-        sass.render({
-            file: input,
-            outputStyle: compressed ? 'compressed': 'expanded'
-        }, function (err: sass.SassException, result: sass.Result) {
+    handleSassOutput(err: sass.SassException, result: sass.Result, output: string, compilerResult: CompilerResult): void {
+        if (err) {
+            const fileonly = path.basename(err.file);
+            const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
+            vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
+            console.error(`${err.file}:${formattedMessage}`);
+            compilerResult.onFailure();
+            return;
+        }
+        fs.writeFile(output, result.css, (err) => {
             if (err) {
-                const fileonly = path.basename(err.file);
-                const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
-                vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
-                console.error(`${err.file}:${formattedMessage}`);
+                vscode.window.showErrorMessage('Error while writing to css file');
+                console.error(err);
                 compilerResult.onFailure();
                 return;
             }
-            fs.writeFile(output, result.css, (err) => {
-                if (err) {
-                    vscode.window.showErrorMessage('Error while writing to css file');
-                    console.error(err);
-                    compilerResult.onFailure();
-                    return;
-                }
-                compilerResult.onSuccess();
-            });
+            compilerResult.onSuccess();
+        });
+    }
+
+    compileToFile(input: string, compressed: boolean, output: string, compilerResult: CompilerResult) {
+        const self = this;
+        sass.render({
+            file: input,
+            importer: packageImporter(),
+            outputStyle: compressed ? 'compressed': 'expanded'
+        }, function (err: sass.SassException, result: sass.Result) {
+            self.handleSassOutput(err, result, output, compilerResult);
         });
     }
 
