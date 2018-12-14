@@ -75,12 +75,13 @@ export class DartSassCompiler {
 
             },
             onSuccess() {
+                console.log(`Compiled ${input} to ${output}`);
                 const tmpResult :CompilerResult = {
                     onFailure() {
 
                     },
                     onSuccess() {
-
+                        console.log(`Compiled ${input} to ${compressedOutput}`);
                     }
                 };
                 self.compileToFile(input, true, compressedOutput, tmpResult);
