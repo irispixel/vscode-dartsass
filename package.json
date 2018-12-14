@@ -10,6 +10,7 @@
         "Other"
     ],
     "activationEvents": [
+        "onLanguage:scss",
         "onCommand:sasscodeplugin.saySassVersion",
         "onCommand:sasscodeplugin.compileAll"
     ],
@@ -37,6 +38,8 @@
         "typescript": "^3.1.4",
         "vscode": "^1.1.25",
         "tslint": "^5.8.0",
+        "sass": "~1.15.2",
+        "@types/sass": "~1.15.1",
         "@types/node": "^8.10.25",
         "@types/mocha": "^2.2.42"
     }
