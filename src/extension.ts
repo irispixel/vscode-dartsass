@@ -28,11 +28,23 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
+    let workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders) {
+        return;
+    }
+    const projectRoot = workspaceFolders[0].uri;
+    console.log(`Project Root: ${projectRoot.fsPath}`);
+    const configuration = vscode.workspace.getConfiguration('sasscodeplugin');
+    vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
+        if (e.affectsConfiguration('sasscodeplugin')) {
+            console.log("Configuration changed for sasscodeplugin");
+        }
+    });
 	vscode.workspace.onDidSaveTextDocument(document => {
 		if (document.languageId !== 'scss') {
 			return;
-		}
-        sassCompiler.compileDocument(document, vscode.workspace.getConfiguration('scss', document.uri));
+        }
+        sassCompiler.compileDocument(document, projectRoot, configuration);
 	}, null, subscriptions);
 }
 

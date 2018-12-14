@@ -25,7 +25,18 @@
                 "command": "sasscodeplugin.compileAll",
                 "title": "SassCode: Compile All"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Sasscodeplugin",
+            "properties": {
+                "sasscodeplugin.includePath": {
+                    "type": "string[]",
+                    "default": "[]",
+                    "description": "Sets the includePath for the given scss compiler."
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

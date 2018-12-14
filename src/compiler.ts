@@ -7,6 +7,6 @@ export interface SassCompiler {
 
     compileAll() : boolean;
 
-    compileDocument(document: vscode.TextDocument, workspaceConfig: vscode.WorkspaceConfiguration) : void;
+    compileDocument(document: vscode.TextDocument, projectRoot: vscode.Uri, configuration: vscode.WorkspaceConfiguration) : void;
 
 }
