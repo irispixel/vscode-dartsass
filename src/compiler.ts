@@ -5,7 +5,7 @@ export interface SassCompiler {
 
     sayVersion() : string;
 
-    compileAll() : boolean;
+    compileAll(projectRoot: vscode.Uri) : boolean;
 
     compileDocument(document: vscode.TextDocument, projectRoot: vscode.Uri, configuration: vscode.WorkspaceConfiguration) : void;
 

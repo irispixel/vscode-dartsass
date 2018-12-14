@@ -27,7 +27,7 @@ export class DartSassCompiler {
 
     }
 
-    public compileAll() : boolean {
+    public compileAll(projectRoot: vscode.Uri) : boolean {
         vscode.window.showErrorMessage('To Compile All the sass files inside the given workspace. Not yet implemented');
         return false;
     }

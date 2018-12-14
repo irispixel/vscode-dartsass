@@ -18,22 +18,36 @@ export function activate(context: vscode.ExtensionContext) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "sasscodeplugin" is now active!');
+    const projectRoot = getProjectRoot();
+    if (!projectRoot) {
+        return;
+    }
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     context.subscriptions.push(vscode.commands.registerCommand('sasscodeplugin.saySassVersion', sassCompiler.sayVersion));
-    context.subscriptions.push(vscode.commands.registerCommand('sasscodeplugin.compileAll', sassCompiler.compileAll));
+    context.subscriptions.push(vscode.commands.registerCommand('sasscodeplugin.compileAll', () => {
+        sassCompiler.compileAll(projectRoot);
+    }));
     startBuildOnSaveWatcher(context.subscriptions);
 }
 
-function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
+function getProjectRoot() : (vscode.Uri| undefined) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
         return;
     }
     const projectRoot = workspaceFolders[0].uri;
     console.log(`Project Root: ${projectRoot.fsPath}`);
+    return projectRoot;
+}
+
+function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
+    const projectRoot = getProjectRoot();
+    if (!projectRoot) {
+        return;
+    }
     const configuration = vscode.workspace.getConfiguration('sasscodeplugin');
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration('sasscodeplugin')) {
