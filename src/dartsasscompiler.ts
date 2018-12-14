@@ -28,13 +28,16 @@ export class DartSassCompiler {
     }
 
     public compileAll(projectRoot: vscode.Uri) : boolean {
-        vscode.window.showErrorMessage('To Compile All the sass files inside the given workspace. Not yet implemented');
+        vscode.window.showErrorMessage('Not yet implemented. To Compile All the sass files inside the given workspace');
         return false;
     }
 
     public sayVersion() : string {
-        vscode.window.showErrorMessage(`To print sass library version automatically imported from package. Not yet implemented`);
-        return "";
+        // TODO: To print sass library version automatically imported from package
+        // as opposed to hardcoding it here.
+        const version = "1.15.2";
+        vscode.window.showInformationMessage(`Uses sass pure Dart/JS compiler: ${version}`);
+        return "Uses sass@npm: 1.15.2";
     }
 
     xformPath(projectRoot: vscode.Uri, entry: string): string {

@@ -22,6 +22,8 @@ export function activate(context: vscode.ExtensionContext) {
     if (!projectRoot) {
         return;
     }
+    // TODO: URI is assumed to be file system
+    console.log(`Project Root: ${projectRoot.fsPath}`);
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
@@ -38,9 +40,7 @@ function getProjectRoot() : (vscode.Uri| undefined) {
     if (!workspaceFolders) {
         return;
     }
-    const projectRoot = workspaceFolders[0].uri;
-    console.log(`Project Root: ${projectRoot.fsPath}`);
-    return projectRoot;
+    return workspaceFolders[0].uri;
 }
 
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
