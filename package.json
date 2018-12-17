@@ -45,7 +45,7 @@
                 "quiksass.disableMinifiedFileGeneration": {
                     "type": "boolean",
                     "default": "false",
-                    "description": "Flag to indicate if minified file generation should be disabled. By default - the flag is false and the minified file is generated."
+                    "description": "Disables the generation of *.min.css files. By default - the flag is false and the minified file is generated."
                 }
             }
         }
