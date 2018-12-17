@@ -4,7 +4,11 @@ This plugin generates the .css and .min.css files for the given .scss file. It g
 
 ## Features
 
-This VSCode plugin directly depends on the native pure-javascript `sass` implementation.  So in that sense - it does not depend on node-sass or indirectly the libcss either.
+This VSCode plugin directly depends on the native pure-javascript `sass` implementation.
+
+Check [Dart implementation of SASS](https://sass-lang.com/dart-sass) for more details.
+
+So - it does not depend on node-sass (or indirectly the platform-specific libcss either !).
 
 It automatically imports `node-sass-package-importer` as well.
 
@@ -33,12 +37,4 @@ This extension contributes the following settings:
 
 ## Release Notes
 
-### 0.0.2
-
-Better documentation with more examples
-
-
-### 0.0.1
-
-Initial release of quiksass
-
+See [CHANGELOG](CHANGELOG) for more details.
