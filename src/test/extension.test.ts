@@ -1,3 +1,9 @@
+// Copyright (c) 2018 AltosCode, LLC
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
 //
 // Note: This example test is leveraging the Mocha test framework.
 // Please refer to their documentation on https://mochajs.org/ for help.

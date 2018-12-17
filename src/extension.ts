@@ -1,3 +1,9 @@
+// Copyright (c) 2018 AltosCode, LLC
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below

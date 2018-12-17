@@ -1,3 +1,9 @@
+// Copyright (c) 2018 AltosCode, LLC
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
 'use strict';
 import * as vscode from 'vscode';
 import * as path from 'path';
@@ -81,7 +87,7 @@ export class DartSassCompiler {
         }
         fs.writeFile(output, result.css, (err: NodeJS.ErrnoException) => {
             if (err) {
-                vscode.window.showErrorMessage('Error while writing to css file');
+                vscode.window.showErrorMessage('Error while writing the generated css file');
                 console.error(err);
                 compilerResult.onFailure();
                 return;

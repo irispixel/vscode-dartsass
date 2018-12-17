@@ -1,3 +1,9 @@
+// Copyright (c) 2018 AltosCode, LLC
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+
 'use strict';
 import * as vscode from 'vscode';
 
