@@ -48,4 +48,4 @@ This extension contributes the following settings:
 
 ## Release Notes
 
-See [CHANGELOG](CHANGELOG) for more details.
+See [CHANGELOG](CHANGELOG.md) for more details.
