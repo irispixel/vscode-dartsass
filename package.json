@@ -1,14 +1,14 @@
 {
     "name": "quiksass",
     "displayName": "quiksass",
-    "description": "Plugin to Compiler sass and scss files automatically inline",
+    "description": "Plugin to Compiler sass and scss files automatically inline using node-sass-package-importer",
     "publisher": "altoscode",
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/altoscode/quiksass.git"
     },
-    "version": "0.0.2",
+    "version": "0.0.3",
     "engines": {
         "vscode": "^1.30.0"
     },
