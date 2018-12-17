@@ -2,6 +2,12 @@
     "name": "quiksass",
     "displayName": "quiksass",
     "description": "Plugin to Compiler sass and scss files automatically inline",
+    "publisher": "altoscode",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/altoscode/quiksass.git"
+    },
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.30.0"
