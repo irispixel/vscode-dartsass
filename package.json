@@ -1,6 +1,6 @@
 {
-    "name": "sasscodeplugin",
-    "displayName": "sasscodeplugin",
+    "name": "quiksass",
+    "displayName": "quiksass",
     "description": "Plugin to Compiler sass and scss files automatically inline",
     "version": "0.0.1",
     "engines": {
@@ -11,27 +11,27 @@
     ],
     "activationEvents": [
         "onLanguage:scss",
-        "onCommand:sasscodeplugin.saySassVersion",
-        "onCommand:sasscodeplugin.compileAll"
+        "onCommand:quiksass.saySassVersion",
+        "onCommand:quiksass.compileAll"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "sasscodeplugin.saySassVersion",
-                "title": "SassCode: Sass Compiler Version"
+                "command": "quiksass.saySassVersion",
+                "title": "QuikSass: Sass Compiler Version"
             }
         ],
         "configuration": {
             "type": "object",
-            "title": "Sasscodeplugin",
+            "title": "QuikSass",
             "properties": {
-                "sasscodeplugin.includePath": {
+                "quiksass.includePath": {
                     "type": "string[]",
                     "default": "[]",
                     "description": "Sets the includePath for the given scss compiler. Defaults to empty list."
                 },
-                "sasscodeplugin.sassWorkingDirectory": {
+                "quiksass.sassWorkingDirectory": {
                     "type": "string",
                     "default": "",
                     "description": "Sets the cwd - current working directory for node-sass-package-importer. Defaults to project root directory."
