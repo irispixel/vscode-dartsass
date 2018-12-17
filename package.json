@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/altoscode/quiksass.git"
     },
-    "version": "0.0.4",
+    "version": "0.0.5",
     "engines": {
         "vscode": "^1.30.0"
     },
@@ -41,6 +41,11 @@
                     "type": "string",
                     "default": "",
                     "description": "Sets the cwd - current working directory for node-sass-package-importer. Defaults to project root directory."
+                },
+                "quiksass.disableMinifiedFileGeneration": {
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Flag to indicate if minified file generation should be disabled. By default - the flag is false and the minified file is generated."
                 }
             }
         }

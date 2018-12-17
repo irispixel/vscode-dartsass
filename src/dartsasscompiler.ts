@@ -12,6 +12,7 @@ import * as fs from 'fs';
 import sass = require("sass");
 import packageImporter = require('node-sass-package-importer');
 import { IPackageImporterOptions } from 'node-sass-magic-importer/src/interfaces/IImporterOptions';
+import { CompilerConfig } from './config';
 
 export interface CompilerResult {
 
@@ -46,34 +47,9 @@ export class DartSassCompiler {
         return "Uses sass@npm: 1.15.2";
     }
 
-    xformPath(projectRoot: vscode.Uri, entry: string): string {
-        // TODO: For now - it is assumed the URI is a file system
-        if (path.isAbsolute(entry)) {
-            return entry;
-        }
-        const basedir = projectRoot.fsPath;
-        return path.join(basedir, entry);
-    }
-
-    xformPaths(projectRoot: vscode.Uri, includePath: string[]): string[] {
-        const output:string[] = [];
-        const self = this;
-        includePath.forEach(function(entry: string){
-            output.push(self.xformPath(projectRoot, entry));
-        });
-        return output;
-    }
-
     public compileDocument(document: vscode.TextDocument, projectRoot: vscode.Uri, configuration: vscode.WorkspaceConfiguration) {
-        let includePath: string[] = [];
-        if (configuration.has('includePath')) {
-            includePath = configuration.get<string[]>('includePath', []);
-        }
-        const xformedIncludePath = this.xformPaths(projectRoot, includePath);
-        // TODO: For now - it is assumed the URI is a file system
-        const sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', projectRoot.fsPath);
-        const xformedWorkingDirectory = this.xformPath(projectRoot, sassWorkingDirectory);
-        this.compile(document.fileName, xformedWorkingDirectory, xformedIncludePath);
+        const config = CompilerConfig.extractFrom(projectRoot, configuration);
+        this.compile(document.fileName, config);
     }
 
     handleSassOutput(err: sass.SassException, result: sass.Result, output: string, compilerResult: CompilerResult): boolean {
@@ -132,31 +108,33 @@ export class DartSassCompiler {
         return options;
     }
 
-    public compile(input: string, cwd: string, includePaths: string[]) {
+    public compile(input: string, config : CompilerConfig) {
         const filedir = path.dirname(input);
         const fileonly = path.basename(input, '.scss');
         const output = path.join(filedir, fileonly + '.css');
         const compressedOutput = path.join(filedir, fileonly + '.min.css');
         const self = this;
-        const options = this.getOptions(cwd);
+        const options = this.getOptions(config.sassWorkingDirectory);
         const compilerResult:CompilerResult = {
             onFailure() {
 
             },
             onSuccess() {
                 console.debug(`Compiled ${input} to ${output}`);
-                const tmpResult :CompilerResult = {
-                    onFailure() {
+                if (!config.disableMinifiedFileGeneration) {
+                    const tmpResult :CompilerResult = {
+                        onFailure() {
 
-                    },
-                    onSuccess() {
-                        console.debug(`Compiled ${input} to ${compressedOutput}`);
-                    }
-                };
-                self.compileToFile(input, true, compressedOutput, options, includePaths, tmpResult);
+                        },
+                        onSuccess() {
+                            console.debug(`Compiled ${input} to ${compressedOutput}`);
+                        }
+                    };
+                    self.compileToFile(input, true, compressedOutput, options, config.includePath, tmpResult);
+                }
             }
         };
-        this.compileToFile(input, false, output, options, includePaths, compilerResult);
+        this.compileToFile(input, false, output, options, config.includePath, compilerResult);
     }
 
 }
