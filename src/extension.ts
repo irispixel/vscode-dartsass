@@ -3,10 +3,10 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-import { SassCompiler } from './compiler';
+import { ISassCompiler } from './compiler';
 import { DartSassCompiler } from './dartsasscompiler';
 
-let sassCompiler: SassCompiler = new DartSassCompiler();
+let sassCompiler: ISassCompiler = new DartSassCompiler();
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed

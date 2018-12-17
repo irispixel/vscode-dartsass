@@ -125,6 +125,7 @@ export class DartSassCompiler {
           };
         return options;
     }
+
     public compile(input: string, cwd: string, includePaths: string[]) {
         const filedir = path.dirname(input);
         const fileonly = path.basename(input, '.scss');

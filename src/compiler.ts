@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 
-export interface SassCompiler {
+export interface ISassCompiler {
 
     sayVersion() : string;
 
