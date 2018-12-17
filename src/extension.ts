@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "quicksass" is now active!');
+    console.log('Congratulations, your extension "quiksass" is now active!');
     const projectRoot = getProjectRoot();
     if (!projectRoot) {
         return;
@@ -28,8 +28,8 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    context.subscriptions.push(vscode.commands.registerCommand('quicksass.saySassVersion', sassCompiler.sayVersion));
-    context.subscriptions.push(vscode.commands.registerCommand('quicksass.compileAll', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', sassCompiler.sayVersion));
+    context.subscriptions.push(vscode.commands.registerCommand('quiksass.compileAll', () => {
         sassCompiler.compileAll(projectRoot);
     }));
     startBuildOnSaveWatcher(context.subscriptions);
