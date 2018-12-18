@@ -26,6 +26,10 @@
             {
                 "command": "quiksass.saySassVersion",
                 "title": "QuikSass: Sass Compiler Version"
+            },
+            {
+                "command": "quiksass.compileAll",
+                "title": "QuikSass: Compile All SCSS Files"
             }
         ],
         "configuration": {
