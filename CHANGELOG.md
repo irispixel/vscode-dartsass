@@ -3,6 +3,9 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.14
+ - Crisper Error dialogs
+
 ### 0.0.13
  - Introduce Channels for capturing output
 
