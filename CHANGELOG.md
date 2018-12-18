@@ -3,6 +3,12 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.11
+ - Bug fix to prevent deactivation
+
+### 0.0.10
+ - Fixing details about preserving less state
+
 ### 0.0.9
  - First valid version that works with node_modules installed. See INSTALL.md for more details.
 
@@ -23,4 +29,3 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 0.0.1
 - Initial release of quiksass
-
