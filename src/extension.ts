@@ -15,6 +15,7 @@ import { CompilerConfig } from './config';
 
 let sassCompiler: ISassCompiler = new DartSassCompiler();
 let quiksassConfig = new CompilerConfig();
+const pluginName = 'quiksass';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -51,20 +52,28 @@ function getProjectRoot() : (vscode.Uri| undefined) {
     return workspaceFolders[0].uri;
 }
 
+function loadConfiguration(projectRoot: vscode.Uri) {
+    const configuration = vscode.workspace.getConfiguration(pluginName);
+    quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
+    if (quiksassConfig.debug) {
+        console.log("Scss working directory " + quiksassConfig.sassWorkingDirectory);
+        console.log("include path");
+        console.log(quiksassConfig.includePath);
+    }
+}
+
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
     const projectRoot = getProjectRoot();
     if (!projectRoot) {
         return;
     }
-    const configuration = vscode.workspace.getConfiguration('quiksass');
-    quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
+    loadConfiguration(projectRoot);
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
-        if (e.affectsConfiguration('quiksass')) {
+        if (e.affectsConfiguration(pluginName)) {
             if (quiksassConfig.debug) {
-                console.log("Configuration changed for quiksass");
+                console.log("Configuration changed for " + pluginName);
             }
-            const configuration = vscode.workspace.getConfiguration('quiksass');
-            quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
+            loadConfiguration(projectRoot);
         }
     });
 	vscode.workspace.onDidSaveTextDocument(document => {
