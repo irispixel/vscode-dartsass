@@ -3,6 +3,15 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.9
+ - First valid version that works with node_modules installed. See INSTALL.md for more details.
+
+### 0.0.8
+ - False Version
+
+### 0.0.7
+ - False Version
+
 ### 0.0.6
  - Add `debug` flag to debug the same.
 
