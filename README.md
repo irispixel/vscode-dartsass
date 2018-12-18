@@ -3,6 +3,14 @@
 VSCode plugin that generates the .css and .min.css files for the given .scss file.
 It gets activated by default for .scss files.
 
+## Install
+
+You can install [altoscode.quiksass](https://marketplace.visualstudio.com/items?itemName=altoscode.quiksass) from the VSCode Marketplace as appropriate.
+
+## License
+
+This VSCode extension is released under [MIT license](LICENSE).
+
 ## Features
 
 ### Pure Javascript SASS
