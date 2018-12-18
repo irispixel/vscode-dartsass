@@ -14,6 +14,6 @@ v10.14.2
 $ npm i --no-optional
 ```
 
-Packages need to be installed in `node_modules` before `vsce` as above.
+Packages need to be installed in `node_modules` before `vsce publish` confirming with the versions as above.
 
 For more details refer to [vscode-vsce/issues/246](https://github.com/Microsoft/vscode-vsce/issues/246#issuecomment-379565583) .
