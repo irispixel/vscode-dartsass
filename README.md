@@ -1,6 +1,6 @@
-# quiksass README
+# quiksass vscode plugin
 
-This plugin generates the .css and .min.css files for the given .scss file.
+VSCode plugin that generates the .css and .min.css files for the given .scss file.
 It gets activated by default for .scss files.
 
 ## Features
