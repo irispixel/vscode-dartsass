@@ -55,16 +55,16 @@ export class DartSassCompiler {
             _channel: vscode.OutputChannel) {
         const fileonly = path.basename(err.file);
         const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
-        vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
-        _channel.appendLine(`Formatted Error: ${err.formatted} running from ${config.sassWorkingDirectory}`);
+        vscode.window.showErrorMessage(`${fileonly}: ${formattedMessage}`);
+        _channel.appendLine(`${err.formatted}`);
         compilerResult.onFailure();
     }
 
-    writeSassOutput(result: sass.Result, output: string, compilerResult: CompilerResult) {
+    writeSassOutput(result: sass.Result, output: string, compilerResult: CompilerResult, _channel: vscode.OutputChannel) {
         fs.writeFile(output, result.css, (err: NodeJS.ErrnoException) => {
             if (err) {
                 vscode.window.showErrorMessage('Error while writing the generated css file');
-                console.error(err);
+                _channel.appendLine(`${err}`);
                 compilerResult.onFailure();
                 return;
             }
@@ -88,7 +88,7 @@ export class DartSassCompiler {
             if (err) {
                 self.handleError(err, config, result, compilerResult, _channel);
             } else {
-                self.writeSassOutput(result, output, compilerResult);
+                self.writeSassOutput(result, output, compilerResult, _channel);
             }
         });
 
