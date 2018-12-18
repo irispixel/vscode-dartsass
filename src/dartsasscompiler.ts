@@ -51,15 +51,16 @@ export class DartSassCompiler {
         this.compile(document.fileName, quiksassConfig);
     }
 
-    handleSassOutput(err: sass.SassException, result: sass.Result, output: string, compilerResult: CompilerResult): boolean {
-        if (err) {
-            const fileonly = path.basename(err.file);
-            const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
-            vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
-            console.error(`${err.formatted}`);
-            compilerResult.onFailure();
-            return false;
-        }
+    handleError(err: sass.SassException, config : CompilerConfig, result: sass.Result, compilerResult: CompilerResult) {
+        const fileonly = path.basename(err.file);
+        const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
+        vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
+        console.error(`Formatted Error: ${err.formatted} running from ${config.sassWorkingDirectory}`);
+        console.info(`Current working Directory: ${config.sassWorkingDirectory}`);
+        compilerResult.onFailure();
+    }
+
+    writeSassOutput(result: sass.Result, output: string, compilerResult: CompilerResult) {
         fs.writeFile(output, result.css, (err: NodeJS.ErrnoException) => {
             if (err) {
                 vscode.window.showErrorMessage('Error while writing the generated css file');
@@ -69,7 +70,6 @@ export class DartSassCompiler {
             }
             compilerResult.onSuccess();
         });
-        return true;
     }
 
     compileToFile(input: string, compressed: boolean, output: string,
@@ -84,7 +84,11 @@ export class DartSassCompiler {
             outputStyle: compressed ? 'compressed': 'expanded',
             outFile: output
         }, function (err: sass.SassException, result: sass.Result) {
-            self.handleSassOutput(err, result, output, compilerResult);
+            if (err) {
+                self.handleError(err, config, result, compilerResult);
+            } else {
+                self.writeSassOutput(result, output, compilerResult);
+            }
         });
 
     }
