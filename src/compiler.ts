@@ -6,6 +6,7 @@
 
 'use strict';
 import * as vscode from 'vscode';
+import { CompilerConfig } from './config';
 
 export interface ISassCompiler {
 
@@ -13,6 +14,6 @@ export interface ISassCompiler {
 
     compileAll(projectRoot: vscode.Uri) : boolean;
 
-    compileDocument(document: vscode.TextDocument, projectRoot: vscode.Uri, configuration: vscode.WorkspaceConfiguration) : void;
+    compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig) : void;
 
 }

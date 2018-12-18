@@ -34,7 +34,7 @@
             "properties": {
                 "quiksass.includePath": {
                     "type": "string[]",
-                    "default": "[]",
+                    "default": [],
                     "description": "Sets the includePath for the given scss compiler. Defaults to empty list."
                 },
                 "quiksass.sassWorkingDirectory": {
@@ -44,8 +44,13 @@
                 },
                 "quiksass.disableMinifiedFileGeneration": {
                     "type": "boolean",
-                    "default": "false",
+                    "default": false,
                     "description": "Disables the generation of *.min.css files. By default - the flag is false and the minified file is generated."
+                },
+                "quiksass.debug": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Debug flag to be used by developers. By default, false."
                 }
             }
         }

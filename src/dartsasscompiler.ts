@@ -47,9 +47,8 @@ export class DartSassCompiler {
         return "Uses sass@npm: 1.15.2";
     }
 
-    public compileDocument(document: vscode.TextDocument, projectRoot: vscode.Uri, configuration: vscode.WorkspaceConfiguration) {
-        const config = CompilerConfig.extractFrom(projectRoot, configuration);
-        this.compile(document.fileName, config);
+    public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig) {
+        this.compile(document.fileName, quiksassConfig);
     }
 
     handleSassOutput(err: sass.SassException, result: sass.Result, output: string, compilerResult: CompilerResult): boolean {
@@ -74,13 +73,14 @@ export class DartSassCompiler {
     }
 
     compileToFile(input: string, compressed: boolean, output: string,
-        options: IPackageImporterOptions,
-        includePaths: string[], compilerResult: CompilerResult) {
+        config : CompilerConfig,
+        compilerResult: CompilerResult) {
+        const options = this.getOptions(config.sassWorkingDirectory);
         const self = this;
         sass.render({
             file: input,
             importer: packageImporter(options),
-            includePaths: includePaths,
+            includePaths: config.includePath,
             outputStyle: compressed ? 'compressed': 'expanded',
             outFile: output
         }, function (err: sass.SassException, result: sass.Result) {
@@ -114,27 +114,30 @@ export class DartSassCompiler {
         const output = path.join(filedir, fileonly + '.css');
         const compressedOutput = path.join(filedir, fileonly + '.min.css');
         const self = this;
-        const options = this.getOptions(config.sassWorkingDirectory);
         const compilerResult:CompilerResult = {
             onFailure() {
 
             },
             onSuccess() {
-                console.debug(`Compiled ${input} to ${output}`);
+                if (config.debug) {
+                    console.log(`Compiled ${input} to ${output}`);
+                }
                 if (!config.disableMinifiedFileGeneration) {
                     const tmpResult :CompilerResult = {
                         onFailure() {
 
                         },
                         onSuccess() {
-                            console.debug(`Compiled ${input} to ${compressedOutput}`);
+                            if (config.debug) {
+                                console.log(`Compiled ${input} to ${compressedOutput}`);
+                            }
                         }
                     };
-                    self.compileToFile(input, true, compressedOutput, options, config.includePath, tmpResult);
+                    self.compileToFile(input, true, compressedOutput, config, tmpResult);
                 }
             }
         };
-        this.compileToFile(input, false, output, options, config.includePath, compilerResult);
+        this.compileToFile(input, false, output, config, compilerResult);
     }
 
 }

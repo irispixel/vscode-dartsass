@@ -11,8 +11,10 @@ import * as vscode from 'vscode';
 
 import { ISassCompiler } from './compiler';
 import { DartSassCompiler } from './dartsasscompiler';
+import { CompilerConfig } from './config';
 
 let sassCompiler: ISassCompiler = new DartSassCompiler();
+let quiksassConfig = new CompilerConfig();
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -54,17 +56,22 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
     if (!projectRoot) {
         return;
     }
-    const configuration = vscode.workspace.getConfiguration('quicksass');
+    const configuration = vscode.workspace.getConfiguration('quiksass');
+    quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
-        if (e.affectsConfiguration('quicksass')) {
-            console.log("Configuration changed for sasscodeplugin");
+        if (e.affectsConfiguration('quiksass')) {
+            if (quiksassConfig.debug) {
+                console.log("Configuration changed for quiksass");
+            }
+            const configuration = vscode.workspace.getConfiguration('quiksass');
+            quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
         }
     });
 	vscode.workspace.onDidSaveTextDocument(document => {
 		if (document.languageId !== 'scss') {
 			return;
         }
-        sassCompiler.compileDocument(document, projectRoot, configuration);
+        sassCompiler.compileDocument(document, quiksassConfig);
 	}, null, subscriptions);
 }
 
