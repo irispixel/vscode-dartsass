@@ -23,7 +23,7 @@ So - it does not depend on node-sass (or indirectly the platform-specific libcss
 
 ### NodeSASSPackageImporter
 
-It automatically imports [node-sass-package-importer](https://github.com/maoberlehner/node-sass-magic-importer) as well.
+It automatically imports [node-sass-package-importer](https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-package-importer) as well.
 
 
 So it is possible to use the following the import notation in the scss files.
