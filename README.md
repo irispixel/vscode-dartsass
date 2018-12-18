@@ -15,7 +15,8 @@ So - it does not depend on node-sass (or indirectly the platform-specific libcss
 
 ### NodeSASSPackageImporter
 
-It automatically imports `node-sass-package-importer` as well.
+It automatically imports [node-sass-package-importer](https://github.com/maoberlehner/node-sass-magic-importer) as well.
+
 
 So it is possible to use the following the import notation in the scss files.
 
@@ -27,9 +28,10 @@ Eg:
 
 This will include the modules defined in `package.json` and generated at the `node_modules` directory at the same directory.
 
-By default, it looks at the root directory of the current project.
+By default, it looks for `node_modules` the root directory of the current project.
 
 To customize the same, check `quiksass.sassWorkingDirectory`. More details below in extension settings.
+
 
 ## Requirements
 
