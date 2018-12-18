@@ -34,7 +34,7 @@ export class DartSassCompiler {
 
     }
 
-    public compileAll(projectRoot: vscode.Uri) : boolean {
+    public compileAll(projectRoot: vscode.Uri, _channel: vscode.OutputChannel) : boolean {
         vscode.window.showErrorMessage('Not yet implemented. To Compile All the sass files inside the given workspace');
         return false;
     }
@@ -47,16 +47,16 @@ export class DartSassCompiler {
         return "Uses sass@npm: 1.15.2";
     }
 
-    public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig) {
-        this.compile(document.fileName, quiksassConfig);
+    public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, _channel: vscode.OutputChannel) {
+        this.compile(document.fileName, quiksassConfig, _channel);
     }
 
-    handleError(err: sass.SassException, config : CompilerConfig, result: sass.Result, compilerResult: CompilerResult) {
+    handleError(err: sass.SassException, config : CompilerConfig, result: sass.Result, compilerResult: CompilerResult,
+            _channel: vscode.OutputChannel) {
         const fileonly = path.basename(err.file);
         const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
         vscode.window.showErrorMessage(`Error compiling scss file ${fileonly}: ${formattedMessage}`);
-        console.error(`Formatted Error: ${err.formatted} running from ${config.sassWorkingDirectory}`);
-        console.info(`Current working Directory: ${config.sassWorkingDirectory}`);
+        _channel.appendLine(`Formatted Error: ${err.formatted} running from ${config.sassWorkingDirectory}`);
         compilerResult.onFailure();
     }
 
@@ -74,7 +74,8 @@ export class DartSassCompiler {
 
     compileToFile(input: string, compressed: boolean, output: string,
         config : CompilerConfig,
-        compilerResult: CompilerResult) {
+        compilerResult: CompilerResult,
+        _channel: vscode.OutputChannel) {
         const options = this.getOptions(config.sassWorkingDirectory);
         const self = this;
         sass.render({
@@ -85,7 +86,7 @@ export class DartSassCompiler {
             outFile: output
         }, function (err: sass.SassException, result: sass.Result) {
             if (err) {
-                self.handleError(err, config, result, compilerResult);
+                self.handleError(err, config, result, compilerResult, _channel);
             } else {
                 self.writeSassOutput(result, output, compilerResult);
             }
@@ -112,7 +113,7 @@ export class DartSassCompiler {
         return options;
     }
 
-    public compile(input: string, config : CompilerConfig) {
+    public compile(input: string, config : CompilerConfig, _channel: vscode.OutputChannel) {
         const filedir = path.dirname(input);
         const fileonly = path.basename(input, '.scss');
         const output = path.join(filedir, fileonly + '.css');
@@ -124,7 +125,7 @@ export class DartSassCompiler {
             },
             onSuccess() {
                 if (config.debug) {
-                    console.log(`Compiled ${input} to ${output}`);
+                    _channel.appendLine(`Compiled ${input} to ${output}`);
                 }
                 if (!config.disableMinifiedFileGeneration) {
                     const tmpResult :CompilerResult = {
@@ -133,15 +134,15 @@ export class DartSassCompiler {
                         },
                         onSuccess() {
                             if (config.debug) {
-                                console.log(`Compiled ${input} to ${compressedOutput}`);
+                                _channel.appendLine(`Compiled ${input} to ${compressedOutput}`);
                             }
                         }
                     };
-                    self.compileToFile(input, true, compressedOutput, config, tmpResult);
+                    self.compileToFile(input, true, compressedOutput, config, tmpResult, _channel);
                 }
             }
         };
-        this.compileToFile(input, false, output, config, compilerResult);
+        this.compileToFile(input, false, output, config, compilerResult, _channel);
     }
 
 }

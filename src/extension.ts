@@ -23,23 +23,25 @@ const pluginName = 'quiksass';
 export function activate(context: vscode.ExtensionContext) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "quiksass" is now active!');
+    const _channel = vscode.window.createOutputChannel(pluginName);
+    context.subscriptions.push(_channel);
 
+    _channel.appendLine('Congratulations, your extension "quiksass" is now active!');
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    registerCommands(context.subscriptions, sassCompiler);
-    startBuildOnSaveWatcher(context.subscriptions);
+    registerCommands(context.subscriptions, sassCompiler, _channel);
+    startBuildOnSaveWatcher(context.subscriptions, _channel);
 }
 
-function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCompiler) {
+function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCompiler, _channel: vscode.OutputChannel) {
     subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', compiler.sayVersion));
     subscriptions.push(vscode.commands.registerCommand('quiksass.compileAll', () => {
         const projectRoot = getProjectRoot();
         if (!projectRoot) {
             return;
         }
-        compiler.compileAll(projectRoot);
+        compiler.compileAll(projectRoot, _channel);
     }));
 
 }
@@ -52,7 +54,7 @@ function getProjectRoot() : (vscode.Uri| undefined) {
     return workspaceFolders[0].uri;
 }
 
-function loadConfiguration() : CompilerConfig {
+function loadConfiguration(_channel: vscode.OutputChannel) : CompilerConfig {
     const projectRoot = getProjectRoot();
     if (!projectRoot) {
         return defaultConfig;
@@ -60,17 +62,17 @@ function loadConfiguration() : CompilerConfig {
     const configuration = vscode.workspace.getConfiguration(pluginName);
     const quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
     if (quiksassConfig.debug) {
-        console.log("Scss working directory " + quiksassConfig.sassWorkingDirectory);
-        console.log("include path");
-        console.log(quiksassConfig.includePath);
+        _channel.appendLine("Scss working directory " + quiksassConfig.sassWorkingDirectory);
+        _channel.appendLine("include path");
+        _channel.appendLine(quiksassConfig.includePath.join(","));
     }
     return quiksassConfig;
 }
 
-function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
+function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
-            const quiksassConfig = loadConfiguration();
+            const quiksassConfig = loadConfiguration(_channel);
             if (quiksassConfig.debug) {
                 console.log("Configuration changed for " + pluginName);
             }
@@ -84,8 +86,8 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
         if (!workspaceFolders) {
             return;
         }
-        const quiksassConfig = loadConfiguration();
-        sassCompiler.compileDocument(document, quiksassConfig);
+        const quiksassConfig = loadConfiguration(_channel);
+        sassCompiler.compileDocument(document, quiksassConfig, _channel);
 	}, null, subscriptions);
 }
 

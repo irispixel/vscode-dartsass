@@ -12,8 +12,8 @@ export interface ISassCompiler {
 
     sayVersion() : string;
 
-    compileAll(projectRoot: vscode.Uri) : boolean;
+    compileAll(projectRoot: vscode.Uri, _channel: vscode.OutputChannel) : boolean;
 
-    compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig) : void;
+    compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, _channel: vscode.OutputChannel) : void;
 
 }
