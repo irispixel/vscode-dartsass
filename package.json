@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/altoscode/vscode-quiksass.git"
     },
-    "version": "0.0.16",
+    "version": "0.0.14",
     "engines": {
         "vscode": "^1.30.0"
     },
@@ -74,8 +74,8 @@
     "devDependencies": {
         "typescript": "^3.1.4",
         "vscode": "^1.1.25",
-        "tslint": "~5.12.0",
+        "tslint": "^5.8.0",
         "@types/node": "^8.10.25",
-        "@types/mocha": "~5.2.5"
+        "@types/mocha": "^2.2.42"
     }
 }
