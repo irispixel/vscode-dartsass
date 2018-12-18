@@ -76,7 +76,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[]) {
             loadConfiguration(projectRoot);
         }
     });
-	vscode.workspace.onDidSaveTextDocument(document => {
+	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
 		if (document.languageId !== 'scss') {
 			return;
         }
