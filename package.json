@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/altoscode/quiksass.git"
     },
-    "version": "0.0.7",
+    "version": "0.0.8",
     "engines": {
         "vscode": "^1.30.0"
     },
@@ -62,13 +62,15 @@
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
+    "dependencies": {
+        "sass": "~1.15.2",
+        "@types/sass": "~1.15.1",
+        "node-sass-package-importer": "~5.2.0"
+    },
     "devDependencies": {
         "typescript": "^3.1.4",
         "vscode": "^1.1.25",
         "tslint": "^5.8.0",
-        "sass": "~1.15.2",
-        "node-sass-package-importer": "~5.2.0",
-        "@types/sass": "~1.15.1",
         "@types/node": "^8.10.25",
         "@types/mocha": "^2.2.42"
     }
