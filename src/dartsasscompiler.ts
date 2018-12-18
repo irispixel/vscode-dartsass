@@ -75,6 +75,9 @@ export class DartSassCompiler {
     compileToFile(input: string, compressed: boolean, output: string,
         config : CompilerConfig,
         compilerResult: CompilerResult) {
+        if (config.debug) {
+            console.log("Scss working directory " + config.sassWorkingDirectory);
+        }
         const options = this.getOptions(config.sassWorkingDirectory);
         const self = this;
         sass.render({
