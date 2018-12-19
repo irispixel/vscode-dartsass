@@ -1,9 +1,9 @@
 version: '3'
 services:
   web:
-    image: "node:8.14.0-alpine"
+    image: "vscode-quiksass:8.14.0-alpine"
     volumes:
-      - /opt/code/src/github.com/altoscode/vscode-quiksass:/home/develop/web
+      - /opt/code/src/github.com/altoscode/vscode-quiksass:/tmp/web
 
 
 

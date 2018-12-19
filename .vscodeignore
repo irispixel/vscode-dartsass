@@ -9,4 +9,5 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 docker-compose.yml
+Dockerfile
 entrypoint.sh
