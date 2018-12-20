@@ -1,7 +1,7 @@
 {
     "name": "quiksass",
     "displayName": "quiksass",
-    "description": "Plugin to Compiler sass and scss files automatically inline using node-sass-package-importer",
+    "description": "Plugin to compile scss (and scss) files automatically with every save using node-sass-package-importer and using native dart/js implementation of scss",
     "publisher": "altoscode",
     "license": "MIT",
     "repository": {
