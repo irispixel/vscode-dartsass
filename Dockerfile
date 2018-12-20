@@ -3,12 +3,15 @@
 
 # https://hub.docker.com/_/node?tab=tags
 ARG NODE_VERSION=8.14.0-alpine
+ARG VSCE_VERSION=1.54.0
 FROM node:${NODE_VERSION}
 
 RUN node --version
 RUN npm --version
 RUN npm install -g npm@5.5.1
-RUN npm install -g vsce
+
+RUN echo "vsce @ 1.54.0"
+RUN npm install -g vsce@${VSCE_VERSION}
 
 ARG DEVEL_USER=develop
 RUN cat /etc/os-release
