@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
 function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCompiler, _channel: vscode.OutputChannel) {
     subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', compiler.sayVersion));
     subscriptions.push(vscode.commands.registerCommand('quiksass.compileAll', () => {
-        const projectRoot = getProjectRoot();
+        const projectRoot = getProjectRoot(null);
         if (!projectRoot) {
             return;
         }
@@ -46,16 +46,22 @@ function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCom
 
 }
 
-function getProjectRoot() : (vscode.Uri| undefined) {
+function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
+    if (documentUri) {
+        let thisFolder = vscode.workspace.getWorkspaceFolder(documentUri);
+        if (thisFolder) {
+            return thisFolder.uri;
+        }
+    }
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
-        return;
+        return null;
     }
     return workspaceFolders[0].uri;
 }
 
-function loadConfiguration(_channel: vscode.OutputChannel) : CompilerConfig {
-    const projectRoot = getProjectRoot();
+function loadConfiguration(_channel: vscode.OutputChannel, documentUri: (vscode.Uri | null)) : CompilerConfig {
+    const projectRoot = getProjectRoot(documentUri);
     if (!projectRoot) {
         return defaultConfig;
     }
@@ -72,11 +78,14 @@ function loadConfiguration(_channel: vscode.OutputChannel) : CompilerConfig {
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
-            const quiksassConfig = loadConfiguration(_channel);
+            const quiksassConfig = loadConfiguration(_channel, null);
             if (quiksassConfig.debug) {
                 console.log("Configuration changed for " + pluginName);
             }
         }
+    });
+    vscode.workspace.onDidChangeWorkspaceFolders((e: vscode.WorkspaceFoldersChangeEvent) => {
+        console.log(e);
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
 		if (document.languageId !== 'scss') {
@@ -86,7 +95,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: v
         if (!workspaceFolders) {
             return;
         }
-        const quiksassConfig = loadConfiguration(_channel);
+        const quiksassConfig = loadConfiguration(_channel, document.uri);
         sassCompiler.compileDocument(document, quiksassConfig, _channel);
 	}, null, subscriptions);
 }

@@ -45,7 +45,6 @@ export class CompilerConfig {
         config.sassWorkingDirectory = this.xformPath(projectRoot, sassWorkingDirectory);
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
         config.debug = configuration.get<boolean>('debug', false);
-        console.log()
         return config;
     }
 }
