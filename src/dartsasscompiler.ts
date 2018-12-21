@@ -52,7 +52,7 @@ export class DartSassCompiler {
         this.compile(document.fileName, quiksassConfig, _channel);
     }
 
-    handleError(err: sass.SassException, config : CompilerConfig, result: sass.Result, compilerResult: CompilerResult,
+    handleError(err: sass.SassException, config : CompilerConfig, compilerResult: CompilerResult,
             _channel: vscode.OutputChannel) {
         const fileonly = path.basename(err.file);
         const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
@@ -106,7 +106,7 @@ export class DartSassCompiler {
             outFile: output
         }, function (err: sass.SassException, result: sass.Result) {
             if (err) {
-                self.handleError(err, config, result, compilerResult, _channel);
+                self.handleError(err, config, compilerResult, _channel);
             } else {
                 self.writeSassOutput(result, output, compilerResult, _channel);
             }
