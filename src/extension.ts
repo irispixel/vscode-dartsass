@@ -37,13 +37,17 @@ export function activate(context: vscode.ExtensionContext) {
 function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCompiler, _channel: vscode.OutputChannel) {
     subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', compiler.sayVersion));
     subscriptions.push(vscode.commands.registerCommand('quiksass.compileAll', () => {
-        const projectRoot = getProjectRoot(null);
-        if (!projectRoot) {
-            return;
+        let workspaceFolders = vscode.workspace.workspaceFolders;
+        if (!workspaceFolders) {
+            vscode.window.showErrorMessage(`No workspace folders present to compile scss files`);
+            return null;
         }
-        compiler.compileAll(projectRoot, _channel);
+        workspaceFolders.forEach(
+            (folder:vscode.WorkspaceFolder) => {
+                compiler.compileAll(folder.uri, _channel);
+            }
+        );
     }));
-
 }
 
 function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
@@ -90,10 +94,6 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: v
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
 		if (document.languageId !== 'scss') {
 			return;
-        }
-        let workspaceFolders = vscode.workspace.workspaceFolders;
-        if (!workspaceFolders) {
-            return;
         }
         const quiksassConfig = loadConfiguration(_channel, document.uri);
         sassCompiler.compileDocument(document, quiksassConfig, _channel);
