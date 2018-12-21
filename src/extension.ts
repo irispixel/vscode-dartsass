@@ -16,17 +16,16 @@ import { CompilerConfig } from './config';
 let sassCompiler: ISassCompiler = new DartSassCompiler();
 let defaultConfig = new CompilerConfig();
 const pluginName = 'quiksass';
-
+let _channel: (vscode.OutputChannel|null) = null;
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    const _channel = vscode.window.createOutputChannel(pluginName);
+    _channel = vscode.window.createOutputChannel(pluginName);
     context.subscriptions.push(_channel);
-
-    _channel.appendLine('Congratulations, your extension "quiksass" is now active!');
+    _channel.appendLine('Extension "quiksass" is now active!');
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
@@ -64,25 +63,20 @@ function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
     return workspaceFolders[0].uri;
 }
 
-function loadConfiguration(_channel: vscode.OutputChannel, documentUri: (vscode.Uri | null)) : CompilerConfig {
+function loadConfiguration(documentUri: (vscode.Uri | null)) : CompilerConfig {
     const projectRoot = getProjectRoot(documentUri);
     if (!projectRoot) {
         return defaultConfig;
     }
     const configuration = vscode.workspace.getConfiguration(pluginName);
     const quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
-    if (quiksassConfig.debug) {
-        _channel.appendLine("Scss working directory " + quiksassConfig.sassWorkingDirectory);
-        _channel.appendLine("include path");
-        _channel.appendLine(quiksassConfig.includePath.join(","));
-    }
     return quiksassConfig;
 }
 
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
-            const quiksassConfig = loadConfiguration(_channel, null);
+            const quiksassConfig = loadConfiguration(null);
             if (quiksassConfig.debug) {
                 console.log("Configuration changed for " + pluginName);
             }
@@ -95,7 +89,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: v
 		if (document.languageId !== 'scss') {
 			return;
         }
-        const quiksassConfig = loadConfiguration(_channel, document.uri);
+        const quiksassConfig = loadConfiguration(document.uri);
         sassCompiler.compileDocument(document, quiksassConfig, _channel);
 	}, null, subscriptions);
 }
@@ -103,4 +97,9 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: v
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+    if (_channel) {
+        console.log("Disposing channel");
+        _channel.clear();
+        _channel.dispose();
+    }
 }

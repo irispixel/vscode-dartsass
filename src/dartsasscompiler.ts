@@ -72,7 +72,26 @@ export class DartSassCompiler {
         });
     }
 
-    compileToFile(input: string, compressed: boolean, output: string,
+    compileToFileSync(input: string, compressed: boolean, output: string,
+        config : CompilerConfig,
+        compilerResult: CompilerResult,
+        _channel: vscode.OutputChannel) {
+        const options = this.getOptions(config.sassWorkingDirectory);
+        const self = this;
+        const result = sass.renderSync({
+            file: input,
+            importer: packageImporter(options),
+            includePaths: config.includePath,
+            outputStyle: compressed ? 'compressed': 'expanded',
+            outFile: output
+        });
+        if (result) {
+            self.writeSassOutput(result, output, compilerResult, _channel);
+        }
+
+    }
+
+    compileToFileAsync(input: string, compressed: boolean, output: string,
         config : CompilerConfig,
         compilerResult: CompilerResult,
         _channel: vscode.OutputChannel) {
@@ -91,7 +110,20 @@ export class DartSassCompiler {
                 self.writeSassOutput(result, output, compilerResult, _channel);
             }
         });
+    }
 
+    compileToFile(input: string, compressed: boolean, output: string,
+        config : CompilerConfig,
+        compilerResult: CompilerResult,
+        _channel: vscode.OutputChannel) {
+        if (config.debug) {
+            _channel.appendLine("Sync " + config.sync);
+        }
+        if (config.sync) {
+            this.compileToFileSync(input, compressed, output, config, compilerResult, _channel);
+        } else {
+            this.compileToFileAsync(input, compressed, output, config, compilerResult, _channel);
+        }
     }
 
     getOptions(cwd: string) : IPackageImporterOptions {
@@ -119,6 +151,11 @@ export class DartSassCompiler {
         const output = path.join(filedir, fileonly + '.css');
         const compressedOutput = path.join(filedir, fileonly + '.min.css');
         const self = this;
+        if (config.debug) {
+            _channel.clear();
+            _channel.appendLine("Scss working directory: " + config.sassWorkingDirectory);
+            _channel.appendLine("include path: " + config.includePath.join(","));
+        }
         const compilerResult:CompilerResult = {
             onFailure() {
 

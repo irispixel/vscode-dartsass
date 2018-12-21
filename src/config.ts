@@ -17,6 +17,8 @@ export class CompilerConfig {
 
     debug: boolean = false;
 
+    sync: boolean = false;
+
     static xformPath(projectRoot: vscode.Uri, entry: string): string {
         // TODO: For now - it is assumed the URI is a file system
         if (path.isAbsolute(entry)) {
@@ -45,6 +47,7 @@ export class CompilerConfig {
         config.sassWorkingDirectory = this.xformPath(projectRoot, sassWorkingDirectory);
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
         config.debug = configuration.get<boolean>('debug', false);
+        config.sync = configuration.get<boolean>('sync', false);
         return config;
     }
 }

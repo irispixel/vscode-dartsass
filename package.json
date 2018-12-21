@@ -55,6 +55,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Debug flag to be used by developers. By default, false."
+                },
+                "quiksass.sync": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Uses renderSync API to compile scss files. By default, false."
                 }
             }
         }
