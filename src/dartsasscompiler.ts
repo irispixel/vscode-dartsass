@@ -14,6 +14,7 @@ import packageImporter = require('node-sass-package-importer');
 import { IPackageImporterOptions } from 'node-sass-magic-importer/src/interfaces/IImporterOptions';
 import { CompilerConfig } from './config';
 
+
 export interface CompilerResult {
 
     onSuccess(): void;
