@@ -3,6 +3,9 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.20
+ - Upgrade to sass package `1.16.0` .
+
 ### 0.0.19
  - Introduces flag `sync` to use the renderSync API.
 
