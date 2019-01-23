@@ -43,9 +43,9 @@ export class DartSassCompiler {
     public sayVersion() : string {
         // TODO: To print sass library version automatically imported from package
         // as opposed to hardcoding it here.
-        const version = "1.15.2";
+        const version = "1.16.0";
         vscode.window.showInformationMessage(`Uses sass pure Dart/JS compiler: ${version}`);
-        return "Uses sass@npm: 1.15.2";
+        return "Uses sass@npm: " + version;
     }
 
     public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, _channel: vscode.OutputChannel) {
