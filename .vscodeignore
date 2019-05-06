@@ -11,3 +11,7 @@ vsc-extension-quickstart.md
 docker-compose.yml
 Dockerfile
 entrypoint.sh
+tsconfig.json
+webpack.config.json
+out
+

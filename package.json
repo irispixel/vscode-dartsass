@@ -65,9 +65,11 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
+        "vscode:prepublish": "webpack --mode production",
+        "compile": "webpack --mode none",
+        "test-compile": "tsc -p ./",
+        "watch": "webpack --mode none --watch",
+        "test-watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
@@ -84,6 +86,9 @@
         "tslint": "~5.16.0",
         "typescript": "^3.1.4",
         "vscode": "^1.1.33",
-        "ts-node": "~8.1.0"
+        "ts-node": "~8.1.0",
+        "webpack": "~4.30.0",
+        "webpack-cli": "~3.3.2",
+        "ts-loader": "~5.4.5"
     }
 }
