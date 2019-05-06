@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     _channel = vscode.window.createOutputChannel(pluginName);
     context.subscriptions.push(_channel);
-    _channel.appendLine('Extension "quiksass" is now active!');
+    _channel.appendLine('Extension "quiksass" activated now!');
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
@@ -34,7 +34,9 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCompiler, _channel: vscode.OutputChannel) {
-    subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', compiler.sayVersion));
+    subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', () => {
+        compiler.sayVersion(_channel);
+    }));
     subscriptions.push(vscode.commands.registerCommand('quiksass.compileAll', () => {
         let workspaceFolders = vscode.workspace.workspaceFolders;
         if (!workspaceFolders) {

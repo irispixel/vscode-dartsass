@@ -15,6 +15,10 @@ import { IPackageImporterOptions } from 'node-sass-magic-importer/src/interfaces
 import { CompilerConfig } from './config';
 
 
+export interface Info {
+    info: string;
+}
+
 export interface CompilerResult {
 
     onSuccess(): void;
@@ -40,11 +44,11 @@ export class DartSassCompiler {
         return false;
     }
 
-    public sayVersion() : string {
-        // TODO: To print sass library version automatically imported from package
-        // as opposed to hardcoding it here.
-        const version = "1.20.1";
-        vscode.window.showInformationMessage(`Uses sass pure Dart/JS compiler: ${version}`);
+    public sayVersion(_channel: vscode.OutputChannel) : string {
+        const info = sass as unknown as Info;
+        const version = info.info;
+        _channel.appendLine(JSON.stringify(sass));
+        vscode.window.showInformationMessage(`${version}`);
         return "Uses sass@npm: " + version;
     }
 

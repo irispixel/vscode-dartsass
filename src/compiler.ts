@@ -10,7 +10,7 @@ import { CompilerConfig } from './config';
 
 export interface ISassCompiler {
 
-    sayVersion() : string;
+    sayVersion(_channel: vscode.OutputChannel) : string;
 
     compileAll(projectRoot: vscode.Uri, _channel: vscode.OutputChannel) : boolean;
 
