@@ -3,6 +3,10 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.23
+ - Upgrade to sass package `1.20.1` .
+ - Sass Compiler Version printed. ( See: Quiksass: Sass Compiler Version command)
+
 ### 0.0.20
  - Upgrade to sass package `1.16.0` .
 
