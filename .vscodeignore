@@ -14,4 +14,7 @@ entrypoint.sh
 tsconfig.json
 webpack.config.json
 .git
+renovate.json
+INSTALL.md
+dist
 
