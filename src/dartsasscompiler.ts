@@ -47,8 +47,8 @@ export class DartSassCompiler {
     public sayVersion(_channel: vscode.OutputChannel) : string {
         const info = sass as unknown as Info;
         const version = info.info;
-        vscode.window.showInformationMessage(`${version}`);
-        return "Uses sass@npm: " + version;
+        vscode.window.showInformationMessage(`Version @ ${version}`);
+        return "Compiler: " + version;
     }
 
     public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, _channel: vscode.OutputChannel) {
@@ -167,6 +167,9 @@ export class DartSassCompiler {
             onSuccess() {
                 if (config.debug) {
                     _channel.appendLine(`Compiled ${input} to ${output}`);
+                }
+                if (config.compileSingleFile) {
+                    vscode.window.showInformationMessage(`Compiled ${input} successfully`);
                 }
                 if (!config.disableMinifiedFileGeneration) {
                     const tmpResult :CompilerResult = {

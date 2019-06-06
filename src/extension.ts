@@ -57,7 +57,7 @@ function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCom
         }
         var editor = vscode.window.activeTextEditor;
         if (editor && typeof editor !== 'undefined') {
-            compileCurrentFile(editor.document, _channel);
+            compileCurrentFile(editor.document, _channel, true);
         } else {
             console.log(`Editor not defined currently`);
         }
@@ -88,11 +88,12 @@ function loadConfiguration(documentUri: (vscode.Uri | null)) : CompilerConfig {
     return quiksassConfig;
 }
 
-function compileCurrentFile(document: vscode.TextDocument, _channel: vscode.OutputChannel) {
+function compileCurrentFile(document: vscode.TextDocument, _channel: vscode.OutputChannel, compileSingleFile: boolean) {
     if (document.languageId !== 'scss' && document.languageId !== 'sass') {
         return;
     }
     const quiksassConfig = loadConfiguration(document.uri);
+    quiksassConfig.compileSingleFile = compileSingleFile;
     sassCompiler.compileDocument(document, quiksassConfig, _channel);
 }
 
@@ -109,7 +110,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: v
         console.log(e);
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
-        compileCurrentFile(document, _channel);
+        compileCurrentFile(document, _channel, false);
 	}, null, subscriptions);
 }
 

@@ -17,6 +17,8 @@ export class CompilerConfig {
 
     debug: boolean = false;
 
+    compileSingleFile: boolean = false;
+
     sync: boolean = false;
 
     static xformPath(projectRoot: vscode.Uri, entry: string): string {
