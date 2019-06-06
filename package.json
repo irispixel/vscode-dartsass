@@ -37,12 +37,14 @@
                 "title": "QuikSass: Compile Current File"
             }
         ],
-        "keybindings": [{
-            "command": "quiksass.compileCurrentFile",
-            "key": "ctrl+shift+l",
-            "mac": "cmd+shift+l",
-            "when": "editorTextFocus"
-        }],
+        "keybindings": [
+            {
+                "command": "quiksass.compileCurrentFile",
+                "key": "ctrl+shift+l",
+                "mac": "cmd+shift+l",
+                "when": "editorTextFocus"
+            }
+        ],
         "configuration": {
             "type": "object",
             "title": "QuikSass",
