@@ -3,6 +3,16 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.28
+ - Upgrade to sass package `1.20.3` .
+ - New Extension Command  `QuikSass: Compile Current File` added. Keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
+
+### 0.0.27
+### 0.0.26
+### 0.0.25
+### 0.0.24
+ - Do not use. Erroneour publishing.
+
 ### 0.0.23
  - Upgrade to sass package `1.20.1` .
  - Sass Compiler Version printed. ( See: Quiksass: Sass Compiler Version command)
