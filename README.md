@@ -70,6 +70,16 @@ To customize the same, check `quiksass.sassWorkingDirectory`. More details below
 
 
 
+## Extension Commands
+
+### QuikSass: Compile Current File
+
+Compiles the current scss file to .css and .min.css file as appropriate.
+
+### QuikSass: Sass Compiler Version
+
+Prints out the current sass compiler version being used.
+
 ## Extension Settings
 
 This extension contributes the following settings:
