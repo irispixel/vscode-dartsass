@@ -73,6 +73,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Uses renderSync API to compile scss files. By default, false."
+                },
+                "quiksass.pauseInterval": {
+                    "type": "number",
+                    "default": 10,
+                    "description": "Pause Interval (in seconds) before compiling again to prevent CPU hogging."
                 }
             }
         }

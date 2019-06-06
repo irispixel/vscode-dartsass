@@ -3,6 +3,10 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 0.0.29
+
+ - Introduce a property `quiksass.pauseInterval` indicating a pause interval in seconds before the compiler kicks off to not hog the cpu resources too frequently.
+
 ### 0.0.28
  - Upgrade to sass package `1.20.3` .
  - New Extension Command  `QuikSass: Compile Current File` added. Keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
