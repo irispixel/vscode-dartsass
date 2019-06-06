@@ -74,11 +74,20 @@ To customize the same, check `quiksass.sassWorkingDirectory`. More details below
 
 ### QuikSass: Compile Current File
 
-Compiles the current scss file to .css and .min.css file as appropriate.
+( Uses: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> )
+
+Compiles the current scss file in the active editor to .css and .min.css file as appropriate.
 
 ### QuikSass: Sass Compiler Version
 
 Prints out the current sass compiler version being used.
+
+## Extension Keyboard Shortcuts
+
+### <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
+
+See [QuikSass: Compile Current File](#quiksass:-compile-current-file) above.
+
 
 ## Extension Settings
 
