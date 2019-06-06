@@ -11,7 +11,6 @@ export class FsUri {
 
 
     public xformPathFromRoot(projectRoot: vscode.Uri, entry: string): string {
-        // TODO: For now - it is assumed the URI is a file system
         if (path.isAbsolute(entry)) {
             return entry;
         }
