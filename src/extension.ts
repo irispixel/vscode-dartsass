@@ -49,6 +49,19 @@ function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCom
             }
         );
     }));
+    subscriptions.push(vscode.commands.registerCommand('quiksass.compileCurrentFile', () => {
+        let workspaceFolders = vscode.workspace.workspaceFolders;
+        if (!workspaceFolders) {
+            console.log(`No workspace folders present to compile scss files`);
+            return null;
+        }
+        var editor = vscode.window.activeTextEditor;
+        if (editor && typeof editor !== 'undefined') {
+            compileCurrentFile(editor.document, _channel);
+        } else {
+            console.log(`Editor not defined currently`);
+        }
+    }));
 }
 
 function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {

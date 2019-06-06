@@ -18,7 +18,8 @@
     "activationEvents": [
         "onLanguage:scss",
         "onCommand:quiksass.saySassVersion",
-        "onCommand:quiksass.compileAll"
+        "onCommand:quiksass.compileAll",
+        "onCommand:quiksass.compileCurrentFile"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -30,8 +31,18 @@
             {
                 "command": "quiksass.compileAll",
                 "title": "QuikSass: Compile All SCSS Files"
+            },
+            {
+                "command": "quiksass.compileCurrentFile",
+                "title": "QuikSass: Compile Current File"
             }
         ],
+        "keybindings": [{
+            "command": "quiksass.compileCurrentFile",
+            "key": "ctrl+shift+l",
+            "mac": "cmd+shift+l",
+            "when": "editorTextFocus"
+        }],
         "configuration": {
             "type": "object",
             "title": "QuikSass",
