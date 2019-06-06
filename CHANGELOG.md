@@ -1,8 +1,6 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
 
 ### 0.0.30
 
@@ -21,7 +19,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 0.0.26
 ### 0.0.25
 ### 0.0.24
- - Do not use. Erroneour publishing.
+ - Do not use. Erroneous publishing.
 
 ### 0.0.23
  - Upgrade to sass package `1.20.1` .
@@ -68,3 +66,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 0.0.1
 - Initial release of quiksass
+
+
+Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
