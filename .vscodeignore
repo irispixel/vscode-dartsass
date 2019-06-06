@@ -13,6 +13,5 @@ Dockerfile
 entrypoint.sh
 tsconfig.json
 webpack.config.json
-out
 .git
 
