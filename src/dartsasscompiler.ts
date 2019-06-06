@@ -13,7 +13,7 @@ import sass = require("sass");
 import packageImporter = require('node-sass-package-importer');
 import { IPackageImporterOptions } from 'node-sass-magic-importer/src/interfaces/IImporterOptions';
 import { CompilerConfig } from './config';
-
+import { xformPath, xformPaths} from './util';
 
 export interface Info {
     info: string;
@@ -51,8 +51,8 @@ export class DartSassCompiler {
         return "Compiler: " + version;
     }
 
-    public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, _channel: vscode.OutputChannel) {
-        this.compile(document.fileName, quiksassConfig, _channel);
+    public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {
+        this.compile(document, quiksassConfig, compileSingleFile, _channel);
     }
 
     handleError(err: sass.SassException, config : CompilerConfig, compilerResult: CompilerResult,
@@ -76,16 +76,18 @@ export class DartSassCompiler {
         });
     }
 
-    compileToFileSync(input: string, compressed: boolean, output: string,
+    compileToFileSync(document: vscode.TextDocument, compressed: boolean, output: string,
         config : CompilerConfig,
         compilerResult: CompilerResult,
         _channel: vscode.OutputChannel) {
-        const options = this.getOptions(config.sassWorkingDirectory);
+        const sassWorkingDirectory  = xformPath(document.uri, config.sassWorkingDirectory);
+        const includePaths = xformPaths(document.uri, config.includePath);
+        const options = this.getOptions(sassWorkingDirectory);
         const self = this;
         const result = sass.renderSync({
-            file: input,
+            file: document.fileName,
             importer: packageImporter(options),
-            includePaths: config.includePath,
+            includePaths: includePaths,
             outputStyle: compressed ? 'compressed': 'expanded',
             outFile: output
         });
@@ -95,16 +97,18 @@ export class DartSassCompiler {
 
     }
 
-    compileToFileAsync(input: string, compressed: boolean, output: string,
+    compileToFileAsync(document: vscode.TextDocument, compressed: boolean, output: string,
         config : CompilerConfig,
         compilerResult: CompilerResult,
         _channel: vscode.OutputChannel) {
-        const options = this.getOptions(config.sassWorkingDirectory);
+        const sassWorkingDirectory  = xformPath(document.uri, config.sassWorkingDirectory);
+        const includePaths = xformPaths(document.uri, config.includePath);
+        const options = this.getOptions(sassWorkingDirectory);
         const self = this;
         sass.render({
-            file: input,
+            file: document.fileName,
             importer: packageImporter(options),
-            includePaths: config.includePath,
+            includePaths: includePaths,
             outputStyle: compressed ? 'compressed': 'expanded',
             outFile: output
         }, function (err: sass.SassException, result: sass.Result) {
@@ -116,7 +120,7 @@ export class DartSassCompiler {
         });
     }
 
-    compileToFile(input: string, compressed: boolean, output: string,
+    compileToFile(document: vscode.TextDocument, compressed: boolean, output: string,
         config : CompilerConfig,
         compilerResult: CompilerResult,
         _channel: vscode.OutputChannel) {
@@ -124,9 +128,9 @@ export class DartSassCompiler {
             _channel.appendLine("Sync " + config.sync);
         }
         if (config.sync) {
-            this.compileToFileSync(input, compressed, output, config, compilerResult, _channel);
+            this.compileToFileSync(document, compressed, output, config, compilerResult, _channel);
         } else {
-            this.compileToFileAsync(input, compressed, output, config, compilerResult, _channel);
+            this.compileToFileAsync(document, compressed, output, config, compilerResult, _channel);
         }
     }
 
@@ -149,7 +153,9 @@ export class DartSassCompiler {
         return options;
     }
 
-    public compile(input: string, config : CompilerConfig, _channel: vscode.OutputChannel) {
+    public compile(document: vscode.TextDocument,
+        config : CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {
+        const input = document.fileName;
         const filedir = path.dirname(input);
         const fileonly = path.basename(input, '.scss');
         const output = path.join(filedir, fileonly + '.css');
@@ -168,7 +174,7 @@ export class DartSassCompiler {
                 if (config.debug) {
                     _channel.appendLine(`Compiled ${input} to ${output}`);
                 }
-                if (config.compileSingleFile) {
+                if (compileSingleFile) {
                     vscode.window.showInformationMessage(`Compiled ${input} successfully`);
                 }
                 if (!config.disableMinifiedFileGeneration) {
@@ -182,11 +188,11 @@ export class DartSassCompiler {
                             }
                         }
                     };
-                    self.compileToFile(input, true, compressedOutput, config, tmpResult, _channel);
+                    self.compileToFile(document, true, compressedOutput, config, tmpResult, _channel);
                 }
             }
         };
-        this.compileToFile(input, false, output, config, compilerResult, _channel);
+        this.compileToFile(document, false, output, config, compilerResult, _channel);
     }
 
 }

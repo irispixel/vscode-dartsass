@@ -14,7 +14,7 @@ import { DartSassCompiler } from './dartsasscompiler';
 import { CompilerConfig } from './config';
 
 let sassCompiler: ISassCompiler = new DartSassCompiler();
-let defaultConfig = new CompilerConfig();
+let extensionConfig = new CompilerConfig();
 const pluginName = 'quiksass';
 let _channel: (vscode.OutputChannel|null) = null;
 let lastCompiledTime = Date.now() - 100 * 1000;
@@ -27,6 +27,8 @@ export function activate(context: vscode.ExtensionContext) {
     _channel = vscode.window.createOutputChannel(pluginName);
     context.subscriptions.push(_channel);
     _channel.appendLine('Extension "quiksass" activated now!');
+    reloadConfiguration(_channel);
+
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
@@ -65,28 +67,10 @@ function registerCommands(subscriptions: vscode.Disposable[], compiler :ISassCom
     }));
 }
 
-function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
-    if (documentUri) {
-        let thisFolder = vscode.workspace.getWorkspaceFolder(documentUri);
-        if (thisFolder) {
-            return thisFolder.uri;
-        }
-    }
-    let workspaceFolders = vscode.workspace.workspaceFolders;
-    if (!workspaceFolders) {
-        return null;
-    }
-    return workspaceFolders[0].uri;
-}
-
-function loadConfiguration(documentUri: (vscode.Uri | null)) : CompilerConfig {
-    const projectRoot = getProjectRoot(documentUri);
-    if (!projectRoot) {
-        return defaultConfig;
-    }
+function reloadConfiguration(_channel: vscode.OutputChannel) : void {
     const configuration = vscode.workspace.getConfiguration(pluginName);
-    const quiksassConfig = CompilerConfig.extractFrom(projectRoot, configuration);
-    return quiksassConfig;
+    extensionConfig = CompilerConfig.extractFrom(configuration);
+    _channel.appendLine(`Configuration reloaded with ${extensionConfig}`);
 }
 
 function isTooSoon(pauseInterval: number) {
@@ -98,14 +82,12 @@ function compileCurrentFile(document: vscode.TextDocument, _channel: vscode.Outp
     if (document.languageId !== 'scss' && document.languageId !== 'sass') {
         return;
     }
-    const quiksassConfig = loadConfiguration(document.uri);
-    quiksassConfig.compileSingleFile = compileSingleFile;
-    if (isTooSoon(quiksassConfig.pauseInterval)) {
-        if (quiksassConfig.debug) {
+    if (isTooSoon(extensionConfig.pauseInterval)) {
+        if (extensionConfig.debug) {
             _channel.appendLine(`Last Compiled Time at ${lastCompiledTime}. Compiling too soon and ignoring hence`);
         }
     } else {
-        sassCompiler.compileDocument(document, quiksassConfig, _channel);
+        sassCompiler.compileDocument(document, extensionConfig, compileSingleFile, _channel);
         lastCompiledTime = Date.now();
     }
 }
@@ -113,17 +95,16 @@ function compileCurrentFile(document: vscode.TextDocument, _channel: vscode.Outp
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
-            const quiksassConfig = loadConfiguration(null);
-            if (quiksassConfig.debug) {
-                console.log("Configuration changed for " + pluginName);
-            }
+            reloadConfiguration(_channel);
         }
     });
     vscode.workspace.onDidChangeWorkspaceFolders((e: vscode.WorkspaceFoldersChangeEvent) => {
         console.log(e);
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
-        compileCurrentFile(document, _channel, false);
+        if (!extensionConfig.disableCompileOnSave) {
+            compileCurrentFile(document, _channel, false);
+        }
 	}, null, subscriptions);
 }
 

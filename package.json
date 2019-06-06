@@ -59,6 +59,11 @@
                     "default": "",
                     "description": "Sets the cwd - current working directory for node-sass-package-importer. Defaults to project root directory."
                 },
+                "quiksass.disableCompileOnSave": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Disables the compilation with every save to prevent CPU hogging."
+                },
                 "quiksass.disableMinifiedFileGeneration": {
                     "type": "boolean",
                     "default": false,

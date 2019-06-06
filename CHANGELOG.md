@@ -3,6 +3,12 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+
+### 0.0.30
+
+ - Introduce a property `quiksass.disableCompileOnSave` that disables a compilation with every save.
+
+
 ### 0.0.29
 
  - Introduce a property `quiksass.pauseInterval` indicating a pause interval in seconds before the compiler kicks off to not hog the cpu resources too frequently.

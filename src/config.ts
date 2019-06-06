@@ -4,7 +4,6 @@
 // https://opensource.org/licenses/MIT
 'use strict';
 import * as vscode from 'vscode';
-import * as path from 'path';
 
 
 export class CompilerConfig {
@@ -17,41 +16,20 @@ export class CompilerConfig {
 
     debug: boolean = false;
 
-    compileSingleFile: boolean = false;
-
     sync: boolean = false;
+
+    disableCompileOnSave: boolean = false;
 
     pauseInterval: number = 10;
 
-    static xformPath(projectRoot: vscode.Uri, entry: string): string {
-        // TODO: For now - it is assumed the URI is a file system
-        if (path.isAbsolute(entry)) {
-            return entry;
-        }
-        const basedir = projectRoot.fsPath;
-        return path.join(basedir, entry);
-    }
-
-    static xformPaths(projectRoot: vscode.Uri, includePath: Array<string>): Array<string> {
-        const output:Array<string> = new Array<string>();
-        const self = this;
-        includePath.forEach(function(entry: string) {
-            output.push(self.xformPath(projectRoot, entry));
-        });
-        return output;
-    }
-
-
-    public static extractFrom(projectRoot: vscode.Uri, configuration: vscode.WorkspaceConfiguration) : CompilerConfig {
-        const includePath = configuration.get<Array<string>>('includePath', new Array<string>());
+    public static extractFrom(configuration: vscode.WorkspaceConfiguration) : CompilerConfig {
         const config = new CompilerConfig();
-        config.includePath = this.xformPaths(projectRoot, includePath);
-        // TODO: For now - it is assumed the URI is a file system
-        const sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', projectRoot.fsPath);
-        config.sassWorkingDirectory = this.xformPath(projectRoot, sassWorkingDirectory);
+        config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
+        config.sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', '');
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
         config.debug = configuration.get<boolean>('debug', false);
         config.sync = configuration.get<boolean>('sync', false);
+        config.disableCompileOnSave = configuration.get<boolean>('disableCompileOnSave', false);
         config.pauseInterval = configuration.get<number>('pauseInterval', 10);
         return config;
     }
