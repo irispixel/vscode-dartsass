@@ -17,6 +17,7 @@ let sassCompiler: ISassCompiler = new DartSassCompiler();
 let defaultConfig = new CompilerConfig();
 const pluginName = 'quiksass';
 let _channel: (vscode.OutputChannel|null) = null;
+let lastCompiledTime = Date.now() - 100 * 1000;
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -88,13 +89,25 @@ function loadConfiguration(documentUri: (vscode.Uri | null)) : CompilerConfig {
     return quiksassConfig;
 }
 
+function isTooSoon(pauseInterval: number) {
+    const now = Date.now();
+    return (now - lastCompiledTime) < (pauseInterval * 1000);
+}
+
 function compileCurrentFile(document: vscode.TextDocument, _channel: vscode.OutputChannel, compileSingleFile: boolean) {
     if (document.languageId !== 'scss' && document.languageId !== 'sass') {
         return;
     }
     const quiksassConfig = loadConfiguration(document.uri);
     quiksassConfig.compileSingleFile = compileSingleFile;
-    sassCompiler.compileDocument(document, quiksassConfig, _channel);
+    if (isTooSoon(quiksassConfig.pauseInterval)) {
+        if (quiksassConfig.debug) {
+            _channel.appendLine(`Last Compiled Time at ${lastCompiledTime}. Compiling too soon and ignoring hence`);
+        }
+    } else {
+        sassCompiler.compileDocument(document, quiksassConfig, _channel);
+        lastCompiledTime = Date.now();
+    }
 }
 
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
