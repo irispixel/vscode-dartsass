@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/altoscode/vscode-quiksass.git"
     },
-    "version": "0.0.24",
+    "version": "0.0.27",
     "engines": {
         "vscode": "^1.30.0"
     },
@@ -78,7 +78,8 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "webpack --mode production",
+        "vscode:prepublish": "npm run test-compile",
+        "webpack:prepublish": "webpack --mode production",
         "compile": "webpack --mode none",
         "test-compile": "tsc -p ./",
         "watch": "webpack --mode none --watch",
