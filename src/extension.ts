@@ -75,6 +75,14 @@ function loadConfiguration(documentUri: (vscode.Uri | null)) : CompilerConfig {
     return quiksassConfig;
 }
 
+function compileCurrentFile(document: vscode.TextDocument, _channel: vscode.OutputChannel) {
+    if (document.languageId !== 'scss' && document.languageId !== 'sass') {
+        return;
+    }
+    const quiksassConfig = loadConfiguration(document.uri);
+    sassCompiler.compileDocument(document, quiksassConfig, _channel);
+}
+
 function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
@@ -88,11 +96,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: v
         console.log(e);
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
-		if (document.languageId !== 'scss') {
-			return;
-        }
-        const quiksassConfig = loadConfiguration(document.uri);
-        sassCompiler.compileDocument(document, quiksassConfig, _channel);
+        compileCurrentFile(document, _channel);
 	}, null, subscriptions);
 }
 
