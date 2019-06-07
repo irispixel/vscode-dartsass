@@ -9,11 +9,11 @@ import { CompilerConfig } from './config';
 
 
 
-export function cmdSayVersion(sassCompiler: ISassCompiler, _channel: vscode.OutputChannel) {
+function cmdSayVersion(sassCompiler: ISassCompiler, _channel: vscode.OutputChannel) {
     sassCompiler.sayVersion(_channel);
 }
 
-export function cmdCompileAll(sassCompiler: ISassCompiler, _channel: vscode.OutputChannel) {
+function cmdCompileAll(sassCompiler: ISassCompiler, _channel: vscode.OutputChannel) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
         vscode.window.showErrorMessage(`No workspace folders present to compile scss files`);
@@ -27,7 +27,7 @@ export function cmdCompileAll(sassCompiler: ISassCompiler, _channel: vscode.Outp
 }
 
 
-export function cmdCompileCurrentFile(sassCompiler: ISassCompiler, extensionConfig: CompilerConfig,
+function cmdCompileCurrentFile(sassCompiler: ISassCompiler, extensionConfig: CompilerConfig,
     _channel: vscode.OutputChannel) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
