@@ -47,8 +47,7 @@ export class DartSassCompiler {
     public sayVersion(_channel: vscode.OutputChannel) : string {
         const info = sass as unknown as Info;
         const version = info.info;
-        vscode.window.showInformationMessage(`${version}`);
-        return "Compiler: " + version;
+        return `${version}`;
     }
 
     public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {

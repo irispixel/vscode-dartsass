@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 function reloadConfiguration(_channel: vscode.OutputChannel) : void {
     const configuration = vscode.workspace.getConfiguration(pluginName);
     extensionConfig = CompilerConfig.extractFrom(configuration);
-    _channel.appendLine(`Configuration reloaded with ${extensionConfig}`);
+    _channel.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
 }
 
 

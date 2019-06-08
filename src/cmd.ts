@@ -10,7 +10,7 @@ import { CompilerConfig } from './config';
 
 
 function cmdSayVersion(sassCompiler: ISassCompiler, _channel: vscode.OutputChannel) {
-    sassCompiler.sayVersion(_channel);
+    vscode.window.showInformationMessage(sassCompiler.sayVersion(_channel));
 }
 
 function cmdCompileAll(sassCompiler: ISassCompiler, _channel: vscode.OutputChannel) {
@@ -46,6 +46,7 @@ function cmdCompileCurrentFile(sassCompiler: ISassCompiler, extensionConfig: Com
 export function registerCommands(sassCompiler: ISassCompiler,
     extensionConfig: CompilerConfig,
     subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
+    _channel.appendLine(sassCompiler.sayVersion(_channel));
     subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', () => {
         cmdSayVersion(sassCompiler, _channel);
     }));
