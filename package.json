@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/altoscode/vscode-quiksass.git"
     },
-    "version": "0.0.32",
+    "version": "0.0.33",
     "engines": {
         "vscode": "^1.30.0"
     },
@@ -42,6 +42,12 @@
                 "command": "quiksass.compileCurrentFile",
                 "key": "ctrl+shift+l",
                 "mac": "cmd+shift+l",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "quiksass.saySassVersion",
+                "key": "ctrl+shift+q",
+                "mac": "cmd+shift+q",
                 "when": "editorTextFocus"
             }
         ],

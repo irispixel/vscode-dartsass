@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
+### 0.0.33
+ - Keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> to print sass Compiler version
+
+### 0.0.32
+ - Do not use. Errorneous publishing
+
+### 0.0.31
+
+ - Upgrade to Dart/JS sass compiler 1.21.0
 
 ### 0.0.30
 

@@ -1,10 +1,11 @@
 # quiksass vscode plugin
 
-VSCode plugin to compile .scss files.
+VSCode plugin to compile .scss files. The plugin gets activated by opening .scss files.
 
-It generates the .css and .min.css files for the given .scss file, on every save.
+It uses the Dart/JS Sass Compiler to generate the .css and .min.css files for the given .scss file.
 
-The plugin gets activated by opening .scss files.
+By default, the compiler gets activated with every save of the current editor file. See `quiksass.pauseInterval` below if that is too agressive.
+
 
 ## Install
 
@@ -25,6 +26,8 @@ Compiles the current scss file in the active editor to .css and .min.css file as
 
 ### QuikSass: Sass Compiler Version
 
+( Uses: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> )
+
 Prints out the current sass compiler version being used.
 
 ## Extension Keyboard Shortcuts
@@ -33,6 +36,9 @@ Prints out the current sass compiler version being used.
 
 See [QuikSass: Compile Current File](#quiksass:-compile-current-file) above.
 
+### <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd>
+
+See [QuikSass: Sass Compiler Version](#quiksass:-sass-compiler-version) above.
 
 ## Extension Settings
 
