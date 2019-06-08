@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
+### 0.0.34
+ - Print the dart sass compiler version at startup in the console log for reference.
+ - Better printing of configuration options
+
 ### 0.0.33
  - Keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> to print sass Compiler version
 
