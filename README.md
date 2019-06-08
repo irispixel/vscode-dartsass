@@ -20,25 +20,15 @@ This VSCode extension is released under [MIT license](LICENSE).
 
 ### QuikSass: Compile Current File
 
-( Uses: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> )
+( Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> )
 
 Compiles the current scss file in the active editor to .css and .min.css file as appropriate.
 
 ### QuikSass: Sass Compiler Version
 
-( Uses: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> )
+( Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> )
 
 Prints out the current sass compiler version being used.
-
-## Extension Keyboard Shortcuts
-
-### <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
-
-See [QuikSass: Compile Current File](#quiksass:-compile-current-file) above.
-
-### <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd>
-
-See [QuikSass: Sass Compiler Version](#quiksass:-sass-compiler-version) above.
 
 ## Extension Settings
 
