@@ -10,7 +10,7 @@
     },
     "version": "0.0.35",
     "engines": {
-        "vscode": "^1.30.0"
+        "vscode": "^1.31.0"
     },
     "categories": [
         "Other"
@@ -104,7 +104,7 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
-        "sass": "~1.21.0",
+        "sass": "~1.22.0",
         "@types/sass": "~1.16.0",
         "node-sass-package-importer": "~5.3.2",
         "fibers": "~4.0.1",
@@ -113,12 +113,12 @@
     "devDependencies": {
         "@types/mocha": "2.2.48",
         "@types/node": "8.10.38",
-        "tslint": "5.17.0",
+        "tslint": "5.18.0",
         "typescript": "3.5.2",
         "vscode": "1.1.34",
         "ts-node": "8.3.0",
-        "webpack": "4.34.0",
-        "webpack-cli": "3.3.4",
-        "ts-loader": "6.0.2"
+        "webpack": "4.35.0",
+        "webpack-cli": "3.3.5",
+        "ts-loader": "6.0.4"
     }
 }
