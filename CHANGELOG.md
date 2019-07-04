@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
+### 0.0.39
+ - Split vscode to @types/vscode and vscode-test
+
 ### 0.0.38
  - Sass 1.22.3
 
