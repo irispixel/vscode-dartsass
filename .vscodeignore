@@ -11,7 +11,7 @@ docker-compose.yml
 Dockerfile
 entrypoint.sh
 tsconfig.json
-webpack.config.json
+webpack.config.js
 .git
 renovate.json
 INSTALL.md
