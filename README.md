@@ -1,4 +1,5 @@
-[![](https://vsmarketplacebadge.apphb.com/version/altoscode.quiksass.svg)](https://marketplace.visualstudio.com/items?itemName=altoscode.quiksass)
+[![VSCode Marketplace Badge](https://img.shields.io/vscode-marketplace/v/altoscode.quiksass.svg?label=VSCode%20Marketplace&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=altoscode.quiksass) [![Total Install](https://img.shields.io/vscode-marketplace/d/altoscode.quiksass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=altoscode.quiksass) [![Avarage Rating Badge](https://img.shields.io/vscode-marketplace/r/altoscode.quiksass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=altoscode.quiksass) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/altoscode/vscode-quiksass/)
+
 
 Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass) to css and minified css.
 
