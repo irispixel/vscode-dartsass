@@ -97,11 +97,11 @@
         "vscode:prepublish": "npm run test-compile",
         "webpack:prepublish": "webpack --mode production",
         "compile": "webpack --mode none",
+        "lint": "tslint -p ./",
         "test-compile": "tsc -p ./",
         "watch": "webpack --mode none --watch",
         "test-watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        "test": "npm run test-compile && node ./out/test/runTest.js"
     },
     "dependencies": {
         "sass": "1.22.3",
@@ -115,10 +115,12 @@
         "@types/node": "8.10.38",
         "tslint": "5.18.0",
         "typescript": "3.5.2",
-        "vscode": "1.1.35",
+        "@types/vscode": "1.31.0",
+        "vscode-test": "1.0.0",
         "ts-node": "8.3.0",
         "webpack": "4.35.2",
         "webpack-cli": "3.3.5",
-        "ts-loader": "6.0.4"
+        "ts-loader": "6.0.4",
+        "fsevents": "2.0.7"
     }
 }
