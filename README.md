@@ -1,10 +1,15 @@
-# quiksass vscode plugin
+[![](https://vsmarketplacebadge.apphb.com/version/altoscode.quiksass.svg)](https://marketplace.visualstudio.com/items?itemName=altoscode.quiksass)
 
-VSCode plugin to compile .scss files. The plugin gets activated by opening .scss files.
+Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass).
 
-It uses the Dart/JS Sass Compiler to generate the .css and .min.css files for the given .scss file.
+## Usage
 
-By default, the compiler gets activated with every save of the current editor file. See `quiksass.pauseInterval` below if that is too agressive.
+The plugin gets activated when .scss files are opened and saved.
+
+It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automatically for the given .scss file in the editor.
+
+By default, the Dart/JS compiler gets activated with every save of the current editor file.
+If that is too aggressive, see `quiksass.pauseInterval` below.
 
 
 ## Install
