@@ -101,7 +101,8 @@
         "test-compile": "tsc -p ./",
         "watch": "webpack --mode none --watch",
         "test-watch": "tsc -watch -p ./",
-        "test": "npm run test-compile && node ./out/test/runTest.js"
+        "pretest": "npm run test-compile",
+        "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
         "sass": "1.22.3",
