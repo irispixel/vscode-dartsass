@@ -10,7 +10,7 @@
     },
     "version": "0.0.40",
     "engines": {
-        "vscode": "^1.31.0"
+        "vscode": "^1.32.0"
     },
     "categories": [
         "Other"
@@ -115,7 +115,7 @@
         "@types/node": "8.10.38",
         "tslint": "5.18.0",
         "typescript": "3.5.2",
-        "@types/vscode": "1.31.0",
+        "@types/vscode": "1.32.0",
         "vscode-test": "1.0.0",
         "ts-node": "8.3.0",
         "webpack": "4.35.2",
