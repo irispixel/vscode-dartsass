@@ -98,6 +98,7 @@
         "compile": "webpack --mode production",
         "lint": "tslint -p ./",
         "test-compile": "tsc -p ./",
+        "dev": "webpack --mode development",
         "watch": "webpack --mode development --watch",
         "pretest": "npm run test-compile",
         "test": "node ./out/test/runTest.js"
