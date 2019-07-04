@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
+### 0.0.40
+ - Minimum requirement is vscode 1.32.0 (Feb 2019)
+
 ### 0.0.39
  - Split vscode to @types/vscode and vscode-test
 
