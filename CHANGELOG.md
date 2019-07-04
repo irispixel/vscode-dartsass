@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
+### 0.0.38
+ - Sass 1.22.3
+
 ### 0.0.34
  - Print the dart sass compiler version at startup in the console log for reference.
  - Better printing of configuration options
