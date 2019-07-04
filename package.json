@@ -21,7 +21,7 @@
         "onCommand:quiksass.compileAll",
         "onCommand:quiksass.compileCurrentFile"
     ],
-    "main": "./out/extension",
+    "main": "./dist/extension",
     "contributes": {
         "commands": [
             {
@@ -94,13 +94,11 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run test-compile",
-        "webpack:prepublish": "webpack --mode production",
-        "compile": "webpack --mode none",
+        "vscode:prepublish": "npm run compile",
+        "compile": "webpack --mode production",
         "lint": "tslint -p ./",
         "test-compile": "tsc -p ./",
-        "watch": "webpack --mode none --watch",
-        "test-watch": "tsc -watch -p ./",
+        "watch": "webpack --mode development --watch",
         "pretest": "npm run test-compile",
         "test": "node ./out/test/runTest.js"
     },
