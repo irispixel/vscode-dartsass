@@ -1,4 +1,4 @@
-// Copyright (c) 2018 AltosCode, LLC
+// Copyright (c) 2018-19 AltosCode, LLC
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
