@@ -120,7 +120,6 @@
         "ts-node": "8.3.0",
         "webpack": "4.35.2",
         "webpack-cli": "3.3.5",
-        "ts-loader": "6.0.4",
-        "fsevents": "2.0.7"
+        "ts-loader": "6.0.4"
     }
 }
