@@ -1,6 +1,6 @@
 [![](https://vsmarketplacebadge.apphb.com/version/altoscode.quiksass.svg)](https://marketplace.visualstudio.com/items?itemName=altoscode.quiksass)
 
-Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass).
+Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass) to css and minified css.
 
 ## Usage
 
