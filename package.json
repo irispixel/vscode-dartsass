@@ -124,6 +124,7 @@
         "ts-node": "8.3.0",
         "webpack": "4.35.3",
         "webpack-cli": "3.3.5",
-        "ts-loader": "6.0.4"
+        "ts-loader": "6.0.4",
+        "lodash": ">=4.17.13"
     }
 }
