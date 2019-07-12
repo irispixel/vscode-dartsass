@@ -2,8 +2,11 @@
 All notable changes to the "quiksass" extension will be documented in this file.
 
 
+### 0.0.43
+ - Upgrade sass compiler to 1.22.4
+
 ### 0.0.42
- - Use webpack for faster extension loading.
+ - Use webpack for faster extension loading
 
 ### 0.0.40
  - Minimum requirement is vscode 1.32.0 (Feb 2019)
