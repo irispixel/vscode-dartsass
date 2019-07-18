@@ -64,8 +64,8 @@ export class DartSassCompiler {
     }
 
     writeSassOutput(result: sass.Result, output: string, compilerResult: CompilerResult, _channel: vscode.OutputChannel) {
-        fs.writeFile(output, result.css, (err: NodeJS.ErrnoException) => {
-            if (err) {
+        fs.writeFile(output, result.css, (err: NodeJS.ErrnoException | null) => {
+            if (err !== null) {
                 vscode.window.showErrorMessage(`Error while writing the generated css file ${output}`);
                 _channel.appendLine(`${err} while writing ${output}`);
                 compilerResult.onFailure();
