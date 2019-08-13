@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
+### 0.0.50
+ - Minimum dependency of vscode is 1.37.0 . It supports array of strings in the settings editor. Can apply to `quiksass.includePath` .
+
 ### 0.0.49
  - Upgrade sass compiler to 1.22.9
 
