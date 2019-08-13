@@ -10,7 +10,7 @@
     },
     "version": "0.0.50",
     "engines": {
-        "vscode": "^1.32.0"
+        "vscode": "^1.37.0"
     },
     "categories": [
         "Other"
@@ -56,7 +56,10 @@
             "title": "QuikSass",
             "properties": {
                 "quiksass.includePath": {
-                    "type": "string[]",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },                    
                     "default": [],
                     "description": "Sets the includePath for the given scss compiler. Defaults to empty list."
                 },
@@ -114,7 +117,7 @@
         "@types/glob": "7.1.1",
         "@types/mocha": "5.2.7",
         "@types/node": "10.14.13",
-        "@types/vscode": "1.32.0",
+        "@types/vscode": "1.37.0",
         "glob": "7.1.4",
         "mocha": "6.2.0",
         "source-map-support": "0.5.12",
