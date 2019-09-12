@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "quiksass" extension will be documented in this file.
 
+### 0.0.52
+ - Upgrade sass compiler to 1.22.12
+
 ### 0.0.51
  - Upgrade sass compiler to 1.22.10
 
