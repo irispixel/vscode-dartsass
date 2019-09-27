@@ -15,7 +15,7 @@ import { registerCommands } from './cmd';
 
 let sassCompiler: ISassCompiler = new DartSassCompiler();
 let extensionConfig = new CompilerConfig();
-const pluginName = 'quiksass';
+const pluginName = 'dartsass';
 let _channel: (vscode.OutputChannel|null) = null;
 
 // this method is called when your extension is activated
@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     _channel = vscode.window.createOutputChannel(pluginName);
     context.subscriptions.push(_channel);
-    _channel.appendLine('Extension "quiksass" activated now!');
+    _channel.appendLine('Extension "dartsass" activated now!');
     reloadConfiguration(_channel);
 
     // The command has been defined in the package.json file

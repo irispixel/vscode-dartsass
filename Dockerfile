@@ -1,5 +1,5 @@
-# docker build --build-arg NODE_VERSION=${NODE_VERSION} -t vscode-quiksass:${NODE_VERSION} .
-# docker build -t vscode-quiksass:10.16.3-alpine .
+# docker build --build-arg NODE_VERSION=${NODE_VERSION} -t vscode-plugin-dartsass:${NODE_VERSION} .
+# docker build -t vscode-plugin-dartsass:10.16.3-alpine .
 
 # https://hub.docker.com/_/node?tab=tags
 # ARG NODE_VERSION=8.14.0-alpine

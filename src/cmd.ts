@@ -47,13 +47,13 @@ export function registerCommands(sassCompiler: ISassCompiler,
     extensionConfig: CompilerConfig,
     subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
     _channel.appendLine(sassCompiler.sayVersion(_channel));
-    subscriptions.push(vscode.commands.registerCommand('quiksass.saySassVersion', () => {
+    subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
         cmdSayVersion(sassCompiler, _channel);
     }));
-    subscriptions.push(vscode.commands.registerCommand('quiksass.compileAll', () => {
+    subscriptions.push(vscode.commands.registerCommand('dartsass.compileAll', () => {
         cmdCompileAll(sassCompiler, _channel);
     }));
-    subscriptions.push(vscode.commands.registerCommand('quiksass.compileCurrentFile', () => {
+    subscriptions.push(vscode.commands.registerCommand('dartsass.compileCurrentFile', () => {
         cmdCompileCurrentFile(sassCompiler, extensionConfig, _channel);
     }));
 }
