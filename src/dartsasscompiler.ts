@@ -50,8 +50,8 @@ export class DartSassCompiler {
         return `${version}`;
     }
 
-    public compileDocument(document: vscode.TextDocument, quiksassConfig: CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {
-        this.compile(document, quiksassConfig, compileSingleFile, _channel);
+    public compileDocument(document: vscode.TextDocument, dartsassConfig: CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {
+        this.compile(document, dartsassConfig, compileSingleFile, _channel);
     }
 
     handleError(err: sass.SassException, config : CompilerConfig, compilerResult: CompilerResult,
