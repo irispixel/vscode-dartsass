@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.60
+ - sass compiler 1.23.0
+
 ### 0.0.53
  - Packed using webpack 4.41.0
 
