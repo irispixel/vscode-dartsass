@@ -1,5 +1,5 @@
 # Change Log
-All notable changes to the "quiksass" extension will be documented in this file.
+All notable changes to the "dartsass" extension will be documented in this file.
 
 ### 0.0.53
  - Packed using webpack 4.41.0
@@ -11,7 +11,7 @@ All notable changes to the "quiksass" extension will be documented in this file.
  - Upgrade sass compiler to 1.22.10
 
 ### 0.0.50
- - Minimum dependency of vscode is 1.37.0 . It supports array of strings in the settings editor. Can apply to `quiksass.includePath` .
+ - Minimum dependency of vscode is 1.37.0 . It supports array of strings in the settings editor. Can apply to `dartsass.includePath` .
 
 ### 0.0.49
  - Upgrade sass compiler to 1.22.9
@@ -60,16 +60,16 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 ### 0.0.30
 
- - Introduce a property `quiksass.disableCompileOnSave` that disables a compilation with every save.
+ - Introduce a property `dartsass.disableCompileOnSave` that disables a compilation with every save.
 
 
 ### 0.0.29
 
- - Introduce a property `quiksass.pauseInterval` indicating a pause interval in seconds before the compiler kicks off to not hog the cpu resources too frequently.
+ - Introduce a property `dartsass.pauseInterval` indicating a pause interval in seconds before the compiler kicks off to not hog the cpu resources too frequently.
 
 ### 0.0.28
  - Upgrade to sass package `1.20.3` .
- - New Extension Command  `QuikSass: Compile Current File` added. Keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
+ - New Extension Command  `dartsass: Compile Current File` added. Keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
 
 ### 0.0.27
 ### 0.0.26
@@ -79,7 +79,7 @@ All notable changes to the "quiksass" extension will be documented in this file.
 
 ### 0.0.23
  - Upgrade to sass package `1.20.1` .
- - Sass Compiler Version printed. ( See: Quiksass: Sass Compiler Version command)
+ - Sass Compiler Version printed. ( See: dartsass: Sass Compiler Version command)
 
 ### 0.0.20
  - Upgrade to sass package `1.16.0` .
@@ -121,7 +121,7 @@ All notable changes to the "quiksass" extension will be documented in this file.
 - Better documentation with more examples
 
 ### 0.0.1
-- Initial release of quiksass
+- Initial release of dartsass
 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
