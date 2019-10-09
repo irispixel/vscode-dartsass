@@ -22,6 +22,8 @@ export class CompilerConfig {
 
     pauseInterval: number = 10;
 
+    enableStartWithUnderscores: boolean = false;
+
     public static extractFrom(configuration: vscode.WorkspaceConfiguration) : CompilerConfig {
         const config = new CompilerConfig();
         config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
@@ -31,6 +33,7 @@ export class CompilerConfig {
         config.sync = configuration.get<boolean>('sync', false);
         config.disableCompileOnSave = configuration.get<boolean>('disableCompileOnSave', false);
         config.pauseInterval = configuration.get<number>('pauseInterval', 10);
+        config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);
         return config;
     }
 }

@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.62
+ - Introduce a property `dartsass.enableStartWithUnderscores` to enable compilation of files that start with underscores. By default, `false`. See #2 for more details.
+
 ### 0.0.61
  - Ignore files that start with underscores ( See #2 )
 

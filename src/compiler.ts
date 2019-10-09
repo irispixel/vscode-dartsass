@@ -35,7 +35,7 @@ export function compileCurrentFile(compiler: ISassCompiler,
     if (document.languageId !== 'scss' && document.languageId !== 'sass') {
         return;
     }
-    if (doesStartWithUnderscore(document)) {
+    if (!extensionConfig.enableStartWithUnderscores && doesStartWithUnderscore(document)) {
         // Ignore the files that start with underscore
         return;
     }

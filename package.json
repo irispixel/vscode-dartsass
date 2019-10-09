@@ -92,6 +92,11 @@
                     "type": "number",
                     "default": 10,
                     "description": "Pause Interval (in seconds) before compiling again to prevent CPU hogging."
+                },
+                "dartsass.enableStartWithUnderscores": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enables compilation of scss files that starts with underscores. By default, false."
                 }
             }
         }
