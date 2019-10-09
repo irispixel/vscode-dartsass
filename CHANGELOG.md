@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.61
+ - Ignore files that start with underscores ( See #2 )
+
 ### 0.0.60
  - sass compiler 1.23.0
 
