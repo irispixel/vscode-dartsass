@@ -14,6 +14,7 @@ import packageImporter = require('node-sass-package-importer');
 import { IPackageImporterOptions } from 'node-sass-magic-importer/src/interfaces/IImporterOptions';
 import { CompilerConfig } from './config';
 import { xformPath, xformPaths} from './util';
+import { getFileName } from './compiler';
 
 export interface Info {
     info: string;
@@ -155,8 +156,11 @@ export class DartSassCompiler {
     public compile(document: vscode.TextDocument,
         config : CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {
         const input = document.fileName;
+        const fileonly = getFileName(document);
+        if (fileonly.length === 0) {
+            return;
+        }
         const filedir = path.dirname(input);
-        const fileonly = path.basename(input, '.scss');
         const output = path.join(filedir, fileonly + '.css');
         const compressedOutput = path.join(filedir, fileonly + '.min.css');
         const self = this;
