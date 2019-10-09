@@ -41,12 +41,15 @@ export function compileCurrentFile(compiler: ISassCompiler,
     }
     if (isTooSoon(extensionConfig.pauseInterval)) {
         if (extensionConfig.debug) {
-            _channel.appendLine(`Last Compiled Time at ${lastCompiledTime}. Compiling too soon and ignoring hence`);
+            _channel.appendLine(`Last Compiled Time: ${lastCompiledTime}. Too soon and ignoring hence`);
         }
-    } else {
-        compiler.compileDocument(document, extensionConfig, compileSingleFile, _channel);
-        lastCompiledTime = Date.now();
+        return;
     }
+    if (extensionConfig.debug) {
+        _channel.appendLine(`About to compile ${document.fileName}`);
+    }
+    compiler.compileDocument(document, extensionConfig, compileSingleFile, _channel);
+    lastCompiledTime = Date.now();
 }
 
 

@@ -165,7 +165,6 @@ export class DartSassCompiler {
         const compressedOutput = path.join(filedir, fileonly + '.min.css');
         const self = this;
         if (config.debug) {
-            _channel.clear();
             _channel.appendLine("Scss working directory: " + config.sassWorkingDirectory);
             _channel.appendLine("include path: " + config.includePath.join(","));
         }
@@ -175,7 +174,7 @@ export class DartSassCompiler {
             },
             onSuccess() {
                 if (config.debug) {
-                    _channel.appendLine(`Compiled ${input} to ${output}`);
+                    _channel.appendLine(`${input} -> ${output}`);
                 }
                 if (compileSingleFile) {
                     vscode.window.showInformationMessage(`Compiled ${input} successfully`);
@@ -187,7 +186,7 @@ export class DartSassCompiler {
                         },
                         onSuccess() {
                             if (config.debug) {
-                                _channel.appendLine(`Compiled ${input} to ${compressedOutput}`);
+                                _channel.appendLine(`Min: ${input} -> ${compressedOutput}`);
                             }
                         }
                     };
