@@ -2,7 +2,7 @@
 All notable changes to the "dartsass" extension will be documented in this file.
 
 ### 0.0.62
- - Introduce a property `dartsass.enableStartWithUnderscores` to enable compilation of files that start with underscores. By default, `false`. See #2 for more details.
+ - Introduce a property `enableStartWithUnderscores` to enable compilation of files that start with underscores. By default, `false`. See #2 for more details.
 
 ### 0.0.61
  - Ignore files that start with underscores ( See #2 )
@@ -20,7 +20,7 @@ All notable changes to the "dartsass" extension will be documented in this file.
  - Upgrade sass compiler to 1.22.10
 
 ### 0.0.50
- - Minimum dependency of vscode is 1.37.0 . It supports array of strings in the settings editor. Can apply to `dartsass.includePath` .
+ - Minimum dependency of vscode is 1.37.0 . It supports array of strings in the settings editor. Can apply to `includePath` property .
 
 ### 0.0.49
  - Upgrade sass compiler to 1.22.9
@@ -69,12 +69,12 @@ All notable changes to the "dartsass" extension will be documented in this file.
 
 ### 0.0.30
 
- - Introduce a property `dartsass.disableCompileOnSave` that disables a compilation with every save.
+ - Introduce a property `disableCompileOnSave` that disables a compilation with every save.
 
 
 ### 0.0.29
 
- - Introduce a property `dartsass.pauseInterval` indicating a pause interval in seconds before the compiler kicks off to not hog the cpu resources too frequently.
+ - Introduce a property `pauseInterval` indicating a pause interval in seconds before the compiler kicks off to not hog the cpu resources too frequently.
 
 ### 0.0.28
  - Upgrade to sass package `1.20.3` .
