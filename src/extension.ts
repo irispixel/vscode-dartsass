@@ -1,4 +1,4 @@
-// Copyright (c) 2018-19 AltosCode, LLC
+// Copyright (c) 2018-19 MalvaHQ
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
@@ -12,8 +12,9 @@ import { ISassCompiler, compileCurrentFile } from './compiler';
 import { DartSassCompiler } from './dartsasscompiler';
 import { CompilerConfig } from './config';
 import { registerCommands } from './cmd';
-
-let sassCompiler: ISassCompiler = new DartSassCompiler();
+import { Prefixer } from './autoprefix';
+let prefixer: Prefixer = Prefixer.NewDefaultPrefixer();
+let sassCompiler: ISassCompiler = new DartSassCompiler(prefixer);
 let extensionConfig = new CompilerConfig();
 const pluginName = 'dartsass';
 let _channel: (vscode.OutputChannel|null) = null;

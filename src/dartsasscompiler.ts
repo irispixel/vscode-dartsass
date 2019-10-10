@@ -1,4 +1,4 @@
-// Copyright (c) 2018-19 AltosCode, LLC
+// Copyright (c) 2018-19 MalvaHQ
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
@@ -15,6 +15,8 @@ import { IPackageImporterOptions } from 'node-sass-magic-importer/src/interfaces
 import { CompilerConfig } from './config';
 import { xformPath, xformPaths} from './util';
 import { getFileName } from './compiler';
+import { Prefixer } from './autoprefix';
+import postcss = require('postcss');
 
 export interface Info {
     info: string;
@@ -36,8 +38,10 @@ export interface CompilerResult {
 export class DartSassCompiler {
 
 
-    constructor() {
+    prefixer: Prefixer;
 
+    constructor(prefixer: Prefixer) {
+        this.prefixer = prefixer;
     }
 
     public compileAll(projectRoot: vscode.Uri, _channel: vscode.OutputChannel) : boolean {
@@ -64,8 +68,8 @@ export class DartSassCompiler {
         compilerResult.onFailure();
     }
 
-    writeSassOutput(result: sass.Result, output: string, compilerResult: CompilerResult, _channel: vscode.OutputChannel) {
-        fs.writeFile(output, result.css, (err: NodeJS.ErrnoException | null) => {
+    writeSassOutput(output: string, data: any, compilerResult: CompilerResult, _channel: vscode.OutputChannel) {
+        fs.writeFile(output, data, (err: NodeJS.ErrnoException | null) => {
             if (err !== null) {
                 vscode.window.showErrorMessage(`Error while writing the generated css file ${output}`);
                 _channel.appendLine(`${err} while writing ${output}`);
@@ -92,7 +96,15 @@ export class DartSassCompiler {
             outFile: output
         });
         if (result) {
-            self.writeSassOutput(result, output, compilerResult, _channel);
+            if (config.enableAutoPrefixer) {
+                this.prefixer.process(result.css,
+                    function(prefixedResult: postcss.Result) {
+                        self.writeSassOutput(output, prefixedResult.css, compilerResult, _channel);
+                    }
+                    );
+            } else {
+                self.writeSassOutput(output, result.css, compilerResult, _channel);
+            }
         }
 
     }
@@ -115,7 +127,7 @@ export class DartSassCompiler {
             if (err) {
                 self.handleError(err, config, compilerResult, _channel);
             } else {
-                self.writeSassOutput(result, output, compilerResult, _channel);
+                self.writeSassOutput(output, result.css, compilerResult, _channel);
             }
         });
     }

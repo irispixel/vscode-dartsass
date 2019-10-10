@@ -1,4 +1,4 @@
-// Copyright (c) 2018-19 AltosCode, LLC
+// Copyright (c) 2018-19 MalvaHQ
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
@@ -24,6 +24,8 @@ export class CompilerConfig {
 
     enableStartWithUnderscores: boolean = false;
 
+    enableAutoPrefixer: boolean = false;
+
     public static extractFrom(configuration: vscode.WorkspaceConfiguration) : CompilerConfig {
         const config = new CompilerConfig();
         config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
@@ -34,6 +36,7 @@ export class CompilerConfig {
         config.disableCompileOnSave = configuration.get<boolean>('disableCompileOnSave', false);
         config.pauseInterval = configuration.get<number>('pauseInterval', 10);
         config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);
+        config.enableAutoPrefixer = configuration.get<boolean>('enableAutoPrefixer', false);
         return config;
     }
 }
