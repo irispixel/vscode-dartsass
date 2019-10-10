@@ -1,9 +1,13 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
-### 0.0.63
- - Introduce a property `enableAutoPrefixer` to enable compilation of files that start with underscores. By default, `false`. See #3 for more details.
+### 0.0.64
+ - Introduce a property `disableAutoPrefixer` to disable postcss processing using autoprefixer library.
  - Introduce a property `autoPrefixBrowsersList`: Default: `[ "last 2 version"]`. List of browsers to be specified for autoprefixer. See https://github.com/browserslist/browserslist#readme for more details.
+
+
+### 0.0.63
+ - Ignore.
 
 
 ### 0.0.62

@@ -85,9 +85,9 @@ export class DartSassCompiler {
         _channel: vscode.OutputChannel) {
         const self = this;
         if (config.debug) {
-            _channel.appendLine("enableAutoPrefixer: " + config.enableAutoPrefixer);
+            _channel.appendLine("disableAutoPrefixer: " + config.disableAutoPrefixer);
         }
-        if (config.enableAutoPrefixer) {
+        if (!config.disableAutoPrefixer) {
             prefixer.process(data,
                 function(prefixedResult: postcss.Result) {
                     self.writeSassOutput(output, prefixedResult.css, compilerResult, _channel);

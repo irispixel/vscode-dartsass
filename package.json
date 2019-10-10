@@ -98,10 +98,10 @@
                     "default": false,
                     "description": "Enables compilation of scss files that starts with underscores. By default, false."
                 },
-                "dartsass.enableAutoPrefixer": {
+                "dartsass.disableAutoPrefixer": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Enables autoprefix compilation. By default, false."
+                    "description": "Disables autoprefix compilation. By default, false."
                 },
                 "dartsass.autoPrefixBrowsersList": {
                     "type": "array",

@@ -24,7 +24,7 @@ export class CompilerConfig {
 
     enableStartWithUnderscores: boolean = false;
 
-    enableAutoPrefixer: boolean = false;
+    disableAutoPrefixer: boolean = false;
 
     autoPrefixBrowsersList: Array<string> = [];
 
@@ -38,7 +38,7 @@ export class CompilerConfig {
         config.disableCompileOnSave = configuration.get<boolean>('disableCompileOnSave', false);
         config.pauseInterval = configuration.get<number>('pauseInterval', 10);
         config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);
-        config.enableAutoPrefixer = configuration.get<boolean>('enableAutoPrefixer', false);
+        config.disableAutoPrefixer = configuration.get<boolean>('disableAutoPrefixer', false);
         config.autoPrefixBrowsersList = configuration.get<Array<string>>('autoPrefixBrowsersList', new Array<string>("last 2 version"));
         return config;
     }
