@@ -8,13 +8,13 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { ISassCompiler, compileCurrentFile } from './compiler';
-import { DartSassCompiler } from './dartsasscompiler';
-import { CompilerConfig } from './config';
+import * as common from 'dartsass-plugin-common';
+import { Config }  from './config';
 import { registerCommands } from './cmd';
+import { Log } from './log';
 
-let sassCompiler: ISassCompiler = new DartSassCompiler();
-let extensionConfig = new CompilerConfig();
+let sassCompiler: common.ISassCompiler = new common.DartSassCompiler();
+let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
 let _channel: (vscode.OutputChannel|null) = null;
 
@@ -26,26 +26,32 @@ export function activate(context: vscode.ExtensionContext) {
     _channel = vscode.window.createOutputChannel(pluginName);
     context.subscriptions.push(_channel);
     _channel.appendLine('Extension "dartsass" activated now!');
-    reloadConfiguration(_channel);
 
+
+    const _log = getLog(_channel);
+    reloadConfiguration(_log);
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    registerCommands(sassCompiler, extensionConfig, context.subscriptions, _channel);
-    startBuildOnSaveWatcher(context.subscriptions, _channel);
+    registerCommands(sassCompiler, extensionConfig, context.subscriptions, _log);
+    startBuildOnSaveWatcher(context.subscriptions, _log);
 }
 
-function reloadConfiguration(_channel: vscode.OutputChannel) : void {
+function getLog(_channel: vscode.OutputChannel) : common.ILog {
+    return new Log(_channel);
+}
+
+function reloadConfiguration(_log: common.ILog) : void {
     const configuration = vscode.workspace.getConfiguration(pluginName);
-    extensionConfig = CompilerConfig.extractFrom(configuration);
-    _channel.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
+    extensionConfig = Config.extractFrom(configuration);
+    _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
 }
 
 
-function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: vscode.OutputChannel) {
+function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _log: common.ILog) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
-            reloadConfiguration(_channel);
+            reloadConfiguration(_log);
         }
     });
     vscode.workspace.onDidChangeWorkspaceFolders((e: vscode.WorkspaceFoldersChangeEvent) => {
@@ -53,7 +59,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _channel: v
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (!extensionConfig.disableCompileOnSave) {
-            compileCurrentFile(sassCompiler, document, extensionConfig, _channel, false);
+            common.compileCurrentFile(sassCompiler, document, extensionConfig, _log, false);
         }
 	}, null, subscriptions);
 }

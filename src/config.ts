@@ -4,32 +4,12 @@
 // https://opensource.org/licenses/MIT
 'use strict';
 import * as vscode from 'vscode';
+import * as common from 'dartsass-plugin-common';
 
+export class Config {
 
-export class CompilerConfig {
-
-    includePath: Array<string> = [];
-
-    sassWorkingDirectory: string = "";
-
-    disableMinifiedFileGeneration: boolean = false;
-
-    debug: boolean = false;
-
-    sync: boolean = false;
-
-    disableCompileOnSave: boolean = false;
-
-    pauseInterval: number = 10;
-
-    enableStartWithUnderscores: boolean = false;
-
-    disableAutoPrefixer: boolean = false;
-
-    autoPrefixBrowsersList: Array<string> = [];
-
-    public static extractFrom(configuration: vscode.WorkspaceConfiguration) : CompilerConfig {
-        const config = new CompilerConfig();
+    public static extractFrom(configuration: vscode.WorkspaceConfiguration) : common.CompilerConfig {
+        const config = new common.CompilerConfig();
         config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
         config.sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', '');
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
