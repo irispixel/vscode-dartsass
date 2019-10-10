@@ -38,10 +38,7 @@ export interface CompilerResult {
 export class DartSassCompiler {
 
 
-    prefixer: Prefixer;
-
-    constructor(prefixer: Prefixer) {
-        this.prefixer = prefixer;
+    constructor() {
     }
 
     public compileAll(projectRoot: vscode.Uri, _channel: vscode.OutputChannel) : boolean {
@@ -55,7 +52,8 @@ export class DartSassCompiler {
         return `${version}`;
     }
 
-    public compileDocument(document: vscode.TextDocument, dartsassConfig: CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {
+    public compileDocument(document: vscode.TextDocument, dartsassConfig: CompilerConfig,
+        compileSingleFile: boolean, _channel: vscode.OutputChannel) {
         this.compile(document, dartsassConfig, compileSingleFile, _channel);
     }
 
@@ -80,14 +78,35 @@ export class DartSassCompiler {
         });
     }
 
+    writeFinalResult(output: string, data: any,
+        config : CompilerConfig,
+        prefixer: Prefixer,
+        compilerResult: CompilerResult,
+        _channel: vscode.OutputChannel) {
+        const self = this;
+        if (config.debug) {
+            _channel.appendLine("enableAutoPrefixer: " + config.enableAutoPrefixer);
+        }
+        if (config.enableAutoPrefixer) {
+            prefixer.process(data,
+                function(prefixedResult: postcss.Result) {
+                    self.writeSassOutput(output, prefixedResult.css, compilerResult, _channel);
+                }
+                );
+        } else {
+            this.writeSassOutput(output, data, compilerResult, _channel);
+        }
+
+    }
+
     compileToFileSync(document: vscode.TextDocument, compressed: boolean, output: string,
         config : CompilerConfig,
+        prefixer: Prefixer,
         compilerResult: CompilerResult,
         _channel: vscode.OutputChannel) {
         const sassWorkingDirectory  = xformPath(document.uri, config.sassWorkingDirectory);
         const includePaths = xformPaths(document.uri, config.includePath);
         const options = this.getOptions(sassWorkingDirectory);
-        const self = this;
         const result = sass.renderSync({
             file: document.fileName,
             importer: packageImporter(options),
@@ -96,21 +115,14 @@ export class DartSassCompiler {
             outFile: output
         });
         if (result) {
-            if (config.enableAutoPrefixer) {
-                this.prefixer.process(result.css,
-                    function(prefixedResult: postcss.Result) {
-                        self.writeSassOutput(output, prefixedResult.css, compilerResult, _channel);
-                    }
-                    );
-            } else {
-                self.writeSassOutput(output, result.css, compilerResult, _channel);
-            }
+            this.writeFinalResult(output, result.css, config, prefixer, compilerResult, _channel);
         }
 
     }
 
     compileToFileAsync(document: vscode.TextDocument, compressed: boolean, output: string,
         config : CompilerConfig,
+        prefixer: Prefixer,
         compilerResult: CompilerResult,
         _channel: vscode.OutputChannel) {
         const sassWorkingDirectory  = xformPath(document.uri, config.sassWorkingDirectory);
@@ -127,22 +139,23 @@ export class DartSassCompiler {
             if (err) {
                 self.handleError(err, config, compilerResult, _channel);
             } else {
-                self.writeSassOutput(output, result.css, compilerResult, _channel);
+                self.writeFinalResult(output, result.css, config, prefixer, compilerResult, _channel);
             }
         });
     }
 
     compileToFile(document: vscode.TextDocument, compressed: boolean, output: string,
         config : CompilerConfig,
+        prefixer: Prefixer,
         compilerResult: CompilerResult,
         _channel: vscode.OutputChannel) {
         if (config.debug) {
-            _channel.appendLine("Sync " + config.sync);
+            _channel.appendLine("Sync compilation: " + config.sync);
         }
         if (config.sync) {
-            this.compileToFileSync(document, compressed, output, config, compilerResult, _channel);
+            this.compileToFileSync(document, compressed, output, config, prefixer, compilerResult, _channel);
         } else {
-            this.compileToFileAsync(document, compressed, output, config, compilerResult, _channel);
+            this.compileToFileAsync(document, compressed, output, config, prefixer, compilerResult, _channel);
         }
     }
 
@@ -166,7 +179,8 @@ export class DartSassCompiler {
     }
 
     public compile(document: vscode.TextDocument,
-        config : CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) {
+        config : CompilerConfig,
+        compileSingleFile: boolean, _channel: vscode.OutputChannel) {
         const input = document.fileName;
         const fileonly = getFileName(document);
         if (fileonly.length === 0) {
@@ -180,6 +194,7 @@ export class DartSassCompiler {
             _channel.appendLine("Scss working directory: " + config.sassWorkingDirectory);
             _channel.appendLine("include path: " + config.includePath.join(","));
         }
+        const prefixer = Prefixer.NewPrefixer(config.autoPrefixBrowsers);
         const compilerResult:CompilerResult = {
             onFailure() {
 
@@ -202,11 +217,11 @@ export class DartSassCompiler {
                             }
                         }
                     };
-                    self.compileToFile(document, true, compressedOutput, config, tmpResult, _channel);
+                    self.compileToFile(document, true, compressedOutput, config, prefixer, tmpResult, _channel);
                 }
             }
         };
-        this.compileToFile(document, false, output, config, compilerResult, _channel);
+        this.compileToFile(document, false, output, config, prefixer, compilerResult, _channel);
     }
 
 }

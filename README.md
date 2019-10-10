@@ -24,7 +24,8 @@ This extension contributes the following settings:
 * `dartsass.pauseInterval`: Default: 10. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
 * `dartsass.enableStartWithUnderscores`: Default: false. Enables compilation of files that start with underscores.
 * `dartsass.enableAutoPrefixer`: Default: false. Enables postcss processing using autoprefixer library
-* `dartsass.debug`: Default: false. Sets the debug flag for debugging the extension. Best applicable for developers of this extension only.
+* `dartsass.autoPrefixBrowsers`: Default: [ ]. Set of browsers to be specified for autoprefixer.
+* `dartsass.debug`: Default: false. Best applicable for developers of this extension only.
 
 ## Extension Commands
 

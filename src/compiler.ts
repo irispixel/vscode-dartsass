@@ -17,7 +17,8 @@ export interface ISassCompiler {
 
     compileAll(projectRoot: vscode.Uri, _channel: vscode.OutputChannel) : boolean;
 
-    compileDocument(document: vscode.TextDocument, dartsassConfig: CompilerConfig, compileSingleFile: boolean, _channel: vscode.OutputChannel) : void;
+    compileDocument(document: vscode.TextDocument, dartsassConfig: CompilerConfig,
+        compileSingleFile: boolean, _channel: vscode.OutputChannel) : void;
 
 }
 

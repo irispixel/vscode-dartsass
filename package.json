@@ -102,6 +102,14 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Enables autoprefix compilation. By default, false."
+                },
+                "dartsass.autoPrefixBrowsers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "description": "List of browsers for which autoprefix needs to generate code. Defaults to empty list."
                 }
             }
         }

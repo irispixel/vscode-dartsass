@@ -3,6 +3,7 @@ All notable changes to the "dartsass" extension will be documented in this file.
 
 ### 0.0.62
  - Introduce a property `enableAutoPrefixer` to enable compilation of files that start with underscores. By default, `false`. See #3 for more details.
+ - Introduce a property `autoPrefixBrowsers`: Default: [ ]. Set of browsers to be used by autoprefixer.
 
 ### 0.0.62
  - Introduce a property `enableStartWithUnderscores` to enable compilation of files that start with underscores. By default, `false`. See #2 for more details.

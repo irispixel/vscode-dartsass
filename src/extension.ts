@@ -12,9 +12,8 @@ import { ISassCompiler, compileCurrentFile } from './compiler';
 import { DartSassCompiler } from './dartsasscompiler';
 import { CompilerConfig } from './config';
 import { registerCommands } from './cmd';
-import { Prefixer } from './autoprefix';
-let prefixer: Prefixer = Prefixer.NewDefaultPrefixer();
-let sassCompiler: ISassCompiler = new DartSassCompiler(prefixer);
+
+let sassCompiler: ISassCompiler = new DartSassCompiler();
 let extensionConfig = new CompilerConfig();
 const pluginName = 'dartsass';
 let _channel: (vscode.OutputChannel|null) = null;
