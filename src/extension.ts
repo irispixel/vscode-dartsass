@@ -12,6 +12,7 @@ import * as common from 'dartsass-plugin-common';
 import { Config }  from './config';
 import { registerCommands } from './cmd';
 import { Log } from './log';
+import { Doc } from './doc';
 
 let sassCompiler: common.ISassCompiler = new common.DartSassCompiler();
 let extensionConfig = new common.CompilerConfig();
@@ -59,7 +60,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _log: commo
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (!extensionConfig.disableCompileOnSave) {
-            common.compileCurrentFile(sassCompiler, document, extensionConfig, _log, false);
+            common.CompileCurrentFile(sassCompiler, new Doc(document), extensionConfig, _log, false);
         }
 	}, null, subscriptions);
 }

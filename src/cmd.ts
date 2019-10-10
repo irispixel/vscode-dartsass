@@ -6,7 +6,7 @@
 
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
-
+import {Doc} from './doc';
 
 
 function cmdSayVersion(sassCompiler: common.ISassCompiler, _log: common.ILog) {
@@ -21,7 +21,7 @@ function cmdCompileAll(sassCompiler: common.ISassCompiler, _log: common.ILog) {
     }
     workspaceFolders.forEach(
         (folder:vscode.WorkspaceFolder) => {
-            sassCompiler.compileAll(folder.uri, _log);
+            sassCompiler.compileAll(folder.uri.fsPath, _log);
         }
     );
 }
@@ -36,7 +36,7 @@ function cmdCompileCurrentFile(sassCompiler: common.ISassCompiler, extensionConf
     }
     var editor = vscode.window.activeTextEditor;
     if (editor && typeof editor !== 'undefined') {
-        compileCurrentFile(sassCompiler, editor.document, extensionConfig,_log, true);
+        common.CompileCurrentFile(sassCompiler, new Doc(editor.document), extensionConfig,_log, true);
     } else {
         console.log(`Editor not defined currently`);
     }
