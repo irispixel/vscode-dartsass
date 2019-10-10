@@ -108,8 +108,10 @@
                     "items": {
                         "type": "string"
                     },
-                    "default": [],
-                    "description": "List of browsers for which autoprefix needs to generate code. Defaults to empty list."
+                    "default": [
+                        "last 2 version"
+                    ],
+                    "description": "List of browsers for which autoprefix needs to generate code. Defaults to `last 2 version`."
                 }
             }
         }
