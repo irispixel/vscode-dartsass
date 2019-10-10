@@ -23,7 +23,9 @@ export class Prefixer {
     }
 
     public static NewDefaultPrefixer(): Prefixer {
-        return Prefixer.NewPrefixer(undefined);
+        // See: https://github.com/browserslist/browserslist#readme
+        // "There is a defaults query, which gives a reasonable configuration for most users:"
+        return Prefixer.NewPrefixer("last 2 version");
     }
     public process(css: postcss.ParserInput | postcss.Result | postcss.LazyResult | postcss.Root, cb: (result: postcss.Result) => any) {
         if (this.processor !== undefined && this.processor !== null) {

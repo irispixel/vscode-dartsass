@@ -194,7 +194,7 @@ export class DartSassCompiler {
             _channel.appendLine("Scss working directory: " + config.sassWorkingDirectory);
             _channel.appendLine("include path: " + config.includePath.join(","));
         }
-        const prefixer = Prefixer.NewPrefixer(config.autoPrefixBrowsers);
+        const prefixer = Prefixer.NewPrefixer(config.autoPrefixBrowsersList);
         const compilerResult:CompilerResult = {
             onFailure() {
 

@@ -103,7 +103,7 @@
                     "default": false,
                     "description": "Enables autoprefix compilation. By default, false."
                 },
-                "dartsass.autoPrefixBrowsers": {
+                "dartsass.autoPrefixBrowsersList": {
                     "type": "array",
                     "items": {
                         "type": "string"

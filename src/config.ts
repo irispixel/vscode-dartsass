@@ -26,7 +26,7 @@ export class CompilerConfig {
 
     enableAutoPrefixer: boolean = false;
 
-    autoPrefixBrowsers: Array<string> = [];
+    autoPrefixBrowsersList: Array<string> = [];
 
     public static extractFrom(configuration: vscode.WorkspaceConfiguration) : CompilerConfig {
         const config = new CompilerConfig();
@@ -39,7 +39,7 @@ export class CompilerConfig {
         config.pauseInterval = configuration.get<number>('pauseInterval', 10);
         config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);
         config.enableAutoPrefixer = configuration.get<boolean>('enableAutoPrefixer', false);
-        config.autoPrefixBrowsers = configuration.get<Array<string>>('autoPrefixBrowsers', new Array<string>());
+        config.autoPrefixBrowsersList = configuration.get<Array<string>>('autoPrefixBrowsersList', new Array<string>("last 2 version"));
         return config;
     }
 }
