@@ -9,11 +9,11 @@ import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 
 
-function cmdSayVersion( _log: common.ILog) {
-    vscode.window.showInformationMessage(common.SayVersion(_log));
+function cmdSayVersion(extensionConfig: common.CompilerConfig, _log: common.ILog) {
+    vscode.window.showInformationMessage(common.SayVersion(extensionConfig, _log));
 }
 
-function cmdCompileAll(_log: common.ILog) {
+function cmdCompileAll(extensionConfig: common.CompilerConfig, _log: common.ILog) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
         vscode.window.showErrorMessage(`No workspace folders present to compile scss files`);
@@ -21,7 +21,7 @@ function cmdCompileAll(_log: common.ILog) {
     }
     workspaceFolders.forEach(
         (folder:vscode.WorkspaceFolder) => {
-            common.CompileAll(folder.uri.fsPath, _log);
+            common.CompileAll(extensionConfig, folder.uri.fsPath, _log);
         }
     );
 }
@@ -47,10 +47,10 @@ export function registerCommands(extensionConfig: common.CompilerConfig,
     subscriptions: vscode.Disposable[], _log: common.ILog) {
     // _log.appendLine(sassCompiler.sayVersion(_log));
     subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
-        cmdSayVersion(_log);
+        cmdSayVersion(extensionConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileAll', () => {
-        cmdCompileAll(_log);
+        cmdCompileAll(extensionConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileCurrentFile', () => {
         cmdCompileCurrentFile(extensionConfig, _log);
