@@ -18,6 +18,7 @@
     "activationEvents": [
         "onLanguage:scss",
         "onCommand:dartsass.saySassVersion",
+        "onCommand:dartsass.whichSassPath",
         "onCommand:dartsass.compileAll",
         "onCommand:dartsass.compileCurrentFile"
     ],
@@ -27,6 +28,10 @@
             {
                 "command": "dartsass.saySassVersion",
                 "title": "DartSass: Sass Compiler Version"
+            },
+            {
+                "command": "dartsass.whichSassPath",
+                "title": "DartSass: Which Sass Compiler PATH"
             },
             {
                 "command": "dartsass.compileAll",
@@ -62,6 +67,11 @@
                     },
                     "default": [],
                     "description": "Sets the includePath for the given scss compiler. Defaults to empty list."
+                },
+                "dartsass.sassBinPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Sets the PATH to the sass binary if installed in your system. Defaults to empty string. Default implies using the built-in packaged sass library for compilation."
                 },
                 "dartsass.sassWorkingDirectory": {
                     "type": "string",
