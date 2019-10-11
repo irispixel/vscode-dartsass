@@ -121,7 +121,7 @@
                 "dartsass.targetMinifiedDirectory": {
                     "type": "string",
                     "default": "",
-                    "description": "Sets the target directory where the generated css are written. Default: None (Implying same directory as source)"
+                    "description": "Sets the target directory where the generated minified css are written. Default: None (Implying same directory as source)"
                 }
             }
         }
