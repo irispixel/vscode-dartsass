@@ -4,6 +4,9 @@ All notable changes to the "dartsass" extension will be documented in this file.
 ### 0.0.69
  * Fixed a regression bug related to files with underscores.
 
+### 0.0.68
+ * Fixed a regression bug related to targetDirectory. In case, `targetMinifiedDirectory` is empty, it defaults to `targetDirectory`. If that is empty too, it defaults to the same folder as that of the source file.
+
 ### 0.0.67
  * Rereleasing 0.0.66 because of an issue with `webpack --mode production`. For now, webpack is used in development mode and published.
 
