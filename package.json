@@ -128,10 +128,11 @@
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
-        "compile": "webpack --mode production",
+        "compile": "npm run prod",
         "lint": "tslint -p ./",
         "test-compile": "tsc -p ./",
         "dev": "webpack --mode development",
+        "prod": "webpack --mode production",
         "watch": "webpack --mode development --watch",
         "pretest": "npm run test-compile",
         "test": "node ./out/test/runTest.js"
