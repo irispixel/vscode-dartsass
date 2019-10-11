@@ -51,8 +51,14 @@
             },
             {
                 "command": "dartsass.saySassVersion",
-                "key": "ctrl+shift+q",
-                "mac": "cmd+shift+q",
+                "key": "ctrl+alt+q",
+                "mac": "cmd+alt+q",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "dartsass.whichSassPath",
+                "key": "ctrl+alt+p",
+                "mac": "cmd+alt+p",
                 "when": "editorTextFocus"
             }
         ],

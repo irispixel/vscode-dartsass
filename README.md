@@ -12,6 +12,26 @@ It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automa
 By default, the Dart/JS compiler gets activated with every save of the current editor file.
 If that is too aggressive, see `dartsass.pauseInterval` below.
 
+## Extension Commands
+
+### QuikSass: Compile Current File
+
+( Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> )
+
+Compiles the current scss file in the active editor to .css and .min.css file as appropriate.
+
+### QuikSass: Sass Compiler Version
+
+( Shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Q</kbd> )
+
+Prints out the current sass compiler version being used.
+
+### QuikSass: Which Sass PATH
+
+( Shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> )
+
+Prints out the PATH to the sass compiler being used.
+
 
 ## Extension Settings
 
@@ -37,19 +57,6 @@ This extension contributes the following settings:
   If this property is empty, then the value defaults to `dartsass.targetDirectory` . If `dartsass.targetDirectory` is also empty, then this value defaults to the same directory as that of the source files.
 * `dartsass.debug`: Default: false. Best applicable for developers of this extension only.
 
-## Extension Commands
-
-### QuikSass: Compile Current File
-
-( Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> )
-
-Compiles the current scss file in the active editor to .css and .min.css file as appropriate.
-
-### QuikSass: Sass Compiler Version
-
-( Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> )
-
-Prints out the current sass compiler version being used.
 
 ## Features
 
