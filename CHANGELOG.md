@@ -1,9 +1,18 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
-### 0.0.65
+### 0.0.69
+ * Fixed a regression bug related to files with underscores.
+
+### 0.0.67
+ * Rereleasing 0.0.66 because of an issue with `webpack --mode production`. For now, webpack is used in development mode and published.
+
+### 0.0.66
  * `targetDirectory`: Default: Empty. The target directory to write the generated css files. This can be an absolute directory or a directory, relative to project root.
  * `targetMinifiedDirectory`: Default: Empty. The target directory to write the generated minified css files. This can be an absolute directory or a directory, relative to project root.
+
+### 0.0.65
+  * Bogus release. Published under the wrong name by mistake. Ignore.
 
 ### 0.0.64
  - Introduce a property `disableAutoPrefixer` to disable postcss processing using autoprefixer library.
