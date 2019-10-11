@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.65
+ * `targetDirectory`: Default: Empty. The target directory to write the generated css files. This can be an absolute directory or a directory, relative to project root.
+ * `targetMinifiedDirectory`: Default: Empty. The target directory to write the generated minified css files. This can be an absolute directory or a directory, relative to project root.
+
 ### 0.0.64
  - Introduce a property `disableAutoPrefixer` to disable postcss processing using autoprefixer library.
  - Introduce a property `autoPrefixBrowsersList`: Default: `[ "last 2 version"]`. List of browsers to be specified for autoprefixer. See https://github.com/browserslist/browserslist#readme for more details.

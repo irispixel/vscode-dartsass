@@ -12,6 +12,8 @@ export class Config {
         const config = new common.CompilerConfig();
         config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
         config.sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', '');
+        config.targetDirectory = configuration.get<string>('targetDirectory', '');
+        config.targetMinifiedDirectory = configuration.get<string>('targetMinifiedDirectory', '');
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
         config.debug = configuration.get<boolean>('debug', false);
         config.sync = configuration.get<boolean>('sync', false);
