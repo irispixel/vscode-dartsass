@@ -128,7 +128,7 @@
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
-        "compile": "npm run prod",
+        "compile": "npm run dev",
         "lint": "tslint -p ./",
         "test-compile": "tsc -p ./",
         "dev": "webpack --mode development",
@@ -143,16 +143,16 @@
     "devDependencies": {
         "@types/glob": "7.1.1",
         "@types/mocha": "5.2.7",
-        "@types/node": "10.14.13",
+        "@types/node": "12.7.12",
         "@types/vscode": "1.37.0",
         "glob": "7.1.4",
         "mocha": "6.2.1",
         "source-map-support": "0.5.13",
         "tslint": "5.20.0",
-        "typescript": "3.6.3",
+        "typescript": "3.6.4",
         "vscode-test": "1.2.0",
         "ts-node": "8.4.1",
-        "webpack": "4.41.0",
+        "webpack": "4.41.1",
         "webpack-cli": "3.3.9",
         "ts-loader": "6.2.0",
         "lodash": "4.17.15"
