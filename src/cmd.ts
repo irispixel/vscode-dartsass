@@ -9,11 +9,11 @@ import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 
 
-function cmdSayVersion(sassCompiler: common.ISassCompiler, _log: common.ILog) {
-    vscode.window.showInformationMessage(sassCompiler.sayVersion(_log));
+function cmdSayVersion( _log: common.ILog) {
+    vscode.window.showInformationMessage(common.SayVersion(_log));
 }
 
-function cmdCompileAll(sassCompiler: common.ISassCompiler, _log: common.ILog) {
+function cmdCompileAll(_log: common.ILog) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
         vscode.window.showErrorMessage(`No workspace folders present to compile scss files`);
@@ -21,13 +21,13 @@ function cmdCompileAll(sassCompiler: common.ISassCompiler, _log: common.ILog) {
     }
     workspaceFolders.forEach(
         (folder:vscode.WorkspaceFolder) => {
-            sassCompiler.compileAll(folder.uri.fsPath, _log);
+            common.CompileAll(folder.uri.fsPath, _log);
         }
     );
 }
 
 
-function cmdCompileCurrentFile(sassCompiler: common.ISassCompiler, extensionConfig: common.CompilerConfig,
+function cmdCompileCurrentFile(extensionConfig: common.CompilerConfig,
     _log: common.ILog) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
@@ -36,25 +36,24 @@ function cmdCompileCurrentFile(sassCompiler: common.ISassCompiler, extensionConf
     }
     var editor = vscode.window.activeTextEditor;
     if (editor && typeof editor !== 'undefined') {
-        common.CompileCurrentFile(sassCompiler, new Doc(editor.document), extensionConfig,_log, true);
+        common.CompileCurrentFile(new Doc(editor.document), extensionConfig,_log, true);
     } else {
         console.log(`Editor not defined currently`);
     }
 }
 
 
-export function registerCommands(sassCompiler: common.ISassCompiler,
-    extensionConfig: common.CompilerConfig,
+export function registerCommands(extensionConfig: common.CompilerConfig,
     subscriptions: vscode.Disposable[], _log: common.ILog) {
-    _log.appendLine(sassCompiler.sayVersion(_log));
+    // _log.appendLine(sassCompiler.sayVersion(_log));
     subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
-        cmdSayVersion(sassCompiler, _log);
+        cmdSayVersion(_log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileAll', () => {
-        cmdCompileAll(sassCompiler, _log);
+        cmdCompileAll(_log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileCurrentFile', () => {
-        cmdCompileCurrentFile(sassCompiler, extensionConfig, _log);
+        cmdCompileCurrentFile(extensionConfig, _log);
     }));
 }
 

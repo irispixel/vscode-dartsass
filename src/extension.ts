@@ -14,7 +14,6 @@ import { registerCommands } from './cmd';
 import { Log } from './log';
 import { Doc } from './doc';
 
-let sassCompiler: common.ISassCompiler = new common.DartSassCompiler();
 let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
 let _channel: (vscode.OutputChannel|null) = null;
@@ -34,7 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    registerCommands(sassCompiler, extensionConfig, context.subscriptions, _log);
+    registerCommands(extensionConfig, context.subscriptions, _log);
     startBuildOnSaveWatcher(context.subscriptions, _log);
 }
 
@@ -60,7 +59,7 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _log: commo
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (!extensionConfig.disableCompileOnSave) {
-            common.CompileCurrentFile(sassCompiler, new Doc(document), extensionConfig, _log, false);
+            common.CompileCurrentFile(new Doc(document), extensionConfig, _log, false);
         }
 	}, null, subscriptions);
 }
