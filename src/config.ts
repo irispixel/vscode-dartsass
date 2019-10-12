@@ -17,7 +17,6 @@ export class Config {
         config.targetMinifiedDirectory = configuration.get<string>('targetMinifiedDirectory', '');
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
         config.debug = configuration.get<boolean>('debug', false);
-        config.sync = configuration.get<boolean>('sync', false);
         config.disableCompileOnSave = configuration.get<boolean>('disableCompileOnSave', false);
         config.pauseInterval = configuration.get<number>('pauseInterval', 10);
         config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);

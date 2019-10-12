@@ -59,7 +59,14 @@ function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _log: commo
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (!extensionConfig.disableCompileOnSave) {
-            common.CompileCurrentFile(new Doc(document), extensionConfig, _log, false);
+            common.CompileCurrentFile(new Doc(document), extensionConfig, _log).then(
+                value => {
+
+                },
+                err => {
+                    vscode.window.showErrorMessage(err);
+                }
+            );
         }
 	}, null, subscriptions);
 }

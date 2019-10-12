@@ -10,11 +10,19 @@ import {Doc} from './doc';
 
 
 function cmdWhichPath(extensionConfig: common.CompilerConfig, _log: common.ILog) {
-    vscode.window.showInformationMessage(common.Which(extensionConfig, _log));
+    common.Which(extensionConfig, _log).then(
+        (value: string) => {
+            vscode.window.showInformationMessage(value);
+        }
+    );
 }
 
 function cmdSayVersion(extensionConfig: common.CompilerConfig, _log: common.ILog) {
-    vscode.window.showInformationMessage(common.SayVersion(extensionConfig, _log));
+    common.SayVersion(extensionConfig, _log).then(
+        value => {
+            vscode.window.showInformationMessage(value);
+        }
+    );
 }
 
 function cmdCompileAll(extensionConfig: common.CompilerConfig, _log: common.ILog) {
@@ -40,7 +48,14 @@ function cmdCompileCurrentFile(extensionConfig: common.CompilerConfig,
     }
     var editor = vscode.window.activeTextEditor;
     if (editor && typeof editor !== 'undefined') {
-        common.CompileCurrentFile(new Doc(editor.document), extensionConfig,_log, true);
+        common.CompileCurrentFile(new Doc(editor.document), extensionConfig,_log).then(
+            value => {
+
+            },
+            err => {
+                vscode.window.showErrorMessage(err);
+            }
+        );
     } else {
         console.log(`Editor not defined currently`);
     }
