@@ -56,7 +56,9 @@ This extension contributes the following settings:
 
   If this property is empty, then the value defaults to `dartsass.targetDirectory` . If `dartsass.targetDirectory` is also empty, then this value defaults to the same directory as that of the source files.
 * `dartsass.debug`: Default: false. Best applicable for developers of this extension only.
+* `dartsass.sassBinPath`: Default: Empty.
 
+  Eg: `/usr/local/bin/sass` PATH of sass binary to be used to compile , as opposed to the sass compiler that comes built-in with the plugin. `Beta` support only.
 
 ## Features
 

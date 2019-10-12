@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+
+### 0.0.70
+
+  * `dartsass.sassBinPath` property introduced.
+
+    Eg: `/usr/local/bin/sass` PATH of sass binary to be used to compile , as opposed to the sass compiler that comes built-in with the plugin. `Beta` support only.
+
 ### 0.0.69
  * Fixed a regression bug related to files with underscores.
 
