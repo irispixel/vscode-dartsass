@@ -1,6 +1,8 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.71
+  * Bug fix related to config not getting properly reloaded and propagated across the plugin
 
 ### 0.0.70
 
