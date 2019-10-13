@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.72
+  * In case, `sassBinPath` is a directory or it does not exist, indicate an error right after config value is set/changed.
+
 ### 0.0.71
   * Bug fix related to config not getting properly reloaded and propagated across the plugin
 
