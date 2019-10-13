@@ -58,7 +58,9 @@ This extension contributes the following settings:
 * `dartsass.debug`: Default: false. Best applicable for developers of this extension only.
 * `dartsass.sassBinPath`: Default: Empty.
 
-  Eg: `/usr/local/bin/sass` PATH of sass binary to be used to compile , as opposed to the sass compiler that comes built-in with the plugin. `Beta` support only.
+  Eg: `/usr/local/bin/sass` PATH of sass binary to be used to compile. [ `Beta` yet. ]
+
+  By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
 
 ## Features
 
