@@ -18,6 +18,12 @@ export function reloadConfiguration(_log: common.ILog) : void {
     const configuration = vscode.workspace.getConfiguration(pluginName);
     extensionConfig = Config.extractFrom(configuration);
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
+    common.Validate(extensionConfig, _log).then(
+        value => {},
+        err => {
+            vscode.window.showErrorMessage(err);
+        }
+    );
 }
 
 

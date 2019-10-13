@@ -9,7 +9,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { registerCommands } from './cmd';
-import { getLog } from './log';
+import { createLog } from './log';
 import { reloadConfiguration, startBuildOnSaveWatcher } from './core';
 
 let _channel: (vscode.OutputChannel|null) = null;
@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
     _channel.appendLine('Extension "dartsass" activated now!');
 
 
-    const _log = getLog(_channel);
+    const _log = createLog(_channel);
     reloadConfiguration(_log);
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand

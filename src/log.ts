@@ -22,10 +22,6 @@ export class Log {
         this._channel.appendLine(msg);
     }
 
-    public error(msg: string): any {
-        vscode.window.showErrorMessage(msg);
-    }
-
     public clear(): any {
         this._channel.clear();
     }
@@ -33,6 +29,6 @@ export class Log {
 }
 
 
-export function getLog(_channel: vscode.OutputChannel) : common.ILog {
+export function createLog(_channel: vscode.OutputChannel) : common.ILog {
     return new Log(_channel);
 }
