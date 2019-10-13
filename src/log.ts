@@ -4,7 +4,7 @@
 // https://opensource.org/licenses/MIT
 'use strict';
 import * as vscode from 'vscode';
-
+import * as common from 'dartsass-plugin-common';
 
 export class Log {
 
@@ -30,4 +30,9 @@ export class Log {
         this._channel.clear();
     }
 
+}
+
+
+export function getLog(_channel: vscode.OutputChannel) : common.ILog {
+    return new Log(_channel);
 }

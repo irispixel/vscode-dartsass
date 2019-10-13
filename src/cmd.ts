@@ -7,25 +7,25 @@
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
+import { extensionConfig as globalConfig  } from './core';
 
-
-function cmdWhichPath(extensionConfig: common.CompilerConfig, _log: common.ILog) {
-    common.Which(extensionConfig, _log).then(
+function cmdWhichPath(config: common.CompilerConfig, _log: common.ILog) {
+    common.Which(config, _log).then(
         (value: string) => {
             vscode.window.showInformationMessage(value);
         }
     );
 }
 
-function cmdSayVersion(extensionConfig: common.CompilerConfig, _log: common.ILog) {
-    common.SayVersion(extensionConfig, _log).then(
+function cmdSayVersion(config: common.CompilerConfig, _log: common.ILog) {
+    common.SayVersion(config, _log).then(
         value => {
             vscode.window.showInformationMessage(value);
         }
     );
 }
 
-function cmdCompileAll(extensionConfig: common.CompilerConfig, _log: common.ILog) {
+function cmdCompileAll(config: common.CompilerConfig, _log: common.ILog) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
         vscode.window.showErrorMessage(`No workspace folders present to compile scss files`);
@@ -33,13 +33,13 @@ function cmdCompileAll(extensionConfig: common.CompilerConfig, _log: common.ILog
     }
     workspaceFolders.forEach(
         (folder:vscode.WorkspaceFolder) => {
-            common.CompileAll(extensionConfig, folder.uri.fsPath, _log);
+            common.CompileAll(config, folder.uri.fsPath, _log);
         }
     );
 }
 
 
-function cmdCompileCurrentFile(extensionConfig: common.CompilerConfig,
+function cmdCompileCurrentFile(config: common.CompilerConfig,
     _log: common.ILog) {
     let workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
@@ -48,7 +48,7 @@ function cmdCompileCurrentFile(extensionConfig: common.CompilerConfig,
     }
     var editor = vscode.window.activeTextEditor;
     if (editor && typeof editor !== 'undefined') {
-        common.CompileCurrentFile(new Doc(editor.document), extensionConfig,_log).then(
+        common.CompileCurrentFile(new Doc(editor.document), config,_log).then(
             value => {
 
             },
@@ -62,20 +62,18 @@ function cmdCompileCurrentFile(extensionConfig: common.CompilerConfig,
 }
 
 
-export function registerCommands(extensionConfig: common.CompilerConfig,
-    subscriptions: vscode.Disposable[], _log: common.ILog) {
+export function registerCommands(subscriptions: vscode.Disposable[], _log: common.ILog) {
     // _log.appendLine(sassCompiler.sayVersion(_log));
     subscriptions.push(vscode.commands.registerCommand('dartsass.whichSassPath', () => {
-        cmdWhichPath(extensionConfig, _log);
+        cmdWhichPath(globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
-        cmdSayVersion(extensionConfig, _log);
+        cmdSayVersion(globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileAll', () => {
-        cmdCompileAll(extensionConfig, _log);
+        cmdCompileAll(globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileCurrentFile', () => {
-        cmdCompileCurrentFile(extensionConfig, _log);
+        cmdCompileCurrentFile(globalConfig, _log);
     }));
 }
-
