@@ -8,6 +8,15 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 import { extensionConfig as globalConfig  } from './core';
+import { watchDirectory, listWatchers } from './watcher';
+
+function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _log: common.ILog) {
+    watchDirectory(_srcdir, config, _log);
+}
+
+function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
+    listWatchers();
+}
 
 function cmdWhichPath(config: common.CompilerConfig, _log: common.ILog) {
     common.Which(config, _log).then(
@@ -75,5 +84,11 @@ export function registerCommands(subscriptions: vscode.Disposable[], _log: commo
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileCurrentFile', () => {
         cmdCompileCurrentFile(globalConfig, _log);
+    }));
+    subscriptions.push(vscode.commands.registerCommand('dartsass.watchDir', (_srcdir: vscode.Uri) => {
+        cmdWatchDirectory(_srcdir, globalConfig, _log);
+    }));
+    subscriptions.push(vscode.commands.registerCommand('dartsass.viewSassWatchers', () => {
+        cmdViewSassWatchers(globalConfig, _log);
     }));
 }

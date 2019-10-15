@@ -16,7 +16,7 @@ export function getFileName(document: vscode.TextDocument) {
     }
 }
 
-function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
+export function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
     if (documentUri) {
         let thisFolder = vscode.workspace.getWorkspaceFolder(documentUri);
         if (thisFolder) {

@@ -24,7 +24,20 @@
     ],
     "main": "./dist/extension",
     "contributes": {
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "dartsass.watchDir",
+                    "group": "DartSass JS Compiler",
+                    "when": "explorerResourceIsFolder"
+                }
+            ]
+        },
         "commands": [
+            {
+                "command": "dartsass.watchDir",
+                "title": "DartSass: Watch a directory by Sass Compiler"
+            },
             {
                 "command": "dartsass.saySassVersion",
                 "title": "DartSass: Sass Compiler Version"
@@ -40,6 +53,10 @@
             {
                 "command": "dartsass.compileCurrentFile",
                 "title": "DartSass: Compile Current File"
+            },
+            {
+                "command": "dartsass.viewSassWatchers",
+                "title": "DartSass: View Sass Watchers"
             }
         ],
         "keybindings": [

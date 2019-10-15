@@ -11,6 +11,7 @@ import * as vscode from 'vscode';
 import { registerCommands } from './cmd';
 import { createLog } from './log';
 import { reloadConfiguration, startBuildOnSaveWatcher } from './core';
+import { createStatusBarItem } from './statusbar';
 
 let _channel: (vscode.OutputChannel|null) = null;
 
@@ -30,6 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     registerCommands(context.subscriptions, _log);
+    createStatusBarItem(context.subscriptions, 'dartsass.viewSassWatchers');
     startBuildOnSaveWatcher(context.subscriptions, _log);
 }
 
