@@ -31,12 +31,18 @@
                     "group": "DartSass JS Compiler",
                     "when": "explorerResourceIsFolder"
                 }
+            ],
+            "commandPalette": [
+                {
+                    "command": "dartsass.compileCurrentFile",
+                    "when": "editorLangId === sass || editorLangId === scss"
+                }
             ]
         },
         "commands": [
             {
                 "command": "dartsass.watchDir",
-                "title": "DartSass: Watch a directory by Sass Compiler"
+                "title": "DartSass: Sass Compiler Watch"
             },
             {
                 "command": "dartsass.saySassVersion",
@@ -166,7 +172,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.2.9"
+        "dartsass-plugin-common": "0.3.0"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",

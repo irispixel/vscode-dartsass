@@ -52,3 +52,8 @@ export function stopWatching(_srcdir: vscode.Uri) {
     const projectRoot = uri.fsPath;
     watcher.ClearWatch(_srcdir.fsPath, projectRoot);
 }
+
+export function clearAllWatchers() {
+    vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
+    watcher.ClearAll();
+}
