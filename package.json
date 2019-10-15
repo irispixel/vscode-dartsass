@@ -68,18 +68,12 @@
         "keybindings": [
             {
                 "command": "dartsass.compileCurrentFile",
-                "key": "ctrl+shift+l",
-                "mac": "cmd+shift+l",
+                "key": "ctrl+shift+p",
+                "mac": "cmd+shift+p",
                 "when": "editorTextFocus"
             },
             {
-                "command": "dartsass.saySassVersion",
-                "key": "ctrl+alt+q",
-                "mac": "cmd+alt+q",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "dartsass.whichSassPath",
+                "command": "dartsass.viewSassWatchers",
                 "key": "ctrl+alt+p",
                 "mac": "cmd+alt+p",
                 "when": "editorTextFocus"

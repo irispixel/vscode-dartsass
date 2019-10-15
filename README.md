@@ -63,16 +63,17 @@ Compiles the current scss file in the active editor to .css and .min.css file as
 
 ### QuikSass: Sass Compiler Version
 
-( Shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Q</kbd> )
-
 Prints out the current sass compiler version being used.
 
 ### QuikSass: Which Sass PATH
 
-( Shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> )
-
 Prints out the PATH to the sass compiler being used.
 
+### QuikSass: View Watcher List
+
+( Shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> )
+
+Views the list of watchers by this sass plugin
 
 ## Properties
 

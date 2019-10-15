@@ -40,12 +40,16 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
 
 export function listWatchers(_log: common.ILog) {
     const watchList: Map<string, number> = watcher.GetWatchList();
-    _log.appendLine(`Having ${watchList.size} watchers`);
-    watchList.forEach((value: number, key: string) => {
-        _log.appendLine(`${key} -> ${value} ( pid )`);
-    });
-    _log.appendLine(`End Of ${watchList.size} watchers`);
-    vscode.window.showInformationMessage(`Having ${watchList.size} watchers. Check output for more details.`);
+    if (watchList.size > 0) {
+        _log.appendLine(`Having ${watchList.size} watchers`);
+        watchList.forEach((value: number, key: string) => {
+            _log.appendLine(`${key} -> ${value} ( pid )`);
+        });
+        _log.appendLine(`End Of ${watchList.size} watchers`);
+        vscode.window.showInformationMessage(`Having ${watchList.size} watchers. Check output for more details.`);
+    } else {
+        vscode.window.showInformationMessage(`No watchers defined.`);
+    }
 }
 
 
