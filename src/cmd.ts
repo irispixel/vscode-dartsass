@@ -15,7 +15,7 @@ function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _
 }
 
 function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
-    listWatchers();
+    listWatchers(_log);
 }
 
 function cmdWhichPath(config: common.CompilerConfig, _log: common.ILog) {

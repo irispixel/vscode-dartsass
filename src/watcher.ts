@@ -38,19 +38,19 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
     );
 }
 
-export function listWatchers() {
+export function listWatchers(_log: common.ILog) {
     const watchList: Map<string, number> = watcher.GetWatchList();
-    vscode.window.showInformationMessage(`Having ${watchList.size} watchers`);
+    _log.appendLine(`Having ${watchList.size} watchers`);
+    watchList.forEach((value: number, key: string) => {
+        _log.appendLine(`${key} -> ${value} ( pid )`);
+    });
+    _log.appendLine(`End Of ${watchList.size} watchers`);
+    vscode.window.showInformationMessage(`Having ${watchList.size} watchers. Check output for more details.`);
 }
 
 
-export function stopWatching(_srcdir: vscode.Uri) {
-    const uri = getProjectRoot(_srcdir);
-    if (!uri) {
-        return "";
-    }
-    const projectRoot = uri.fsPath;
-    watcher.ClearWatch(_srcdir.fsPath, projectRoot);
+export function stopWatching(_srcdir: string) {
+    watcher.ClearWatchDirectory(_srcdir);
 }
 
 export function clearAllWatchers() {
