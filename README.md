@@ -32,7 +32,8 @@ If that is too aggressive, see `dartsass.pauseInterval` below.
   This command `watches` the directory using the option `sass --watch input:output` .
 
   ```
-  Important: For this menu to work, an external sass binary should be set for `sassBinPath` property. Otherwise it will indicate an error.
+  Important: For this menu to work, an external sass binary should be set for `sassBinPath` property.
+  Otherwise it will indicate an error.
   ```
 
   After the directory is successfully watched, an entry is added to the statusbar on the lower right bottom - `Sass Watchers: 1` (or any number as appropriate).
@@ -44,7 +45,8 @@ If that is too aggressive, see `dartsass.pauseInterval` below.
   It will list all the watched source directories and the pid (tested in unix) for those processes.
 
   ```
-  TODO: 1) Right now, there is no way to kill / unwatch the directories from inside the IDE individually one at a time.
+  TODO: 1) Right now, there is no way to kill / unwatch the directories from
+  inside the IDE individually one at a time.
 
   Although all the processes eventually get killed when we close the IDE though.
 
