@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.74
+  * Support for watching directories implemented. See README.md for more details ( menu `DartSass: Sass Compiler Watch` to be specific ).
+
 ### 0.0.73
   * Autprefixer now works when `sassBinPath` is set. Fixed now.
 
