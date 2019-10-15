@@ -3,6 +3,15 @@
 
 Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass) to css and minified css.
 
+## Install
+
+You can install it from inside VSCode by using the following command
+
+`
+ext install malvahq.dartsass
+`
+
+
 ## Usage
 
 The plugin gets activated when .scss files are opened and saved.
