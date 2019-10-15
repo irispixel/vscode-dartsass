@@ -14,10 +14,6 @@ export class Log {
         this._channel = channel;
     }
 
-    public info(msg: string): any {
-        vscode.window.showInformationMessage(msg);
-    }
-
     public appendLine(msg: string): any {
         this._channel.appendLine(msg);
     }
