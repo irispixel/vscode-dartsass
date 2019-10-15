@@ -21,7 +21,37 @@ It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automa
 By default, the Dart/JS compiler gets activated with every save of the current editor file.
 If that is too aggressive, see `dartsass.pauseInterval` below.
 
-## Extension Commands
+## Menu
+
+### DartSass: Sass Compiler Watch
+
+  In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass Compiler Watch` .
+  This option appears only in the case of a directory and not in case of individual files.
+
+
+  This command `watches` the directory using the option `sass --watch input:output` .
+
+  ```
+  Important: For this menu to work, an external sass binary should be set for `sassBinPath` property. Otherwise it will indicate an error.
+  ```
+
+  After the directory is successfully watched, an entry is added to the statusbar on the lower right bottom - `Sass Watchers: 1` (or any number as appropriate).
+
+  When the IDE is closed the subprocesses launched for watching get killed automatically.
+
+  To view the list of watched processes / directories, use the command: `DartSass: View Sass Watchers` and then check the `Output` under `DartJS Sass`.
+
+  It will list all the watched source directories and the pid (tested in unix) for those processes.
+
+  ```
+  TODO: 1) Right now, there is no way to kill / unwatch the directories from inside the IDE individually one at a time.
+
+  Although all the processes eventually get killed when we close the IDE though.
+
+  2) Also the list of watchers need to be better visualized than the naive output in the console.
+  ```
+
+## Commands
 
 ### QuikSass: Compile Current File
 
@@ -42,9 +72,9 @@ Prints out the current sass compiler version being used.
 Prints out the PATH to the sass compiler being used.
 
 
-## Extension Settings
+## Properties
 
-This extension contributes the following settings:
+This extension contributes the following properties:
 
 * `dartsass.includePath`: Default: [ ]. Set of directories to be specified as includePath for sass compilation.
 * `dartsass.sassWorkingDirectory`: Default: Project Root. The working directory from which to run the sass compiler to be used by `node-sass-package-importer`.
