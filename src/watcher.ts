@@ -33,7 +33,6 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
             updateStatusBar(watcher);
         },
         err => {
-            _log.appendLine(typeof err);
             vscode.window.showErrorMessage(`${err}`);
         }
     );
