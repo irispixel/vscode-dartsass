@@ -8,7 +8,7 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 import { Config }  from './config';
-import { relaunch } from './watcher';
+import { relaunch, clearAllWatchers } from './watcher';
 
 export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
@@ -23,6 +23,7 @@ export function reloadConfiguration(_log: common.ILog) : void {
             relaunch("", extensionConfig, _log);
         },
         err => {
+            clearAllWatchers();
             vscode.window.showErrorMessage(err);
         }
     );
