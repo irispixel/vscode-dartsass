@@ -22,14 +22,6 @@ function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
     listWatchers(_log);
 }
 
-function cmdWhichPath(config: common.CompilerConfig, _log: common.ILog) {
-    common.Which(config, _log).then(
-        (value: string) => {
-            vscode.window.showInformationMessage(value);
-        }
-    );
-}
-
 function cmdSayVersion(config: common.CompilerConfig, _log: common.ILog) {
     common.SayVersion(config, _log).then(
         value => {
@@ -63,9 +55,6 @@ function cmdCompileCurrentFile(config: common.CompilerConfig,
 
 export function registerCommands(subscriptions: vscode.Disposable[], _log: common.ILog) {
     // _log.appendLine(sassCompiler.sayVersion(_log));
-    subscriptions.push(vscode.commands.registerCommand('dartsass.whichSassPath', () => {
-        cmdWhichPath(globalConfig, _log);
-    }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
         cmdSayVersion(globalConfig, _log);
     }));

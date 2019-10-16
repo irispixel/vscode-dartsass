@@ -64,30 +64,12 @@
                 "title": "DartSass: Sass Compiler Version"
             },
             {
-                "command": "dartsass.whichSassPath",
-                "title": "DartSass: Which Sass Compiler PATH"
-            },
-            {
                 "command": "dartsass.compileCurrentFile",
                 "title": "DartSass: Compile Current File"
             },
             {
                 "command": "dartsass.viewSassWatchers",
                 "title": "DartSass: View Sass Watchers"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "dartsass.compileCurrentFile",
-                "key": "ctrl+shift+p",
-                "mac": "cmd+shift+p",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "dartsass.viewSassWatchers",
-                "key": "ctrl+alt+p",
-                "mac": "cmd+alt+p",
-                "when": "editorTextFocus"
             }
         ],
         "configuration": {
@@ -177,7 +159,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.3.3"
+        "dartsass-plugin-common": "0.3.4"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",
