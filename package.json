@@ -30,6 +30,11 @@
                     "command": "dartsass.watchDir",
                     "group": "DartSass JS Compiler",
                     "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "dartsass.unwatchDir",
+                    "group": "DartSass JS Compiler",
+                    "when": "explorerResourceIsFolder"
                 }
             ],
             "commandPalette": [
@@ -51,8 +56,8 @@
                 "title": "DartSass: Sass Watch"
             },
             {
-                "command": "dartsass.watchDirCompressed",
-                "title": "DartSass: Sass Watch Minified"
+                "command": "dartsass.unwatchDir",
+                "title": "DartSass: Sass Unwatch"
             },
             {
                 "command": "dartsass.saySassVersion",
@@ -172,7 +177,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.3.2"
+        "dartsass-plugin-common": "0.3.3"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",

@@ -8,10 +8,14 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 import { extensionConfig as globalConfig  } from './core';
-import { watchDirectory, listWatchers } from './watcher';
+import { watchDirectory, listWatchers, unwatchDirectory } from './watcher';
 
-function cmdWatchDirectory(_srcdir: vscode.Uri, compressed: boolean, config: common.CompilerConfig, _log: common.ILog) {
-    watchDirectory(_srcdir, compressed, config, _log);
+function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _log: common.ILog) {
+    watchDirectory(_srcdir, config, _log);
+}
+
+function cmdUnwatchDirectory(_srcdir: vscode.Uri) {
+    unwatchDirectory(_srcdir);
 }
 
 function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
@@ -69,10 +73,10 @@ export function registerCommands(subscriptions: vscode.Disposable[], _log: commo
         cmdCompileCurrentFile(globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.watchDir', (_srcdir: vscode.Uri) => {
-        cmdWatchDirectory(_srcdir, false, globalConfig, _log);
+        cmdWatchDirectory(_srcdir, globalConfig, _log);
     }));
-    subscriptions.push(vscode.commands.registerCommand('dartsass.watchDirCompressed', (_srcdir: vscode.Uri) => {
-        cmdWatchDirectory(_srcdir, true, globalConfig, _log);
+    subscriptions.push(vscode.commands.registerCommand('dartsass.unwatchDir', (_srcdir: vscode.Uri) => {
+        cmdUnwatchDirectory(_srcdir);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.viewSassWatchers', () => {
         cmdViewSassWatchers(globalConfig, _log);
