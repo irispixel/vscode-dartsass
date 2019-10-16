@@ -10,8 +10,8 @@ import {Doc} from './doc';
 import { extensionConfig as globalConfig  } from './core';
 import { watchDirectory, listWatchers } from './watcher';
 
-function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _log: common.ILog) {
-    watchDirectory(_srcdir, config, _log);
+function cmdWatchDirectory(_srcdir: vscode.Uri, compressed: boolean, config: common.CompilerConfig, _log: common.ILog) {
+    watchDirectory(_srcdir, compressed, config, _log);
 }
 
 function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
@@ -33,20 +33,6 @@ function cmdSayVersion(config: common.CompilerConfig, _log: common.ILog) {
         }
     );
 }
-
-function cmdCompileAll(config: common.CompilerConfig, _log: common.ILog) {
-    let workspaceFolders = vscode.workspace.workspaceFolders;
-    if (!workspaceFolders) {
-        vscode.window.showErrorMessage(`No workspace folders present to compile scss files`);
-        return null;
-    }
-    workspaceFolders.forEach(
-        (folder:vscode.WorkspaceFolder) => {
-            common.CompileAll(config, folder.uri.fsPath, _log);
-        }
-    );
-}
-
 
 function cmdCompileCurrentFile(config: common.CompilerConfig,
     _log: common.ILog) {
@@ -79,14 +65,14 @@ export function registerCommands(subscriptions: vscode.Disposable[], _log: commo
     subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
         cmdSayVersion(globalConfig, _log);
     }));
-    subscriptions.push(vscode.commands.registerCommand('dartsass.compileAll', () => {
-        cmdCompileAll(globalConfig, _log);
-    }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.compileCurrentFile', () => {
         cmdCompileCurrentFile(globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.watchDir', (_srcdir: vscode.Uri) => {
-        cmdWatchDirectory(_srcdir, globalConfig, _log);
+        cmdWatchDirectory(_srcdir, false, globalConfig, _log);
+    }));
+    subscriptions.push(vscode.commands.registerCommand('dartsass.watchDirCompressed', (_srcdir: vscode.Uri) => {
+        cmdWatchDirectory(_srcdir, true, globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.viewSassWatchers', () => {
         cmdViewSassWatchers(globalConfig, _log);

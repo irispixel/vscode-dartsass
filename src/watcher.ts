@@ -21,13 +21,14 @@ export function updateStatusBar(watcher: common.Watcher) {
         myStatusBarItem.hide();
     }
 }
-export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _log: common.ILog) {
+
+export function watchDirectory(_srcdir: vscode.Uri, compressed: boolean, config: common.CompilerConfig, _log: common.ILog) {
     const uri = getProjectRoot(_srcdir);
     if (!uri) {
         return "";
     }
     const projectRoot = uri.fsPath;
-    watcher.Watch(_srcdir.fsPath, projectRoot, config, _log).then(
+    watcher.Watch(_srcdir.fsPath, projectRoot, compressed, config, _log).then(
         value => {
             vscode.window.showInformationMessage(`Watching Directory ${_srcdir.fsPath}`);
             updateStatusBar(watcher);

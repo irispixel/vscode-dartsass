@@ -37,12 +37,22 @@
                     "command": "dartsass.compileCurrentFile",
                     "when": "editorLangId == sass || editorLangId == scss"
                 }
+            ],
+            "editor/context": [
+                {
+                    "command": "dartsass.viewSassWatchers",
+                    "group": "DartSass JS View Watcher"
+                }
             ]
         },
         "commands": [
             {
                 "command": "dartsass.watchDir",
-                "title": "DartSass: Sass Compiler Watch"
+                "title": "DartSass: Sass Watch"
+            },
+            {
+                "command": "dartsass.watchDirCompressed",
+                "title": "DartSass: Sass Watch Minified"
             },
             {
                 "command": "dartsass.saySassVersion",
@@ -51,10 +61,6 @@
             {
                 "command": "dartsass.whichSassPath",
                 "title": "DartSass: Which Sass Compiler PATH"
-            },
-            {
-                "command": "dartsass.compileAll",
-                "title": "DartSass: Compile All SCSS Files"
             },
             {
                 "command": "dartsass.compileCurrentFile",
@@ -166,7 +172,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.3.1"
+        "dartsass-plugin-common": "0.3.2"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",
