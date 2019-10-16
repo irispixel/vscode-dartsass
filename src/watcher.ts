@@ -63,7 +63,7 @@ export function listWatchers(_log: common.ILog) {
         _log.appendLine(`End Of ${watchList.size} watchers`);
         vscode.window.showInformationMessage(`Having ${watchList.size} watchers. Check output for more details.`);
     } else {
-        vscode.window.showInformationMessage(`No watchers defined.`);
+        vscode.window.showWarningMessage(`No watchers defined.`);
     }
 }
 
