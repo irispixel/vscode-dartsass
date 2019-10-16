@@ -45,7 +45,11 @@ export function unwatchDirectory(_srcdir: vscode.Uri) {
         return "";
     }
     const projectRoot = uri.fsPath;
-    watcher.ClearWatch(_srcdir.fsPath, projectRoot);
+    if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot)) {
+        vscode.window.showWarningMessage(`Directory ${_srcdir.fsPath} not being watched before.`);
+    } else {
+        vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
+    }
     updateStatusBar(watcher);
 }
 
