@@ -76,3 +76,7 @@ export function clearAllWatchers() {
     vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
     watcher.ClearAll();
 }
+
+export function relaunch(projectRoot: string, config: common.CompilerConfig, _log: common.ILog) {
+    watcher.Relaunch(projectRoot, config, _log);
+}

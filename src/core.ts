@@ -8,7 +8,7 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 import { Config }  from './config';
-
+import { relaunch } from './watcher';
 
 export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
@@ -19,7 +19,9 @@ export function reloadConfiguration(_log: common.ILog) : void {
     extensionConfig = Config.extractFrom(configuration);
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
     common.Validate(extensionConfig, _log).then(
-        value => {},
+        value => {
+            relaunch("", extensionConfig, _log);
+        },
         err => {
             vscode.window.showErrorMessage(err);
         }
