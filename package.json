@@ -18,9 +18,8 @@
     "activationEvents": [
         "onLanguage:scss",
         "onCommand:dartsass.saySassVersion",
-        "onCommand:dartsass.whichSassPath",
-        "onCommand:dartsass.compileAll",
-        "onCommand:dartsass.compileCurrentFile"
+        "onCommand:dartsass.compileCurrentFile",
+        "onCommand:dartsass.viewSassWatchers"
     ],
     "main": "./dist/extension",
     "contributes": {

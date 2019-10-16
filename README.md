@@ -66,8 +66,6 @@ If that is too aggressive, see `dartsass.pauseInterval` below.
 
 ### QuikSass: Compile Current File
 
-( Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> )
-
 Compiles the current scss file in the active editor to .css and .min.css file as appropriate.
 
 ### QuikSass: Sass Compiler Version
@@ -79,8 +77,6 @@ Prints out the current sass compiler version being used.
 Prints out the PATH to the sass compiler being used.
 
 ### QuikSass: View Watcher List
-
-( Shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> )
 
 Views the list of watchers by this sass plugin
 
