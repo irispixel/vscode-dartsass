@@ -23,9 +23,9 @@ If that is too aggressive, see `dartsass.pauseInterval` below.
 
 ## Menu
 
-### DartSass: Sass Compiler Watch
+### DartSass: Sass Watch
 
-  In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass Compiler Watch` .
+  In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass Watch` .
   This option appears only in the case of a directory and not in case of individual files.
 
 
@@ -52,6 +52,15 @@ If that is too aggressive, see `dartsass.pauseInterval` below.
 
   2) Also the list of watchers need to be better visualized than the naive output in the console.
   ```
+
+### DartSass: Sass Unwatch
+
+  In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass UnWatch` .
+  This option appears only in the case of a directory and not in case of individual files.
+
+  If a directory was watched before, this kills the process used to watch the directory.
+
+  In case the directory was not watched before, a warning message appears indicating that no watcher exists for that directory.
 
 ## Commands
 
