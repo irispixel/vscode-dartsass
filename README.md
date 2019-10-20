@@ -72,10 +72,6 @@ Compiles the current scss file in the active editor to .css and .min.css file as
 
 Prints out the current sass compiler version being used.
 
-### QuikSass: Which Sass PATH
-
-Prints out the PATH to the sass compiler being used.
-
 ### QuikSass: View Watcher List
 
 Views the list of watchers by this sass plugin
