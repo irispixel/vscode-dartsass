@@ -32,7 +32,8 @@ If that is too aggressive, see `dartsass.pauseInterval` below.
   This command `watches` the directory using the option `sass --watch input:output` .
 
   ```
-  Important: For this menu to work, an external sass binary should be set for `sassBinPath` property.
+  Important: For this menu / feature to work, the sassBinPath
+  property must point to an external sass binary.
   Otherwise it will indicate an error.
   ```
 
