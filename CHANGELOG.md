@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+
+### 0.0.78
+  * Fix a bug about incorrect reloading of watchers when configuration changes.
+
 ### 0.0.77
   * Upgrade built-in compiler to sass 1.23.1
   * Fix npm audit errors
