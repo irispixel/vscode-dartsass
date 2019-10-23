@@ -158,14 +158,14 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.3.4"
+        "dartsass-plugin-common": "0.3.5"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",
         "@types/mocha": "5.2.7",
         "@types/node": "12.11.1",
         "@types/vscode": "1.37.0",
-        "glob": "7.1.4",
+        "glob": "7.1.5",
         "mocha": "6.2.2",
         "source-map-support": "0.5.13",
         "tslint": "5.20.0",
@@ -174,7 +174,7 @@
         "ts-node": "8.4.1",
         "webpack": "4.41.2",
         "webpack-cli": "3.3.9",
-        "ts-loader": "6.2.0",
+        "ts-loader": "6.2.1",
         "lodash": "4.17.15"
     }
 }
