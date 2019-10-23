@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.77
+  * Upgrade built-in compiler to sass 1.23.1
+  * Fix npm audit errors
+
 ### 0.0.76
   * Bugfix about removing inconsistent keyboard shortcuts. See #9 for more details
 
