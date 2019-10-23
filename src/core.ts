@@ -6,7 +6,7 @@
 
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
-import {Doc} from './doc';
+import {Doc, getProjectRoot} from './doc';
 import { Config }  from './config';
 import { relaunch, clearAllWatchers } from './watcher';
 
@@ -20,7 +20,12 @@ export function reloadConfiguration(_log: common.ILog) : void {
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
     common.Validate(extensionConfig, _log).then(
         value => {
-            relaunch("", extensionConfig, _log);
+            const projectRoot = getProjectRoot(null);
+            if (projectRoot !== null) {
+                relaunch(projectRoot.fsPath, extensionConfig, _log);
+            } else {
+                clearAllWatchers();
+            }
         },
         err => {
             clearAllWatchers();
