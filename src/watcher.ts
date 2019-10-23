@@ -73,8 +73,11 @@ export function stopWatching(_srcdir: string) {
 }
 
 export function clearAllWatchers() {
-    vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
-    watcher.ClearAll();
+    if (watcher.GetWatchList().size > 0) {
+        vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
+        watcher.ClearAll();
+    }
+
 }
 
 export function relaunch(projectRoot: string, config: common.CompilerConfig, _log: common.ILog) {
