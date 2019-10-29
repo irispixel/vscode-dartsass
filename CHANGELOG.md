@@ -1,6 +1,8 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.79
+  * Upgrade autoprefixer to 9.7.0 , browserslist: 4.7.2  and postcss: 7.0.21.
 
 ### 0.0.78
   * Fix a bug about incorrect reloading of watchers when configuration changes.
