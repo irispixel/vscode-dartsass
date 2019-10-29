@@ -39,13 +39,13 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
     );
 }
 
-export function unwatchDirectory(_srcdir: vscode.Uri) {
+export function unwatchDirectory(_srcdir: vscode.Uri, _log: common.ILog) {
     const uri = getProjectRoot(_srcdir);
     if (!uri) {
         return "";
     }
     const projectRoot = uri.fsPath;
-    if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot)) {
+    if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, _log)) {
         vscode.window.showWarningMessage(`Directory ${_srcdir.fsPath} not being watched before.`);
     } else {
         vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
@@ -68,14 +68,14 @@ export function listWatchers(_log: common.ILog) {
 }
 
 
-export function stopWatching(_srcdir: string) {
-    watcher.ClearWatchDirectory(_srcdir);
+export function stopWatching(_srcdir: string, _log: common.ILog) {
+    watcher.ClearWatchDirectory(_srcdir, _log);
 }
 
-export function clearAllWatchers() {
+export function clearAllWatchers(_log: common.ILog) {
     if (watcher.GetWatchList().size > 0) {
         vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
-        watcher.ClearAll();
+        watcher.ClearAll(_log);
     }
 
 }

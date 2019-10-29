@@ -32,3 +32,25 @@ export class Log {
 export function createLog(_channel: vscode.OutputChannel) : common.ILog {
     return new Log(_channel);
 }
+
+export class NullLog {
+
+
+    constructor() {
+    }
+
+    public warning(msg: string): any {
+    }
+
+    public appendLine(msg: string): any {
+    }
+
+    public clear(): any {
+    }
+
+}
+
+
+export function createNullLog() : common.ILog {
+    return new NullLog();
+}

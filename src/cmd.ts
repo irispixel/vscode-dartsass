@@ -14,8 +14,8 @@ function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _
     watchDirectory(_srcdir, config, _log);
 }
 
-function cmdUnwatchDirectory(_srcdir: vscode.Uri) {
-    unwatchDirectory(_srcdir);
+function cmdUnwatchDirectory(_srcdir: vscode.Uri, _log: common.ILog) {
+    unwatchDirectory(_srcdir, _log);
 }
 
 function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
@@ -65,7 +65,7 @@ export function registerCommands(subscriptions: vscode.Disposable[], _log: commo
         cmdWatchDirectory(_srcdir, globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.unwatchDir', (_srcdir: vscode.Uri) => {
-        cmdUnwatchDirectory(_srcdir);
+        cmdUnwatchDirectory(_srcdir, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.viewSassWatchers', () => {
         cmdViewSassWatchers(globalConfig, _log);

@@ -24,11 +24,11 @@ export function reloadConfiguration(_log: common.ILog) : void {
             if (projectRoot !== null) {
                 relaunch(projectRoot.fsPath, extensionConfig, _log);
             } else {
-                clearAllWatchers();
+                clearAllWatchers(_log);
             }
         },
         err => {
-            clearAllWatchers();
+            clearAllWatchers(_log);
             vscode.window.showErrorMessage(err);
         }
     );

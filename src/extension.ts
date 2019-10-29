@@ -9,12 +9,13 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { registerCommands } from './cmd';
-import { createLog } from './log';
+import { createLog, createNullLog } from './log';
 import { reloadConfiguration, startBuildOnSaveWatcher } from './core';
 import { createStatusBarItem } from './statusbar';
 import { clearAllWatchers } from './watcher';
 
 let _channel: (vscode.OutputChannel|null) = null;
+let _nullLog = createNullLog();
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -43,5 +44,5 @@ export function deactivate() {
         _channel.clear();
         _channel.dispose();
     }
-    clearAllWatchers();
+    clearAllWatchers(_nullLog);
 }
