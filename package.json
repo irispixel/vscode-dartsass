@@ -167,13 +167,13 @@
         "@types/vscode": "1.37.0",
         "glob": "7.1.5",
         "mocha": "6.2.2",
-        "source-map-support": "0.5.15",
+        "source-map-support": "0.5.16",
         "tslint": "5.20.0",
         "typescript": "3.6.4",
-        "vscode-test": "1.2.0",
+        "vscode-test": "1.2.2",
         "ts-node": "8.4.1",
         "webpack": "4.41.2",
-        "webpack-cli": "3.3.9",
+        "webpack-cli": "3.3.10",
         "ts-loader": "6.2.1",
         "lodash": "4.17.15"
     }
