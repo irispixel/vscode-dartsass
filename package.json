@@ -165,7 +165,7 @@
         "@types/mocha": "5.2.7",
         "@types/node": "12.11.7",
         "@types/vscode": "1.37.0",
-        "glob": "7.1.5",
+        "glob": "7.1.6",
         "mocha": "6.2.2",
         "source-map-support": "0.5.16",
         "tslint": "5.20.1",
