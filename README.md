@@ -199,3 +199,5 @@ This VSCode extension is released under [MIT license](LICENSE).
 ## Release Notes
 
 See [CHANGELOG](CHANGELOG.md) for more details.
+
+[ TOC Courtesy: [github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
