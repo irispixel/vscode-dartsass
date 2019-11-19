@@ -129,7 +129,8 @@
                         "type": "string"
                     },
                     "default": [
-                        "last 2 version"
+                        "> 1%",
+                        "last 2 versions"
                     ],
                     "description": "List of browsers for which autoprefix needs to generate code. Defaults to `last 2 version`."
                 },

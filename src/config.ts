@@ -21,7 +21,7 @@ export class Config {
         config.pauseInterval = configuration.get<number>('pauseInterval', 10);
         config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);
         config.disableAutoPrefixer = configuration.get<boolean>('disableAutoPrefixer', false);
-        config.autoPrefixBrowsersList = configuration.get<Array<string>>('autoPrefixBrowsersList', new Array<string>("last 2 version"));
+        config.autoPrefixBrowsersList = configuration.get<Array<string>>('autoPrefixBrowsersList', new Array<string>("> 1%", "last 2 versions"));
         return config;
     }
 }
