@@ -3,16 +3,29 @@
 
 Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass) to css and minified css.
 
-## Install
-
-You can install it from inside VSCode by using the following command
-
-`
-ext install malvahq.dartsass
-`
-
+* [Usage](#usage)
+* [Install](#install)
+    * [Inside VSCode](#inside-vscode)
+    * [Marketplace](#marketplace)
+* [Menus](#menus)
+    * [DartSass: Sass Watch](#dartsass-sass-watch)
+    * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
+* [Commands](#commands)
+    * [QuikSass: Compile Current File](#quiksass-compile-current-file)
+    * [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
+    * [QuikSass: View Watcher List](#quiksass-view-watcher-list)
+* [Properties](#properties)
+* [Features](#features)
+    * [Pure Javascript SASS](#pure-javascript-sass)
+    * [Smart Imports](#smart-imports)
+    * [Customize Directory](#customize-directory)
+* [License](#license)
+* [Requirements](#requirements)
+* [Release Notes](#release-notes)
 
 ## Usage
+
+<img src="https://github.com/malvahq/vscode-plugin-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
 
 The plugin gets activated when .scss files are opened and saved.
 
@@ -21,7 +34,22 @@ It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automa
 By default, the Dart/JS compiler gets activated with every save of the current editor file.
 If that is too aggressive, see `dartsass.pauseInterval` below.
 
-## Menu
+
+## Install
+
+### Inside VSCode
+
+You can install it from inside VSCode by using the following command
+
+`
+ext install malvahq.dartsass
+`
+
+### Marketplace
+
+You can install [malvahq.dartsass](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) from the VSCode Marketplace.
+
+## Menus
 
 ### DartSass: Sass Watch
 
@@ -157,9 +185,6 @@ By default, it looks for packages in `package.json` in the root directory of the
 
 To customize the same, check `dartsass.sassWorkingDirectory`. More details below in extension settings.
 
-## Install
-
-You can install [malvahq.dartsass](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) from the VSCode Marketplace as appropriate.
 
 ## License
 
