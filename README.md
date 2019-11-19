@@ -200,4 +200,4 @@ This VSCode extension is released under [MIT license](LICENSE).
 
 See [CHANGELOG](CHANGELOG.md) for more details.
 
-[ TOC Courtesy: [github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
+[ TOC Credit: [github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
