@@ -118,7 +118,7 @@ This extension contributes the following properties:
 * `dartsass.pauseInterval`: Default: 10. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
 * `dartsass.enableStartWithUnderscores`: Default: false. Enables compilation of files that start with underscores.
 * `dartsass.disableAutoPrefixer`: Default: false. Disables postcss processing using autoprefixer library.
-* `dartsass.autoPrefixBrowsersList`: Default: ["last 2 version"]. List of browsers to be specified for autoprefixer. See https://github.com/browserslist/browserslist#readme for more details.
+* `dartsass.autoPrefixBrowsersList`: Default: ["> 1%", "last 2 versions"]. List of browsers to be specified for autoprefixer. See https://github.com/browserslist/browserslist#readme for more details.
 * `dartsass.targetDirectory`: Default: Empty. The target directory to write the generated css files.
 
   This can be an absolute directory or a directory, relative to project root.
