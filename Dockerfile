@@ -11,8 +11,9 @@ FROM node:${NODE_VERSION}
 RUN apk add python make g++
 RUN node --version
 RUN npm --version
-RUN npm install -g npm@${NPM_VERSION}
-ARG VSCE_VERSION=1.68.0
+RUN echo "npm updated on Nov 20 2019"
+RUN npm install -g npm
+ENV VSCE_VERSION=1.69.0
 
 RUN echo "vsce @ ${VSCE_VERSION}"
 RUN npm install -g vsce@${VSCE_VERSION}
