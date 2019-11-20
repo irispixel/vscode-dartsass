@@ -7,6 +7,7 @@ Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass)
 * [Install](#install)
     * [Inside VSCode](#inside-vscode)
     * [Marketplace](#marketplace)
+* [Activation](#activation)
 * [Menus](#menus)
     * [DartSass: Sass Watch](#dartsass-sass-watch)
     * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
@@ -19,21 +20,16 @@ Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass)
     * [Pure Javascript SASS](#pure-javascript-sass)
     * [Smart Imports](#smart-imports)
     * [Customize Directory](#customize-directory)
+* [FAQ](#faq)
 * [License](#license)
-* [Requirements](#requirements)
-* [Release Notes](#release-notes)
+* [ChangeLog](#changelog)
+
 
 ## Usage
 
 <img src="https://github.com/malvahq/vscode-plugin-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
 
-The plugin gets activated when .scss files are opened and saved.
-
 It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automatically for the given .scss file in the editor.
-
-By default, the Dart/JS compiler gets activated with every save of the current editor file.
-If that is too aggressive, see `dartsass.pauseInterval` below.
-
 
 ## Install
 
@@ -48,6 +44,12 @@ ext install malvahq.dartsass
 ### Marketplace
 
 You can install [malvahq.dartsass](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) from the VSCode Marketplace.
+
+## Activation
+
+The plugin gets activated when .scss files are opened.
+
+By default, with every save of .scss file - the plugin uses the built-in Sass Compiler to compile the scss files
 
 ## Menus
 
@@ -185,18 +187,32 @@ By default, it looks for packages in `package.json` in the root directory of the
 
 To customize the same, check `dartsass.sassWorkingDirectory`. More details below in extension settings.
 
+## FAQ
+
+ 1. Does this plugin comes pre-built with Sass Compiler ?
+
+    Yes. by default - the plugin comes pre-built with one of the more recent releases of sass compiler. So - you would not need to install sass compiler locally in your system for the plugin to be active.
+
+ 1. I already have Sass compiler installed in my system in PATH or would like to try a sass compiler installed in a specific path ? How can I configure the same ?
+
+    By default - the plugin uses the built-in sass compiler used internally. To use an external binary, see option `sassBinPath` mentioned above. Point `sassBinPath` to the binary (say, `/usr/local/bin/sass` ) in User / Workspace for vscode and then start saving the files. Now the plugin will use the external sass binary as opposed to the built-in sass library for the compilation.
+
+ 1. The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?
+
+    By default, the Dart/JS compiler gets activated with every save of the current editor file.
+If that is too aggressive, see `pauseInterval` configuration option above ( in seconds ). It can be used to configure the pause interval between successive compilations to use resources less aggressively.
+
+
+ 1. I would like to use Autoprefixer for my compilation. Does this plugin support the same ?
+
+    The plugin comes built-in with autoprefixer support. See `autoPrefixBrowsersList` option to configure the browserslist for which autoprefixer needs to generate code (using postcss).
+
 
 ## License
 
 This VSCode extension is released under [MIT license](LICENSE).
 
-
-
-## Requirements
-
-
-
-## Release Notes
+## ChangeLog
 
 See [CHANGELOG](CHANGELOG.md) for more details.
 
