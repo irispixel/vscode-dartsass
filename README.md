@@ -189,7 +189,7 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
 ## FAQ
 
- 1. Does this plugin comes pre-built with Sass Compiler ?
+ 1. Does this plugin come pre-built with Sass Compiler ?
 
     Yes. by default - the plugin comes pre-built with one of the more recent releases of sass compiler. So - you would not need to install sass compiler locally in your system for the plugin to be active.
 
