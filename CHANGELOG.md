@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.81
+  * Upgrade sass , autoprefixer, postcss and browserslist libraries.
+
 ### 0.0.80
   * browserlist: default option changed to "> 1%" and "last 2 versions" .
 
