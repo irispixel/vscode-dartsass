@@ -3,19 +3,21 @@
 
 Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass) to css and minified css.
 
+
 * [Usage](#usage)
 * [Install](#install)
     * [Inside VSCode](#inside-vscode)
     * [Marketplace](#marketplace)
 * [Activation](#activation)
-* [Menus](#menus)
-    * [DartSass: Sass Watch](#dartsass-sass-watch)
-    * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
-* [Commands](#commands)
-    * [QuikSass: Compile Current File](#quiksass-compile-current-file)
-    * [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
-    * [QuikSass: View Watcher List](#quiksass-view-watcher-list)
-* [Properties](#properties)
+* [Configuration](#configuration)
+    * [Menus](#menus)
+      * [DartSass: Sass Watch](#dartsass-sass-watch)
+      * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
+    * [Commands](#commands)
+      * [QuikSass: Compile Current File](#quiksass-compile-current-file)
+      * [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
+      * [QuikSass: View Watcher List](#quiksass-view-watcher-list)
+    * [Properties](#properties)
 * [Features](#features)
     * [Pure Javascript SASS](#pure-javascript-sass)
     * [Smart Imports](#smart-imports)
@@ -23,8 +25,7 @@ Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass)
 * [FAQ](#faq)
 * [License](#license)
 * [ChangeLog](#changelog)
-* [TODO](#todo)
-
+* [Todo](#todo)
 
 ## Usage
 
