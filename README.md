@@ -203,6 +203,21 @@ If that is too aggressive, see `pauseInterval` configuration option above ( in s
 
     The plugin comes built-in with autoprefixer support. See `autoPrefixBrowsersList` option to configure the browserslist for which autoprefixer needs to generate code (using postcss).
 
+ 1.  I would like to compile a directory of .scss files everytime the files in the directory are changed. How do we do that ?
+
+     The plugin has an option called "Watch Directory" that goes with the context menu associated with a directory in the file explorer panel.
+
+     This option launches a separate sass watch command in the background to implement the same.
+
+1. When I launch a "Watch Directory" , I get an error saying - "Directory watcher is not supported.". What could be going wrong ?
+
+   The directory watch functionality depends on the sass command line binary (platform-specific). So you need to install sass binary separately and then specify the binary using `sassBinPath` plugin configuration property ( See above ).
+
+1. I have watched a directory. Now I would like to unwatch the same and kill external processes that are watching as well.
+
+    Right click on a directory that is being watched already. Click "DartSass: Unwatch directory". This will `unwatch` the directory and kill the sass watch external process, if any.
+
+    If the directory was not being watched , a warning message will popup indicating that the directory was not being previously watched.
 
 ## License
 
@@ -217,4 +232,4 @@ See [CHANGELOG](CHANGELOG.md) for more details.
 ## Todo
 
 
-  1. Also the list of watchers need to be better visualized than the naive output in the console.
+  1. The list of directory watchers need to be better visualized than the naive output in the console.
