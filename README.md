@@ -228,9 +228,11 @@ This VSCode extension is released under [MIT license](LICENSE).
 
 See [CHANGELOG](CHANGELOG.md) for more details.
 
-[ TOC Credit: [ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
-
 ## Todo
 
 
   1. The list of directory watchers need to be better visualized than the naive output in the console.
+
+## Credits
+
+  1. [ TOC Credit: [ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
