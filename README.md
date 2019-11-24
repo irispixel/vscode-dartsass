@@ -51,9 +51,13 @@ The plugin gets activated when .scss files are opened.
 
 By default, with every save of .scss file - the plugin uses the built-in Sass Compiler to compile the scss files
 
-## Menus
+## Configuration
 
-### DartSass: Sass Watch
+More details of the plugin can be found at [vscode-plugin-dartsass Page](https://malvahq.github.io/vscode-plugin-dartsass/).
+
+### Menus
+
+#### DartSass: Sass Watch
 
   In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass Watch` .
   This option appears only in the case of a directory and not in case of individual files.
@@ -84,7 +88,7 @@ By default, with every save of .scss file - the plugin uses the built-in Sass Co
   2) Also the list of watchers need to be better visualized than the naive output in the console.
   ```
 
-### DartSass: Sass Unwatch
+#### DartSass: Sass Unwatch
 
   In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass UnWatch` .
   This option appears only in the case of a directory and not in case of individual files.
@@ -93,21 +97,21 @@ By default, with every save of .scss file - the plugin uses the built-in Sass Co
 
   In case the directory was not watched before, a warning message appears indicating that no watcher exists for that directory.
 
-## Commands
+### Commands
 
-### QuikSass: Compile Current File
+#### QuikSass: Compile Current File
 
 Compiles the current scss file in the active editor to .css and .min.css file as appropriate.
 
-### QuikSass: Sass Compiler Version
+#### QuikSass: Sass Compiler Version
 
 Prints out the current sass compiler version being used.
 
-### QuikSass: View Watcher List
+#### QuikSass: View Watcher List
 
 Views the list of watchers by this sass plugin
 
-## Properties
+### Properties
 
 This extension contributes the following properties:
 
@@ -181,7 +185,7 @@ Then, we can import the package, `sass-mq` in our scss file using a shorthand no
 
 The plugin will include the modules defined in `package.json` (and hence, the generated modules present in the `node_modules` directory) when transpiling the .scss files inline.
 
-#### Customize Directory
+### Customize Directory
 
 By default, it looks for packages in `package.json` in the root directory of the current project. ( and hence, the packages in `node_modules`)
 
