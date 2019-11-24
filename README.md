@@ -23,6 +23,7 @@ Compiles .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass)
 * [FAQ](#faq)
 * [License](#license)
 * [ChangeLog](#changelog)
+* [TODO](#todo)
 
 
 ## Usage
@@ -78,15 +79,6 @@ More details of the plugin can be found at [vscode-plugin-dartsass Page](https:/
   To view the list of watched processes / directories, use the command: `DartSass: View Sass Watchers` and then check the `Output` under `DartJS Sass`.
 
   It will list all the watched source directories and the pid (tested in unix) for those processes.
-
-  ```
-  TODO: 1) Right now, there is no way to kill / unwatch the directories from
-  inside the IDE individually one at a time.
-
-  Although all the processes eventually get killed when we close the IDE though.
-
-  2) Also the list of watchers need to be better visualized than the naive output in the console.
-  ```
 
 #### DartSass: Sass Unwatch
 
@@ -220,4 +212,9 @@ This VSCode extension is released under [MIT license](LICENSE).
 
 See [CHANGELOG](CHANGELOG.md) for more details.
 
-[ TOC Credit: [github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
+[ TOC Credit: [ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
+
+## Todo
+
+
+  1. Also the list of watchers need to be better visualized than the naive output in the console.
