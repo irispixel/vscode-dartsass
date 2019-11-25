@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.82
+  * Add better FAQ documentation to README.
+
 ### 0.0.81
   * Upgrade sass , autoprefixer, postcss and browserslist libraries.
 
