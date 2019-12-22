@@ -17,5 +17,7 @@ renovate.json
 INSTALL.md
 node_modules
 out
+.dockerignore
+_config.yml
 
 
