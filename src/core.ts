@@ -6,7 +6,7 @@
 
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
-import {Doc, getProjectRoot} from './doc';
+import {Doc} from './doc';
 import { Config }  from './config';
 import { relaunch, clearAllWatchers } from './watcher';
 
@@ -14,15 +14,11 @@ export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
 
 
-export function reloadConfiguration(_log: common.ILog) : void {
-    const configuration = vscode.workspace.getConfiguration(pluginName);
-    extensionConfig = Config.extractFrom(configuration);
-    _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
-    common.Validate(extensionConfig, _log).then(
+function doReloadConfiguration(projectRoot: string, _log: common.ILog): void {
+    common.Validate(extensionConfig, projectRoot, _log).then(
         value => {
-            const projectRoot = getProjectRoot(null);
             if (projectRoot !== null) {
-                relaunch(projectRoot.fsPath, extensionConfig, _log);
+                relaunch(projectRoot, extensionConfig, _log);
             } else {
                 clearAllWatchers(_log);
             }
@@ -32,6 +28,18 @@ export function reloadConfiguration(_log: common.ILog) : void {
             vscode.window.showErrorMessage(err);
         }
     );
+}
+
+export function reloadConfiguration(_log: common.ILog) : void {
+    const configuration = vscode.workspace.getConfiguration(pluginName);
+    extensionConfig = Config.extractFrom(configuration);
+    _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
+    var editor = vscode.window.activeTextEditor;
+    var projectRoot = "";
+    if (editor && typeof editor !== 'undefined') {
+        projectRoot = new Doc(editor.document).getProjectRoot();
+    }
+    doReloadConfiguration(projectRoot, _log);
 }
 
 

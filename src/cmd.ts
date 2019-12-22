@@ -10,6 +10,7 @@ import {Doc} from './doc';
 import { extensionConfig as globalConfig  } from './core';
 import { watchDirectory, listWatchers, unwatchDirectory } from './watcher';
 
+
 function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _log: common.ILog) {
     watchDirectory(_srcdir, config, _log);
 }
@@ -23,11 +24,16 @@ function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
 }
 
 function cmdSayVersion(config: common.CompilerConfig, _log: common.ILog) {
-    common.SayVersion(config, _log).then(
-        value => {
-            vscode.window.showInformationMessage(value);
-        }
-    );
+    var editor = vscode.window.activeTextEditor;
+    if (editor && typeof editor !== 'undefined') {
+        common.SayVersion(config, new Doc(editor.document).getProjectRoot(), _log).then(
+            value => {
+                vscode.window.showInformationMessage(value);
+            }
+        );
+    } else {
+        vscode.window.showErrorMessage(`No Active Project Found or Editor not defined currently`);
+    }
 }
 
 function cmdCompileCurrentFile(config: common.CompilerConfig,
