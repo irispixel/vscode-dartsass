@@ -129,7 +129,11 @@ This extension contributes the following properties:
       If this property is empty, then the value defaults to `dartsass.targetDirectory` . If `dartsass.targetDirectory` is also empty, then this value defaults to the same directory as that of the source files.
    1. `dartsass.sassBinPath`: Default: Empty.
 
-       Eg: `/usr/local/bin/sass` PATH of sass binary to be used to compile. [ `Beta` yet. ]
+       Eg: `/usr/local/bin/sass` PATH of sass binary to be used to compile.
+
+       Also can be a relative PATH to the root of the current project ( identified by the file being edited by the active editor ).
+
+       Eg: `node_modules/.bin/sass` ( assuming the `package.json` contains a dependency along the lines of `sass:"1.24.0"` , say  and has been installed already locally)
 
        By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
    1. `dartsass.debug`: Default: false. Best applicable for developers of this extension only.
