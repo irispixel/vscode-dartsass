@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.83
+  * Upgrade sass to 1.24.0
+  * Upgrade postcss, autoprefixer and browserslist libraries.
+  * Introduce new property `dartsass.disableSourceMap` that disables source map generation if not necessary. By default, sourceMaps are generated though, as before.
+
 ### 0.0.82
   * Add better FAQ documentation to README.
 
