@@ -33,12 +33,12 @@ function doReloadConfiguration(projectRoot: string, _log: common.ILog): void {
 export function reloadConfiguration(_log: common.ILog) : void {
     const configuration = vscode.workspace.getConfiguration(pluginName);
     extensionConfig = Config.extractFrom(configuration);
-    _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)}`);
     var editor = vscode.window.activeTextEditor;
     var projectRoot = "";
     if (editor && typeof editor !== 'undefined') {
         projectRoot = new Doc(editor.document).getProjectRoot();
     }
+    _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
     doReloadConfiguration(projectRoot, _log);
 }
 

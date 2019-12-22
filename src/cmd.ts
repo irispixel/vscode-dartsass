@@ -26,7 +26,9 @@ function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
 function cmdSayVersion(config: common.CompilerConfig, _log: common.ILog) {
     var editor = vscode.window.activeTextEditor;
     if (editor && typeof editor !== 'undefined') {
-        common.SayVersion(config, new Doc(editor.document).getProjectRoot(), _log).then(
+        const projectRoot =   new Doc(editor.document).getProjectRoot();
+        _log.appendLine(`sayVersion with projectRoot ${projectRoot}`);
+        common.SayVersion(config, projectRoot, _log).then(
             value => {
                 vscode.window.showInformationMessage(value);
             }
