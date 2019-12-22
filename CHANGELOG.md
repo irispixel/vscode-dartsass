@@ -1,11 +1,12 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
-### 0.0.85
+### 0.0.86
   * Patch `sassBinPath` such that it accepts relative path as well. It accepts relativePath to the current projectRoot (identified by the file edited by the active editor. )
 
+### 0.0.85
 ### 0.0.84
-  * Development version published by mistake. Ignore.
+  * Development version(s) published by mistake. Ignore.
 
 ### 0.0.83
   * Upgrade sass to 1.24.0
