@@ -2,8 +2,6 @@
 
 # https://hub.docker.com/_/node?tab=tags
 ARG NODE_VERSION=10.18.0-alpine
-# Only specifically npm < 5.6 works for vsce.
-# For more details refer to [vscode-vsce/issues/246](https://github.com/Microsoft/vscode-vsce/issues/246#issuecomment-379565583) .
 FROM node:${NODE_VERSION}
 RUN apk add python make g++
 RUN node --version
