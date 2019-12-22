@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.0.87
+  * Bugfix on 0.0.86 where the `includePath` directories were not used by the `--watch` option for sass
+
 ### 0.0.86
   * Patch `sassBinPath` such that it accepts relative path as well. It accepts relativePath to the current projectRoot (identified by the file edited by the active editor. )
 
