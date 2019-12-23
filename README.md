@@ -176,13 +176,28 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     This should help install a local sass binary in your project under your project tree, and can be used for `watching` Sass directories, if you don't have a global sass installation.
 
-1. I used to use `node-sass` package. Can I use that in place of `sass` in the steps above ?
+1. I used to use `node-sass` package. Can I use that in place of `sass` in step 3) above ?
 
     The plugin has been written for `sass` package only and does not support `node-sass`. Not to mention , `node-sass` is platform dependent and deprecated as well. Hence we do not support the same.
 
 
+1. I have scss files that contain import statements that begin with "~" and used to work fine , until I had upgraded the plugin to v0.1.0+ ? What gives  ?
 
+    So earlier, we used to support the "~" prefix in import statements by using an importer called `node-sass-package-importer` . Hence it used to work.
 
+    Starting from v0.1.0 though, support for `node-sass-package-importer` has been removed since then. So now your import statement becomes as follows.
+
+    Earlier - `@import "~/bootstrap/scss/functions.scss"`
+
+    would now be rewritten without the prefix "~/" as below:
+
+    `@import "bootstrap/scss/functions.scss"`
+
+    Also - you would want to set the `includePath` property as below:
+
+    `"dartsass.includePath": "node_modules"`
+
+    property ( that is a list of strings ), assuming the node_modules is in the root of the project under discussion. Else modify the above property accordingly.
 
  1. The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?
 
