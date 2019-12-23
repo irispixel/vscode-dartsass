@@ -193,11 +193,11 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     `@import "bootstrap/scss/functions.scss"`
 
-    Also - you would want to set the `includePath` property as below:
+    Also - you would want to set the `includePath` property (list of strings) as below:
 
-    `"dartsass.includePath": "node_modules"`
+    `"dartsass.includePath": ["node_modules"]`
 
-    property ( that is a list of strings ), assuming the node_modules is in the root of the project under discussion. Else modify the above property accordingly.
+    assuming the node_modules is in the root of the project under discussion. Else modify the above property accordingly.
 
  1. The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?
 
