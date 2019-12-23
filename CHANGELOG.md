@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+
+### 0.0.88
+  * Add important logging statements for watching directory with custom sassBinPath.
+
 ### 0.0.87
   * Bugfix on 0.0.86 where the `includePath` directories were not used by the `--watch` option for sass
 
