@@ -199,6 +199,10 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     assuming the node_modules is in the root of the project under discussion. Else modify the above property accordingly.
 
+    Changing the import statements and adding to `includePath` property should fix any changes broken by the upgrade.
+
+    It is also better because eventually when the css files get packed /minified for distribution, they can be passed the conventional parameter `sass -I includeDir ..` to be compiled so avoiding any non-standard prefixes like **~** in the files helps that case.
+
  1. **The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?**
 
     By default, the Dart/JS compiler gets activated with every save of the current editor file.
