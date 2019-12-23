@@ -88,11 +88,6 @@
                     "default": "",
                     "description": "Sets the PATH to the sass binary if installed in your system. Defaults to empty string. Default implies using the built-in packaged sass library for compilation."
                 },
-                "dartsass.sassWorkingDirectory": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Sets the cwd - current working directory for `node-sass-package-importer`. Defaults to project root directory."
-                },
                 "dartsass.disableCompileOnSave": {
                     "type": "boolean",
                     "default": false,
@@ -164,7 +159,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.4.5"
+        "dartsass-plugin-common": "0.4.6"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",

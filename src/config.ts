@@ -11,7 +11,6 @@ export class Config {
     public static extractFrom(configuration: vscode.WorkspaceConfiguration) : common.CompilerConfig {
         const config = new common.CompilerConfig();
         config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
-        config.sassWorkingDirectory = configuration.get<string>('sassWorkingDirectory', '');
         config.sassBinPath = configuration.get<string>('sassBinPath', '');
         config.targetDirectory = configuration.get<string>('targetDirectory', '');
         config.targetMinifiedDirectory = configuration.get<string>('targetMinifiedDirectory', '');
