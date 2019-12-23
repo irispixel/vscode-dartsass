@@ -160,6 +160,30 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     By default - the plugin uses the built-in sass compiler used internally. To use an external binary, see option `sassBinPath` mentioned above. Point `sassBinPath` to the binary (say, `/usr/local/bin/sass` ) in User / Workspace for vscode and then start saving the files. Now the plugin will use the external sass binary as opposed to the built-in sass library for the compilation.
 
+ 1. I don't have a global sass installation / I don't have the write permission to write to the global files / I don't want to have a single global sass binary. What are my options to set `sassBinPath` now ?
+
+    In your project `package.json` , under `devDependencies`, add an entry for `sass` (version 1.19.0 - say)
+
+    `
+    "devDependencies": {
+        "sass" : "1.19.0"
+    }
+    `
+
+    Install the packages as `npm i --no-optional`
+
+    Modify the property `dartsass:sassBinPath: "node_modules/.bin/sass"` at the workspace level ( and *not at the user level*). This can also be done through "File -> Settings -> search for "DartSass" under workspace tab".
+
+    This should help install a local sass binary in your project under your project tree, and can be used for `watching` Sass directories, if you don't have a global sass installation.
+
+1. I used to use `node-sass` package. Can I use that in place of `sass` in the steps above ?
+
+    The plugin has been written for `sass` package only and does not support `node-sass`. Not to mention , `node-sass` is platform dependent and deprecated as well. Hence we do not support the same.
+
+
+
+
+
  1. The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?
 
     By default, the Dart/JS compiler gets activated with every save of the current editor file.
