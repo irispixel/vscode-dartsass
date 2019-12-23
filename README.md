@@ -152,15 +152,15 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
 ## FAQ
 
- 1. Does this plugin come pre-built with Sass Compiler ?
+ 1. **Does this plugin come pre-built with Sass Compiler ?**
 
     Yes. by default - the plugin comes pre-built with one of the more recent releases of sass compiler. So - you would not need to install sass compiler locally in your system for the plugin to be active.
 
- 1. I already have Sass compiler installed in my system in PATH or would like to try a sass compiler installed in a specific path ? How can I configure the same ?
+ 1. **I already have Sass compiler installed in my system in PATH or would like to try a sass compiler installed in a specific path ? How can I configure the same ?**
 
     By default - the plugin uses the built-in sass compiler used internally. To use an external binary, see option `sassBinPath` mentioned above. Point `sassBinPath` to the binary (say, `/usr/local/bin/sass` ) in User / Workspace for vscode and then start saving the files. Now the plugin will use the external sass binary as opposed to the built-in sass library for the compilation.
 
- 1. I don't have a global sass installation / I don't have the write permission to write to the global files / I don't want to have a single global sass binary. What are my options to set `sassBinPath` now ?
+ 1. **I don't have a global sass installation / I don't have the write permission to write to the global files / I don't want to have a single global sass binary. What are my options to set `sassBinPath` now ?**
 
     In your project `package.json` , under `devDependencies`, add an entry for `sass` (version 1.19.0 - say)
 
@@ -176,12 +176,12 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     This should help install a local sass binary in your project under your project tree, and can be used for `watching` Sass directories, if you don't have a global sass installation.
 
-1. I used to use `node-sass` package. Can I use that in place of `sass` in step 3) above ?
+1. **I used to use `node-sass` package. Can I use that in place of `sass` in step 3) above ?**
 
     The plugin has been written for `sass` package only and does not support `node-sass`. Not to mention , `node-sass` is platform dependent and deprecated as well. Hence we do not support the same.
 
 
-1. I have scss files that contain import statements that begin with "~" and used to work fine , until I had upgraded the plugin to v0.1.0+ ? What gives  ?
+1. **I have scss files that contain import statements that begin with "~" and used to work fine , until I had upgraded the plugin to v0.1.0+ ? What gives  ?**
 
     So earlier, we used to support the "~" prefix in import statements by using an importer called `node-sass-package-importer` . Hence it used to work.
 
@@ -199,27 +199,27 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     assuming the node_modules is in the root of the project under discussion. Else modify the above property accordingly.
 
- 1. The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?
+ 1. **The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?**
 
     By default, the Dart/JS compiler gets activated with every save of the current editor file.
 If that is too aggressive, see `pauseInterval` configuration option above ( in seconds ). It can be used to configure the pause interval between successive compilations to use resources less aggressively.
 
 
- 1. I would like to use Autoprefixer for my compilation. Does this plugin support the same ?
+ 1. **I would like to use Autoprefixer for my compilation. Does this plugin support the same ?**
 
     The plugin comes built-in with autoprefixer support. See `autoPrefixBrowsersList` option to configure the browserslist for which autoprefixer needs to generate code (using postcss).
 
- 1.  I would like to compile a directory of .scss files everytime the files in the directory are changed. How do we do that ?
+ 1.  **I would like to compile a directory of .scss files everytime the files in the directory are changed. How do we do that ?**
 
      The plugin has an option called "Watch Directory" that goes with the context menu associated with a directory in the file explorer panel.
 
      This option launches a separate sass watch command in the background to implement the same.
 
-1. When I launch a "Watch Directory" , I get an error saying - "Directory watcher is not supported.". What could be going wrong ?
+1. **When I launch a "Watch Directory" , I get an error saying - "Directory watcher is not supported.". What could be going wrong ?**
 
    The directory watch functionality depends on the sass command line binary (platform-specific). So you need to install sass binary separately and then specify the binary using `sassBinPath` plugin configuration property ( See above ).
 
-1. I have watched a directory. Now I would like to unwatch the same and kill external processes that are watching as well.
+1. **I have watched a directory. Now I would like to unwatch the same and kill external processes that are watching as well.**
 
     Right click on a directory that is being watched already. Click "DartSass: Unwatch directory". This will `unwatch` the directory and kill the sass watch external process, if any.
 
