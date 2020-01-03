@@ -60,10 +60,10 @@ export function listWatchers(_log: common.ILog) {
         watchList.forEach((value: number, key: string) => {
             _log.appendLine(`${key} -> ${value} ( pid )`);
         });
-        _log.appendLine(`End Of ${watchList.size} watchers`);
-        vscode.window.showInformationMessage(`Having ${watchList.size} watchers. Check output for more details.`);
+        _log.appendLine(`******************* ${watchList.size} watchers *********`);
+        vscode.window.showInformationMessage(`Having ${watchList.size} watchers. Check "Output" -> "DartJS Sass" for more details.`);
     } else {
-        vscode.window.showWarningMessage(`No watchers defined.`);
+        vscode.window.showInformationMessage(`No watchers defined.`);
     }
 }
 

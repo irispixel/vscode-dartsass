@@ -39,10 +39,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+    clearAllWatchers(_nullLog);
     if (_channel) {
         console.log("Disposing channel");
         _channel.clear();
         _channel.dispose();
     }
-    clearAllWatchers(_nullLog);
 }
