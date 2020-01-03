@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.1.1
+  * Upgrade sass to 1.24.1 , browserslist and postcss libraries as well.
+
 ### 0.1.0
   * Remove support for `node-sass-package-importer` altogether.
     This would also indicate removal of support of "~" prefix in import statements.
