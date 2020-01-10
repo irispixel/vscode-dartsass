@@ -31,8 +31,13 @@ function doReloadConfiguration(projectRoot: string, compilerConfig: common.Compi
     );
 }
 
-export function reloadConfiguration(_log: common.ILog) : common.CompilerConfig {
+export function getPluginConfiguration(): vscode.WorkspaceConfiguration {
     const configuration = vscode.workspace.getConfiguration(pluginName);
+    return configuration;
+}
+
+export function reloadConfiguration(_log: common.ILog) : common.CompilerConfig {
+    const configuration = getPluginConfiguration();
     extensionConfig = Config.extractFrom(configuration);
     const projectRoot = getActiveProjectRoot();
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);

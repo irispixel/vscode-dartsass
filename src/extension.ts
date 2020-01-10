@@ -10,9 +10,9 @@
 import * as vscode from 'vscode';
 import { registerCommands } from './cmd';
 import { createLog, createNullLog } from './log';
-import { reloadConfiguration, startBuildOnSaveWatcher } from './core';
+import { reloadConfiguration, startBuildOnSaveWatcher, getPluginConfiguration } from './core';
 import { createStatusBarItem } from './statusbar';
-import { clearAllWatchers, restoreWatchers } from './watcher';
+import { clearAllWatchers, persistWatchers, restoreWatchers } from './watcher';
 
 let _channel: (vscode.OutputChannel|null) = null;
 let _nullLog = createNullLog();
@@ -40,6 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+    persistWatchers(getPluginConfiguration(), _nullLog);
     clearAllWatchers(_nullLog);
     if (_channel) {
         console.log("Disposing channel");

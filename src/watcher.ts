@@ -92,6 +92,24 @@ export function stopWatching(_srcdir: string, _log: common.ILog) {
     watcher.ClearWatchDirectory(_srcdir, _log);
 }
 
+export function persistWatchers(conf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+    if (watcher.GetWatchList().size > 0) {
+        vscode.window.showInformationMessage(`Persisting ${watcher.GetWatchList().size} sass watchers`);
+        const watchDirectories = new Array<string>();
+        watcher.GetWatchList().forEach((value: number, key: string) => {
+            watchDirectories.push(key);
+        });
+        conf.update("watchDirectories", watchDirectories, false).then(
+            value => {
+                console.log("Updated watchDirectories to ${watchDirectories}");
+            },
+            err => {
+                vscode.window.showErrorMessage("Failed to update value ${err}");
+            }
+        );
+    }
+}
+
 export function clearAllWatchers(_log: common.ILog) {
     if (watcher.GetWatchList().size > 0) {
         vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
