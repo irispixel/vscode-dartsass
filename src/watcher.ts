@@ -99,13 +99,13 @@ export function persistWatchers(conf: vscode.WorkspaceConfiguration, _log: commo
         watcher.GetWatchList().forEach((value: number, key: string) => {
             watchDirectories.push(key);
         });
-        _log.appendLine('Persisting ${watchDirectories}');
+        _log.appendLine(`Persisting ${watchDirectories}`);
         conf.update("watchDirectories", watchDirectories, false).then(
             value => {
-                console.log("Updated watchDirectories to ${watchDirectories}");
+                console.log(`Updated watchDirectories to ${watchDirectories}`);
             },
             err => {
-                vscode.window.showErrorMessage("Failed to update value ${err}");
+                vscode.window.showErrorMessage(`Failed to update value ${err}`);
             }
         );
     }
