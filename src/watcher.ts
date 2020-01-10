@@ -99,6 +99,7 @@ export function persistWatchers(conf: vscode.WorkspaceConfiguration, _log: commo
         watcher.GetWatchList().forEach((value: number, key: string) => {
             watchDirectories.push(key);
         });
+        _log.appendLine('Persisting ${watchDirectories}');
         conf.update("watchDirectories", watchDirectories, false).then(
             value => {
                 console.log("Updated watchDirectories to ${watchDirectories}");
