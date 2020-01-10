@@ -150,6 +150,14 @@
                     "type": "string",
                     "default": "",
                     "description": "Sets the target directory where the generated minified css are written. Default: None (Implying same directory as source)"
+                },
+                "dartsass.watchDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "description": "List of directories to be watched by the sass compiler. Default: Empty array."
                 }
             }
         }
@@ -166,7 +174,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.4.7"
+        "dartsass-plugin-common": "0.4.8"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",

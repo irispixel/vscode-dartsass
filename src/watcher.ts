@@ -7,6 +7,7 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import { getProjectRoot } from './doc';
 import { myStatusBarItem } from './statusbar';
+import  { getActiveProjectRoot } from './project';
 
 const watcher = new common.Watcher();
 
@@ -37,6 +38,25 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
             vscode.window.showErrorMessage(`${err}`);
         }
     );
+}
+
+export function restoreWatchers(config: common.CompilerConfig, _log: common.ILog) {
+    const projectRoot = getActiveProjectRoot();
+    if (config.watchDirectories.length === 0) {
+        return;
+    }
+    for (const watchDir of config.watchDirectories) {
+        watcher.Watch(watchDir, projectRoot, config, _log).then(
+            value => {
+                vscode.window.showInformationMessage(`Watching Directory ${watchDir}`);
+                updateStatusBar(watcher);
+            },
+            err => {
+                vscode.window.showErrorMessage(`${err}`);
+            }
+        );
+    }
+
 }
 
 export function unwatchDirectory(_srcdir: vscode.Uri, _log: common.ILog) {

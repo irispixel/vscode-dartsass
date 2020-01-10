@@ -9,12 +9,13 @@ import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 import { Config }  from './config';
 import { relaunch, clearAllWatchers } from './watcher';
+import  { getActiveProjectRoot } from './project';
 
 export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
 
 
-function doReloadConfiguration(projectRoot: string, _log: common.ILog): void {
+function doReloadConfiguration(projectRoot: string, compilerConfig: common.CompilerConfig, _log: common.ILog): void {
     common.Validate(extensionConfig, projectRoot, _log).then(
         value => {
             if (projectRoot !== null) {
@@ -30,16 +31,13 @@ function doReloadConfiguration(projectRoot: string, _log: common.ILog): void {
     );
 }
 
-export function reloadConfiguration(_log: common.ILog) : void {
+export function reloadConfiguration(_log: common.ILog) : common.CompilerConfig {
     const configuration = vscode.workspace.getConfiguration(pluginName);
     extensionConfig = Config.extractFrom(configuration);
-    var editor = vscode.window.activeTextEditor;
-    var projectRoot = "";
-    if (editor && typeof editor !== 'undefined') {
-        projectRoot = new Doc(editor.document).getProjectRoot();
-    }
+    const projectRoot = getActiveProjectRoot();
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
-    doReloadConfiguration(projectRoot, _log);
+    doReloadConfiguration(projectRoot, extensionConfig, _log);
+    return extensionConfig;
 }
 
 

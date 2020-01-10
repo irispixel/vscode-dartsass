@@ -22,6 +22,7 @@ export class Config {
         config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);
         config.disableAutoPrefixer = configuration.get<boolean>('disableAutoPrefixer', false);
         config.autoPrefixBrowsersList = configuration.get<Array<string>>('autoPrefixBrowsersList', new Array<string>("> 1%", "last 2 versions"));
+        config.watchDirectories = configuration.get<Array<string>>('watchDirectories', new Array<string>());
         return config;
     }
 }

@@ -12,7 +12,7 @@ import { registerCommands } from './cmd';
 import { createLog, createNullLog } from './log';
 import { reloadConfiguration, startBuildOnSaveWatcher } from './core';
 import { createStatusBarItem } from './statusbar';
-import { clearAllWatchers } from './watcher';
+import { clearAllWatchers, restoreWatchers } from './watcher';
 
 let _channel: (vscode.OutputChannel|null) = null;
 let _nullLog = createNullLog();
@@ -28,7 +28,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 
     const _log = createLog(_channel);
-    reloadConfiguration(_log);
+    const compilerConfig = reloadConfiguration(_log);
+    restoreWatchers(compilerConfig, _log);
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
