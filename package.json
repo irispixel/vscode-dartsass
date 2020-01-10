@@ -26,7 +26,8 @@
         "onLanguage:scss",
         "onCommand:dartsass.saySassVersion",
         "onCommand:dartsass.compileCurrentFile",
-        "onCommand:dartsass.viewSassWatchers"
+        "onCommand:dartsass.viewSassWatchers",
+        "onCommand:dartsass.persistWatchers"
     ],
     "main": "./dist/extension",
     "contributes": {
@@ -76,6 +77,10 @@
             {
                 "command": "dartsass.viewSassWatchers",
                 "title": "DartSass: View Sass Watchers"
+            },
+            {
+                "command": "dartsass.persistWatchers",
+                "title": "DartSass: Persist Watchers"
             }
         ],
         "configuration": {

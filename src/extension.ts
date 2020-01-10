@@ -47,4 +47,10 @@ export function deactivate() {
         _channel.clear();
         _channel.dispose();
     }
+    setTimeout(
+        function() {
+            _nullLog.appendLine("deactivate completed");
+        },
+        10000
+    );
 }
