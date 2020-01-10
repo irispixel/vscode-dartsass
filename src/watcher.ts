@@ -56,7 +56,6 @@ export function restoreWatchers(config: common.CompilerConfig, _log: common.ILog
             }
         );
     }
-
 }
 
 export function unwatchDirectory(_srcdir: vscode.Uri, _log: common.ILog) {
