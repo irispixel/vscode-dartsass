@@ -34,6 +34,7 @@ function cmdSayVersion(config: common.CompilerConfig, _log: common.ILog) {
         _log.appendLine(`sayVersion with projectRoot ${projectRoot}`);
         common.SayVersion(config, projectRoot, _log).then(
             value => {
+                common.libVersions(_log);                
                 vscode.window.showInformationMessage(value);
             }
         );
