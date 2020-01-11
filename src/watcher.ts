@@ -55,12 +55,12 @@ export function unwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerCon
             } else {
                 vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
             }
+            updateStatusBar(watcher);
         },
         err => {
             vscode.window.showInformationMessage(`${err}`);
         }
     );
-    updateStatusBar(watcher);
 }
 
 export function listWatchers(_log: common.ILog) {
