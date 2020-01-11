@@ -27,7 +27,7 @@
         "onCommand:dartsass.saySassVersion",
         "onCommand:dartsass.compileCurrentFile",
         "onCommand:dartsass.viewSassWatchers",
-        "onCommand:dartsass.persistWatchers"
+        "onCommand:dartsass.restartWatchers"
     ],
     "main": "./dist/extension",
     "contributes": {
