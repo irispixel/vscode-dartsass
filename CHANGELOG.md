@@ -3,7 +3,8 @@ All notable changes to the "dartsass" extension will be documented in this file.
 
 ### 0.2.0
   * Upgrade built-in sass library to 1.24.4.
-  * New feature added to watch directories that persists across sessions. After a restart, directories previously watched get restarted as well.
+  * New feature added to watch directories that persists across sessions. 
+    Hence, sass directories previously watched before the last exit of vsce , continue to get watched after the restart as well.
   * Add new command - `dartsass.restartWatchers` that restarts the watchers from within the IDE. 
   * Add new command - `dartsass.persistWatchers` that persists the watchers across multiple sessions of the IDE.
 
