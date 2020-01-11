@@ -6,30 +6,14 @@
 
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
-import {Doc} from './doc';
+import { Doc } from './doc';
 import { Config }  from './config';
-import { relaunch, clearAllWatchers } from './watcher';
+import { clearAllWatchers } from './watcher';
 import  { getActiveProjectRoot } from './project';
 
 export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
 
-
-function doReloadConfiguration(projectRoot: string, compilerConfig: common.CompilerConfig, _log: common.ILog): void {
-    common.Validate(extensionConfig, projectRoot, _log).then(
-        value => {
-            if (projectRoot !== null) {
-                relaunch(projectRoot, extensionConfig, _log);
-            } else {
-                clearAllWatchers(_log);
-            }
-        },
-        err => {
-            clearAllWatchers(_log);
-            vscode.window.showErrorMessage(err);
-        }
-    );
-}
 
 export function getPluginConfiguration(): vscode.WorkspaceConfiguration {
     const configuration = vscode.workspace.getConfiguration(pluginName);
@@ -41,7 +25,14 @@ export function reloadConfiguration(_log: common.ILog) : common.CompilerConfig {
     extensionConfig = Config.extractFrom(configuration);
     const projectRoot = getActiveProjectRoot();
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
-    doReloadConfiguration(projectRoot, extensionConfig, _log);
+    common.Validate(extensionConfig, projectRoot, _log).then(
+        value => {
+        },
+        err => {
+            clearAllWatchers(_log);
+            vscode.window.showErrorMessage(err);
+        }
+    );
     return extensionConfig;
 }
 

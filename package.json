@@ -81,6 +81,10 @@
             {
                 "command": "dartsass.persistWatchers",
                 "title": "DartSass: Persist Watchers"
+            },
+            {
+                "command": "dartsass.restartWatchers",
+                "title": "DartSass: Restart Sass Watchers"
             }
         ],
         "configuration": {

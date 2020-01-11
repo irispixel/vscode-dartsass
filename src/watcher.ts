@@ -118,6 +118,15 @@ export function clearAllWatchers(_log: common.ILog) {
 
 }
 
+export function restartWatchers(extensionConfig: common.CompilerConfig, _log: common.ILog) {
+    const projectRoot = getActiveProjectRoot();
+    if (projectRoot !== null) {
+        relaunch(projectRoot, extensionConfig, _log);
+    } else {
+        clearAllWatchers(_log);
+    }
+}
+
 export function relaunch(projectRoot: string, config: common.CompilerConfig, _log: common.ILog) {
     watcher.Relaunch(projectRoot, config, _log);
 }
