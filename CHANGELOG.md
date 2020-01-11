@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
-### 0.1.3
+### 0.2.0
   * Upgrade built-in sass library to 1.24.4.
   * New feature added to watch directories that persists across sessions. After a restart, directories previously watched get restarted as well.
   * Add new command - `dartsass.restartWatchers` that restarts the watchers from within the IDE. 

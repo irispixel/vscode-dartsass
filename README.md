@@ -103,10 +103,6 @@ Prints out the current sass compiler version being used.
 
 Views the list of watchers by this sass plugin
 
-#### QuikSass: Restart Sass Watchers
-
-Restarts the sass watchers again from within the IDE. Useful in case of configuration changes like `sassBinPath` , `targetDirectory` etc.
-
 ### Properties
 
 This extension contributes the following properties:
