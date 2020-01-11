@@ -8,7 +8,6 @@ import * as common from 'dartsass-plugin-common';
 import { getProjectRoot } from './doc';
 import { myStatusBarItem } from './statusbar';
 import  { getActiveProjectRoot } from './project';
-
 const watcher = new common.Watcher();
 
 
@@ -29,11 +28,11 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
         return "";
     }
     const projectRoot = uri.fsPath;
-    watcher.Watch(_srcdir.fsPath, projectRoot, config, _log).then(
+    const srcdir =  common.xformPath(projectRoot, _srcdir.fsPath); 
+    common.watchDirectory(srcdir, config).then(
         value => {
-            vscode.window.showInformationMessage(`Watching Directory ${_srcdir.fsPath}`);
-            updateStatusBar(watcher);
-            persistWatchers(vsconf, _log);
+            vscode.window.showInformationMessage(`About to watch directory ${srcdir}`);
+            doPersistWatchers(vsconf, config.watchDirectories, _log);
         },
         err => {
             vscode.window.showErrorMessage(`${err}`);
@@ -41,36 +40,26 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
     );
 }
 
-export function restoreWatchers(config: common.CompilerConfig, _log: common.ILog) {
-    const projectRoot = getActiveProjectRoot();
-    if (config.watchDirectories.length === 0) {
-        return;
-    }
-    for (const watchDir of config.watchDirectories) {
-        watcher.Watch(watchDir, projectRoot, config, _log).then(
-            value => {
-                vscode.window.showInformationMessage(`Watching Directory ${watchDir}`);
-                updateStatusBar(watcher);
-            },
-            err => {
-                vscode.window.showErrorMessage(`${err}`);
-            }
-        );
-    }
-}
-
-export function unwatchDirectory(_srcdir: vscode.Uri, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+export function unwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
     const uri = getProjectRoot(_srcdir);
     if (!uri) {
         return "";
     }
     const projectRoot = uri.fsPath;
-    if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, _log)) {
-        vscode.window.showWarningMessage(`Directory ${_srcdir.fsPath} not being watched before.`);
-    } else {
-        vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
-    }
-    persistWatchers(vsconf, _log);
+    const srcdir =  common.xformPath(projectRoot, _srcdir.fsPath); 
+    common.unwatchDirectory(srcdir, config).then(
+        value => {
+            doPersistWatchers(vsconf, config.watchDirectories, _log);
+            if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, _log)) {
+                vscode.window.showWarningMessage(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
+            } else {
+                vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
+            }
+        },
+        err => {
+            vscode.window.showInformationMessage(`${err}`);
+        }
+    );
     updateStatusBar(watcher);
 }
 
@@ -93,25 +82,6 @@ export function stopWatching(_srcdir: string, _log: common.ILog) {
     watcher.ClearWatchDirectory(_srcdir, _log);
 }
 
-export function persistWatchers(conf: vscode.WorkspaceConfiguration, _log: common.ILog) {
-    if (watcher.GetWatchList().size > 0) {
-        vscode.window.showInformationMessage(`Persisting ${watcher.GetWatchList().size} sass watchers`);
-        const watchDirectories = new Array<string>();
-        watcher.GetWatchList().forEach((value: number, key: string) => {
-            watchDirectories.push(key);
-        });
-        _log.appendLine(`Persisting ${watchDirectories}`);
-        conf.update("watchDirectories", watchDirectories, false).then(
-            value => {
-                _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
-            },
-            err => {
-                vscode.window.showErrorMessage(`Failed to update value ${err}`);
-            }
-        );
-    }
-}
-
 export function clearAllWatchers(_log: common.ILog) {
     if (watcher.GetWatchList().size > 0) {
         vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
@@ -129,6 +99,28 @@ export function restartWatchers(extensionConfig: common.CompilerConfig, _log: co
     }
 }
 
+export function doPersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
+    _log.appendLine(`Persisting ${watchDirectories}`);
+    conf.update("watchDirectories", watchDirectories, false).then(
+        value => {
+            _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
+        },
+        err => {
+            vscode.window.showErrorMessage(`Failed to update value ${err}`);
+        }
+    );
+}
+
 export function relaunch(projectRoot: string, config: common.CompilerConfig, _log: common.ILog) {
-    watcher.Relaunch(projectRoot, config, _log);
+    const promises = watcher.Relaunch(projectRoot, config, _log);
+    for (const promise of promises) {
+        promise.then(
+            value => {
+                updateStatusBar(watcher);
+            },
+            err => {
+                vscode.window.showErrorMessage(`${err}`);
+            }
+        );
+    }
 }

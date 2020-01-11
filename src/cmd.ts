@@ -8,23 +8,19 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 import { extensionConfig as globalConfig, getPluginConfiguration } from './core';
-import { watchDirectory, listWatchers, unwatchDirectory, persistWatchers, restartWatchers } from './watcher';
+import { watchDirectory, listWatchers, unwatchDirectory, restartWatchers } from './watcher';
 
 
 function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
     watchDirectory(_srcdir, config, vsconf, _log);
 }
 
-function cmdUnwatchDirectory(_srcdir: vscode.Uri, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
-    unwatchDirectory(_srcdir, vsconf, _log);
+function cmdUnwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+    unwatchDirectory(_srcdir, config, vsconf, _log);
 }
 
 function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
     listWatchers(_log);
-}
-
-function cmdPersistSassWatchers(vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
-    persistWatchers(vsconf, _log);
 }
 
 function cmdRestartWatchers(config: common.CompilerConfig, _log: common.ILog) {
@@ -82,11 +78,7 @@ export function registerCommands(subscriptions: vscode.Disposable[], _log: commo
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.unwatchDir', (_srcdir: vscode.Uri) => {
         const vsconf = getPluginConfiguration();
-        cmdUnwatchDirectory(_srcdir, vsconf, _log);
-    }));
-    subscriptions.push(vscode.commands.registerCommand('dartsass.persistWatchers', () => {
-        const vsconf = getPluginConfiguration();        
-        cmdPersistSassWatchers(vsconf, _log);
+        cmdUnwatchDirectory(_srcdir, globalConfig, vsconf, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.restartWatchers', () => {
         cmdRestartWatchers(globalConfig, _log);
