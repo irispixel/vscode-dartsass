@@ -11,20 +11,20 @@ import { extensionConfig as globalConfig, getPluginConfiguration } from './core'
 import { watchDirectory, listWatchers, unwatchDirectory, persistWatchers, restartWatchers } from './watcher';
 
 
-function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _log: common.ILog) {
-    watchDirectory(_srcdir, config, _log);
+function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+    watchDirectory(_srcdir, config, vsconf, _log);
 }
 
-function cmdUnwatchDirectory(_srcdir: vscode.Uri, _log: common.ILog) {
-    unwatchDirectory(_srcdir, _log);
+function cmdUnwatchDirectory(_srcdir: vscode.Uri, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+    unwatchDirectory(_srcdir, vsconf, _log);
 }
 
 function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
     listWatchers(_log);
 }
 
-function cmdPersistSassWatchers(_log: common.ILog) {
-    persistWatchers(getPluginConfiguration(), _log);
+function cmdPersistSassWatchers(vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+    persistWatchers(vsconf, _log);
 }
 
 function cmdRestartWatchers(config: common.CompilerConfig, _log: common.ILog) {
@@ -70,7 +70,6 @@ function cmdCompileCurrentFile(config: common.CompilerConfig,
 
 
 export function registerCommands(subscriptions: vscode.Disposable[], _log: common.ILog) {
-    // _log.appendLine(sassCompiler.sayVersion(_log));
     subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
         cmdSayVersion(globalConfig, _log);
     }));
@@ -78,13 +77,16 @@ export function registerCommands(subscriptions: vscode.Disposable[], _log: commo
         cmdCompileCurrentFile(globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.watchDir', (_srcdir: vscode.Uri) => {
-        cmdWatchDirectory(_srcdir, globalConfig, _log);
+        const vsconf = getPluginConfiguration();
+        cmdWatchDirectory(_srcdir, globalConfig, vsconf, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.unwatchDir', (_srcdir: vscode.Uri) => {
-        cmdUnwatchDirectory(_srcdir, _log);
+        const vsconf = getPluginConfiguration();
+        cmdUnwatchDirectory(_srcdir, vsconf, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.persistWatchers', () => {
-        cmdPersistSassWatchers(_log);
+        const vsconf = getPluginConfiguration();        
+        cmdPersistSassWatchers(vsconf, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.restartWatchers', () => {
         cmdRestartWatchers(globalConfig, _log);

@@ -23,7 +23,7 @@ export function updateStatusBar(watcher: common.Watcher) {
     }
 }
 
-export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, _log: common.ILog) {
+export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
     const uri = getProjectRoot(_srcdir);
     if (!uri) {
         return "";
@@ -33,6 +33,7 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
         value => {
             vscode.window.showInformationMessage(`Watching Directory ${_srcdir.fsPath}`);
             updateStatusBar(watcher);
+            persistWatchers(vsconf, _log);
         },
         err => {
             vscode.window.showErrorMessage(`${err}`);
@@ -58,7 +59,7 @@ export function restoreWatchers(config: common.CompilerConfig, _log: common.ILog
     }
 }
 
-export function unwatchDirectory(_srcdir: vscode.Uri, _log: common.ILog) {
+export function unwatchDirectory(_srcdir: vscode.Uri, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
     const uri = getProjectRoot(_srcdir);
     if (!uri) {
         return "";
@@ -69,6 +70,7 @@ export function unwatchDirectory(_srcdir: vscode.Uri, _log: common.ILog) {
     } else {
         vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
     }
+    persistWatchers(vsconf, _log);
     updateStatusBar(watcher);
 }
 
