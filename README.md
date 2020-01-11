@@ -132,6 +132,14 @@ This extension contributes the following properties:
        Eg: `node_modules/.bin/sass` ( assuming the `package.json` contains a dependency along the lines of `sass:"1.24.0"` , say  and has been installed already locally)
 
        By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
+   1. `dartsass.watchDirectories`: Default: `[]` - Empty Array of strings.
+
+      When vsce restarts, the `watchDirectories` are watched again by the native sass compiler. The sass cmd-line processes are respawned again automatically so there is no need to watch the directories again. 
+
+      There is no need to set this property manually in the workspace. When the user selects "DartSass: Watch Directory" ( or "DartSass: Unwatch Directory" ) from the context menu of a directory this property is automatically modified to reflect the list of directories being watched. 
+
+      So for all practical purposes, this property is used as a pseudo-persistent store across vsce sessions by the plugin itself and the user need not bother to modify it directly.
+
    1. `dartsass.debug`: Default: false. Best applicable for developers of this extension only.
 
 ## Features
