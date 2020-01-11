@@ -66,7 +66,7 @@ export function unwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerCon
 export function listWatchers(_log: common.ILog) {
     const watchList: Map<string, number> = watcher.GetWatchList();
     if (watchList.size > 0) {
-        _log.appendLine(`Having ${watchList.size} watchers`);
+        _log.appendLine(`******************* ${watchList.size} watchers begin *********`);
         watchList.forEach((value: number, key: string) => {
             _log.appendLine(`${key} -> ${value} ( pid )`);
         });
