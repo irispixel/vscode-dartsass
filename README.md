@@ -46,6 +46,9 @@ ext install malvahq.dartsass
 
 You can install [malvahq.dartsass](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) from the VSCode Marketplace.
 
+**Like it , then feel free to share**  
+<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dmalvahq.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
+
 ## Activation
 
 The plugin gets activated when .scss files are opened.
@@ -253,3 +256,6 @@ See [CHANGELOG](CHANGELOG.md) for more details.
 ## Credits
 
   1. [ TOC Credit: [ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
+
+**Like it , then feel free to share**  
+<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dmalvahq.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
