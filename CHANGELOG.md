@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.2.3
+  * Better documentation explaining `watchDirectories` property added.
+
+### 0.2.2
+  * Remove deprecated command from the list of watchers.
+
 ### 0.2.1
   * A better efficient way of restarting watchers after a session of vsce.
   
