@@ -100,13 +100,12 @@ export function restartWatchers(extensionConfig: common.CompilerConfig, _log: co
 }
 
 export function doPersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
-    _log.appendLine(`Persisting ${watchDirectories}`);
     conf.update("watchDirectories", watchDirectories, false).then(
         value => {
             _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
         },
         err => {
-            vscode.window.showErrorMessage(`Failed to update value ${err}`);
+            vscode.window.showErrorMessage(`Failed to update watchDirectories ${err}`);
         }
     );
 }
