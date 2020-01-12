@@ -118,7 +118,7 @@ export function relaunch(projectRoot: string, config: common.CompilerConfig, _lo
                 updateStatusBar(watcher);
             },
             err => {
-                vscode.window.showErrorMessage(`${err}`);
+                vscode.window.showErrorMessage(`Relaunch failed: ${err}`);
             }
         );
     }
