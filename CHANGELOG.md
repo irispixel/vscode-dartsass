@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "dartsass" extension will be documented in this file.
 
+### 0.2.4
+  * Upgrade built-in sass to 1.24.5 .
+  * Upgrade autoprefixer to 9.7.4
+
+
 ### 0.2.3
   * Better documentation explaining `watchDirectories` property added.
 
@@ -9,11 +14,11 @@ All notable changes to the "dartsass" extension will be documented in this file.
 
 ### 0.2.1
   * A better efficient way of restarting watchers after a session of vsce.
-  
+
 
 ### 0.2.0
   * Upgrade built-in sass library to 1.24.4.
-  * New feature added to watch directories that persists across sessions. 
+  * New feature added to watch directories that persists across sessions.
     Hence, sass directories previously watched before the last exit of vsce , continue to get watched after the restart as well.
 
 ### 0.1.1
