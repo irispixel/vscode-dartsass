@@ -1,5 +1,4 @@
 # Change Log
-All notable changes to the "dartsass" extension will be documented in this file.
 
 ### 0.2.4
   * Upgrade built-in sass to 1.24.5 .
