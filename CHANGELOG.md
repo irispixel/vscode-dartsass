@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.2.5
+  * Upgrade built-in sass to 1.25.0 .
+
 ### 0.2.4
   * Upgrade built-in sass to 1.24.5 .
   * Upgrade autoprefixer to 9.7.4
