@@ -9,8 +9,8 @@ RUN apk add python make g++ && \
 RUN echo "npm updated on Nov 20 2019" && \
     npm install -g npm
 ENV VSCE_VERSION=1.71.0
-RUN echo "vsce @ ${VSCE_VERSION}"
-RUN npm install -g vsce@${VSCE_VERSION}
+RUN echo "vsce @ ${VSCE_VERSION}" && \
+    npm install -g vsce@${VSCE_VERSION}
 
 ARG DEVEL_USER=develop
 RUN cat /etc/os-release && \
