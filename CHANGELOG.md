@@ -1,5 +1,11 @@
 # Change Log
 
+### 0.2.7
+  * Follow up to the previous release addressing #17. 
+
+    In case, `targetMinifiedDirectory` is not specified then the second sass watcher for minified directory is not launched. 
+    Since this would end up with having 2 watchers with the same destination directory and it causes confusion , the plugin prefer to not launch the minified sass launcher in case `targetMinifiedDirectory` is not specified.
+
 ### 0.2.6
   * Very important bugfix. See #17 for more details. 
     There was a bug related to how watchers were generating only minified files and not the non-minified files. Also there was an issue with nomenclature ( minified files getting generated in files without the .min.css suffix). Please upgrade to fix the same.
