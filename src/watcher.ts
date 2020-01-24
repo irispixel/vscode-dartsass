@@ -12,7 +12,7 @@ const watcher = new common.Watcher();
 
 
 export function updateStatusBar(watcher: common.Watcher) {
-    const watchList: Map<string, number> = watcher.GetWatchList();
+    const watchList: Map<string, Array<number>> = watcher.GetWatchList();
     const numWatchers: number = watchList.size;
     if (numWatchers > 0) {
         myStatusBarItem.text = `Sass Watchers: ${numWatchers}`;
@@ -64,11 +64,11 @@ export function unwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerCon
 }
 
 export function listWatchers(_log: common.ILog) {
-    const watchList: Map<string, number> = watcher.GetWatchList();
+    const watchList: Map<string, Array<number>> = watcher.GetWatchList();
     if (watchList.size > 0) {
         _log.appendLine(`******************* ${watchList.size} watchers begin *********`);
-        watchList.forEach((value: number, key: string) => {
-            _log.appendLine(`${key} -> ${value} ( pid )`);
+        watchList.forEach((pids: Array<number>, key: string) => {
+            _log.appendLine(`${key} -> ${pids} ( pid )`);
         });
         _log.appendLine(`******************* ${watchList.size} watchers *********`);
         vscode.window.showInformationMessage(`Having ${watchList.size} watchers. Check "Output" -> "DartJS Sass" for more details.`);
