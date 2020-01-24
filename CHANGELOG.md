@@ -1,5 +1,12 @@
 # Change Log
 
+### 0.2.6
+  * Very important bugfix. See #17 for more details. 
+    There was a bug related to how watchers were generating only minified files and not the non-minified files. Also there was an issue with nomenclature ( minified files getting generated in files without the .min.css suffix). Please upgrade to fix the same.
+    From now on, 2 sass watcher processes get launched with every `DartSass: Watch Directory` menuitem/command.  The first watcher generates normal css files without being minified and the second watcher generates the minified files as well. More CPU load as well. 
+    If the flag - `disableMinifiedFileGeneration` is set , then the second watcher process is not launched at all.
+
+
 ### 0.2.5
   * Upgrade built-in sass to 1.25.0 .
 
