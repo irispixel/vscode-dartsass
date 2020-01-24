@@ -1,5 +1,14 @@
 # Change Log
 
+### 0.2.8
+  * In case of minified files, the sass watcher still uses the prefix .css (as opposed to .min.css which seems more logical) when we specify `targetMinifiedDirectory`.
+
+    Until now, when we edit files in the editor and save, the plugin used to save minified files with a .min.css extension. 
+
+    To synchronize behavior with underlying sass watcher nomenclature, from now on, even in editor when we save files, the minified files are saved as `.css` files only without the `.min` suffix in it. 
+
+    Of course, in case `targetDirectory` and `targetMinifiedDirectory` are the same , then `.min.css` suffix is used so as to not step on/overwrite non-minified files by mistake.
+
 ### 0.2.7
   * Follow up to the previous release addressing #17. 
 
