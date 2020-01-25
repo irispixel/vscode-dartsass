@@ -5,6 +5,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 
 export function GetActiveProjectRoot() {
@@ -14,4 +15,15 @@ export function GetActiveProjectRoot() {
         projectRoot = new Doc(editor.document).getProjectRoot();
     }
     return projectRoot;
+}
+
+export function PersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
+    conf.update("watchDirectories", watchDirectories, false).then(
+        value => {
+            _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
+        },
+        err => {
+            vscode.window.showErrorMessage(`Failed to update watchDirectories ${err}`);
+        }
+    );
 }

@@ -7,7 +7,7 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import { GetProjectRoot } from './doc';
 import { myStatusBarItem } from './statusbar';
-import  { GetActiveProjectRoot } from './project';
+import  { GetActiveProjectRoot, PersistWatchers } from './project';
 const watcher = new common.Watcher();
 
 
@@ -32,7 +32,7 @@ export function WatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
     common.watchDirectory(srcdir, config).then(
         value => {
             vscode.window.showInformationMessage(`About to watch directory ${srcdir}`);
-            doPersistWatchers(vsconf, config.watchDirectories, _log);
+            PersistWatchers(vsconf, config.watchDirectories, _log);
         },
         err => {
             vscode.window.showErrorMessage(`${err}`);
@@ -49,7 +49,7 @@ export function UnwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerCon
     const srcdir =  common.xformPath(projectRoot, _srcdir.fsPath); 
     common.unwatchDirectory(srcdir, config).then(
         value => {
-            doPersistWatchers(vsconf, config.watchDirectories, _log);
+            PersistWatchers(vsconf, config.watchDirectories, _log);
             if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, _log)) {
                 vscode.window.showWarningMessage(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
             } else {
@@ -93,17 +93,6 @@ export function RestartWatchers(extensionConfig: common.CompilerConfig, _log: co
     } else {
         ClearAllWatchers(_log);
     }
-}
-
-function doPersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
-    conf.update("watchDirectories", watchDirectories, false).then(
-        value => {
-            _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
-        },
-        err => {
-            vscode.window.showErrorMessage(`Failed to update watchDirectories ${err}`);
-        }
-    );
 }
 
 function relaunch(projectRoot: string, config: common.CompilerConfig, _log: common.ILog) {
