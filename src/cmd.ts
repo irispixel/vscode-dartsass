@@ -7,7 +7,7 @@
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
-import { extensionConfig as globalConfig, getPluginConfiguration } from './core';
+import { extensionConfig as globalConfig, GetPluginConfiguration } from './core';
 import { WatchDirectory, ListWatchers, UnwatchDirectory, RestartWatchers } from './watcher';
 
 
@@ -74,11 +74,11 @@ export function registerCommands(subscriptions: vscode.Disposable[], _log: commo
         cmdCompileCurrentFile(globalConfig, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.watchDir', (_srcdir: vscode.Uri) => {
-        const vsconf = getPluginConfiguration();
+        const vsconf = GetPluginConfiguration();
         cmdWatchDirectory(_srcdir, globalConfig, vsconf, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.unwatchDir', (_srcdir: vscode.Uri) => {
-        const vsconf = getPluginConfiguration();
+        const vsconf = GetPluginConfiguration();
         cmdUnwatchDirectory(_srcdir, globalConfig, vsconf, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.restartWatchers', () => {

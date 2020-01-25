@@ -15,13 +15,13 @@ export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
 
 
-export function getPluginConfiguration(): vscode.WorkspaceConfiguration {
+export function GetPluginConfiguration(): vscode.WorkspaceConfiguration {
     const configuration = vscode.workspace.getConfiguration(pluginName);
     return configuration;
 }
 
-export function reloadConfiguration(_log: common.ILog) : common.CompilerConfig {
-    const configuration = getPluginConfiguration();
+export function ReloadConfiguration(_log: common.ILog) : common.CompilerConfig {
+    const configuration = GetPluginConfiguration();
     extensionConfig = Config.extractFrom(configuration);
     const projectRoot = getActiveProjectRoot();
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
@@ -38,10 +38,10 @@ export function reloadConfiguration(_log: common.ILog) : common.CompilerConfig {
 }
 
 
-export function startBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _log: common.ILog) {
+export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], _log: common.ILog) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
-            reloadConfiguration(_log);
+            ReloadConfiguration(_log);
         }
     });
     vscode.workspace.onDidChangeWorkspaceFolders((e: vscode.WorkspaceFoldersChangeEvent) => {

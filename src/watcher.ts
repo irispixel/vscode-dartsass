@@ -5,7 +5,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
-import { getProjectRoot } from './doc';
+import { GetProjectRoot } from './doc';
 import { myStatusBarItem } from './statusbar';
 import  { getActiveProjectRoot } from './project';
 const watcher = new common.Watcher();
@@ -23,7 +23,7 @@ function updateStatusBar(watcher: common.Watcher) {
 }
 
 export function WatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
-    const uri = getProjectRoot(_srcdir);
+    const uri = GetProjectRoot(_srcdir);
     if (!uri) {
         return "";
     }
@@ -41,7 +41,7 @@ export function WatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
 }
 
 export function UnwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
-    const uri = getProjectRoot(_srcdir);
+    const uri = GetProjectRoot(_srcdir);
     if (!uri) {
         return "";
     }

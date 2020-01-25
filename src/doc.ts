@@ -6,7 +6,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-export function getFileName(document: vscode.TextDocument) {
+function getFileName(document: vscode.TextDocument) {
     if (document.languageId === 'scss') {
         return  path.basename(document.fileName, '.scss');
     } else if (document.languageId === 'sass') {
@@ -16,7 +16,7 @@ export function getFileName(document: vscode.TextDocument) {
     }
 }
 
-export function getProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
+export function GetProjectRoot(documentUri: (vscode.Uri|null)) : (vscode.Uri| null) {
     if (documentUri) {
         let thisFolder = vscode.workspace.getWorkspaceFolder(documentUri);
         if (thisFolder) {
@@ -52,7 +52,7 @@ export class Doc {
     }
 
     getProjectRoot(): string {
-        const uri = getProjectRoot(this.document.uri);
+        const uri = GetProjectRoot(this.document.uri);
         if (!uri) {
             return "";
         }
