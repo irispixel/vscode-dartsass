@@ -66,7 +66,7 @@ function cmdCompileCurrentFile(config: common.CompilerConfig,
 }
 
 
-export function registerCommands(subscriptions: vscode.Disposable[], _log: common.ILog) {
+export function RegisterCommands(subscriptions: vscode.Disposable[], _log: common.ILog) {
     subscriptions.push(vscode.commands.registerCommand('dartsass.saySassVersion', () => {
         cmdSayVersion(globalConfig, _log);
     }));

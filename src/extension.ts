@@ -8,14 +8,14 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { registerCommands } from './cmd';
-import { createLog, createNullLog } from './log';
+import { RegisterCommands } from './cmd';
+import { CreateLog, CreateNullLog } from './log';
 import { ReloadConfiguration, StartBuildOnSaveWatcher } from './core';
 import { createStatusBarItem } from './statusbar';
 import { ClearAllWatchers } from './watcher';
 
 let _channel: (vscode.OutputChannel|null) = null;
-let _nullLog = createNullLog();
+let _nullLog = CreateNullLog();
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -27,12 +27,12 @@ export function activate(context: vscode.ExtensionContext) {
     _channel.appendLine('Extension "dartsass" activated now!');
 
 
-    const _log = createLog(_channel);
+    const _log = CreateLog(_channel);
     ReloadConfiguration(_log);
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    registerCommands(context.subscriptions, _log);
+    RegisterCommands(context.subscriptions, _log);
     createStatusBarItem(context.subscriptions, 'dartsass.viewSassWatchers');
     StartBuildOnSaveWatcher(context.subscriptions, _log);
 }
