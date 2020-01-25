@@ -7,7 +7,7 @@
 import * as vscode from 'vscode';
 import {Doc} from './doc';
 
-export function getActiveProjectRoot() {
+export function GetActiveProjectRoot() {
     var editor = vscode.window.activeTextEditor;
     var projectRoot = "";
     if (editor && typeof editor !== 'undefined') {

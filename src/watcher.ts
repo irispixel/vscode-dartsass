@@ -7,7 +7,7 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import { GetProjectRoot } from './doc';
 import { myStatusBarItem } from './statusbar';
-import  { getActiveProjectRoot } from './project';
+import  { GetActiveProjectRoot } from './project';
 const watcher = new common.Watcher();
 
 
@@ -87,7 +87,7 @@ export function ClearAllWatchers(_log: common.ILog) {
 }
 
 export function RestartWatchers(extensionConfig: common.CompilerConfig, _log: common.ILog) {
-    const projectRoot = getActiveProjectRoot();
+    const projectRoot = GetActiveProjectRoot();
     if (projectRoot !== null) {
         relaunch(projectRoot, extensionConfig, _log);
     } else {

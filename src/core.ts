@@ -9,7 +9,7 @@ import * as common from 'dartsass-plugin-common';
 import { Doc } from './doc';
 import { Config }  from './config';
 import { ClearAllWatchers, RestartWatchers } from './watcher';
-import  { getActiveProjectRoot } from './project';
+import  { GetActiveProjectRoot } from './project';
 
 export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
@@ -23,7 +23,7 @@ export function GetPluginConfiguration(): vscode.WorkspaceConfiguration {
 export function ReloadConfiguration(_log: common.ILog) : common.CompilerConfig {
     const configuration = GetPluginConfiguration();
     extensionConfig = Config.extractFrom(configuration);
-    const projectRoot = getActiveProjectRoot();
+    const projectRoot = GetActiveProjectRoot();
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
     common.Validate(extensionConfig, projectRoot, _log).then(
         value => {
