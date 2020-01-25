@@ -63,7 +63,7 @@ export function UnwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerCon
     );
 }
 
-export function listWatchers(_log: common.ILog) {
+export function ListWatchers(_log: common.ILog) {
     const watchList: Map<string, Array<number>> = watcher.GetWatchList();
     if (watchList.size > 0) {
         _log.appendLine(`******************* ${watchList.size} watchers begin *********`);
