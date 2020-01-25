@@ -12,7 +12,7 @@ import { registerCommands } from './cmd';
 import { createLog, createNullLog } from './log';
 import { reloadConfiguration, startBuildOnSaveWatcher } from './core';
 import { createStatusBarItem } from './statusbar';
-import { clearAllWatchers } from './watcher';
+import { ClearAllWatchers } from './watcher';
 
 let _channel: (vscode.OutputChannel|null) = null;
 let _nullLog = createNullLog();
@@ -44,7 +44,7 @@ export function deactivate() {
         _channel.clear();
         _channel.dispose();
     }
-    clearAllWatchers(_nullLog);
+    ClearAllWatchers(_nullLog);
     setTimeout(
         function() {
             _nullLog.appendLine("deactivate completed");

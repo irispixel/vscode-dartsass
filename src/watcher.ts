@@ -11,7 +11,7 @@ import  { getActiveProjectRoot } from './project';
 const watcher = new common.Watcher();
 
 
-export function updateStatusBar(watcher: common.Watcher) {
+function updateStatusBar(watcher: common.Watcher) {
     const watchList: Map<string, Array<number>> = watcher.GetWatchList();
     const numWatchers: number = watchList.size;
     if (numWatchers > 0) {
@@ -22,7 +22,7 @@ export function updateStatusBar(watcher: common.Watcher) {
     }
 }
 
-export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+export function WatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
     const uri = getProjectRoot(_srcdir);
     if (!uri) {
         return "";
@@ -40,7 +40,7 @@ export function watchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
     );
 }
 
-export function unwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+export function UnwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
     const uri = getProjectRoot(_srcdir);
     if (!uri) {
         return "";
@@ -78,11 +78,7 @@ export function listWatchers(_log: common.ILog) {
 }
 
 
-export function stopWatching(_srcdir: string, _log: common.ILog) {
-    watcher.ClearWatchDirectory(_srcdir, _log);
-}
-
-export function clearAllWatchers(_log: common.ILog) {
+export function ClearAllWatchers(_log: common.ILog) {
     if (watcher.GetWatchList().size > 0) {
         vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
         watcher.ClearAll(_log);
@@ -90,16 +86,16 @@ export function clearAllWatchers(_log: common.ILog) {
 
 }
 
-export function restartWatchers(extensionConfig: common.CompilerConfig, _log: common.ILog) {
+export function RestartWatchers(extensionConfig: common.CompilerConfig, _log: common.ILog) {
     const projectRoot = getActiveProjectRoot();
     if (projectRoot !== null) {
         relaunch(projectRoot, extensionConfig, _log);
     } else {
-        clearAllWatchers(_log);
+        ClearAllWatchers(_log);
     }
 }
 
-export function doPersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
+function doPersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
     conf.update("watchDirectories", watchDirectories, false).then(
         value => {
             _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
@@ -110,7 +106,7 @@ export function doPersistWatchers(conf: vscode.WorkspaceConfiguration, watchDire
     );
 }
 
-export function relaunch(projectRoot: string, config: common.CompilerConfig, _log: common.ILog) {
+function relaunch(projectRoot: string, config: common.CompilerConfig, _log: common.ILog) {
     const promises = watcher.Relaunch(projectRoot, config, _log);
     for (const promise of promises) {
         promise.then(

@@ -8,15 +8,15 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
 import { extensionConfig as globalConfig, getPluginConfiguration } from './core';
-import { watchDirectory, listWatchers, unwatchDirectory, restartWatchers } from './watcher';
+import { WatchDirectory, listWatchers, UnwatchDirectory, RestartWatchers } from './watcher';
 
 
 function cmdWatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
-    watchDirectory(_srcdir, config, vsconf, _log);
+    WatchDirectory(_srcdir, config, vsconf, _log);
 }
 
 function cmdUnwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
-    unwatchDirectory(_srcdir, config, vsconf, _log);
+    UnwatchDirectory(_srcdir, config, vsconf, _log);
 }
 
 function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
@@ -24,7 +24,7 @@ function cmdViewSassWatchers(config: common.CompilerConfig, _log: common.ILog) {
 }
 
 function cmdRestartWatchers(config: common.CompilerConfig, _log: common.ILog) {
-    restartWatchers(config, _log);
+    RestartWatchers(config, _log);
 }
 
 function cmdSayVersion(config: common.CompilerConfig, _log: common.ILog) {
