@@ -18,6 +18,7 @@ export function GetActiveProjectRoot() {
 }
 
 export function PersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
+    // vscode.ConfigurationTarget.WorkspaceFolder
     conf.update("watchDirectories", watchDirectories, false).then(
         value => {
             _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
