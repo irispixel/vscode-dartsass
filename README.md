@@ -4,6 +4,7 @@
 VSCode plugin to compile .scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass).
 
 
+
 * [Usage](#usage)
 * [Install](#install)
     * [Inside VSCode](#inside-vscode)
@@ -25,6 +26,8 @@ VSCode plugin to compile .scss files using [Dart SASS Compiler](https://sass-lan
 * [License](#license)
 * [ChangeLog](#changelog)
 * [Todo](#todo)
+* [Credits](#credits)
+* [Share](#share)
 
 ## Usage
 
