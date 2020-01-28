@@ -24,10 +24,12 @@
     ],
     "activationEvents": [
         "onLanguage:scss",
+        "onLanguage:sass",
         "onCommand:dartsass.saySassVersion",
         "onCommand:dartsass.compileCurrentFile",
         "onCommand:dartsass.viewSassWatchers",
-        "onCommand:dartsass.restartWatchers"
+        "onCommand:dartsass.restartWatchers",
+        "onCommand:dartsass.clearAllWatchers"
     ],
     "main": "./dist/extension",
     "contributes": {
@@ -81,6 +83,10 @@
             {
                 "command": "dartsass.restartWatchers",
                 "title": "DartSass: Restart Sass Watchers"
+            },
+            {
+                "command": "dartsass.clearAllWatchers",
+                "title": "DartSass: Clear All Sass Watchers"
             }
         ],
         "configuration": {
@@ -184,7 +190,7 @@
     "devDependencies": {
         "@types/glob": "7.1.1",
         "@types/mocha": "5.2.7",
-        "@types/node": "13.1.8",
+        "@types/node": "13.5.0",
         "@types/vscode": "1.37.0",
         "glob": "7.1.6",
         "mocha": "7.0.1",
