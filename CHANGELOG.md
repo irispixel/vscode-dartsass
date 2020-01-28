@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.2.9
+  * Plugin activated in case of sass files also. So far, plugin was activated only  in case of scss files.
+  * New command `DartSass: Clear All Sass Watchers` added. This is useful if we want to clear all sass watchers without trying to figure out the existing watchers and unwatching individually.
+
 ### 0.2.8
   * In case of minified files, the sass watcher still uses the prefix .css (as opposed to .min.css which seems more logical) when we specify `targetMinifiedDirectory`.
 
