@@ -18,6 +18,7 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
       * [QuikSass: Compile Current File](#quiksass-compile-current-file)
       * [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
       * [QuikSass: View Watcher List](#quiksass-view-watcher-list)
+      * [QuikSass: Clear All Watchers](#quiksass-clear-all-watchers)
     * [Properties](#properties)
 * [Features](#features)
     * [Pure Javascript SASS](#pure-javascript-sass)
