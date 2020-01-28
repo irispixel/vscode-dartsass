@@ -18,6 +18,7 @@ function updateStatusBar(watcher: common.Watcher) {
         myStatusBarItem.text = `Sass Watchers: ${numWatchers}`;
         myStatusBarItem.show();
     } else {
+        myStatusBarItem.text = `Sass Watchers: 0`;
         myStatusBarItem.hide();
     }
 }
@@ -83,7 +84,7 @@ export function ClearAllWatchers(_log: common.ILog) {
         vscode.window.showInformationMessage(`Clearing ${watcher.GetWatchList().size} sass watchers`);
         watcher.ClearAll(_log);
     }
-
+    updateStatusBar(watcher);
 }
 
 export function RestartWatchers(extensionConfig: common.CompilerConfig, _log: common.ILog) {
