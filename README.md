@@ -109,6 +109,11 @@ Prints out the current sass compiler version being used.
 
 Views the list of watchers by this sass plugin
 
+#### QuikSass: Clear All Watchers
+
+Clears all existing sass watchers without trying to figure out all the existing watchers and unwatching them individually.
+Useful in case we want to do a quick project watcher reset.
+
 ### Properties
 
 This extension contributes the following properties:
