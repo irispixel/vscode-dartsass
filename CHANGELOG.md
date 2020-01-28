@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.0
+  * Bugfix related to `DartSass: Clear All Sass watchers` not updating sass watchers in case of corner cases.
+  
 ### 0.2.9
   * Plugin activated in case of sass files also. So far, plugin was activated only  in case of scss files.
   * New command `DartSass: Clear All Sass Watchers` added. This is useful if we want to clear all sass watchers without trying to figure out the existing watchers and unwatching individually.
