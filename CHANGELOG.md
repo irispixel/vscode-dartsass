@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.1
+  * Documentation changes
+
 ### 0.3.0
   * Bugfix related to `DartSass: Clear All Sass watchers` not updating sass watchers in case of corner cases.
   
