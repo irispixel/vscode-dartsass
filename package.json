@@ -13,11 +13,14 @@
         "vscode": "^1.37.0"
     },
     "keywords": [
+        "scss compiler plugin",
+        "sass compiler plugin",
+        "dartsass plugin",
         "sass",
+        "scss",
+        "css",
         "vsce",
-        "compiler",
-        "vsce plugin",
-        "dartjs sass"
+        "vsce plugin"
     ],
     "categories": [
         "Other"
@@ -190,7 +193,7 @@
     "devDependencies": {
         "@types/glob": "7.1.1",
         "@types/mocha": "7.0.1",
-        "@types/node": "13.5.2",
+        "@types/node": "13.5.3",
         "@types/vscode": "1.37.0",
         "glob": "7.1.6",
         "mocha": "7.0.1",
