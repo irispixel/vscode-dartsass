@@ -20,7 +20,9 @@
         "scss",
         "css",
         "vsce",
-        "vsce plugin"
+        "vsce plugin",
+        "vsce sass plugin",
+        "vsce scss plugin"
     ],
     "categories": [
         "Other"
