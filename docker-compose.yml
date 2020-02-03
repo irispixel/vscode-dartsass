@@ -2,6 +2,6 @@ version: '3'
 services:
   web:
     restart: "always"
-    image: "vscode-plugin-dartsass:10.18.0-alpine"
+    image: "vscode-plugin-dartsass:12.14.1-alpine3.11"
     volumes:
       - /opt/code/src/github.com/malvahq/vscode-plugin-dartsass:/tmp/web
