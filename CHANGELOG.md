@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.2
+  * Documentation changes with some clarity about `dartsass.sassBinPath` and "Sass watcher" functionality.
+
 ### 0.3.1
   * Documentation changes
 
