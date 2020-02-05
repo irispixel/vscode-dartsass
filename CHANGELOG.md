@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.6
+  * In case the external sass process gets killed then indicate the error as opposed to (silently) ignoring the same. 
+
 ### 0.3.4
   * Bug fix in case of sass watchers. In case , the sass watcher process is not launched correctly, a false positive is reported today.
     After this release, in case pid is undefined or null, the watcher is not launched at all.
