@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.3.4
+  * Bug fix in case of sass watchers. In case , the sass watcher process is not launched correctly, a false positive is reported today.
+    After this release, in case pid is undefined or null, the watcher is not launched at all.
+
 ### 0.3.2
   * Documentation changes with some clarity about `dartsass.sassBinPath` and "Sass watcher" functionality.
 
