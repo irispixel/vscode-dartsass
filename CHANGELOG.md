@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.9
+  * In case process is killed, do not return soon but rather let the api user handle it better. API internals only. Transparent to the user.
+
 ### 0.3.6
   * In case the external sass process gets killed then indicate the error as opposed to (silently) ignoring the same. 
 
