@@ -1,7 +1,7 @@
 # Change Log
 
 ### 0.3.13
-  * Followup fix to 0.3.12 but addresses the issue of spaces in project directories
+  * Followup fix to 0.3.12 but addresses the issue of spaces in project directories.
 
 ### 0.3.12
   * The sass watcher was not working on windows until now. See #16 for more details. First cut debugging + fix is in.
