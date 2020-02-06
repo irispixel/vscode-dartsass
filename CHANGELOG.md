@@ -1,5 +1,11 @@
 # Change Log
 
+### 0.3.11
+  * This is the same as 0.3.9 - but just made a newer release to fix regression introduced by 0.3.10
+  
+### 0.3.10
+  * This release inadvertently brought back a bug regarding watchers. Please upgrade to 0.3.11 . 
+
 ### 0.3.9
   * In case process is killed, do not return soon but rather let the api user handle it better. API internals only. Transparent to the user.
 
