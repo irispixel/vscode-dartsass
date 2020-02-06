@@ -1,7 +1,10 @@
 # Change Log
 
+### 0.3.15
+  * Release to fix regression.
+
 ### 0.3.14
-  * Add spaces to `sassbinPath` as well.
+  * Buggy release introducing a crazy regression. Please ignore.
 
 ### 0.3.13
   * Followup fix to 0.3.12 but addresses the issue of spaces in project directories.
