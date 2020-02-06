@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.12
+  * The sass watcher was not working on windows until now. See #16 for more details. First cut debugging + fix is in.
+
 ### 0.3.11
   * This is the same as 0.3.9 - but just made a newer release to fix regression introduced by 0.3.10
   
