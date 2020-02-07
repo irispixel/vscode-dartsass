@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.16
+  * In windows, projectRoot with spaces was not working earlier. Fix in for now.
+
 ### 0.3.15
   * Release to fix regression.
 
