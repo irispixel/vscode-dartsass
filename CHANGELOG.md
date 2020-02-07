@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.17
+  * Fix for windows version of sass watcher. Include path should be relative as well.
+
 ### 0.3.16
   * In windows, projectRoot with spaces was not working earlier. Fix in for now.
 
