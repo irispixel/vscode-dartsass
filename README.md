@@ -137,11 +137,19 @@ This extension contributes the following properties:
       If this property is empty, then the value defaults to `dartsass.targetDirectory` . If `dartsass.targetDirectory` is also empty, then this value defaults to the same directory as that of the source files.
    1. `dartsass.sassBinPath`: Default: Empty.
 
-       Eg: `/usr/local/bin/sass` PATH of sass binary to be used to compile.
+       Eg: `/usr/local/bin/sass` PATH of global sass compiler binary to compile sass / scss files.
 
-       Also can be a relative PATH to the root of the current project ( identified by the file being edited by the active editor ).
+       (If not available globally sass compiler can be installed globally as `npm install -g sass@1.25.0`.
 
-       Eg: `node_modules/.bin/sass` ( assuming the `package.json` contains a dependency along the lines of `sass:"1.24.0"` , say  and has been installed already locally)
+        To determine the path of global sass , do `which sass` on Linux / other posix based systems ).
+
+       This can also can be a relative path to the root of the current project, after installing it locally (say, `npm install sass@1.25.0`)
+       
+       After installation, you can set the property to , say 
+
+       `node_modules/.bin/sass` ( Linux ) - or
+
+       `node_modules/.bin/sass.cmd` ( Windows ), as appropriate
 
        By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
    1. `dartsass.watchDirectories`: Default: `[]` - Empty Array of strings.
