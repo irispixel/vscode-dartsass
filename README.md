@@ -27,8 +27,10 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
 * [License](#license)
 * [ChangeLog](#changelog)
 * [Todo](#todo)
+* [Contributing](#contributing)
 * [Credits](#credits)
 * [Share](#share)
+
 
 ## Usage
 
@@ -270,6 +272,18 @@ See [CHANGELOG](CHANGELOG.md) for more details.
 
   1. The list of directory watchers need to be better visualized than the naive output in the console.
 
+
+## Contributing
+
+The code of this plugin is published under MIT License.
+
+So if you are contributing to this plugin / extension, it is important that the source code is distributed under MIT license.
+
+Almost all the heavy-lifing of this plugin (say, interacting with sass library or using sass command line) is done by the common library -
+[DartSass Plugin Common](https://github.com/heronci/dartsass-plugin-common).
+
+So if you are looking for a bug / feature, check the dartsass-plugin-comon repository for the code that does most of the heavy-lifting.
+
 ## Credits
 
   1. [ TOC Credit: [ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
@@ -278,3 +292,4 @@ See [CHANGELOG](CHANGELOG.md) for more details.
 
 **Like it , then feel free to share**  
 <a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dmalvahq.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
+
