@@ -3,3 +3,6 @@ dist
 out
 .git
 .vscode-test
+.vscode
+Dockerfile
+docker-compose.yml
