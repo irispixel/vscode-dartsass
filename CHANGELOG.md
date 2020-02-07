@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.3.18
+  * Add better documentation.
+
 ### 0.3.17
   * Fix for windows version of sass watcher. Include path should be relative as well.
 
