@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.3.19
+  * Currently if we start a watcher for a directory and then save a file from within the IDE ( under the directory being watched ) , it compiles 2 times potentially.
+    Once by the sass watcher process and then the second by the compilation process by save. We don't need the second one as that is redundant and almost certainly results in buggy output.
+
 ### 0.3.18
   * Add better documentation.
 
