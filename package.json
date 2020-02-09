@@ -173,7 +173,7 @@
                         "type": "string"
                     },
                     "default": [],
-                    "description": "List of directories to be watched by the sass compiler. Default: Empty array."
+                    "description": "List of directories to be watched by the sass compiler. Default: Empty array. Warning: This property is not be manipulated directly. Please use the \"DartSass: Watch Directory\" /  \"DartSass: Unwatch Directory\" menuitem that appears in the context menu of the folder on the left hand side of the panel."
                 }
             }
         }
