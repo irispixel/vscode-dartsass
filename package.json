@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/malvahq/vscode-plugin-dartsass.git"
     },
-    "version": "0.3.20",
+    "version": "0.3.21",
     "engines": {
         "vscode": "^1.37.0"
     },
@@ -190,7 +190,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.7.24"
+        "dartsass-plugin-common": "0.7.25"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",
