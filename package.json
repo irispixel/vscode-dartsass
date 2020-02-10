@@ -1,6 +1,6 @@
 {
     "name": "dartsass",
-    "displayName": "DartJS Sass Compiler",
+    "displayName": "DartJS Sass Compiler and Sass Watcher",
     "description": "Compile Sass and Scss files using DartSass Compiler - Visual Studio Code (vsce) plugin",
     "publisher": "malvahq",
     "license": "MIT",
