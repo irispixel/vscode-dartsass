@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.4.1
+  * Regression of bug #12 got reintroduced recently. See #22 for more details.
+
 ### 0.4.0
   * `dartsass.watchDirectories` removed completely since it is supposed to be encapsulated from the user. See #21 (and updated README.md) for migration instructions as the equivalent functionality is supported still.
 
