@@ -166,7 +166,7 @@ This extension contributes the following properties:
 
       If you were using this option earlier - you should delete them manually from .vscode/settings.json and "rewatch" the directories again ( using "DartSass: Watch Directory" menuitem that appears ).
 
-      The functionality of persistent sass watchers is still available, so this is a 1-time change for the user as part of migration. See #21 for more details.
+      The functionality of persistent sass watchers is still available, so this is a 1-time change for the user as part of migration. See [Issue #21](https://github.com/malvahq/vscode-plugin-dartsass/issues/21) for more details.
 
       Configuration property deprecated / updated since 0.4.1+ .
 
