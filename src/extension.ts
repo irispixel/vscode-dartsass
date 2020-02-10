@@ -10,7 +10,7 @@
 import * as vscode from 'vscode';
 import { RegisterCommands } from './cmd';
 import { CreateLog, CreateNullLog } from './log';
-import { ReloadConfiguration, StartBuildOnSaveWatcher } from './core';
+import { ReloadConfiguration, StartBuildOnSaveWatcher, VerifyLegacyWatchDir } from './core';
 import { createStatusBarItem } from './statusbar';
 import { ClearAllWatchers } from './watcher';
 
@@ -28,13 +28,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 
     const _log = CreateLog(_channel);
-    ReloadConfiguration(_log);
+    ReloadConfiguration(context.workspaceState, _log);
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    RegisterCommands(context.subscriptions, _log);
+    RegisterCommands(context.subscriptions, context.workspaceState, _log);
     createStatusBarItem(context.subscriptions, 'dartsass.viewSassWatchers');
-    StartBuildOnSaveWatcher(context.subscriptions, _log);
+    StartBuildOnSaveWatcher(context.subscriptions, context.workspaceState,  _log);
+    VerifyLegacyWatchDir(_log);
 }
 
 // this method is called when your extension is deactivated
@@ -53,3 +54,4 @@ export function deactivate() {
     );
     return undefined;
 }
+

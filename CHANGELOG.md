@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.4.0
+  * `dartsass.watchDirectories` removed completely since it is supposed to be encapsulated from the user. See #21 (and updated README.md) for migration instructions as the equivalent functionality is supported still.
+
 ### 0.3.20
   * In Windows, processes were not getting killed at all when we `unwatch` a directory. Hopefully they get killed in the future.
 
@@ -30,15 +33,15 @@
 
 ### 0.3.11
   * This is the same as 0.3.9 - but just made a newer release to fix regression introduced by 0.3.10
-  
+
 ### 0.3.10
-  * This release inadvertently brought back a bug regarding watchers. Please upgrade to 0.3.11 . 
+  * This release inadvertently brought back a bug regarding watchers. Please upgrade to 0.3.11 .
 
 ### 0.3.9
   * In case process is killed, do not return soon but rather let the api user handle it better. API internals only. Transparent to the user.
 
 ### 0.3.6
-  * In case the external sass process gets killed then indicate the error as opposed to (silently) ignoring the same. 
+  * In case the external sass process gets killed then indicate the error as opposed to (silently) ignoring the same.
 
 ### 0.3.4
   * Bug fix in case of sass watchers. In case , the sass watcher process is not launched correctly, a false positive is reported today.
@@ -52,7 +55,7 @@
 
 ### 0.3.0
   * Bugfix related to `DartSass: Clear All Sass watchers` not updating sass watchers in case of corner cases.
-  
+
 ### 0.2.9
   * Plugin activated in case of sass files also. So far, plugin was activated only  in case of scss files.
   * New command `DartSass: Clear All Sass Watchers` added. This is useful if we want to clear all sass watchers without trying to figure out the existing watchers and unwatching individually.
@@ -60,22 +63,22 @@
 ### 0.2.8
   * In case of minified files, the sass watcher still uses the prefix .css (as opposed to .min.css which seems more logical) when we specify `targetMinifiedDirectory`.
 
-    Until now, when we edit files in the editor and save, the plugin used to save minified files with a .min.css extension. 
+    Until now, when we edit files in the editor and save, the plugin used to save minified files with a .min.css extension.
 
-    To synchronize behavior with underlying sass watcher nomenclature, from now on, even in editor when we save files, the minified files are saved as `.css` files only without the `.min` suffix in it. 
+    To synchronize behavior with underlying sass watcher nomenclature, from now on, even in editor when we save files, the minified files are saved as `.css` files only without the `.min` suffix in it.
 
     Of course, in case `targetDirectory` and `targetMinifiedDirectory` are the same , then `.min.css` suffix is used so as to not step on/overwrite non-minified files by mistake.
 
 ### 0.2.7
-  * Follow up to the previous release addressing #17. 
+  * Follow up to the previous release addressing #17.
 
-    In case, `targetMinifiedDirectory` is not specified then the second sass watcher for minified directory is not launched. 
+    In case, `targetMinifiedDirectory` is not specified then the second sass watcher for minified directory is not launched.
     Since this would end up with having 2 watchers with the same destination directory and it causes confusion , the plugin prefer to not launch the minified sass launcher in case `targetMinifiedDirectory` is not specified.
 
 ### 0.2.6
-  * Very important bugfix. See #17 for more details. 
+  * Very important bugfix. See #17 for more details.
     There was a bug related to how watchers were generating only minified files and not the non-minified files. Also there was an issue with nomenclature ( minified files getting generated in files without the .min.css suffix). Please upgrade to fix the same.
-    From now on, 2 sass watcher processes get launched with every `DartSass: Watch Directory` menuitem/command.  The first watcher generates normal css files without being minified and the second watcher generates the minified files as well. More CPU load as well. 
+    From now on, 2 sass watcher processes get launched with every `DartSass: Watch Directory` menuitem/command.  The first watcher generates normal css files without being minified and the second watcher generates the minified files as well. More CPU load as well.
     If the flag - `disableMinifiedFileGeneration` is set , then the second watcher process is not launched at all.
 
 

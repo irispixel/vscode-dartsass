@@ -52,7 +52,7 @@ ext install malvahq.dartsass
 
 You can install [malvahq.dartsass](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) from the VSCode Marketplace.
 
-**Like it , then feel free to share**  
+**Like it , then feel free to share**
 <a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dmalvahq.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
 
 ## Activation
@@ -146,21 +146,27 @@ This extension contributes the following properties:
         To determine the path of global sass , do `which sass` on Linux / other posix based systems ).
 
        This can also can be a relative path to the root of the current project, after installing it locally (say, `npm install sass@1.25.0`)
-       
-       After installation, you can set the property to , say 
+
+       After installation, you can set the property to , say
 
        `node_modules/.bin/sass` ( Linux ) - or
 
        `node_modules/.bin/sass.cmd` ( Windows ), as appropriate
 
        By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
-   1. `dartsass.watchDirectories`: Default: `[]` - Empty Array of strings.
+   1. <strike> `dartsass.watchDirectories`: Default: `[]` - Empty Array of strings.
 
-      When vsce restarts, the `watchDirectories` are watched again by the native sass compiler. The sass cmd-line processes are respawned again automatically so there is no need to watch the directories again. 
+      When vsce restarts, the `watchDirectories` are watched again by the native sass compiler. The sass cmd-line processes are respawned again automatically so there is no need to watch the directories again.
 
-      There is no need to set this property manually in the workspace. When the user selects "DartSass: Watch Directory" ( or "DartSass: Unwatch Directory" ) from the context menu of a directory this property is automatically modified to reflect the list of directories being watched. 
+      There is no need to set this property manually in the workspace. When the user selects "DartSass: Watch Directory" ( or "DartSass: Unwatch Directory" ) from the context menu of a directory this property is automatically modified to reflect the list of directories being watched.
 
-      So for all practical purposes, this property is used as a pseudo-persistent store across vsce sessions by the plugin itself and the user need not bother to modify it directly.
+      So for all practical purposes, this property is used as a pseudo-persistent store across vsce sessions by the plugin itself and the user need not bother to modify it directly. </strike>.
+
+      `dartsass.watchDirectories` option has been removed entirely from the plugin as it is confusing to the user , given that the user is not supposed to manipulate them manually.
+
+      If you were using this option earlier - you should delete them manually from .vscode/settings.json and "rewatch" the directories again ( using "DartSass: Watch Directory" menuitem that appears ).
+
+      The function of persistent sass watchers is still available, so this is a 1-time change for the user as part of migration. Sorry about the confusion.
 
    1. `dartsass.debug`: Default: false. Best applicable for developers of this extension only.
 
@@ -290,6 +296,6 @@ So if you are looking for a bug / feature, check the dartsass-plugin-comon repos
 
 ## Share
 
-**Like it , then feel free to share**  
+**Like it , then feel free to share**
 <a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dmalvahq.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
 

@@ -7,6 +7,7 @@
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import {Doc} from './doc';
+import { MementoKeyWatchDirectories } from './config';
 
 export function GetActiveProjectRoot() {
     var editor = vscode.window.activeTextEditor;
@@ -17,9 +18,8 @@ export function GetActiveProjectRoot() {
     return projectRoot;
 }
 
-export function PersistWatchers(conf: vscode.WorkspaceConfiguration, watchDirectories: Array<string>, _log: common.ILog) {
-    // vscode.ConfigurationTarget.WorkspaceFolder
-    conf.update("watchDirectories", watchDirectories, false).then(
+export function PersistWatchers(workspaceState: vscode.Memento, watchDirectories: Array<string>, _log: common.ILog) {
+    workspaceState.update(MementoKeyWatchDirectories, watchDirectories).then(
         value => {
             _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
         },

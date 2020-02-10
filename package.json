@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/malvahq/vscode-plugin-dartsass.git"
     },
-    "version": "0.3.22",
+    "version": "0.4.0",
     "engines": {
         "vscode": "^1.37.0"
     },
@@ -168,14 +168,6 @@
                     "type": "string",
                     "default": "",
                     "description": "Sets the target directory where the generated minified css are written. Default: None (Implying same directory as source)"
-                },
-                "dartsass.watchDirectories": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "default": [],
-                    "description": "List of directories to be watched by the sass compiler. Default: Empty array. Warning: This property is not be manipulated directly. Please use the \"DartSass: Watch Directory\" /  \"DartSass: Unwatch Directory\" menuitem that appears in the context menu of the folder on the left hand side of the panel."
                 }
             }
         }
