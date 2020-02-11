@@ -214,7 +214,7 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     This should help install a local sass binary in your project under your project tree, and can be used for `watching` Sass directories, if you don't have a global sass installation.
 
-1. **I used to use `node-sass` package. Can I use that in place of `sass` in step 3) above ?**
+1. Can I use `node-sass` package in place of `sass` in step 3) above ?**
 
     The plugin has been written for `sass` package only and does not support `node-sass`. Not to mention , `node-sass` is platform dependent and deprecated as well. Hence we do not support the same.
 
