@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.4.3
+  * Regression introduced since 0.4.0 , where if we "rewatch" a directory by mistake, it spawns and recreates the "sass watcher" processes again. Ideally it should simply say the directory was already being watched earlier.
+
 ### 0.4.2
   * In case there are spaces in includePath or watchDirectory , we do not support them currently. So flag an error then.
 

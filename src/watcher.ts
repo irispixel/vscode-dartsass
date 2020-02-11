@@ -32,10 +32,14 @@ export function WatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
     const projectRoot = uri.fsPath;
     const srcdir =  common.xformPath(projectRoot, _srcdir.fsPath);
     common.watchDirectory(srcdir, config).then(
-        value => {
-            vscode.window.showInformationMessage(`About to watch directory ${srcdir}`);
-            PersistWatchers(workspaceState, config.watchDirectories, _log);
-            RestartWatchers(config, _log);
+        (value:boolean) => {
+            if (value) {
+                vscode.window.showInformationMessage(`About to watch directory ${srcdir}`);
+                PersistWatchers(workspaceState, config.watchDirectories, _log);
+                RestartWatchers(config, _log);
+            } else {
+                vscode.window.showInformationMessage(`${srcdir} already being watched earlier`);
+            }
         },
         err => {
             vscode.window.showErrorMessage(`${err}`);
