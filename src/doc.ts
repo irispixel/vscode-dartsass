@@ -6,7 +6,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-function getFileName(document: vscode.TextDocument) {
+function getFileNameOnly(document: vscode.TextDocument) {
     if (document.languageId === 'scss') {
         return  path.basename(document.fileName, '.scss');
     } else if (document.languageId === 'sass') {
@@ -48,7 +48,7 @@ export class Doc {
     }
 
     getFileOnly(): string {
-        return getFileName(this.document);
+        return getFileNameOnly(this.document);
     }
 
     getProjectRoot(): string {
