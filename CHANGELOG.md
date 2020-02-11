@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.4.2
+  * In case there are spaces in includePath or watchDirectory , we do not support them currently. So flag an error then.
+
 ### 0.4.1
   * Regression of bug #12 got reintroduced recently. See #22 for more details.
 
