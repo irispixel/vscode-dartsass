@@ -23,6 +23,16 @@ const legacyWatchDirectoryMessage = `
     See Issue #21 in the project for more details.
 `;
 
+
+const legacyTargetMinifiedDirectoryMessage = `
+    dartsass.targetMinifiedDirectory configuration property removed.
+
+    To prevent this warning from recurring again, you may want to delete this property - dartsass.targetMinifiedDirectory - locally in your .vscode/settings.json in workspace manually.
+
+    See Issue #21 in the project for more details.
+`;
+
+
 export function GetPluginConfiguration(): vscode.WorkspaceConfiguration {
     const configuration = vscode.workspace.getConfiguration(pluginName);
     return configuration;
@@ -34,6 +44,15 @@ export function VerifyLegacyWatchDir(_log: common.ILog) {
     if (legacyWatchDirectories === undefined || legacyWatchDirectories === null) {
         _log.warning(legacyWatchDirectoryMessage);
     }
+}
+
+export function VerifyTargetMinifiedDirectory(_log: common.ILog) {
+    const configuration = GetPluginConfiguration();
+    const targetMinifiedDirectory = configuration.get<string>('targetMinifiedDirectory', '');
+    if (targetMinifiedDirectory === undefined || targetMinifiedDirectory === null) {
+        _log.warning(legacyTargetMinifiedDirectoryMessage);
+    }
+
 }
 
 export function ReloadConfiguration(workspaceState: vscode.Memento, _log: common.ILog) : common.CompilerConfig {

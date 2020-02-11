@@ -16,7 +16,6 @@ export class Config {
         config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
         config.sassBinPath = configuration.get<string>('sassBinPath', '');
         config.targetDirectory = configuration.get<string>('targetDirectory', '');
-        config.targetMinifiedDirectory = configuration.get<string>('targetMinifiedDirectory', '');
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
         config.disableSourceMap = configuration.get<boolean>('disableSourceMap', false);
         config.debug = configuration.get<boolean>('debug', false);

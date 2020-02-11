@@ -14,6 +14,10 @@ export class Log {
         this._channel = channel;
     }
 
+    public debug(msg: string): any {
+        this._channel.appendLine(`DEBUG: ${msg}`);
+    }
+
     public warning(msg: string): any {
         vscode.window.showWarningMessage(`${msg}`);
     }
@@ -37,6 +41,10 @@ export class NullLog {
 
 
     constructor() {
+    }
+
+    public debug(msg: string): any {
+
     }
 
     public warning(msg: string): any {
