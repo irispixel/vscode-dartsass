@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.1
+  * Windows specific bug fix only. Regression introduced as part of 0.5.0 so sayVersion and compileOnSave inside the IDE still works.
+
 ### 0.5.0
   * Use `chokidar` to minify files better using autoprefixer as opposed to launching 2 sass watch processes. See #25 for more details.
 

@@ -85,12 +85,17 @@ export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], work
 export function SayVersion(projectRoot: string, workspaceState: vscode.Memento, _log: Log) {
     const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
     _log.appendLine(`sayVersion with projectRoot ${projectRoot}`);
-    common.SayVersion(extensionConfig, projectRoot, _log).then(
-        value => {
-            common.getVersions();
-            vscode.window.showInformationMessage(value);
-        }
-    );
+    try {
+        common.SayVersion(extensionConfig, projectRoot, _log).then(
+            value => {
+                common.getVersions();
+                vscode.window.showInformationMessage(value);
+            }
+        );
+    } catch(err) {
+        vscode.window.showErrorMessage(`${err}`);
+    }
+
 
 }
 
