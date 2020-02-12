@@ -25,8 +25,8 @@ function cmdViewSassWatchers(workspaceState: vscode.Memento, _log: common.ILog) 
 }
 
 function cmdClearAllSassWatchers(workspaceState: vscode.Memento, _log: common.ILog) {
-    ClearAllWatchers(workspaceState, _log);
     PersistWatchers(workspaceState, [], _log);
+    ClearAllWatchers(workspaceState, _log);
 }
 
 function cmdRestartWatchers(workspaceState: vscode.Memento, _log: common.ILog) {
