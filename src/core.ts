@@ -72,7 +72,7 @@ export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], work
         }
     });
     vscode.workspace.onDidChangeWorkspaceFolders((e: vscode.WorkspaceFoldersChangeEvent) => {
-        console.log(e);
+        _log.appendLine(`Warning: Unhandled change in workspacefolder event ${e}`);
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (!extensionConfig.disableCompileOnSave) {
