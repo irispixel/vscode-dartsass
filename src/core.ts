@@ -35,8 +35,7 @@ const legacyTargetMinifiedDirectoryMessage = `
 
 
 export function GetPluginConfiguration(): vscode.WorkspaceConfiguration {
-    const configuration = vscode.workspace.getConfiguration(pluginName);
-    return configuration;
+    return vscode.workspace.getConfiguration(pluginName);
 }
 
 export function VerifyLegacyWatchDir(_log: common.ILog) {
