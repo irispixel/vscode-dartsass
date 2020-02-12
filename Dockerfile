@@ -18,6 +18,14 @@ RUN cat /etc/os-release && \
     adduser ${DEVEL_USER} node && \
     id ${DEVEL_USER}
 
+# The version of sass 1.19.0 has no significance except that it is not the
+# latest version of sass
+# ( see package.json to confirm the latest version of sass ).
+# This binary inside the container image is used
+# primarily for testing purposes only.
+ARG SASS_VERSION=1.19.0
+RUN npm install -g sass@1.19.0
+
 USER ${DEVEL_USER}
 WORKDIR /home/${DEVEL_USER}
 
