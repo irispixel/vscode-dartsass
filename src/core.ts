@@ -7,12 +7,10 @@
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import { Doc } from './doc';
-import { Config }  from './config';
+import { GetRawPluginConfiguration, GetPluginConfigurationAsObject, pluginName }  from './config';
 import { RestartWatchers } from './watcher';
 import { Log } from './log';
 
-export let extensionConfig = new common.CompilerConfig();
-const pluginName = 'dartsass';
 
 const legacyWatchDirectoryMessage = `
     dartsass.watchDirectories configuration property removed and internally implemented using the Memento API.
@@ -34,12 +32,9 @@ const legacyTargetMinifiedDirectoryMessage = `
 `;
 
 
-export function GetPluginConfiguration(): vscode.WorkspaceConfiguration {
-    return vscode.workspace.getConfiguration(pluginName);
-}
 
 export function VerifyLegacyWatchDir(_log: common.ILog) {
-    const configuration = GetPluginConfiguration();
+    const configuration = GetRawPluginConfiguration();
     const legacyWatchDirectories = configuration.get<Array<string>>('watchDirectories', new Array<string>());
     if (legacyWatchDirectories === undefined || legacyWatchDirectories === null) {
         _log.warning(legacyWatchDirectoryMessage);
@@ -47,7 +42,7 @@ export function VerifyLegacyWatchDir(_log: common.ILog) {
 }
 
 export function VerifyTargetMinifiedDirectory(_log: common.ILog) {
-    const configuration = GetPluginConfiguration();
+    const configuration = GetRawPluginConfiguration();
     const targetMinifiedDirectory = configuration.get<string>('targetMinifiedDirectory', '');
     if (targetMinifiedDirectory === undefined || targetMinifiedDirectory === null) {
         _log.warning(legacyTargetMinifiedDirectoryMessage);
@@ -55,12 +50,10 @@ export function VerifyTargetMinifiedDirectory(_log: common.ILog) {
 
 }
 
-export function ReloadConfiguration(workspaceState: vscode.Memento, _log: Log) : common.CompilerConfig {
-    const configuration = GetPluginConfiguration();
-    const extensionConfig = Config.extractFrom(configuration, workspaceState);
+export function ReloadConfiguration(workspaceState: vscode.Memento, _log: Log) {
+    const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
     _log.setDebugFlag(extensionConfig.debug);
-    RestartWatchers(extensionConfig, workspaceState, _log);
-    return extensionConfig;
+    RestartWatchers(workspaceState, _log);
 }
 
 
@@ -74,6 +67,7 @@ export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], work
         _log.appendLine(`Warning: Unhandled change in workspacefolder event ${e}`);
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
+        const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
         if (!extensionConfig.disableCompileOnSave) {
             common.CompileCurrentFile(new Doc(document), extensionConfig, _log).then(
                 (value: string) => {
@@ -85,4 +79,27 @@ export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], work
             );
         }
 	}, null, subscriptions);
+}
+
+
+export function SayVersion(projectRoot: string, workspaceState: vscode.Memento, _log: Log) {
+    const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
+    _log.appendLine(`sayVersion with projectRoot ${projectRoot}`);
+    common.SayVersion(extensionConfig, projectRoot, _log).then(
+        value => {
+            common.getVersions();
+            vscode.window.showInformationMessage(value);
+        }
+    );
+
+}
+
+export function Compile(document: vscode.TextDocument, workspaceState: vscode.Memento, _log: common.ILog) {
+    const config = GetPluginConfigurationAsObject(workspaceState);
+    common.CompileCurrentFile(new Doc(document), config,  _log).then(
+        value => {},
+        err => {
+            vscode.window.showErrorMessage(err);
+        }
+    );
 }

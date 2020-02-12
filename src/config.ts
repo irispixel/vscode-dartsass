@@ -6,6 +6,8 @@
 import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 
+export const pluginName = 'dartsass';
+
 //  MementoKeyWatchDirectories indicates the key to store the memento
 export const MementoKeyWatchDirectories = "watchDirectories";
 
@@ -33,3 +35,14 @@ export class Config {
         return config;
     }
 }
+
+export function GetRawPluginConfiguration(): vscode.WorkspaceConfiguration {
+    return vscode.workspace.getConfiguration(pluginName);
+}
+
+export function GetPluginConfigurationAsObject(workspaceState: vscode.Memento): common.CompilerConfig {
+    const vsconf = GetRawPluginConfiguration();
+    return  Config.extractFrom(vsconf, workspaceState);
+
+}
+

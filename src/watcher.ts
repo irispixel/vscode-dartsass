@@ -7,13 +7,13 @@ import * as vscode from 'vscode';
 import * as common from 'dartsass-plugin-common';
 import { GetProjectRoot } from './doc';
 import { myStatusBarItem } from './statusbar';
-import  { GetActiveProjectRoot, PersistWatchers } from './project';
-import { MementoKeyWatchDirectories } from './config';
+import { GetActiveProjectRoot, PersistWatchers } from './project';
+import { MementoKeyWatchDirectories, GetPluginConfigurationAsObject } from './config';
 
 const watcher = new common.Watcher();
 
 
-function updateStatusBar(watchDirectories: string[]|undefined|null) {
+function updateStatusBar(watchDirectories: string[] | undefined | null) {
     let numWatchers = 0;
     if (watchDirectories) {
         numWatchers = watchDirectories.length;
@@ -27,19 +27,20 @@ function updateStatusBar(watchDirectories: string[]|undefined|null) {
     }
 }
 
-export function WatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, workspaceState: vscode.Memento, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+export function WatchDirectory(_srcdir: vscode.Uri, workspaceState: vscode.Memento, _log: common.ILog) {
     const uri = GetProjectRoot(_srcdir);
     if (!uri) {
         return "";
     }
     const projectRoot = uri.fsPath;
-    const srcdir =  common.xformPath(projectRoot, _srcdir.fsPath);
+    const srcdir = common.xformPath(projectRoot, _srcdir.fsPath);
+    const config = GetPluginConfigurationAsObject(workspaceState);
     common.watchDirectory(srcdir, config).then(
-        (value:boolean) => {
+        (value: boolean) => {
             if (value) {
                 vscode.window.showInformationMessage(`About to watch directory ${srcdir}`);
                 PersistWatchers(workspaceState, config.watchDirectories, _log);
-                RestartWatchers(config, workspaceState,  _log);
+                RestartWatchers(workspaceState, _log);
             } else {
                 vscode.window.showInformationMessage(`${srcdir} already being watched earlier`);
             }
@@ -50,13 +51,14 @@ export function WatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfi
     );
 }
 
-export function UnwatchDirectory(_srcdir: vscode.Uri, config: common.CompilerConfig, workspaceState: vscode.Memento, vsconf: vscode.WorkspaceConfiguration, _log: common.ILog) {
+export function UnwatchDirectory(_srcdir: vscode.Uri, workspaceState: vscode.Memento,  _log: common.ILog) {
     const uri = GetProjectRoot(_srcdir);
     if (!uri) {
         return "";
     }
     const projectRoot = uri.fsPath;
-    const srcdir =  common.xformPath(projectRoot, _srcdir.fsPath);
+    const srcdir = common.xformPath(projectRoot, _srcdir.fsPath);
+    const config = GetPluginConfigurationAsObject(workspaceState);
     common.unwatchDirectory(srcdir, config).then(
         value => {
             PersistWatchers(workspaceState, config.watchDirectories, _log);
@@ -81,7 +83,7 @@ export function ListWatchers(workspaceState: vscode.Memento, _log: common.ILog) 
     }
     _log.appendLine(`******************* ${numWatchers} watchers in memento begin *********`);
     if (watchDirectories) {
-        watchDirectories.forEach( (watchDirectory: string) => {
+        watchDirectories.forEach((watchDirectory: string) => {
             _log.appendLine(`${watchDirectory}`);
         });
         vscode.window.showInformationMessage(`Having ${numWatchers} watchers. Check "Output" -> "DartJS Sass" for more details.`);
@@ -112,8 +114,9 @@ export function ClearAllWatchers(workspaceState: vscode.Memento | null | undefin
     }
 }
 
-export function RestartWatchers(extensionConfig: common.CompilerConfig, workspaceState: vscode.Memento, _log: common.ILog) {
+export function RestartWatchers(workspaceState: vscode.Memento, _log: common.ILog) {
     const projectRoot = GetActiveProjectRoot();
+    const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
     _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
     common.Validate(extensionConfig, projectRoot, _log).then(
         value => {
