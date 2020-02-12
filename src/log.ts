@@ -10,12 +10,21 @@ export class Log {
 
     _channel: vscode.OutputChannel;
 
+    debugFlag: boolean;
+
     constructor(channel: vscode.OutputChannel) {
         this._channel = channel;
+        this.debugFlag = false;
+    }
+
+    public setDebugFlag(debugFlag: boolean) {
+        this.debugFlag = debugFlag;
     }
 
     public debug(msg: string): any {
-        this._channel.appendLine(`DEBUG: ${msg}`);
+        if (this.debugFlag) {
+            this._channel.appendLine(`DEBUG: ${msg}`);
+        }
     }
 
     public warning(msg: string): any {
