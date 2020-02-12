@@ -9,6 +9,7 @@ import * as common from 'dartsass-plugin-common';
 import { Doc } from './doc';
 import { Config }  from './config';
 import { RestartWatchers } from './watcher';
+import { Log } from './log';
 
 export let extensionConfig = new common.CompilerConfig();
 const pluginName = 'dartsass';
@@ -55,15 +56,16 @@ export function VerifyTargetMinifiedDirectory(_log: common.ILog) {
 
 }
 
-export function ReloadConfiguration(workspaceState: vscode.Memento, _log: common.ILog) : common.CompilerConfig {
+export function ReloadConfiguration(workspaceState: vscode.Memento, _log: Log) : common.CompilerConfig {
     const configuration = GetPluginConfiguration();
-    extensionConfig = Config.extractFrom(configuration, workspaceState);
+    const extensionConfig = Config.extractFrom(configuration, workspaceState);
+    _log.setDebugFlag(extensionConfig.debug);
     RestartWatchers(extensionConfig, _log);
     return extensionConfig;
 }
 
 
-export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], workspaceState: vscode.Memento, _log: common.ILog) {
+export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], workspaceState: vscode.Memento, _log: Log) {
     vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration(pluginName)) {
             ReloadConfiguration(workspaceState, _log);

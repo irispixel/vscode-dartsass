@@ -42,7 +42,7 @@ export class Log {
 }
 
 
-export function CreateLog(_channel: vscode.OutputChannel) : common.ILog {
+export function CreateLog(_channel: vscode.OutputChannel) : Log {
     return new Log(_channel);
 }
 
