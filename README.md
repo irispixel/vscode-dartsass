@@ -132,11 +132,13 @@ This extension contributes the following properties:
   1. `dartsass.targetDirectory`: Default: Empty. The target directory to write the generated css files.
 
      This can be an absolute directory or a directory, relative to project root.
-  1. `dartsass.targetMinifiedDirectory`: Default: Empty. The target directory to write the generated minified css files.
+  1. <s>`dartsass.targetMinifiedDirectory`: Default: Empty. The target directory to write the generated minified css files.
 
       This can be an absolute directory or a directory, relative to project root.
 
-      If this property is empty, then the value defaults to `dartsass.targetDirectory` . If `dartsass.targetDirectory` is also empty, then this value defaults to the same directory as that of the source files.
+      If this property is empty, then the value defaults to `dartsass.targetDirectory` . If `dartsass.targetDirectory` is also empty, then this value defaults to the same directory as that of the source files.</s>
+      This property has been deprecated since 0.5.0. Use only `targetDirectory` for output files. See #25 for more details.
+
    1. `dartsass.sassBinPath`: Default: Empty.
 
        Eg: `/usr/local/bin/sass` PATH of global sass compiler binary to compile sass / scss files.

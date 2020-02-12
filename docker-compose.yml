@@ -5,3 +5,4 @@ services:
     image: "vscode-plugin-dartsass:12.14.1-alpine3.11"
     volumes:
       - /opt/code/src/github.com/malvahq/vscode-plugin-dartsass:/tmp/web
+      - /opt/code/src/github.com/heronci/dartsass-plugin-common:/tmp/dartsass

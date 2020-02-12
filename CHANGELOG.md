@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.0
+  * Use `chokidar` to minify files better using autoprefixer as opposed to launching 2 sass watch processes. See #25 for more details.
+
 ### 0.4.3
   * Regression introduced since 0.4.0 , where if we "rewatch" a directory by mistake, it spawns and recreates the "sass watcher" processes again. Ideally it should simply say the directory was already being watched earlier.
 
