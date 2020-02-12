@@ -30,7 +30,7 @@ const legacyTargetMinifiedDirectoryMessage = `
 
     To prevent this warning from recurring again, you may want to delete this property - dartsass.targetMinifiedDirectory - locally in your .vscode/settings.json in workspace manually.
 
-    See Issue #21 in the project for more details.
+    See Issue #25 in the project for more details.
 `;
 
 
@@ -77,7 +77,7 @@ export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], work
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         if (!extensionConfig.disableCompileOnSave) {
             common.CompileCurrentFile(new Doc(document), extensionConfig, _log).then(
-                value => {
+                (value: string) => {
 
                 },
                 err => {

@@ -10,7 +10,7 @@
 import * as vscode from 'vscode';
 import { RegisterCommands } from './cmd';
 import { CreateLog, CreateNullLog } from './log';
-import { ReloadConfiguration, StartBuildOnSaveWatcher, VerifyLegacyWatchDir } from './core';
+import { ReloadConfiguration, StartBuildOnSaveWatcher, VerifyLegacyWatchDir, VerifyTargetMinifiedDirectory } from './core';
 import { createStatusBarItem } from './statusbar';
 import { ClearAllWatchers } from './watcher';
 
@@ -36,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
     createStatusBarItem(context.subscriptions, 'dartsass.viewSassWatchers');
     StartBuildOnSaveWatcher(context.subscriptions, context.workspaceState,  _log);
     VerifyLegacyWatchDir(_log);
+    VerifyTargetMinifiedDirectory(_log);
 }
 
 // this method is called when your extension is deactivated
