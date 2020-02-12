@@ -46,7 +46,7 @@ export function deactivate() {
         _channel.clear();
         _channel.dispose();
     }
-    ClearAllWatchers(_nullLog);
+    ClearAllWatchers(null, _nullLog);
     setTimeout(
         function() {
             _nullLog.appendLine("deactivate completed");

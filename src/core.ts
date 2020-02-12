@@ -60,7 +60,7 @@ export function ReloadConfiguration(workspaceState: vscode.Memento, _log: Log) :
     const configuration = GetPluginConfiguration();
     const extensionConfig = Config.extractFrom(configuration, workspaceState);
     _log.setDebugFlag(extensionConfig.debug);
-    RestartWatchers(extensionConfig, _log);
+    RestartWatchers(extensionConfig, workspaceState, _log);
     return extensionConfig;
 }
 
