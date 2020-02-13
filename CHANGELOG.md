@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.3
+  * When `sassBinPath` is set, minified files were not getting generated. Possibly a regression from v0.5.0. Fixed now.
+
 ### 0.5.2
   * Fix some issues related to encoding - Buffer / string issues.
 
