@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.4
+  * Add sourcemaps as well in case of generating minified files (using our own `chokidar` implementation).
+
 ### 0.5.3
   * When `sassBinPath` is set, minified files were not getting generated. Possibly a regression from v0.5.0. Fixed now.
 
