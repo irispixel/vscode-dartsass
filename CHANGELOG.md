@@ -1,10 +1,14 @@
 # Change Log
 
+### 0.5.2
+  * Fix some issues related to encoding - Buffer / string issues.
+
 ### 0.5.1
   * Windows specific bug fix only. Regression introduced as part of 0.5.0 so sayVersion and compileOnSave inside the IDE still works.
 
 ### 0.5.0
   * Use `chokidar` to minify files better using autoprefixer as opposed to launching 2 sass watch processes. See #25 for more details.
+  * In Windows, use `node.exe` to launch processes better (to avoid the console windows). Important: `sassBinPath` needs to be set to `node_modules\\sass\\sass.js` though for it to work.
 
 ### 0.4.3
   * Regression introduced since 0.4.0 , where if we "rewatch" a directory by mistake, it spawns and recreates the "sass watcher" processes again. Ideally it should simply say the directory was already being watched earlier.

@@ -153,7 +153,7 @@ This extension contributes the following properties:
 
        `node_modules/.bin/sass` ( Linux ) - or
 
-       `node_modules/.bin/sass.cmd` ( Windows ), as appropriate
+       `node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/malvahq/vscode-plugin-dartsass/issues/24)
 
        By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
    1. <strike> `dartsass.watchDirectories`: Default: `[]` - Empty Array of strings.
