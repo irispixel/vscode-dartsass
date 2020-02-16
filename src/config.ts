@@ -17,6 +17,7 @@ export class Config {
         const config = new common.CompilerConfig();
         config.includePath = configuration.get<Array<string>>('includePath', new Array<string>());
         config.sassBinPath = configuration.get<string>('sassBinPath', '');
+        config.nodeExePath = configuration.get<string>('nodeExePath', 'node.exe');
         config.targetDirectory = configuration.get<string>('targetDirectory', '');
         config.disableMinifiedFileGeneration = configuration.get<boolean>('disableMinifiedFileGeneration', false);
         config.disableSourceMap = configuration.get<boolean>('disableSourceMap', false);

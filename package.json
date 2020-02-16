@@ -113,6 +113,11 @@
                     "default": "",
                     "description": "Sets the PATH to the sass binary if installed in your system. Defaults to empty string. This property is mandatory and needs to point to a valid sass path ( say, \"/usr/local/bin/sass\" ) if we need to \"watch\" the directory. ( Install sass locally on your machine using the command \"npm install [-g] sass\" ) "
                 },
+                "dartsass.nodeExePath": {
+                    "type": "string",
+                    "default": "node.exe",
+                    "description": "Sets the PATH to the node.exe executable. Important: This property is applicable for windows only. On Linux, this property is completely ignored and not used at all."
+                },
                 "dartsass.disableCompileOnSave": {
                     "type": "boolean",
                     "default": false,
