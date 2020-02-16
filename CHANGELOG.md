@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.6
+  * New property `nodeExePath` added. This helps to configure the path to `node.exe` . This is applicable on windows only. On Linux, this property is completely ignored.
+
 ### 0.5.5
   * First cut of fixing sourcemap generation, regression introduced since v0.5.0 . See #28 for more details
   * browserlist upgraded to 4.8.7
