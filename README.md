@@ -13,12 +13,13 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
     * [dartsass.disableMinifiedFileGeneration](#dartsassdisableminifiedfilegeneration)
     * [dartsass.disableSourceMap](#dartsassdisablesourcemap)
     * [dartsass.disableCompileOnSave](#dartsassdisablecompileonsave)
-    * [dartsass.pauseInterval:](#dartsasspauseinterval)
+    * [dartsass.pauseInterval](#dartsasspauseinterval)
     * [dartsass.enableStartWithUnderscores](#dartsassenablestartwithunderscores)
     * [dartsass.disableAutoPrefixer](#dartsassdisableautoprefixer)
     * [dartsass.autoPrefixBrowsersList](#dartsassautoprefixbrowserslist)
     * [dartsass.targetDirectory](#dartsasstargetdirectory)
-    * [dartsass.sassBinPath:](#dartsasssassbinpath)
+    * [dartsass.sassBinPath](#dartsasssassbinpath)
+    * [dartsass.nodeExePath](#dartsassnodexepath)
     * [dartsass.debug](#dartsassdebug)
 * [Deprecated Properties](#deprecated-properties)
     * [<s>dartsass.targetMinifiedDirectory</s>](#dartsasstargetminifieddirectory)
@@ -91,7 +92,7 @@ Default: False. Flag to disable source maps file generation (*.map). Source Maps
 
 Default: False. This disables a compilation with every save.
 
-## `dartsass.pauseInterval`:
+## `dartsass.pauseInterval`
 Default: 10. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
 
 ## `dartsass.enableStartWithUnderscores`
@@ -111,7 +112,7 @@ Default: Empty. The target directory to write the generated css files.
 
 This can be an absolute directory or a directory, relative to project root.
 
-## `dartsass.sassBinPath`:
+## `dartsass.sassBinPath`
 
 Default: Empty.
 
@@ -130,6 +131,12 @@ After installation, you can set the property to , say
 `node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/malvahq/vscode-plugin-dartsass/issues/24)
 
 By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
+
+## `dartsass.nodeExePath`
+
+Default: `node.exe`. Sets the PATH to the node.exe executable.
+
+Important: This property is applicable on the windows platform only. On Linux, this property is completely ignored and not used at all
 
 ## `dartsass.debug`
 
