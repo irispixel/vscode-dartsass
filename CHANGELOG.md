@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.7
+  * Bug fix related to invalid sourcemap suffix for "compile on save" functionality rolled in.
+
 ### 0.5.6
   * New property `nodeExePath` added. This helps to configure the path to `node.exe` . This is applicable on windows only. On Linux, this property is completely ignored.
 
