@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.9
+  * For sourcemap for minified files (.min.css.map), the sourceMappingURL comment was missing. Adding it now.
+
 ### 0.5.8
   * When `disableSourceMap` is set, we were getting an invalid sourcemap (.min.css.map). Bug fix to delete it altogether.
 
