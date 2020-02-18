@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.8
+  * When `disableSourceMap` is set, we were getting an invalid sourcemap (.min.css.map). Bug fix to delete it altogether.
+
 ### 0.5.7
   * Bug fix related to invalid sourcemap suffix for "compile on save" functionality rolled in.
 

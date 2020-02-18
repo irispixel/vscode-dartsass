@@ -23,7 +23,7 @@ export class Config {
         config.disableSourceMap = configuration.get<boolean>('disableSourceMap', false);
         config.debug = configuration.get<boolean>('debug', false);
         config.disableCompileOnSave = configuration.get<boolean>('disableCompileOnSave', false);
-        config.pauseInterval = configuration.get<number>('pauseInterval', 10);
+        config.pauseInterval = configuration.get<number>('pauseInterval', 3);
         config.enableStartWithUnderscores = configuration.get<boolean>('enableStartWithUnderscores', false);
         config.disableAutoPrefixer = configuration.get<boolean>('disableAutoPrefixer', false);
         config.autoPrefixBrowsersList = configuration.get<Array<string>>('autoPrefixBrowsersList', new Array<string>("> 1%", "last 2 versions"));

@@ -93,7 +93,7 @@ Default: False. Flag to disable source maps file generation (*.map). Source Maps
 Default: False. This disables a compilation with every save.
 
 ## `dartsass.pauseInterval`
-Default: 10. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
+Default: 3. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
 
 ## `dartsass.enableStartWithUnderscores`
 
