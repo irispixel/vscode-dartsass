@@ -4,5 +4,5 @@ services:
     restart: "always"
     image: "vscode-plugin-dartsass:12.14.1-alpine3.11"
     volumes:
-      - /opt/code/src/github.com/dubnioci/vscode-plugin-dartsass:/tmp/web
-      - /opt/code/src/github.com/dubnioci/dartsass-plugin-common:/tmp/dartsass
+      - /opt/code/src/github.com/feldci/vscode-plugin-dartsass:/tmp/web
+      - /opt/code/src/github.com/feldci/dartsass-plugin-common:/tmp/dartsass

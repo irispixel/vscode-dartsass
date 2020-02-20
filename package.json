@@ -6,7 +6,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/dubnioci/vscode-plugin-dartsass.git"
+        "url": "https://github.com/feldci/vscode-plugin-dartsass.git"
     },
     "version": "0.5.10",
     "engines": {
