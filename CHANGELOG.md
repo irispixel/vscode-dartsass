@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.10
+  * Upgrade to typescript 3.8.2
+
 ### 0.5.9
   * For sourcemap for minified files (.min.css.map), the sourceMappingURL comment was missing. Adding it now.
 

@@ -21,9 +21,10 @@ export function GetActiveProjectRoot() {
 export function PersistWatchers(workspaceState: vscode.Memento, watchDirectories: Array<string>, _log: common.ILog) {
     workspaceState.update(MementoKeyWatchDirectories, watchDirectories).then(
         value => {
-            _log.appendLine(`Updated watchDirectories to ${watchDirectories}`);
+            _log.debug(`Updated watchDirectories to ${watchDirectories}`);
         },
         err => {
+            _log.warning(`Failed to update watchDirectories ${err}`);
             vscode.window.showErrorMessage(`Failed to update watchDirectories ${err}`);
         }
     );
