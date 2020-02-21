@@ -184,7 +184,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.7.44"
+        "dartsass-plugin-common": "0.7.45"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",
@@ -195,7 +195,7 @@
         "mocha": "7.0.1",
         "source-map-support": "0.5.16",
         "tslint": "6.0.0",
-        "typescript": "3.7.5",
+        "typescript": "3.8.2",
         "vscode-test": "1.3.0",
         "ts-node": "8.6.2",
         "webpack": "4.41.6",
