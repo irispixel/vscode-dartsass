@@ -46,7 +46,7 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
 
 # Usage
 
-<img src="https://github.com/malvahq/vscode-plugin-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
+<img src="https://github.com/feldci/vscode-plugin-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
 
 It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automatically for the given .scss file in the editor.
 
@@ -128,7 +128,7 @@ After installation, you can set the property to , say
 
 `node_modules/.bin/sass` ( Linux ) - or
 
-`node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/malvahq/vscode-plugin-dartsass/issues/24)
+`node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/feldci/vscode-plugin-dartsass/issues/24)
 
 By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
 
@@ -167,7 +167,7 @@ So for all practical purposes, this property is used as a pseudo-persistent stor
 
 If you were using this option earlier - you should delete them manually from .vscode/settings.json and "rewatch" the directories again ( using "DartSass: Watch Directory" menuitem that appears ).
 
-The functionality of persistent sass watchers is still available, so this is a 1-time change for the user as part of migration. See [Issue #21](https://github.com/malvahq/vscode-plugin-dartsass/issues/21) for more details.
+The functionality of persistent sass watchers is still available, so this is a 1-time change for the user as part of migration. See [Issue #21](https://github.com/feldci/vscode-plugin-dartsass/issues/21) for more details.
 
 Configuration property deprecated / updated since 0.4.1+ .
 
@@ -344,7 +344,7 @@ The code of this plugin is published under MIT License.
 So if you are contributing to this plugin / extension, it is important that the source code is distributed under MIT license.
 
 Almost all the heavy-lifing of this plugin (say, interacting with sass library or using sass command line) is done by the common library -
-[DartSass Plugin Common](https://github.com/heronci/dartsass-plugin-common).
+[DartSass Plugin Common](https://github.com/feldci/dartsass-plugin-common).
 
 So if you are looking for a bug / feature, check the dartsass-plugin-comon repository for the code that does most of the heavy-lifting.
 
