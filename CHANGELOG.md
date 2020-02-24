@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.11
+  * Better README.
+
 ### 0.5.10
   * Upgrade to typescript 3.8.2
 
