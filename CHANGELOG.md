@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.5.12
+  * Upgrade sass compiler to 1.26.2
+  * Upgrade browserslist to 4.9.1
+
 ### 0.5.11
   * Better README.
 
