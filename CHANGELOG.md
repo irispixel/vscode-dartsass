@@ -1,7 +1,7 @@
 # Change Log
 
 ### 0.5.13
-  * Do not start any listener if `disableMinifiedFileGeneration` is set to true.
+  * Do not start any chokidar file watcher at all if `disableMinifiedFileGeneration` is set to true.
 
 ### 0.5.12
   * Upgrade sass compiler to 1.26.2
