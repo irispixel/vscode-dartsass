@@ -190,7 +190,7 @@
         "@types/glob": "7.1.1",
         "@types/mocha": "7.0.1",
         "@types/node": "13.7.0",
-        "@types/vscode": "1.37.0",
+        "@types/vscode": "1.38.0",
         "glob": "7.1.6",
         "mocha": "7.1.0",
         "source-map-support": "0.5.16",
