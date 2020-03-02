@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.14
+  * Add better debugging information. Crisper sass chokidar watchers.
+
 ### 0.5.13
   * Do not start any chokidar file watcher at all if `disableMinifiedFileGeneration` is set to true.
 
