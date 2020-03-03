@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/feldci/vscode-plugin-dartsass.git"
     },
-    "version": "0.5.15",
+    "version": "0.5.16",
     "engines": {
         "vscode": "^1.38.0"
     },
