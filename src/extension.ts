@@ -49,7 +49,7 @@ export function deactivate() {
     ClearAllWatchers(null, _nullLog);
     setTimeout(
         function() {
-            _nullLog.appendLine("deactivate completed");
+            _nullLog.info("deactivate completed");
         },
         10000
     );

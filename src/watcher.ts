@@ -81,23 +81,23 @@ export function ListWatchers(workspaceState: vscode.Memento, _log: common.ILog) 
     if (watchDirectories) {
         numWatchers = watchDirectories.length;
     }
-    _log.appendLine(`******************* ${numWatchers} watchers in memento begin *********`);
+    _log.info(`******************* ${numWatchers} watchers in memento begin *********`);
     if (watchDirectories) {
         watchDirectories.forEach((watchDirectory: string) => {
-            _log.appendLine(`${watchDirectory}`);
+            _log.info(`${watchDirectory}`);
         });
         vscode.window.showInformationMessage(`Having ${numWatchers} watchers. Check "Output" -> "DartJS Sass" for more details.`);
     } else {
         vscode.window.showInformationMessage(`No watchers defined.`);
     }
-    _log.appendLine(`******************* ${numWatchers} watchers *********`);
+    _log.info(`******************* ${numWatchers} watchers *********`);
     const watchList: Map<string, common.WatchInfo> = watcher.GetWatchList();
     if (watchList.size > 0) {
-        _log.appendLine(`******************* ${watchList.size} sass watcher processes begin *********`);
+        _log.info(`******************* ${watchList.size} sass watcher processes begin *********`);
         watchList.forEach((watchInfo: common.WatchInfo, key: string) => {
-            _log.appendLine(`${key} -> ${watchInfo.pid} ( pid )`);
+            _log.info(`${key} -> ${watchInfo.pid} ( pid )`);
         });
-        _log.appendLine(`******************* ${watchList.size} sass watcher processes *********`);
+        _log.info(`******************* ${watchList.size} sass watcher processes *********`);
     }
 }
 
@@ -117,7 +117,7 @@ export function ClearAllWatchers(workspaceState: vscode.Memento | null | undefin
 export function RestartWatchers(workspaceState: vscode.Memento, _log: common.ILog) {
     const projectRoot = GetActiveProjectRoot();
     const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
-    _log.appendLine(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
+    _log.info(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
     common.Validate(extensionConfig, projectRoot, _log).then(
         value => {
             if (projectRoot !== null) {

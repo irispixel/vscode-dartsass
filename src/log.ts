@@ -27,6 +27,10 @@ export class Log {
         }
     }
 
+    public info(msg: string): any {
+        this._channel.appendLine(`INFO: ${msg}`);
+    }
+
     public warning(msg: string): any {
         vscode.window.showWarningMessage(`${msg}`);
     }
@@ -57,6 +61,9 @@ export class NullLog {
     }
 
     public warning(msg: string): any {
+    }
+
+    public info(msg: string): any {
     }
 
     public appendLine(msg: string): any {
