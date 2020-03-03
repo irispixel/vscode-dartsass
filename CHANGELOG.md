@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.15
+  * Better logging information.
+
 ### 0.5.14
   * Add better debugging information. Crisper sass chokidar watchers.
 
