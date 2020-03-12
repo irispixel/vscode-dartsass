@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.17
+  * Upgrade sass compiler to 1.26.3
+
 ### 0.5.15
   * Better logging information.
 
