@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.18
+  * Remove redundant messages appearing in case of an error.
+
 ### 0.5.17
   * Upgrade sass compiler to 1.26.3
 
