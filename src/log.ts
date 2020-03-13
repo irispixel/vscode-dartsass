@@ -75,6 +75,12 @@ export class NullLog {
     public info(msg: string): any {
     }
 
+    public error(msg: string): any {
+    }
+
+    public notify(msg: string): any {
+    }
+
     public appendLine(msg: string): any {
     }
 
