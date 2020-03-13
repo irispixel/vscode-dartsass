@@ -63,8 +63,7 @@ export function UnwatchDirectory(_srcdir: vscode.Uri, workspaceState: vscode.Mem
         value => {
             PersistWatchers(workspaceState, config.watchDirectories, _log);
             if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, _log)) {
-                _log.warning(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
-                vscode.window.showWarningMessage(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
+                _log.notify(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
             } else {
                 _log.info(`Directory ${_srcdir.fsPath} unwatched now.`);
                 vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
@@ -131,7 +130,7 @@ export function RestartWatchers(workspaceState: vscode.Memento, _log: common.ILo
         },
         err => {
             ClearAllWatchers(workspaceState, _log);
-            vscode.window.showErrorMessage(err);
+            vscode.window.showErrorMessage(`${err}`);
         }
     );
 }
@@ -143,7 +142,7 @@ function doRestartWatchers(projectRoot: string, config: common.CompilerConfig, w
             value => {
             },
             err => {
-                vscode.window.showErrorMessage(`Relaunch failed: ${err}`);
+                _log.notify(`Relaunch failed: ${err}`);
             }
         );
     }
