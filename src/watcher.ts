@@ -63,14 +63,17 @@ export function UnwatchDirectory(_srcdir: vscode.Uri, workspaceState: vscode.Mem
         value => {
             PersistWatchers(workspaceState, config.watchDirectories, _log);
             if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, _log)) {
+                _log.warning(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
                 vscode.window.showWarningMessage(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
             } else {
+                _log.info(`Directory ${_srcdir.fsPath} unwatched now.`);
                 vscode.window.showInformationMessage(`Directory ${_srcdir.fsPath} unwatched now.`);
             }
             updateStatusBar(workspaceState.get<string[]>(MementoKeyWatchDirectories));
         },
         err => {
-            vscode.window.showInformationMessage(`${err}`);
+            _log.warning(`${err}`);
+            vscode.window.showWarningMessage(`${err}`);
         }
     );
 }

@@ -33,7 +33,7 @@ export class Log {
 
     public warning(msg: string): any {
         this._channel.appendLine(`WARN: ${msg}`);
-        vscode.window.showWarningMessage(`${msg}`);
+        // vscode.window.showWarningMessage(`${msg}`);
     }
 
     public appendLine(msg: string): any {
