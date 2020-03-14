@@ -26,12 +26,8 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(_channel);
     _channel.appendLine('Extension "dartsass" activated now!');
 
-
     const _log = CreateLog(_channel);
     ReloadConfiguration(context.workspaceState, _log);
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
     RegisterCommands(context.subscriptions, context.workspaceState, _log);
     createStatusBarItem(context.subscriptions, 'dartsass.viewSassWatchers');
     StartBuildOnSaveWatcher(context.subscriptions, context.workspaceState,  _log);
