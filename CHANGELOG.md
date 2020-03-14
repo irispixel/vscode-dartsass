@@ -1,6 +1,6 @@
 # Change Log
 
-### 0.5.18
+### 0.5.19
   * Remove redundant messages appearing in case of an error.
 
 ### 0.5.17
