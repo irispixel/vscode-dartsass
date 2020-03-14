@@ -4,14 +4,14 @@
 // https://opensource.org/licenses/MIT
 'use strict';
 import * as vscode from 'vscode';
-import { CmdViewSassWatchers } from './cmd';
+import { CmdViewSassWatchersString } from './cmd';
 
 export let myStatusBarItem: vscode.StatusBarItem;
 
 export function getStatusBarItems(): vscode.Disposable[] {
     const disposables = new Array<vscode.Disposable>();
 	myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-    myStatusBarItem.command = CmdViewSassWatchers;
+    myStatusBarItem.command = CmdViewSassWatchersString;
     disposables.push(myStatusBarItem);
     return disposables;
 }

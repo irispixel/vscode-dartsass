@@ -12,7 +12,7 @@ import { SayVersion,Compile } from './core';
 import { WatchDirectory, ListWatchers, UnwatchDirectory, RestartWatchers, ClearAllWatchers } from './watcher';
 import { PersistWatchers } from './project';
 
-export const CmdViewSassWatchers = `dartsass.viewSassWatchers`;
+export const CmdViewSassWatchersString = `dartsass.viewSassWatchers`;
 
 function cmdWatchDirectory(_srcdir: vscode.Uri, workspaceState: vscode.Memento,  _log: common.ILog) {
     WatchDirectory(_srcdir, workspaceState, _log);
@@ -79,7 +79,7 @@ export function RegisterCommands(subscriptions: vscode.Disposable[], workspaceSt
     subscriptions.push(vscode.commands.registerCommand('dartsass.restartWatchers', () => {
         cmdRestartWatchers(workspaceState,  _log);
     }));
-    subscriptions.push(vscode.commands.registerCommand(CmdViewSassWatchers, () => {
+    subscriptions.push(vscode.commands.registerCommand(CmdViewSassWatchersString, () => {
         cmdViewSassWatchers(workspaceState, _log);
     }));
     subscriptions.push(vscode.commands.registerCommand('dartsass.clearAllWatchers', () => {
