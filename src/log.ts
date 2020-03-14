@@ -44,10 +44,6 @@ export class Log {
         vscode.window.showErrorMessage(`${msg}`);
     }
 
-    public appendLine(msg: string): any {
-        this._channel.appendLine(msg);
-    }
-
     public clear(): any {
         this._channel.clear();
     }
@@ -79,9 +75,6 @@ export class NullLog {
     }
 
     public notify(msg: string): any {
-    }
-
-    public appendLine(msg: string): any {
     }
 
     public clear(): any {

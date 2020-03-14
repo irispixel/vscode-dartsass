@@ -64,7 +64,7 @@ export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], work
         }
     });
     vscode.workspace.onDidChangeWorkspaceFolders((e: vscode.WorkspaceFoldersChangeEvent) => {
-        _log.appendLine(`Warning: Unhandled change in workspacefolder event ${e}`);
+        _log.warning(`Unhandled change in workspacefolder event ${e}`);
     });
 	vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
         const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
@@ -84,7 +84,7 @@ export function StartBuildOnSaveWatcher(subscriptions: vscode.Disposable[], work
 
 export function SayVersion(projectRoot: string, workspaceState: vscode.Memento, _log: Log) {
     const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
-    _log.appendLine(`sayVersion with projectRoot ${projectRoot}`);
+    _log.debug(`sayVersion with projectRoot ${projectRoot}`);
     try {
         common.SayVersion(extensionConfig, projectRoot, _log).then(
             value => {
