@@ -119,7 +119,7 @@ export function ClearAllWatchers(workspaceState: vscode.Memento | null | undefin
 export function RestartWatchers(workspaceState: vscode.Memento, _log: common.ILog) {
     const projectRoot = GetActiveProjectRoot();
     const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
-    _log.info(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
+    _log.debug(`Configuration reloaded with ${JSON.stringify(extensionConfig)} and projectRoot ${projectRoot}`);
     common.Validate(extensionConfig, projectRoot, _log).then(
         value => {
             if (projectRoot !== null) {
