@@ -36,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function addStatusItems(subscriptions: vscode.Disposable[]) {
-    subscriptions.push.apply(getStatusBarItems('dartsass.viewSassWatchers'));
+    subscriptions.push.apply(getStatusBarItems());
 }
 
 // this method is called when your extension is deactivated
