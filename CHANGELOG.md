@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.20
+  * Address `We found a potential security vulnerability in one of your dependencies` alert as issued by github.
+
 ### 0.5.19
   * Remove redundant messages appearing in case of an error.
 
