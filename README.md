@@ -116,21 +116,26 @@ This can be an absolute directory or a directory, relative to project root.
 
 Default: Empty.
 
-Eg: `/usr/local/bin/sass` PATH of global sass compiler binary to compile sass / scss files.
+You may need to install sass binary locally or globally for the watch functionality to work.
 
-(If not available globally sass compiler can be installed globally as `npm install -g sass@1.25.0`.
+### Local Sass Binary Installation
 
-To determine the path of global sass , do `which sass` on Linux / other posix based systems ).
+Sass Compiler can be installed locally as `npm install sass@1.26.3`.
 
-This can also can be a relative path to the root of the current project, after installing it locally (say, `npm install sass@1.25.0`)
-
-After installation, you can set the property to , say
+After installation, you can set the property `dartsass.sassBinPath` to , say
 
 `node_modules/.bin/sass` ( Linux ) - or
 
 `node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/feldci/vscode-plugin-dartsass/issues/24)
 
-By default, the property is empty and in that case, the plugin uses the `sass` npm package built along with this plugin.
+### Global Sass Binary Installation.
+
+If not installed already, you can install the sass compiler globally as `npm install -g sass@1.26.3`.
+
+After installation, determine the PATH of global sass compiler ( On Linux, this can be  `/usr/local/bin/sass`  or any other PATH returned by `which sass` ).
+
+You can set the property `dartsass.sassBinPath` to be `/usr/local/bin/sass`
+
 
 ## `dartsass.nodeExePath`
 
