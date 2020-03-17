@@ -120,13 +120,12 @@ You may need to install sass binary locally or globally for the watch functional
 
 ### Local Sass Binary Installation
 
-Sass Compiler can be installed locally as `npm install sass@1.26.3`.
+Sass Compiler can be installed locally as `npm install sass@1.26.3`, say . (Choose relevant version as appropriate )
 
-After installation, you can set the property `dartsass.sassBinPath` to , say
+After installation, you can set the property `dartsass.sassBinPath` to be
 
-`node_modules/.bin/sass` ( Linux ) - or
-
-`node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/feldci/vscode-plugin-dartsass/issues/24)
+* `node_modules/.bin/sass` ( Linux )
+* `node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/feldci/vscode-plugin-dartsass/issues/24)
 
 ### Global Sass Binary Installation.
 
