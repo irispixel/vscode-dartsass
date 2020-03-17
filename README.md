@@ -129,11 +129,13 @@ After installation, you can set the property `dartsass.sassBinPath` to be one of
 
 ### Global Sass Binary Installation.
 
-If not installed already, you can install the sass compiler globally as `npm install -g sass@1.26.3`.
+You can install the sass compiler globally as `npm install -g sass@1.26.3` (if not installed already, that is !).
 
-After installation, determine the PATH of global sass compiler ( On Linux, this can be  `/usr/local/bin/sass`  or any other PATH returned by `which sass` ).
+You can set the property `dartsass.sassBinPath` as below, according to the platform
 
-You can set the property `dartsass.sassBinPath` to be `/usr/local/bin/sass`
+* Linux:
+
+Determine the path to global sass compiler ( `/usr/local/bin/sass` if exists ), or any other path returned by `which sass`.
 
 
 ## `dartsass.nodeExePath`
