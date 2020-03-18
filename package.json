@@ -192,7 +192,7 @@
         "@types/node": "13.7.0",
         "@types/vscode": "1.38.0",
         "glob": "7.1.6",
-        "mocha": "7.1.0",
+        "mocha": "7.1.1",
         "source-map-support": "0.5.16",
         "tslint": "6.1.0",
         "typescript": "3.8.3",
