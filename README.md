@@ -21,9 +21,6 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
     * [dartsass.sassBinPath](#dartsasssassbinpath)
     * [dartsass.nodeExePath](#dartsassnodeexepath)
     * [dartsass.debug](#dartsassdebug)
-* [Deprecated Properties](#deprecated-properties)
-    * [<s>dartsass.targetMinifiedDirectory</s>](#dartsasstargetminifieddirectory)
-    * [<strike>dartsass.watchDirectories </strike>](#dartsasswatchdirectories-)
 * [Menus](#menus)
     * [DartSass: Sass Watch](#dartsass-sass-watch)
     * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
@@ -147,36 +144,6 @@ Important: This property is applicable on the windows platform only. On Linux, t
 ## `dartsass.debug`
 
 Default: false. Best applicable for developers of this extension only.
-
-# Deprecated Properties
-
-## <s>`dartsass.targetMinifiedDirectory`</s>
- <s>Default: Empty. The target directory to write the generated minified css files.
-
-This can be an absolute directory or a directory, relative to project root.
-
-If this property is empty, then the value defaults to `dartsass.targetDirectory` . If `dartsass.targetDirectory` is also empty, then this value defaults to the same directory as that of the source files.</s>
-
-This property has been deprecated since 0.5.0. Use only `targetDirectory` for output files. See #25 for more details.
-
-##  <strike>`dartsass.watchDirectories` </strike>
-
-<strike> Default: `[]` - Empty Array of strings.
-
-When vsce restarts, the `watchDirectories` are watched again by the native sass compiler. The sass cmd-line processes are respawned again automatically so there is no need to watch the directories again.
-
-There is no need to set this property manually in the workspace. When the user selects "DartSass: Watch Directory" ( or "DartSass: Unwatch Directory" ) from the context menu of a directory this property is automatically modified to reflect the list of directories being watched.
-
-So for all practical purposes, this property is used as a pseudo-persistent store across vsce sessions by the plugin itself and the user need not bother to modify it directly. </strike>.
-
-`dartsass.watchDirectories` option has been removed entirely from the plugin as it is confusing to the user , given that the user is not supposed to manipulate them manually.
-
-If you were using this option earlier - you should delete them manually from .vscode/settings.json and "rewatch" the directories again ( using "DartSass: Watch Directory" menuitem that appears ).
-
-The functionality of persistent sass watchers is still available, so this is a 1-time change for the user as part of migration. See [Issue #21](https://github.com/feldci/vscode-plugin-dartsass/issues/21) for more details.
-
-Configuration property deprecated / updated since 0.4.1+ .
-
 
 # Menus
 
