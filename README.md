@@ -1,4 +1,4 @@
-[![VSCode Marketplace Badge](https://img.shields.io/vscode-marketplace/v/malvahq.dartsass.svg?label=VSCode%20Marketplace&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) [![Total Downloads](https://img.shields.io/visual-studio-marketplace/d/malvahq.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) [![Average Rating Badge](https://img.shields.io/vscode-marketplace/r/malvahq.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/malvahq/vscode-plugin-dartsass/)
+[![VSCode Marketplace Badge](https://img.shields.io/vscode-marketplace/v/codeios.dartsass.svg?label=VSCode%20Marketplace&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![Total Downloads](https://img.shields.io/visual-studio-marketplace/d/codelios.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![Average Rating Badge](https://img.shields.io/vscode-marketplace/r/codelios.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/codelios/vscode-dartsass/)
 
 
 VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass).
@@ -46,7 +46,7 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
 
 # Usage
 
-<img src="https://github.com/feldci/vscode-plugin-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
+<img src="https://github.com/codelios/vscode-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
 
 It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automatically for the given .scss file in the editor.
 
@@ -57,22 +57,22 @@ It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automa
 You can install it from inside VSCode by using the following command
 
 `
-ext install malvahq.dartsass
+ext install codelios.dartsass
 `
 
 ## Marketplace
 
-You can install [malvahq.dartsass](https://marketplace.visualstudio.com/items?itemName=malvahq.dartsass) from the VSCode Marketplace.
+You can install [codelios.dartsass](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) from the VSCode Marketplace.
 
 **Like it , then feel free to share**
-<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dmalvahq.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
+<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dcodelios.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
 
 # Activation
 
 The plugin gets activated when .scss / .sass files are opened.
 
 
-More details of the plugin can be found at [vscode-plugin-dartsass Page](https://malvahq.github.io/vscode-plugin-dartsass/).
+More details of the plugin can be found at [vscode-dartsass Page](https://codelios.github.io/vscode-dartsass/).
 
 # Properties
 
@@ -350,7 +350,7 @@ The code of this plugin is published under MIT License.
 So if you are contributing to this plugin / extension, it is important that the source code is distributed under MIT license.
 
 Almost all the heavy-lifing of this plugin (say, interacting with sass library or using sass command line) is done by the common library -
-[DartSass Plugin Common](https://github.com/feldci/dartsass-plugin-common).
+[DartSass Plugin Common](https://github.com/codelios/dartsass-plugin-common).
 
 So if you are looking for a bug / feature, check the dartsass-plugin-comon repository for the code that does most of the heavy-lifting.
 
@@ -361,5 +361,5 @@ So if you are looking for a bug / feature, check the dartsass-plugin-comon repos
 # Share
 
 **Like it , then feel free to share**
-<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dmalvahq.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
+<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dcodelios.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
 

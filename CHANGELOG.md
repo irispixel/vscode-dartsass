@@ -185,7 +185,7 @@
     This would also indicate removal of support of "~" prefix in import statements.
     If you had used "~" earlier, feel free to remove the "~" in the import statements and add `node_modules` to `importPath` property (list of strings) to include the same.
     Hence `sassWorkingDirectory` property has been removed as well, as it is completely irrelevant.
-    See [FAQ 3,4 and 5](https://github.com/malvahq/vscode-plugin-dartsass#faq) for more details.
+    See [FAQ 3,4 and 5](https://github.com/codelios/vscode-dartsass#faq) for more details.
 
 
 ### 0.0.88
