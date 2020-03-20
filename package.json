@@ -2,11 +2,11 @@
     "name": "dartsass",
     "displayName": "DartJS Sass Compiler and Sass Watcher",
     "description": "Compile Sass and Scss files using DartSass Compiler - Visual Studio Code (vsce) plugin",
-    "publisher": "malvahq",
+    "publisher": "codelios",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/feldci/vscode-plugin-dartsass.git"
+        "url": "https://github.com/codelios/vscode-plugin-dartsass.git"
     },
     "version": "0.5.21",
     "engines": {
@@ -184,12 +184,12 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.7.56"
+        "dartsass-plugin-common": "0.7.58"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",
         "@types/mocha": "7.0.2",
-        "@types/node": "13.7.0",
+        "@types/node": "13.9.2",
         "@types/vscode": "1.38.0",
         "glob": "7.1.6",
         "mocha": "7.1.1",
@@ -197,7 +197,7 @@
         "tslint": "6.1.0",
         "typescript": "3.8.3",
         "vscode-test": "1.3.0",
-        "ts-node": "8.6.2",
+        "ts-node": "8.7.0",
         "webpack": "4.42.0",
         "webpack-cli": "3.3.11",
         "ts-loader": "6.2.1",
