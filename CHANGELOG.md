@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.6.0
+  * Move the plugin to `codelios.dartsass` publisher.
+
 ### 0.5.20
   * Address `We found a potential security vulnerability in one of your dependencies` alert as issued by github.
 
