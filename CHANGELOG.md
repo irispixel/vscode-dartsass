@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.6.4
+  * Upgrade browserslist and autoprefixer packages.
+
 ### 0.6.0
   * Move the plugin to `codelios.dartsass` publisher.
 
