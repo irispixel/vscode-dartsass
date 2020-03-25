@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.6.5
+  * Minimum required version of vscode is now `1.40.0` . Updated accordingly.
+
 ### 0.6.4
   * Upgrade browserslist and autoprefixer packages.
 
