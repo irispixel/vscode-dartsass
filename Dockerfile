@@ -6,7 +6,7 @@ FROM node:${NODE_VERSION}
 RUN apk add python make g++ && \
     node --version && \
     npm --version
-RUN echo "npm updated on Mar 1 2020" && \
+RUN echo "npm updated on Mar 25 2020" && \
     npm install -g npm
 ENV VSCE_VERSION=1.74.0
 RUN echo "vsce @ ${VSCE_VERSION}" && \
