@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/codelios/vscode-plugin-dartsass.git"
     },
-    "version": "0.6.5",
+    "version": "0.6.6",
     "engines": {
         "vscode": "^1.40.0"
     },
@@ -174,8 +174,8 @@
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
-        "compile": "npm run prod",
         "lint": "eslint src --ext ts",
+        "compile": "npm run lint && npm run prod",
         "test-compile": "tsc -p ./",
         "dev": "webpack --mode development",
         "prod": "webpack --mode production",
@@ -184,7 +184,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.7.64"
+        "dartsass-plugin-common": "0.7.65"
     },
     "devDependencies": {
         "@types/glob": "7.1.1",
