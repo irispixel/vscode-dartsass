@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.6.7
+  * Upgrade sass compiler to 1.26.5
+
 ### 0.6.6
   * Much smaller crisper dependencies without types.
 

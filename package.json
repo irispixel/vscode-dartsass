@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/codelios/vscode-plugin-dartsass.git"
     },
-    "version": "0.6.6",
+    "version": "0.6.7",
     "engines": {
         "vscode": "^1.40.0"
     },
