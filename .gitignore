@@ -4,4 +4,5 @@ node_modules
 *.vsix
 dist
 
+# no npm please.
 package-lock.json
