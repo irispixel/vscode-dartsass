@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.7.0
+  * Upgrade sass library to 1.27.0 and autoprefixer to 10.0.0
+
 ### 0.6.8
   * Upgrade autoprefixer and postcss libraries
 
