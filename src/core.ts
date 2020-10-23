@@ -83,17 +83,7 @@ export function StartBuildOnSaveWatcher(
   );
   vscode.workspace.onDidSaveTextDocument(
     (document: vscode.TextDocument) => {
-      const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
-      if (!extensionConfig.disableCompileOnSave) {
-        common
-          .CompileCurrentFile(new Doc(document), extensionConfig, _log)
-          .then(
-            (value: string) => {},
-            (err) => {
-              vscode.window.showErrorMessage(err);
-            }
-          );
-      }
+      Compile(document, workspaceState, true, _log);
     },
     null,
     subscriptions
@@ -120,13 +110,17 @@ export function SayVersion(
 export function Compile(
   document: vscode.TextDocument,
   workspaceState: vscode.Memento,
+  checkCompileOnSave: boolean,
   _log: common.ILog
 ) {
   const config = GetPluginConfigurationAsObject(workspaceState);
+  if (checkCompileOnSave && config.disableCompileOnSave) {
+    return;
+  }
   common.CompileCurrentFile(new Doc(document), config, _log).then(
     (value) => {},
     (err) => {
-      vscode.window.showErrorMessage(err);
+      vscode.window.showErrorMessage(`${err}`);
     }
   );
 }
