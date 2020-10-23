@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.7.1
+  * Bug not showing the sass compilation errors inside vscode fixed.
+
 ### 0.7.0
   * Upgrade sass library to 1.27.0 and autoprefixer to 10.0.0
 
