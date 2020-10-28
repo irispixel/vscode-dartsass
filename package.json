@@ -192,20 +192,20 @@
         "@types/mocha": "8.0.3",
         "@types/node": "14.6.2",
         "@types/vscode": "1.40.0",
-        "eslint": "7.11.0",
-        "eslint-config-prettier": "6.12.0",
+        "eslint": "7.12.1",
+        "eslint-config-prettier": "6.15.0",
         "eslint-plugin-prettier": "3.1.4",
-        "@typescript-eslint/parser": "4.5.0",
-        "@typescript-eslint/eslint-plugin": "4.5.0",
+        "@typescript-eslint/parser": "4.6.0",
+        "@typescript-eslint/eslint-plugin": "4.6.0",
         "glob": "7.1.6",
         "mocha": "8.2.0",
         "prettier": "2.1.2",
-        "typescript": "4.0.3",
+        "typescript": "4.0.5",
         "vscode-test": "1.4.0",
         "ts-node": "9.0.0",
-        "webpack": "5.2.0",
+        "webpack": "5.3.0",
         "webpack-cli": "4.1.0",
-        "ts-loader": "8.0.6"
+        "ts-loader": "8.0.7"
     },
     "browserslist": {
         "production": [
