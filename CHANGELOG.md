@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.7.2
+  * Upgrade sass library to 1.28.0 .
+
 ### 0.7.1
   * Bug not showing the sass compilation errors inside vscode fixed.
 
