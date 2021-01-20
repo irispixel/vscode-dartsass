@@ -1,5 +1,10 @@
 # Change Log
 
+### 0.7.3
+  * Upgrade sass library to 1.32.5
+  * Introduce a new property - `dartsass.outputFormat` that takes possible values `both`, `cssonly` and `minified` to generate files as appropriate.
+  * Deprecate property `disableMinifiedFileGeneration` . See `dartsass.outputFormat` above for replacement.
+
 ### 0.7.2
   * Upgrade sass library to 1.28.0 .
 
