@@ -76,7 +76,7 @@ export function UnwatchDirectory(
   common.unwatchDirectory(srcdir, config).then(
     (value) => {
       PersistWatchers(workspaceState, config.watchDirectories, _log);
-      if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, _log)) {
+      if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot)) {
         _log.notify(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
       } else {
         _log.info(`Directory ${_srcdir.fsPath} unwatched now.`);
@@ -140,7 +140,7 @@ export function ClearAllWatchers(
     vscode.window.showInformationMessage(
       `Clearing ${watcher.GetWatchList().size} sass watcher processes`
     );
-    watcher.ClearAll(_log);
+    watcher.ClearAll();
     if (workspaceState) {
       updateStatusBar(workspaceState.get<string[]>(MementoKeyWatchDirectories));
     } else {
@@ -160,7 +160,7 @@ export function RestartWatchers(
       extensionConfig
     )} and projectRoot ${projectRoot}`
   );
-  common.Validate(extensionConfig, projectRoot, _log).then(
+  common.Validate(extensionConfig, projectRoot).then(
     (value) => {
       if (projectRoot !== null) {
         doRestartWatchers(projectRoot, extensionConfig, workspaceState, _log);
@@ -181,7 +181,7 @@ function doRestartWatchers(
   workspaceState: vscode.Memento,
   _log: common.ILog
 ) {
-  const promises = watcher.Relaunch(projectRoot, config, _log);
+  const promises = watcher.Relaunch(projectRoot, config);
   for (const promise of promises) {
     promise.then(
       (value) => {},

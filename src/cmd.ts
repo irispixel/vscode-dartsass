@@ -78,7 +78,7 @@ function cmdCompileCurrentFile(
   }
   const editor = vscode.window.activeTextEditor;
   if (editor && typeof editor !== undefined) {
-    Compile(editor.document, workspaceState, false, _log);
+    Compile(editor.document, workspaceState, false);
   } else {
     console.log(`Editor not defined currently`);
   }
