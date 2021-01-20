@@ -11,6 +11,18 @@ export const pluginName = "dartsass";
 //  MementoKeyWatchDirectories indicates the key to store the memento
 export const MementoKeyWatchDirectories = "watchDirectories";
 
+export function GetSASSOutputFormat(value: string): common.SASSOutputFormat {
+  switch (value) {
+    case "both":
+      return common.SASSOutputFormat.Both;
+    case "cssonly":
+      return common.SASSOutputFormat.CompiledCSSOnly;
+    case "minified":
+      return common.SASSOutputFormat.MinifiedOnly;
+  }
+  return common.SASSOutputFormat.Both;
+}
+
 export class Config {
   public static extractFrom(
     configuration: vscode.WorkspaceConfiguration,
@@ -24,9 +36,8 @@ export class Config {
     config.sassBinPath = configuration.get<string>("sassBinPath", "");
     config.nodeExePath = configuration.get<string>("nodeExePath", "node.exe");
     config.targetDirectory = configuration.get<string>("targetDirectory", "");
-    config.disableMinifiedFileGeneration = configuration.get<boolean>(
-      "disableMinifiedFileGeneration",
-      false
+    config.outputFormat = GetSASSOutputFormat(
+      configuration.get<string>("outputFormat", "both")
     );
     config.disableSourceMap = configuration.get<boolean>(
       "disableSourceMap",
