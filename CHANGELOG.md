@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.7.4
+  * Better documentation
+
 ### 0.7.3
   * Upgrade sass library to 1.32.5
   * Introduce a new property - `dartsass.outputFormat` that takes possible values `both`, `cssonly` and `minified` to generate files as appropriate.
