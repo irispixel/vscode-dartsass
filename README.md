@@ -40,7 +40,6 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
 * [FAQ](#faq)
 * [License](#license)
 * [ChangeLog](#changelog)
-* [Todo](#todo)
 * [Contributing](#contributing)
 * [Credits](#credits)
 * [Share](#share)
@@ -332,12 +331,6 @@ This VSCode extension is released under [MIT license](LICENSE).
 # ChangeLog
 
 See [CHANGELOG](CHANGELOG.md) for more details.
-
-# Todo
-
-
-  1. The list of directory watchers need to be better visualized than the naive output in the console.
-
 
 # Contributing
 
