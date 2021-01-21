@@ -166,6 +166,10 @@ Default: false. Best applicable for **developers of this extension** only. If yo
 
 **The property is deprecated and not used. Refer to `dartsass.outputFormat` property described above for its replacement.**
 
+If you had earlier set `disableMinifiedFileGeneration` to be `true`, then you can set `outputFormat` to be `cssonly` to achieve the same effect.
+
+If you had earlier set `disableMinifiedFileGeneration` to be `false` ( default value for the property ) , then you can set `outputFormat` to be `both` ( again , default value for the new property as well ).
+
 # Menus
 
 ## DartSass: Sass Watch
