@@ -119,6 +119,13 @@ Possible values:
 * `minified`: Generates only the minified css file and not the compiled css file
 * `both`: Generates both the compiled css file and the minified file as well. Default Value.
 
+**Important: This property replaces the formerly deprecated property `disableMinifiedFileGeneration` that is not used anymore.**
+
+If you had earlier set `disableMinifiedFileGeneration` to be `true`, then you can set `outputFormat` to be `cssonly` to achieve the same effect.
+
+If you had earlier set `disableMinifiedFileGeneration` to be `false` ( default value for the property ) , then you can set `outputFormat` to be `both` ( again , default value for the new property as well ).
+
+
 ## `dartsass.pauseInterval`
 Default: 3. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
 
@@ -166,9 +173,6 @@ Default: false. Best applicable for **developers of this extension** only. If yo
 
 **The property is deprecated and not used. Refer to `dartsass.outputFormat` property described above for its replacement.**
 
-If you had earlier set `disableMinifiedFileGeneration` to be `true`, then you can set `outputFormat` to be `cssonly` to achieve the same effect.
-
-If you had earlier set `disableMinifiedFileGeneration` to be `false` ( default value for the property ) , then you can set `outputFormat` to be `both` ( again , default value for the new property as well ).
 
 # Menus
 
