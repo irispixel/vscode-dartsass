@@ -6,3 +6,6 @@ dist
 
 # no npm please.
 package-lock.json
+
+# yarn 2
+.yarn
