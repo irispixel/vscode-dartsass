@@ -4,31 +4,31 @@
 // https://opensource.org/licenses/MIT
 "use strict";
 import * as vscode from "vscode";
-import * as common from "dartsass-plugin-common";
+import { CompilerConfig, SASSOutputFormat } from 'dartsass-plugin-common';
 
 export const pluginName = "dartsass";
 
 //  MementoKeyWatchDirectories indicates the key to store the memento
 export const MementoKeyWatchDirectories = "watchDirectories";
 
-export function GetSASSOutputFormat(value: string): common.SASSOutputFormat {
+export function GetSASSOutputFormat(value: string): SASSOutputFormat {
   switch (value) {
     case "both":
-      return common.SASSOutputFormat.Both;
+      return SASSOutputFormat.Both;
     case "cssonly":
-      return common.SASSOutputFormat.CompiledCSSOnly;
+      return SASSOutputFormat.CompiledCSSOnly;
     case "minified":
-      return common.SASSOutputFormat.MinifiedOnly;
+      return SASSOutputFormat.MinifiedOnly;
   }
-  return common.SASSOutputFormat.Both;
+  return SASSOutputFormat.Both;
 }
 
 export class Config {
   public static extractFrom(
     configuration: vscode.WorkspaceConfiguration,
     workspaceState: vscode.Memento
-  ): common.CompilerConfig {
-    const config = new common.CompilerConfig();
+  ): CompilerConfig {
+    const config = new CompilerConfig();
     config.includePath = configuration.get<Array<string>>(
       "includePath",
       new Array<string>()
@@ -36,6 +36,7 @@ export class Config {
     config.sassBinPath = configuration.get<string>("sassBinPath", "");
     config.nodeExePath = configuration.get<string>("nodeExePath", "node.exe");
     config.targetDirectory = configuration.get<string>("targetDirectory", "");
+    config.sourceEncoding = CompilerConfig.encodingFrom(configuration.get<string>("encoding", "utf-8"));
     config.outputFormat = GetSASSOutputFormat(
       configuration.get<string>("outputFormat", "both")
     );
@@ -79,7 +80,7 @@ export function GetRawPluginConfiguration(): vscode.WorkspaceConfiguration {
 
 export function GetPluginConfigurationAsObject(
   workspaceState: vscode.Memento
-): common.CompilerConfig {
+): CompilerConfig {
   const vsconf = GetRawPluginConfiguration();
   return Config.extractFrom(vsconf, workspaceState);
 }
