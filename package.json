@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/codelios/vscode-plugin-dartsass.git"
     },
-    "version": "0.8.1",
+    "version": "0.8.3",
     "engines": {
         "vscode": "^1.56.0"
     },
@@ -216,7 +216,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.10.8"
+        "dartsass-plugin-common": "0.11.0"
     },
     "devDependencies": {
         "@types/glob": "7.1.3",
