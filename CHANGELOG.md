@@ -1,5 +1,10 @@
 # Change Log
 
+### 0.8.4
+  * Upgrade sass library to 1.34.0
+  * Upgrade postcss library to 8.3.0
+  
+
 ### 0.8.0
   * Introduce encoding property to specify encoding of files. Possible values - ascii, utf8 and utf16.
     Default value - utf8.
