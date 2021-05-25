@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.8.6
+  * Bug fix where the minified css files' ( .min.css ) sourcemap were not getting generated when they were watched. 
+
 ### 0.8.4
   * Upgrade sass library to 1.34.0
   * Upgrade postcss library to 8.3.0
