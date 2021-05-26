@@ -5,7 +5,7 @@
 "use strict";
 
 import * as vscode from "vscode";
-import * as common from "dartsass-plugin-common";
+import {ILog, SayVersion as commonSayVersion, getVersions, CompileCurrentFile} from "dartsass-plugin-common";
 import { Doc } from "./doc";
 import {
   GetRawPluginConfiguration,
@@ -33,7 +33,7 @@ const legacyTargetMinifiedDirectoryMessage = `
     See Issue #25 in the project for more details.
 `;
 
-export function VerifyLegacyWatchDir(_log: common.ILog) {
+export function VerifyLegacyWatchDir(_log: ILog) {
   const configuration = GetRawPluginConfiguration();
   const legacyWatchDirectories = configuration.get<Array<string>>(
     "watchDirectories",
@@ -44,7 +44,7 @@ export function VerifyLegacyWatchDir(_log: common.ILog) {
   }
 }
 
-export function VerifyTargetMinifiedDirectory(_log: common.ILog) {
+export function VerifyTargetMinifiedDirectory(_log: ILog) {
   const configuration = GetRawPluginConfiguration();
   const targetMinifiedDirectory = configuration.get<string>(
     "targetMinifiedDirectory",
@@ -98,8 +98,8 @@ export function SayVersion(
   const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
   _log.debug(`sayVersion with projectRoot ${projectRoot}`);
   try {
-    common.SayVersion(extensionConfig, projectRoot).then((value) => {
-      common.getVersions();
+    commonSayVersion(extensionConfig, projectRoot).then((value) => {
+      getVersions();
       vscode.window.showInformationMessage(value);
     });
   } catch (err) {
@@ -116,7 +116,7 @@ export function Compile(
   if (checkCompileOnSave && config.disableCompileOnSave) {
     return;
   }
-  common.CompileCurrentFile(new Doc(document), config).then(
+  CompileCurrentFile(new Doc(document), config).then(
     (value) => {},
     (err) => {
       vscode.window.showErrorMessage(`${err}`);

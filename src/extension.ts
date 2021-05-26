@@ -7,7 +7,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import * as common from "dartsass-plugin-common";
+import { setLog } from "dartsass-plugin-common";
 import { RegisterCommands } from "./cmd";
 import { CreateLog, CreateNullLog } from "./log";
 import {
@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
   _channel.appendLine('Extension "dartsass" activated now!');
 
   const _log = CreateLog(_channel);
-  common.setLog(_log);
+  setLog(_log);
   ReloadConfiguration(context.workspaceState, _log);
   RegisterCommands(context.subscriptions, context.workspaceState, _log);
   addStatusItems(context.subscriptions);

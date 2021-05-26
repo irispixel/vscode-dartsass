@@ -5,7 +5,7 @@
 "use strict";
 
 import * as vscode from "vscode";
-import * as common from "dartsass-plugin-common";
+import { ILog } from "dartsass-plugin-common";
 import { Doc } from "./doc";
 import { MementoKeyWatchDirectories } from "./config";
 
@@ -21,7 +21,7 @@ export function GetActiveProjectRoot() {
 export function PersistWatchers(
   workspaceState: vscode.Memento,
   watchDirectories: Array<string>,
-  _log: common.ILog
+  _log: ILog
 ) {
   workspaceState.update(MementoKeyWatchDirectories, watchDirectories).then(
     (value) => {

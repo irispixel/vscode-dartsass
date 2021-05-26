@@ -4,7 +4,7 @@
 // https://opensource.org/licenses/MIT
 "use strict";
 import * as vscode from "vscode";
-import * as common from "dartsass-plugin-common";
+import { NullLog, ILog } from "dartsass-plugin-common";
 
 export class Log {
   _channel: vscode.OutputChannel;
@@ -18,6 +18,10 @@ export class Log {
 
   public setDebugFlag(debugFlag: boolean) {
     this.debugFlag = debugFlag;
+  }
+
+  public line(msg: string): any {
+    this._channel.appendLine(`${msg}`);
   }
 
   public debug(msg: string): any {
@@ -52,22 +56,6 @@ export function CreateLog(_channel: vscode.OutputChannel): Log {
   return new Log(_channel);
 }
 
-export class NullLog {
-  constructor() {}
-
-  public debug(msg: string): any {}
-
-  public warning(msg: string): any {}
-
-  public info(msg: string): any {}
-
-  public error(msg: string): any {}
-
-  public notify(msg: string): any {}
-
-  public clear(): any {}
-}
-
-export function CreateNullLog(): common.ILog {
+export function CreateNullLog(): ILog {
   return new NullLog();
 }

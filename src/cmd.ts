@@ -5,7 +5,7 @@
 "use strict";
 
 import * as vscode from "vscode";
-import * as common from "dartsass-plugin-common";
+import { ILog } from "dartsass-plugin-common";
 import { Doc } from "./doc";
 import { Log } from "./log";
 import { SayVersion, Compile } from "./core";
@@ -23,7 +23,7 @@ export const CmdViewSassWatchersString = `dartsass.viewSassWatchers`;
 function cmdWatchDirectory(
   _srcdir: vscode.Uri,
   workspaceState: vscode.Memento,
-  _log: common.ILog
+  _log: ILog
 ) {
   WatchDirectory(_srcdir, workspaceState, _log);
 }
@@ -31,27 +31,27 @@ function cmdWatchDirectory(
 function cmdUnwatchDirectory(
   _srcdir: vscode.Uri,
   workspaceState: vscode.Memento,
-  _log: common.ILog
+  _log: ILog
 ) {
   UnwatchDirectory(_srcdir, workspaceState, _log);
 }
 
 function cmdViewSassWatchers(
   workspaceState: vscode.Memento,
-  _log: common.ILog
+  _log: ILog
 ) {
   ListWatchers(workspaceState, _log);
 }
 
 function cmdClearAllSassWatchers(
   workspaceState: vscode.Memento,
-  _log: common.ILog
+  _log: ILog
 ) {
   PersistWatchers(workspaceState, [], _log);
   ClearAllWatchers(workspaceState, _log);
 }
 
-function cmdRestartWatchers(workspaceState: vscode.Memento, _log: common.ILog) {
+function cmdRestartWatchers(workspaceState: vscode.Memento, _log: ILog) {
   RestartWatchers(workspaceState, _log);
 }
 
@@ -69,7 +69,7 @@ function cmdSayVersion(workspaceState: vscode.Memento, _log: Log) {
 
 function cmdCompileCurrentFile(
   workspaceState: vscode.Memento,
-  _log: common.ILog
+  _log: ILog
 ) {
   const workspaceFolders = vscode.workspace.workspaceFolders;
   if (!workspaceFolders) {
