@@ -31,16 +31,15 @@ function updateStatusBar(watchDirectories: string[] | undefined | null) {
 }
 
 export function WatchDirectory(
-  _srcdir: vscode.Uri,
+  watchDir: vscode.Uri,
   workspaceState: vscode.Memento,
   _log: ILog
 ) {
-  const uri = GetProjectRoot(_srcdir);
-  if (!uri) {
+  const projectRootURI = GetProjectRoot(watchDir);
+  if (!projectRootURI) {
     return "";
   }
-  const projectRoot = uri.fsPath;
-  const srcdir = xformPath(projectRoot, _srcdir.fsPath);
+  const srcdir = xformPath(projectRootURI?.fsPath, watchDir.fsPath);
   const config = GetPluginConfigurationAsObject(workspaceState);
   commonWatchDirectory(srcdir, config).then(
     (value: boolean) => {

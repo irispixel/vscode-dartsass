@@ -105,16 +105,16 @@ export function RegisterCommands(
   subscriptions.push(
     vscode.commands.registerCommand(
       "dartsass.watchDir",
-      (_srcdir: vscode.Uri) => {
-        cmdWatchDirectory(_srcdir, workspaceState, _log);
+      (watchDir: vscode.Uri) => {
+        cmdWatchDirectory(watchDir, workspaceState, _log);
       }
     )
   );
   subscriptions.push(
     vscode.commands.registerCommand(
       "dartsass.unwatchDir",
-      (_srcdir: vscode.Uri) => {
-        cmdUnwatchDirectory(_srcdir, workspaceState, _log);
+      (watchDir: vscode.Uri) => {
+        cmdUnwatchDirectory(watchDir, workspaceState, _log);
       }
     )
   );

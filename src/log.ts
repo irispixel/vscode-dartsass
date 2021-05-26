@@ -21,7 +21,7 @@ export class Log {
   }
 
   public line(msg: string): any {
-    this._channel.appendLine(`${msg}`);
+    this._channel.appendLine(msg);
   }
 
   public debug(msg: string): any {
