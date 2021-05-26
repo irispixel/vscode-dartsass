@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.8.7
+  * Bug fix regarding repository path. Change to the right git repository.
+
 ### 0.8.6
   * Bug fix where the minified css files' ( .min.css ) sourcemap were not getting generated when they were watched. 
 
