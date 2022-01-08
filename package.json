@@ -111,7 +111,7 @@
                 "dartsass.sassBinPath": {
                     "type": "string",
                     "default": "",
-                    "description": "Sets the PATH to the sass binary if installed in your system. Defaults to empty string. This property is mandatory and needs to point to a valid sass path ( say, \"/usr/local/bin/sass\" ) if we need to \"watch\" the directory. ( Install sass locally on your machine using the command \"npm install [-g] sass\" ) "
+                    "description": "Sets the PATH to the sass binary if installed in your system. Defaults to empty string. This property is mandatory and needs to point to a valid sass path ( say, \"/usr/local/bin/sass\" on linux , or \"node_modules\\sass\\sass.js\" on windows ) if we need to \"watch\" the directory. ( Install sass locally on your machine using the command \"npm install [-g] sass\" ) "
                 },
                 "dartsass.nodeExePath": {
                     "type": "string",
