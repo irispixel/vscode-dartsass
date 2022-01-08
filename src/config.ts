@@ -74,11 +74,15 @@ export function GetRawPluginConfiguration(): vscode.WorkspaceConfiguration {
   return vscode.workspace.getConfiguration(pluginName);
 }
 
+export function doesRunOnWindows(): boolean {
+  return isWindows();
+}
+
 export function GetPluginConfigurationAsObject(
   workspaceState: vscode.Memento
 ): CompilerConfig {
   const vsconf = GetRawPluginConfiguration();
   let value = Config.extractFrom(vsconf, workspaceState);
-  value.isWindows = isWindows();
+  value.isWindows = doesRunOnWindows();
   return value;
 }

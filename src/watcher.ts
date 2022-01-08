@@ -5,13 +5,14 @@
 "use strict";
 import * as vscode from "vscode";
 import { ILog, WatchInfo, Watcher, CompilerConfig, Validate,
-  watchDirectory as commonWatchDirectory, xformPath, unwatchDirectory, isWindows } from "dartsass-plugin-common";
+  watchDirectory as commonWatchDirectory, xformPath, unwatchDirectory } from "dartsass-plugin-common";
 import { GetProjectRoot } from "./doc";
 import { myStatusBarItem } from "./statusbar";
 import { GetActiveProjectRoot, PersistWatchers } from "./project";
 import {
   MementoKeyWatchDirectories,
   GetPluginConfigurationAsObject,
+  doesRunOnWindows
 } from "./config";
 
 const watcher = new Watcher();
@@ -140,8 +141,7 @@ export function ClearAllWatchers(
     vscode.window.showInformationMessage(
       `Clearing ${watcher.GetWatchList().size} sass watcher processes`
     );
-    const windowsPlatform = isWindows();
-    watcher.ClearAll(windowsPlatform);
+    watcher.ClearAll(doesRunOnWindows());
     if (workspaceState) {
       updateStatusBar(workspaceState.get<string[]>(MementoKeyWatchDirectories));
     } else {
