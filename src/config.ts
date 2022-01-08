@@ -58,10 +58,6 @@ export class Config {
       "disableAutoPrefixer",
       false
     );
-    config.autoPrefixBrowsersList = configuration.get<Array<string>>(
-      "autoPrefixBrowsersList",
-      new Array<string>(">= 0.5%", "last 2 major versions", "not dead", "not Explorer <= 11")
-    );
     const watchDirectories = workspaceState.get<string[]>(
       MementoKeyWatchDirectories
     );
