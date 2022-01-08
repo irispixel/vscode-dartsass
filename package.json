@@ -169,6 +169,11 @@
                     "default": false,
                     "description": "Debug flag to be used by developers. By default, false."
                 },
+                "dartsass.enableExternalCompilation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Flag to use external `sass` binary installed in the project. By default, false and uses the sass library packaged with the plugin."
+                },                
                 "dartsass.pauseInterval": {
                     "type": "number",
                     "default": 3,
