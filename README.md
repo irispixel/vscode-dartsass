@@ -151,38 +151,31 @@ Hence, you need to install sass binary locally or globally for the watch functio
 
 Sass Compiler can be installed locally as follows:
 
-| `npm install sass@1.47.0`
+> `npm install -D sass@1.47.0`
  
 After installation, you can set the property `dartsass.sassBinPath` to be one of the following as applicable.
 
-* Set `dartsass.sassBinPath` to `node_modules/.bin/sass`
+> Set `dartsass.sassBinPath` to `node_modules/.bin/sass`
 
 
-[
-  
-Aliter: Sass Compiler can also be installed globally, as follows:
- 
-| `npm install -g sass@1.47.0`
+>  Aliter: Sass Compiler can also be installed globally, as follows:
+> `npm install -g sass@1.47.0`
+> Determine the path to global sass compiler returned by `which sass`. ( say, `/usr/local/bin/sass` ).
+> Set `dartsass.sassBinPath` to `/usr/local/bin/sass`.
+> (assuming , that was the path returned by `which sass` run previously ).
+> Having said that, we recommend local installation as mentioned above to prevent unnecessary quirks.
 
-Determine the path to global sass compiler returned by `which sass`. ( say, `/usr/local/bin/sass` ).
 
-* Set `dartsass.sassBinPath` to `/usr/local/bin/sass`.
-
-(assuming , that was the path returned by `which sass` run previously ).
-
-Having said that, we recommend local installation as mentioned above to prevent unnecessary quirks.
-
-]
 
 ### Windows
 
 Sass Compiler can be installed locally as 
 
-| `npm install sass@1.47.0`
+> `npm install -D sass@1.47.0`
 
 On Windows, the path to `sassBinPath` slightly differs because of a quirkiness [ See [Issue #24](https://github.com/codelios/vscode-dartsass/issues/24) ]
 
-* Set `dartsass.sassBinPath` to `node_modules\\sass\\sass.js`.
+> Set `dartsass.sassBinPath` to `node_modules\\sass\\sass.js`.
 
 
 
@@ -288,11 +281,11 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
  1. **I don't have a global sass installation / I don't have the write permission to write to the global files / I don't want to have a single global sass binary. What are my options to set `sassBinPath` now ?**
 
-    In your project `package.json` , under `devDependencies`, add an entry for `sass` (version 1.19.0 - say)
+    In your project `package.json` , under `devDependencies`, add an entry for `sass` (version 1.47.0 , say)
 
     `
     "devDependencies": {
-        "sass" : "1.19.0"
+        "sass" : "1.47.0"
     }
     `
 
