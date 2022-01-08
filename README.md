@@ -158,7 +158,9 @@ After installation, you can set the property `dartsass.sassBinPath` to be one of
 > Set `dartsass.sassBinPath` to `node_modules/.bin/sass`
 
 
->  Aliter: Sass Compiler can also be installed globally, as follows:
+Aliter (global sass installation):
+
+>  Sass Compiler can also be installed globally, as follows:
 > `npm install -g sass@1.47.0`
 > Determine the path to global sass compiler returned by `which sass`. ( say, `/usr/local/bin/sass` ).
 > Set `dartsass.sassBinPath` to `/usr/local/bin/sass`.
