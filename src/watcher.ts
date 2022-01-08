@@ -5,7 +5,7 @@
 "use strict";
 import * as vscode from "vscode";
 import { ILog, WatchInfo, Watcher, CompilerConfig, Validate,
-  watchDirectory as commonWatchDirectory, xformPath, unwatchDirectory } from "dartsass-plugin-common";
+  watchDirectory as commonWatchDirectory, xformPath, unwatchDirectory, isWindows } from "dartsass-plugin-common";
 import { GetProjectRoot } from "./doc";
 import { myStatusBarItem } from "./statusbar";
 import { GetActiveProjectRoot, PersistWatchers } from "./project";
@@ -76,7 +76,7 @@ export function UnwatchDirectory(
   unwatchDirectory(srcdir, config).then(
     (value) => {
       PersistWatchers(workspaceState, config.watchDirectories, _log);
-      if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot)) {
+      if (!watcher.ClearWatch(_srcdir.fsPath, projectRoot, config.isWindows)) {
         _log.notify(`Unable to clear watch for directory ${_srcdir.fsPath}.`);
       } else {
         _log.info(`Directory ${_srcdir.fsPath} unwatched now.`);
@@ -140,7 +140,8 @@ export function ClearAllWatchers(
     vscode.window.showInformationMessage(
       `Clearing ${watcher.GetWatchList().size} sass watcher processes`
     );
-    watcher.ClearAll();
+    const windowsPlatform = isWindows();
+    watcher.ClearAll(windowsPlatform);
     if (workspaceState) {
       updateStatusBar(workspaceState.get<string[]>(MementoKeyWatchDirectories));
     } else {

@@ -205,7 +205,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.11.7"
+        "dartsass-plugin-common": "0.11.9"
     },
     "devDependencies": {
         "@types/glob": "7.2.0",

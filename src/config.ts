@@ -4,7 +4,7 @@
 // https://opensource.org/licenses/MIT
 "use strict";
 import * as vscode from "vscode";
-import { CompilerConfig, SASSOutputFormat } from 'dartsass-plugin-common';
+import { CompilerConfig, SASSOutputFormat, isWindows } from 'dartsass-plugin-common';
 
 export const pluginName = "dartsass";
 
@@ -78,5 +78,7 @@ export function GetPluginConfigurationAsObject(
   workspaceState: vscode.Memento
 ): CompilerConfig {
   const vsconf = GetRawPluginConfiguration();
-  return Config.extractFrom(vsconf, workspaceState);
+  let value = Config.extractFrom(vsconf, workspaceState);
+  value.isWindows = isWindows();
+  return value;
 }
