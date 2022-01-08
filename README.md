@@ -3,45 +3,50 @@
 
 VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass).
 
+
 * [Usage](#usage)
 * [Install](#install)
-  * [Inside VSCode](#inside-vscode)
-  * [Marketplace](#marketplace)
+   * [Inside VSCode](#inside-vscode)
+   * [Marketplace](#marketplace)
 * [Activation](#activation)
 * [Properties](#properties)
-  * [dartsass.autoPrefixBrowsersList](#dartsassautoprefixbrowserslist)
-  * [dartsass.disableAutoPrefixer](#dartsassdisableautoprefixer)
-  * [dartsass.disableSourceMap](#dartsassdisablesourcemap)
-  * [dartsass.disableCompileOnSave](#dartsassdisablecompileonsave)
-  * [dartsass.enableStartWithUnderscores](#dartsassenablestartwithunderscores)
-  * [dartsass.includePath](#dartsassincludepath)
-  * [dartsass.nodeExePath](#dartsassnodeexepath)
-  * [dartsass.outputFormat](#dartsassoutputformat)
-  * [dartsass.pauseInterval](#dartsasspauseinterval)
-  * [dartsass.sassBinPath](#dartsasssassbinpath)
-      * [Local Sass Binary Installation](#local-sass-binary-installation)
-      * [Global Sass Binary Installation.](#global-sass-binary-installation)
-  * [dartsass.targetDirectory](#dartsasstargetdirectory)
+   * [dartsass.autoPrefixBrowsersList](#dartsassautoprefixbrowserslist)
+   * [dartsass.disableAutoPrefixer](#dartsassdisableautoprefixer)
+   * [dartsass.disableSourceMap](#dartsassdisablesourcemap)
+   * [dartsass.disableCompileOnSave](#dartsassdisablecompileonsave)
+   * [dartsass.enableStartWithUnderscores](#dartsassenablestartwithunderscores)
+   * [dartsass.includePath](#dartsassincludepath)
+   * [dartsass.nodeExePath](#dartsassnodeexepath)
+   * [dartsass.outputFormat](#dartsassoutputformat)
+   * [dartsass.pauseInterval](#dartsasspauseinterval)
+   * [dartsass.sassBinPath](#dartsasssassbinpath)
+      * [Linux](#linux)
+      * [Windows](#windows)
+   * [dartsass.targetDirectory](#dartsasstargetdirectory)
 * [Deprecated Properties](#deprecated-properties)
-  * [dartsass.debug](#dartsassdebug)
+   * [dartsass.debug](#dartsassdebug)
+   * [dartsass.disableMinifiedFileGeneration](#dartsassdisableminifiedfilegeneration)
 * [Menus](#menus)
-  * [DartSass: Sass Watch](#dartsass-sass-watch)
-  * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
+   * [DartSass: Sass Watch](#dartsass-sass-watch)
+   * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
 * [Commands](#commands)
-  * [QuikSass: Compile Current File](#quiksass-compile-current-file)
-  * [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
-  * [QuikSass: View Watcher List](#quiksass-view-watcher-list)
-  * [QuikSass: Clear All Watchers](#quiksass-clear-all-watchers)
+   * [QuikSass: Compile Current File](#quiksass-compile-current-file)
+   * [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
+   * [QuikSass: View Watcher List](#quiksass-view-watcher-list)
+   * [QuikSass: Clear All Watchers](#quiksass-clear-all-watchers)
 * [Features](#features)
-  * [Sass Watcher](#sass-watcher)
-  * [Pure Javascript SASS](#pure-javascript-sass)
-  * [Customize Directory](#customize-directory)
+   * [Sass Watcher](#sass-watcher)
+   * [Pure Javascript SASS](#pure-javascript-sass)
+   * [Customize Directory](#customize-directory)
 * [FAQ](#faq)
 * [License](#license)
 * [ChangeLog](#changelog)
 * [Contributing](#contributing)
 * [Credits](#credits)
 * [Share](#share)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 
 # Usage
 
@@ -132,26 +137,53 @@ Default: 3. Pause Interval (in seconds) before kicking off another scss compilat
 
 Default: Empty.
 
-You may need to install sass binary locally or globally for the watch functionality to work.
+The watch functionality launches a `sass` command line process behind the scenes and delegates almost all of the watching functionality to the same.
 
-### Local Sass Binary Installation
+`sassBinPath` references the location of the sass binary that needs to be launched when we *watch* a directory of input scss files for changes. 
 
-Sass Compiler can be installed locally as `npm install sass@1.26.3`, say . (Choose relevant version as appropriate )
+Hence, you need to install sass binary locally or globally for the watch functionality to work.
 
+
+
+ [ Use a recent sass version or a different relevant version for your use case as appropriate ]
+
+### Linux
+
+Sass Compiler can be installed locally as follows:
+
+| `npm install sass@1.47.0`
+ 
 After installation, you can set the property `dartsass.sassBinPath` to be one of the following as applicable.
 
-* `node_modules/.bin/sass` ( Linux ) *or*
-* `node_modules\\sass\\sass.js` ( Windows ) - See [Issue #24](https://github.com/malvahq/vscode-plugin-dartsass/issues/24)
+* Set `dartsass.sassBinPath` to `node_modules/.bin/sass`
 
-### Global Sass Binary Installation.
 
-You can install the sass compiler globally as `npm install -g sass@1.26.3` (if not installed already, that is !).
+[
+  
+Aliter: Sass Compiler can also be installed globally, as follows:
+ 
+| `npm install -g sass@1.47.0`
 
-You can set the property `dartsass.sassBinPath` as below, according to the platform
+Determine the path to global sass compiler returned by `which sass`. ( say, `/usr/local/bin/sass` ).
 
-* Linux:
+* Set `dartsass.sassBinPath` to `/usr/local/bin/sass`.
 
-Determine the path to global sass compiler ( `/usr/local/bin/sass` if exists ), or any other path returned by `which sass`.
+(assuming , that was the path returned by `which sass` run previously ).
+
+Having said that, we recommend local installation as mentioned above to prevent unnecessary quirks.
+
+]
+
+### Windows
+
+Sass Compiler can be installed locally as 
+
+| `npm install sass@1.47.0`
+
+On Windows, the path to `sassBinPath` slightly differs because of a quirkiness [ See [Issue #24](https://github.com/codelios/vscode-plugin-dartsass/issues/24) ]
+
+* Set `dartsass.sassBinPath` to `node_modules\\sass\\sass.js`.
+
 
 
 ## `dartsass.targetDirectory`
