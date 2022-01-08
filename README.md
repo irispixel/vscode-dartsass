@@ -180,7 +180,7 @@ Sass Compiler can be installed locally as
 
 | `npm install sass@1.47.0`
 
-On Windows, the path to `sassBinPath` slightly differs because of a quirkiness [ See [Issue #24](https://github.com/codelios/vscode-plugin-dartsass/issues/24) ]
+On Windows, the path to `sassBinPath` slightly differs because of a quirkiness [ See [Issue #24](https://github.com/codelios/vscode-dartsass/issues/24) ]
 
 * Set `dartsass.sassBinPath` to `node_modules\\sass\\sass.js`.
 
