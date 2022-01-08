@@ -24,7 +24,6 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
   * [dartsass.targetDirectory](#dartsasstargetdirectory)
 * [Deprecated Properties](#deprecated-properties)
   * [dartsass.debug](#dartsassdebug)
-  * [dartsass.disableMinifiedFileGeneration](#dartsassdisableminifiedfilegeneration)
 * [Menus](#menus)
   * [DartSass: Sass Watch](#dartsass-sass-watch)
   * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)

@@ -60,7 +60,7 @@ export class Config {
     );
     config.autoPrefixBrowsersList = configuration.get<Array<string>>(
       "autoPrefixBrowsersList",
-      new Array<string>("> 1%", "last 2 versions")
+      new Array<string>(">= 0.5%", "last 2 major versions", "not dead", "not Explorer <= 11")
     );
     const watchDirectories = workspaceState.get<string[]>(
       MementoKeyWatchDirectories
