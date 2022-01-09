@@ -1,5 +1,10 @@
 # Change Log
 
+### 0.9.0
+  * Upgrade sass library to 1.47.0 . 
+  * Property `dartsass.autoPrefixBrowsersList` removed altogether as that overrides the `.browserlistrc ` values unnecessarily.
+  * Experimental support added for remote ssh execution platform through `dartsass.execPlatform` property. 
+
 ### 0.8.7
   * Bug fix regarding repository path. Change to the right git repository.
 

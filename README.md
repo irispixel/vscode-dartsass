@@ -82,10 +82,6 @@ More details of the plugin can be found at [vscode-dartsass Page](https://codeli
 
 This extension contributes the following properties:
 
-##  `dartsass.autoPrefixBrowsersList`
-
-Default: `["> 1%", "last 2 versions"]`. List of browsers to be specified for autoprefixer. See https://github.com/browserslist/browserslist#readme for more details.
-
 ## `dartsass.disableAutoPrefixer`
 
 Default: false. Disables postcss processing using autoprefixer library.
@@ -111,6 +107,20 @@ Default: false. Enables compilation of files that start with underscores.
 Default: `node.exe`. Sets the PATH to the node.exe executable.
 
 Important: This property is applicable on the windows platform only. On Linux, this property is completely ignored and not used at all
+
+## `dartsass.execPlatform`
+
+Default: `host`. Property to mention the execution platform of the dart sass plugin.
+
+For the most part , this plugin attribute is best left untouched. In case when you are working on a Windows host but remotely editing files on the Linux platform, then changing this option is helpful.
+
+Possible values:
+
+* `host`: Sass source files are compiled on the samae platform as that of the vscode editor
+* `linux`: Sass source files are compiled on the linux platform and accessed possibly but not necessarily from a windows host.
+* `windows`: Sass source files are compiled on the windows platform and accessed possibly but not necessarily from a windows host.
+
+**Important: This property is experimental and not guaranteed to work though.**
 
 ## `dartsass.outputFormat`
 
@@ -198,6 +208,13 @@ Default: false. Best applicable for **developers of this extension** only. If yo
 
 **The property is deprecated and not used. Refer to `dartsass.outputFormat` property described above for its replacement.**
 
+# Removed Properties
+
+##  `dartsass.autoPrefixBrowsersList`
+
+~~Default: `["> 1%", "last 2 versions"]`. List of browsers to be specified for autoprefixer. See https://github.com/browserslist/browserslist#readme for more details.~~
+
+**The property is removed since 0.9.0. 
 
 # Menus
 

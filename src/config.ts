@@ -58,7 +58,6 @@ export class Config {
       false
     );
     config.debug = configuration.get<boolean>("debug", false);
-    config.enableExternalCompilation = configuration.get<boolean>("enableExternalCompilation", false);
     config.disableCompileOnSave = configuration.get<boolean>(
       "disableCompileOnSave",
       false
