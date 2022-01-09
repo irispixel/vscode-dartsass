@@ -23,6 +23,19 @@ export function GetSASSOutputFormat(value: string): SASSOutputFormat {
   return SASSOutputFormat.Both;
 }
 
+function doesExecOnWindows(execPlatform: string): boolean {
+  switch (execPlatform) {
+    case "windows":
+      return true;
+    case "linux":
+      return false;
+    case "host":
+      return isWindows();
+    default:
+      return isWindows();
+  }
+}
+
 export class Config {
   public static extractFrom(
     configuration: vscode.WorkspaceConfiguration,
@@ -59,6 +72,8 @@ export class Config {
       "disableAutoPrefixer",
       false
     );
+    let execPlatform = configuration.get<string>("execPlatform", "host");
+    config.isWindows = doesExecOnWindows(execPlatform);
     const watchDirectories = workspaceState.get<string[]>(
       MementoKeyWatchDirectories
     );
@@ -75,15 +90,9 @@ export function GetRawPluginConfiguration(): vscode.WorkspaceConfiguration {
   return vscode.workspace.getConfiguration(pluginName);
 }
 
-export function doesRunOnWindows(): boolean {
-  return isWindows();
-}
-
 export function GetPluginConfigurationAsObject(
   workspaceState: vscode.Memento
 ): CompilerConfig {
   const vsconf = GetRawPluginConfiguration();
-  let value = Config.extractFrom(vsconf, workspaceState);
-  value.isWindows = doesRunOnWindows();
-  return value;
+  return Config.extractFrom(vsconf, workspaceState);
 }
