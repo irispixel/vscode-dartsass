@@ -5,7 +5,7 @@
 "use strict";
 
 import * as vscode from "vscode";
-import {ILog, SayVersion as commonSayVersion, getVersions, CompileCurrentFile, isWindows} from "dartsass-plugin-common";
+import {ILog, SayVersion as commonSayVersion, getVersions, CompileCurrentFile, isWindows, getPlatform} from "dartsass-plugin-common";
 import { Doc } from "./doc";
 import {
   GetRawPluginConfiguration,
@@ -96,7 +96,8 @@ export function SayVersion(
   _log: Log
 ) {
   const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
-  _log.debug(`sayVersion with projectRoot ${projectRoot}, doesExecOnWindows: ${isWindows()}`);
+  const sassBinPath = getPlatform(isWindows()).getSassBinPath(projectRoot, extensionConfig.sassBinPath);
+  _log.debug(`sayVersion with projectRoot ${projectRoot}, doesExecOnWindows: ${isWindows()}, sassBinPath: ${sassBinPath}`);
   try {
     commonSayVersion(extensionConfig, projectRoot).then((value) => {
       getVersions();

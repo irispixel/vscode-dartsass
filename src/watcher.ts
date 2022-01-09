@@ -5,7 +5,7 @@
 "use strict";
 import * as vscode from "vscode";
 import { ILog, WatchInfo, Watcher, CompilerConfig, Validate,
-  watchDirectory as commonWatchDirectory, xformPath, unwatchDirectory, isWindows } from "dartsass-plugin-common";
+  watchDirectory as commonWatchDirectory, xformPath, unwatchDirectory, isWindows, getPlatform } from "dartsass-plugin-common";
 import { GetProjectRoot } from "./doc";
 import { myStatusBarItem } from "./statusbar";
 import { GetActiveProjectRoot, PersistWatchers } from "./project";
@@ -155,10 +155,11 @@ export function RestartWatchers(
 ) {
   const projectRoot = GetActiveProjectRoot();
   const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
+  const sassBinPath = getPlatform(extensionConfig.isWindows).getSassBinPath(projectRoot, extensionConfig.sassBinPath);
   _log.debug(
     `Configuration reloaded with ${JSON.stringify(
       extensionConfig
-    )} and projectRoot ${projectRoot}`
+    )} and projectRoot ${projectRoot} and sassbinPath: ${sassBinPath}`
   );
   Validate(extensionConfig, projectRoot).then(
     (value) => {
