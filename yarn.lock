@@ -682,10 +682,10 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-dartsass-plugin-common@0.11.9:
-  version "0.11.9"
-  resolved "https://registry.yarnpkg.com/dartsass-plugin-common/-/dartsass-plugin-common-0.11.9.tgz#733c1c243030e8b0d98109bfab13ad667d8f6057"
-  integrity sha512-aULjxFOVunMb/O44P8Fe3tpqVAHpCwAtvtQldw3g+t/EF7nPkJHdGT09BpgNzTlUlMaJmPOdDvp/BlNeZA80Lw==
+dartsass-plugin-common@0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/dartsass-plugin-common/-/dartsass-plugin-common-0.12.0.tgz#e7b3dea4d0fd16ec7d2fbff096bfa15c834f54ec"
+  integrity sha512-9o4ZEGZ0Tv6f/KuzmHOD8pHAFRp9aJ2NW8h2wZAWv1W0Nc0tJ4ebS8pz0BQxU4UMKyxsBUNLHXmcMtyg/jz96Q==
   dependencies:
     autoprefixer "10.4.2"
     browserslist "4.19.1"
