@@ -1,0 +1,11 @@
+out
+node_modules
+.vscode-test/
+*.vsix
+dist
+
+# no npm please.
+package-lock.json
+
+# yarn 2
+.yarn
