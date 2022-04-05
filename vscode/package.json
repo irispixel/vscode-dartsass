@@ -208,6 +208,7 @@
         }
     },
     "scripts": {
+        "clean": "rm -fr dist",
         "vscode:prepublish": "yarn compile",
         "lint": "eslint src --ext ts",
         "fix": "eslint --fix src --ext .ts",

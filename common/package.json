@@ -29,8 +29,7 @@
         "clean": "rm -fr lib",
         "lint": "eslint src --ext ts && eslint __tests__ --ext ts",
         "fix": "eslint --fix . --ext .ts",
-        "build": "yarn clean && tsc",
-        "dev": "yarn build && webpack --mode development",
+        "build": "webpack --mode development",
         "prod": "rm -fr node_modules/fsevents && yarn build && webpack --mode production",
         "testonly": "mocha --timeout 5000 -r ts-node/register __tests__/**/*.spec.ts",
         "test": "yarn dev && yarn testonly"

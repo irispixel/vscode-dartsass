@@ -1,0 +1,18 @@
+node_modules
+*.vsix
+lib
+dist
+__tests__/out*
+__tests__/**/*.css
+__tests__/**/*.css.map
+__tests__/**/*.min.css
+
+# No npm . use yarn please
+package-lock.json
+
+# yarn 2
+.yarn
+yarn-error.log
+
+# Visual Studio Community Edition
+.vs
