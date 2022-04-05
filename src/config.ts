@@ -4,7 +4,11 @@
 // https://opensource.org/licenses/MIT
 "use strict";
 import * as vscode from "vscode";
-import { CompilerConfig, SASSOutputFormat, isWindows } from 'dartsass-plugin-common';
+import {
+  CompilerConfig,
+  SASSOutputFormat,
+  isWindows
+} from "dartsass-plugin-common";
 
 export const pluginName = "dartsass";
 
@@ -49,7 +53,9 @@ export class Config {
     config.sassBinPath = configuration.get<string>("sassBinPath", "");
     config.nodeExePath = configuration.get<string>("nodeExePath", "node.exe");
     config.targetDirectory = configuration.get<string>("targetDirectory", "");
-    config.sourceEncoding = CompilerConfig.encodingFrom(configuration.get<string>("encoding", "utf-8"));
+    config.sourceEncoding = CompilerConfig.encodingFrom(
+      configuration.get<string>("encoding", "utf-8")
+    );
     config.outputFormat = GetSASSOutputFormat(
       configuration.get<string>("outputFormat", "both")
     );

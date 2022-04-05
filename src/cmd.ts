@@ -31,22 +31,15 @@ function cmdWatchDirectory(
 function cmdUnwatchDirectory(
   _srcdir: vscode.Uri,
   workspaceState: vscode.Memento,
-  _log: ILog
-) {
+  _log: ILog) {
   UnwatchDirectory(_srcdir, workspaceState, _log);
 }
 
-function cmdViewSassWatchers(
-  workspaceState: vscode.Memento,
-  _log: ILog
-) {
+function cmdViewSassWatchers(workspaceState: vscode.Memento, _log: ILog) {
   ListWatchers(workspaceState, _log);
 }
 
-function cmdClearAllSassWatchers(
-  workspaceState: vscode.Memento,
-  _log: ILog
-) {
+function cmdClearAllSassWatchers(workspaceState: vscode.Memento, _log: ILog) {
   PersistWatchers(workspaceState, [], _log);
   ClearAllWatchers(workspaceState, _log);
 }
@@ -67,10 +60,7 @@ function cmdSayVersion(workspaceState: vscode.Memento, _log: Log) {
   }
 }
 
-function cmdCompileCurrentFile(
-  workspaceState: vscode.Memento,
-  _log: ILog
-) {
+function cmdCompileCurrentFile(workspaceState: vscode.Memento, _log: ILog) {
   const workspaceFolders = vscode.workspace.workspaceFolders;
   if (!workspaceFolders) {
     console.log(`No workspace folders present to compile scss files`);
