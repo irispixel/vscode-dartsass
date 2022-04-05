@@ -1,0 +1,14 @@
+Dockerfile
+docker-compose.yml
+.dockerignore
+node_modules
+src
+tsconfig.json
+tslint.json
+webpack.config.js
+__tests__
+
+# Ignore yarn related files to be published
+.yarn
+.pnp.js
+.yarnrc.yml
