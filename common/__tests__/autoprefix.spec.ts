@@ -5,7 +5,6 @@
 
 "use strict";
 import "mocha";
-import { CompilerConfig } from "../src/config";
 import { CSSFile } from "../src/cssfile";
 import { doAutoprefixCSS } from "../src/autoprefix";
 import { expect } from "chai";
@@ -21,14 +20,14 @@ const InputCSS = `
 
 describe("autoprefix API", () => {
   it("doAutoprefixCSS", (done) => {
-    const config = new CompilerConfig();
     doAutoprefixCSS(
-      "main.css",
       {
         css: InputCSS,
         sourceMap: null,
       },
-      config,
+      "main.css",
+      false,
+      false
     ).then(
       (value: CSSFile) => {
         expect(value.css).to.be.not.null;
