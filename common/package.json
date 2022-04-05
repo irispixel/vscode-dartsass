@@ -26,13 +26,14 @@
     "scripts": {
         "sass": "sass",
         "prepublishOnly": "yarn prod",
-        "clean": "rm -fr lib",
+        "clean": "rimraf lib",
         "lint": "eslint src --ext ts && eslint __tests__ --ext ts",
         "fix": "eslint --fix . --ext .ts",
         "build": "webpack --mode development",
+        "dev": "yarn dev",
         "prod": "rm -fr node_modules/fsevents && yarn build && webpack --mode production",
-        "testonly": "mocha --timeout 5000 -r ts-node/register __tests__/**/*.spec.ts",
-        "test": "yarn dev && yarn testonly"
+        "test": "mocha --timeout 5000 -r ts-node/register __tests__/**/*.spec.ts",
+        "build:test": "yarn build && yarn test"
     },
     "dependencies": {
         "autoprefixer": "^10.4.4",
@@ -50,8 +51,8 @@
         "@types/mocha": "9.1.0",
         "@types/node": "17.0.23",
         "@types/sass": "1.43.1",
-        "@typescript-eslint/eslint-plugin": "5.17.0",
-        "@typescript-eslint/parser": "5.17.0",
+        "@typescript-eslint/eslint-plugin": "5.18.0",
+        "@typescript-eslint/parser": "5.18.0",
         "chai": "4.3.6",
         "eslint": "8.12.0",
         "eslint-config-prettier": "8.5.0",

@@ -110,7 +110,7 @@ export class DartSassCompiler {
         css: result.css.toString(config.sourceEncoding),
         sourceMap: (result.map ? result.map.toString() : null),
       };
-      const value = await autoPrefixCSSBytes(output, inputCSSFile, config);
+      const value = await autoPrefixCSSBytes(output, inputCSSFile, config.disableAutoPrefixer, config.disableCompileOnSave);
       return `${value}`;
     } catch (err) {
       const msg = this.handleError(err as sass.Exception, config);

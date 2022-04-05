@@ -61,7 +61,8 @@ export class NativeCompiler {
         css: readFileSync(csspath, config.sourceEncoding),
         sourceMap: readFileSync(csspath + ".map", 'utf-8'),
       },
-      config
+      config.disableAutoPrefixer,
+      config.disableSourceMap
     );
     return csspath;
   }

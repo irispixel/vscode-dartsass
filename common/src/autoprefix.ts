@@ -5,7 +5,6 @@
 "use strict";
 import * as path from "path";
 import browserslist from "browserslist";
-import { CompilerConfig } from "./config";
 import { Info } from "./version";
 import { Log } from "./log";
 import { CSSFile, writeCSSFile } from "./cssfile";
@@ -30,19 +29,20 @@ function getProcessArgs(to: string, sourceMap: string | null): any {
 }
 
 export async function doAutoprefixCSS(
-  input: string,
-  cssfile: CSSFile,
-  config: CompilerConfig
+  inputcss: CSSFile,
+  output: string,
+  disableAutoPrefixer: boolean,
+  disableSourceMap: boolean
 ): Promise<CSSFile> {
-  if (config.disableAutoPrefixer) {
-    return cssfile;
+  if (disableAutoPrefixer) {
+    return inputcss;
   }
   // TODO: autoprefixer preferences have been removed. 
   const processor = postcss([autoprefixer()]);
   Log.debug(`Postcss: About to process`);
   const result = await processor.process(
-    cssfile.css,
-    getProcessArgs(input, cssfile.sourceMap)
+    inputcss.css,
+    getProcessArgs(output, inputcss.sourceMap)
   );
   Log.debug(`Postcss: processor.process completed`);
   result.warnings().forEach((warn: Warning[]) => {
@@ -51,7 +51,7 @@ export async function doAutoprefixCSS(
   Log.debug(`Typeof result.css ${typeof result.css}`)
   return {
     css: result.css,
-    sourceMap: config.disableSourceMap ? null
+    sourceMap: disableSourceMap ? null
       : (result.map ? result.map.toString() : null),
   };
 }
@@ -59,9 +59,10 @@ export async function doAutoprefixCSS(
 export async function autoPrefixCSSBytes(
   output: string,
   inFile: CSSFile,
-  config: CompilerConfig
+  disableAutoPrefixer: boolean,
+  disableSourceMap: boolean
 ): Promise<number> {
-  const cssfile = await doAutoprefixCSS(path.basename(output), inFile, config);
+  const cssfile = await doAutoprefixCSS(inFile, path.basename(output), disableAutoPrefixer, disableSourceMap);
   Log.debug(`doAutoprefixCSS completed to ${output}`);
   const value = await writeCSSFile(output, cssfile);
   Log.debug(`writeCSSFile completed to ${output}`);

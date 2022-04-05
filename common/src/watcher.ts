@@ -47,7 +47,7 @@ async function getTransformation(
   to: string,
   minifier: IMinifier
 ): Promise<CSSFile> {
-  const cssfile = await doAutoprefixCSS(to, contents, config);
+  const cssfile = await doAutoprefixCSS(contents, to, config.disableAutoPrefixer, config.disableSourceMap);
   const comments = getSourceMapComment(config.disableSourceMap, to + ".map");
   return await minifier.minify(cssfile, config.disableSourceMap, comments);
 }
