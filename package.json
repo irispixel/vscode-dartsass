@@ -1,259 +1,47 @@
 {
-    "name": "dartsass",
-    "displayName": "DartJS Sass Compiler and Sass Watcher",
-    "description": "Compile Sass and Scss files using DartSass Compiler - Visual Studio Code (vsce) plugin",
-    "publisher": "codelios",
+    "name": "@irispixel/vscode-dartsass",
     "license": "MIT",
+    "version": "1.0.0",
+    "main": "dist/index.cjs.js",
+    "types": "types/index.d.ts",
     "repository": {
-        "type": "git",
-        "url": "https://github.com/codelios/vscode-dartsass.git"
+      "type": "git",
+      "url": "git+https://github.com/codelios/vscode-dartsass.git"
     },
-    "version": "0.9.0",
+    "author": "Karthik K <karthiknetworklink@gmail.com>",
+    "private": true,
+    "workspaces": {
+      "packages": [
+        "common",
+        "vscode"
+      ],
+      "nohoist": [
+        "**"
+      ]
+    },    
+    "browserslist": [
+      "> 1%",
+      "last 2 versions"
+    ],
     "engines": {
-        "vscode": "^1.58.0"
-    },
-    "keywords": [
-        "scss compiler plugin",
-        "sass compiler plugin",
-        "sass watcher",
-        "scss watcher",
-        "dartsass plugin",
-        "sass",
-        "scss",
-        "css",
-        "vsce",
-        "vsce plugin",
-        "vsce sass plugin",
-        "vsce scss plugin"
-    ],
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onLanguage:scss",
-        "onLanguage:sass",
-        "onCommand:dartsass.saySassVersion",
-        "onCommand:dartsass.compileCurrentFile",
-        "onCommand:dartsass.viewSassWatchers",
-        "onCommand:dartsass.restartWatchers",
-        "onCommand:dartsass.clearAllWatchers"
-    ],
-    "main": "./dist/extension",
-    "contributes": {
-        "menus": {
-            "explorer/context": [
-                {
-                    "command": "dartsass.watchDir",
-                    "group": "DartSass JS Compiler",
-                    "when": "explorerResourceIsFolder"
-                },
-                {
-                    "command": "dartsass.unwatchDir",
-                    "group": "DartSass JS Compiler",
-                    "when": "explorerResourceIsFolder"
-                }
-            ],
-            "commandPalette": [
-                {
-                    "command": "dartsass.compileCurrentFile",
-                    "when": "editorLangId == sass || editorLangId == scss"
-                }
-            ],
-            "editor/context": [
-                {
-                    "command": "dartsass.viewSassWatchers",
-                    "group": "DartSass JS View Watcher"
-                }
-            ]
-        },
-        "commands": [
-            {
-                "command": "dartsass.watchDir",
-                "title": "DartSass: Sass Watch"
-            },
-            {
-                "command": "dartsass.unwatchDir",
-                "title": "DartSass: Sass Unwatch"
-            },
-            {
-                "command": "dartsass.saySassVersion",
-                "title": "DartSass: Sass Compiler Version"
-            },
-            {
-                "command": "dartsass.compileCurrentFile",
-                "title": "DartSass: Compile Current File"
-            },
-            {
-                "command": "dartsass.viewSassWatchers",
-                "title": "DartSass: View Sass Watchers"
-            },
-            {
-                "command": "dartsass.restartWatchers",
-                "title": "DartSass: Restart Sass Watchers"
-            },
-            {
-                "command": "dartsass.clearAllWatchers",
-                "title": "DartSass: Clear All Sass Watchers"
-            }
-        ],
-        "configuration": {
-            "type": "object",
-            "title": "DartSass",
-            "properties": {
-                "dartsass.includePath": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "default": [],
-                    "description": "Sets the includePath for the given scss compiler. Defaults to empty list."
-                },
-                "dartsass.sassBinPath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Sets the PATH to the sass binary if installed in your system. Defaults to empty string. This property is mandatory and needs to point to a valid sass path ( say, \"/usr/local/bin/sass\" on linux , or \"node_modules\\sass\\sass.js\" on windows ) if we need to \"watch\" the directory. ( Install sass locally on your machine using the command \"npm install [-g] sass\" ) "
-                },
-                "dartsass.nodeExePath": {
-                    "type": "string",
-                    "default": "node.exe",
-                    "description": "Sets the PATH to the node.exe executable. Important: This property is applicable for windows only. On Linux, this property is completely ignored and not used at all."
-                },
-                "dartsass.disableCompileOnSave": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Disables the compilation with every save to prevent CPU hogging. Defaults to false."
-                },
-                "dartsass.disableMinifiedFileGeneration": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Disables the generation of *.min.css files. Defaults to false and the minified file is generated by default.",
-                    "deprecationMessage": "Deprecated: Please use dartsass.outputFormat instead."
-                },
-                "dartsass.outputFormat": {
-                    "type": "string",
-                    "default": "both",
-                    "enum": [
-                        "both",
-                        "cssonly",
-                        "minified"
-                    ],
-                    "enumDescriptions": [
-                        "Generates the compiled CSS and the minified CSS file",
-                        "Generates the compiled CSS only",
-                        "Generates the minified CSS only"
-                    ],
-                    "description": "Output Format of the compiler. Defaults to both and the minified file is also generated by default."
-                },
-                "dartsass.execPlatform": {
-                    "type": "string",
-                    "default": "host",
-                    "enum": [
-                        "host",
-                        "linux",
-                        "windows"
-                    ],
-                    "enumDescriptions": [
-                        "Exec Platform is the same as Host Platform",
-                        "Exec Platform is Linux",
-                        "Exec Platform is Windows"
-                    ],
-                    "description": "Execution Platform where sass compiler needs to be run. Defaults to host. This option can be useful if we are executing the code remotely."
-                },
-                "dartsass.encoding": {
-                    "type": "string",
-                    "default": "utf8",
-                    "enum": [
-                        "utf8",
-                        "utf-16",
-                        "ascii"
-                    ],
-                    "enumDescriptions": [
-                        "UTF-8 Encoding",
-                        "UTF-16 Encoding",
-                        "ASCII Encoding"
-                    ],
-                    "description": "Encoding of source files. Defaults to utf8."
-                },
-                "dartsass.disableSourceMap": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Disables the generation of *.map sourcemap files. Defaults to false and the source map files are generated by default."
-                },
-                "dartsass.debug": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Debug flag to be used by developers. By default, false."
-                },
-                "dartsass.pauseInterval": {
-                    "type": "number",
-                    "default": 3,
-                    "description": "Pause Interval (in seconds) before compiling again to prevent CPU hogging."
-                },
-                "dartsass.enableStartWithUnderscores": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Enables compilation of scss files that starts with underscores. By default, false."
-                },
-                "dartsass.disableAutoPrefixer": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Disables autoprefix compilation. By default, false."
-                },
-                "dartsass.targetDirectory": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Sets the target directory where the generated css are written. Default: None (Implying same directory as source)"
-                }
-            }
-        }
-    },
-    "scripts": {
-        "vscode:prepublish": "yarn compile",
-        "lint": "eslint src --ext ts",
-        "fix": "eslint --fix src --ext .ts",
-        "compile": "yarn prod",
-        "test-compile": "tsc -p ./",
-        "build": "yarn dev",
-        "dev": "webpack --mode development",
-        "prod": "webpack --mode production",
-        "watch": "webpack --mode development --watch",
-        "pretest": "npm run test-compile",
-        "test": "node ./out/test/runTest.js"
+      "node": ">= 12.0.0",
+      "npm": ">= 3.0.0",
+      "yarn": "^1.22.0"
+    },    
+    "peerDependencies": {
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.12.5"
+    },    
+    "devDependencies": { 
     },
-    "devDependencies": {
-        "@types/glob": "7.2.0",
-        "@types/mocha": "9.0.0",
-        "@types/node": "17.0.8",
-        "@types/vscode": "1.58.0",
-        "@types/sass": "1.43.1",
-        "@typescript-eslint/eslint-plugin": "5.18.0",
-        "@typescript-eslint/parser": "5.18.0",
-        "eslint": "8.12.0",
-        "eslint-config-prettier": "8.5.0",
-        "eslint-plugin-prettier": "4.0.0",
-        "glob": "7.2.0",
-        "mocha": "9.1.3",
-        "prettier": "2.6.2",
-        "ts-loader": "9.2.6",
-        "ts-node": "10.7.0",
-        "typescript": "4.6.3",
-        "vscode-test": "1.6.1",
-        "webpack": "5.71.0",
-        "webpack-cli": "4.9.2"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+    "scripts": {
+      "clean": "yarn workspaces run clean",
+      "lint": "yarn workspaces run lint",
+      "fix": "yarn workspaces run fix",
+      "build": "yarn workspaces run build",
+      "test": "yarn workspaces run test",
+      "build:test":  "yarn workspaces run build:test",
+      "prod": "NODE_ENV=production yarn workspaces run build"
     }
 }
+  

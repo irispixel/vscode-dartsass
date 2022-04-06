@@ -9,6 +9,3 @@ package-lock.json
 
 # yarn 2
 .yarn
-
-yarn-error.log
-
