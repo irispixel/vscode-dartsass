@@ -13,7 +13,7 @@ import { getConsoleLog } from "./log";
 import { Watcher, watchDirectory, unwatchDirectory } from "../src/watcher";
 import { getLocalSass } from "./testutil";
 import { setLog } from "../src/log";
-import { isWindows } from '../src/platform_factory';
+import { isWindows } from "../src/platform_factory";
 
 describe("doLaunch", () => {
   let localSass: string;
@@ -83,7 +83,9 @@ describe("doLaunch", () => {
     const promises = watcher.Relaunch(__dirname, config);
     Promise.all(promises).then(
       (result) => {
-        expect(watcher.ClearWatchDirectory(srcdir, isWindows())).to.be.equal(true);
+        expect(watcher.ClearWatchDirectory(srcdir, isWindows())).to.be.equal(
+          true
+        );
         done();
       },
       (err) => {

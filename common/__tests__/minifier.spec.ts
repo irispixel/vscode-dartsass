@@ -7,5 +7,6 @@
 import "mocha";
 
 describe("minifier", () => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   it("removeStdIn", () => {});
 });

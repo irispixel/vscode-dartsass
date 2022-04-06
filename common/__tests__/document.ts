@@ -5,7 +5,7 @@
 
 "use strict";
 import { IDocument } from "../src/document";
-const path = require("path");
+import * as path from "path";
 
 export function getSassDocument(
   projectRoot: string,

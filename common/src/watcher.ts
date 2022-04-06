@@ -47,7 +47,12 @@ async function getTransformation(
   to: string,
   minifier: IMinifier
 ): Promise<CSSFile> {
-  const cssfile = await doAutoprefixCSS(contents, to, config.disableAutoPrefixer, config.disableSourceMap);
+  const cssfile = await doAutoprefixCSS(
+    contents,
+    to,
+    config.disableAutoPrefixer,
+    config.disableSourceMap
+  );
   const comments = getSourceMapComment(config.disableSourceMap, to + ".map");
   return await minifier.minify(cssfile, config.disableSourceMap, comments);
 }
@@ -74,7 +79,7 @@ async function _internalMinify(
     css: readFileSync(fqPath, config.sourceEncoding),
     sourceMap: config.disableSourceMap
       ? null
-      : readFileSync(inputSourceMapFile, 'utf8'),
+      : readFileSync(inputSourceMapFile, "utf8"),
   };
   const minifiedFileOnly = path.basename(minifiedCSS);
   const cssfile = await getTransformation(
@@ -155,12 +160,7 @@ export class Watcher {
     if (pids !== null && pids !== undefined) {
       throw new Error(`${srcdir} already being watched ( pids ${pids} )`);
     }
-    const value = await doSingleLaunch(
-      compiler,
-      srcdir,
-      projectRoot,
-      config
-    );
+    const value = await doSingleLaunch(compiler, srcdir, projectRoot, config);
     if (value.killed) {
       throw new Error(
         `Unable to launch sass watcher for ${srcdir}. process killed. Please check sassBinPath property.`
@@ -208,7 +208,11 @@ export class Watcher {
     return cleared;
   }
 
-  public ClearWatch(_srcdir: string, projectRoot: string, isWindows: boolean): boolean {
+  public ClearWatch(
+    _srcdir: string,
+    projectRoot: string,
+    isWindows: boolean
+  ): boolean {
     const srcdir = xformPath(projectRoot, _srcdir);
     return this.ClearWatchDirectory(srcdir, isWindows);
   }
@@ -230,7 +234,7 @@ export class Watcher {
    */
   public Relaunch(
     projectRoot: string,
-    config: CompilerConfig,
+    config: CompilerConfig
   ): Array<Promise<string>> {
     this.ClearAll(config.isWindows);
     return config.watchDirectories.map((_srcdir: string, _: number) => {

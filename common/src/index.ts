@@ -18,4 +18,3 @@ export {
 } from "./watcher";
 export { ProcessOutput, xformPath } from "./platform";
 export { isWindows, getPlatform } from "./platform_factory";
-

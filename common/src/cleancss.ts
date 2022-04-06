@@ -7,6 +7,7 @@
 import { CSSFile } from "./cssfile";
 import { Log } from "./log";
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const CleanCSS = require("clean-css");
 
 export class CleanCSSMinifier {
@@ -36,8 +37,10 @@ export class CleanCSSMinifier {
     }
     return {
       css: data.styles + comment,
-      sourceMap: !disableSourceMap 
-        ? (data.sourceMap ? JSON.stringify(data.sourceMap): null) 
+      sourceMap: !disableSourceMap
+        ? data.sourceMap
+          ? JSON.stringify(data.sourceMap)
+          : null
         : null,
     };
   }

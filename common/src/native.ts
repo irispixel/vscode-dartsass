@@ -26,17 +26,24 @@ const VersionArgs = ["--version"];
  * NativeCompiler uses the sass executable present in config.sassBinPath and uses the cmd line to compile the same.
  */
 export class NativeCompiler {
-
-
-  public async sayVersion(config: CompilerConfig, projectRoot: string): Promise<string> {
-    let platform = getPlatform(config.isWindows);
-    let runPromise = platform.sayVersion(config, projectRoot, VersionArgs);
+  public async sayVersion(
+    config: CompilerConfig,
+    projectRoot: string
+  ): Promise<string> {
+    const platform = getPlatform(config.isWindows);
+    const runPromise = platform.sayVersion(config, projectRoot, VersionArgs);
     return await runPromise;
   }
 
-  public async validate(config: CompilerConfig, projectRoot: string): Promise<string> {
-    let platform = getPlatform(config.isWindows);
-    const sassBinPath = platform.getSassBinPath(projectRoot, config.sassBinPath);
+  public async validate(
+    config: CompilerConfig,
+    projectRoot: string
+  ): Promise<string> {
+    const platform = getPlatform(config.isWindows);
+    const sassBinPath = platform.getSassBinPath(
+      projectRoot,
+      config.sassBinPath
+    );
     if (!fs.existsSync(sassBinPath)) {
       throw new Error(
         `ProjectRoot: ${projectRoot}. Sass Binary Path ${sassBinPath} does not exist`
@@ -50,16 +57,21 @@ export class NativeCompiler {
     return "";
   }
 
-  async doCompileDocument(csspath: string, config: CompilerConfig, cwd: string, args: string[]): Promise<string> {
+  async doCompileDocument(
+    csspath: string,
+    config: CompilerConfig,
+    cwd: string,
+    args: string[]
+  ): Promise<string> {
     const projectRoot = cwd;
-    let platform = getPlatform(config.isWindows);
-    let runPromise = platform.compileDocument(config, projectRoot, cwd, args);
+    const platform = getPlatform(config.isWindows);
+    const runPromise = platform.compileDocument(config, projectRoot, cwd, args);
     await runPromise;
     await autoPrefixCSSBytes(
       csspath,
       {
         css: readFileSync(csspath, config.sourceEncoding),
-        sourceMap: readFileSync(csspath + ".map", 'utf-8'),
+        sourceMap: readFileSync(csspath + ".map", "utf-8"),
       },
       config.disableAutoPrefixer,
       config.disableSourceMap
@@ -67,7 +79,12 @@ export class NativeCompiler {
     return csspath;
   }
 
-  getArgs(document: IDocument, config: CompilerConfig, output: string, minified: boolean): string[] {
+  getArgs(
+    document: IDocument,
+    config: CompilerConfig,
+    output: string,
+    minified: boolean
+  ): string[] {
     const result = this.doGetArgs(document.getProjectRoot(), config, minified);
     const input = document.getFileName();
     const base = document.getProjectRoot();
@@ -81,7 +98,10 @@ export class NativeCompiler {
     return result;
   }
 
-  public async compileDocument(document: IDocument, config: CompilerConfig): Promise<string> {
+  public async compileDocument(
+    document: IDocument,
+    config: CompilerConfig
+  ): Promise<string> {
     if (isBeingWatched(document, config)) {
       return "Document already being watched";
     }
@@ -109,7 +129,11 @@ export class NativeCompiler {
     );
   }
 
-  doGetArgs(projectRoot: string, config: CompilerConfig, minified: boolean): Array<string> {
+  doGetArgs(
+    projectRoot: string,
+    config: CompilerConfig,
+    minified: boolean
+  ): Array<string> {
     const includePaths = xformPaths(projectRoot, config.includePath);
     const result = new Array<string>();
     if (minified) {
@@ -132,7 +156,11 @@ export class NativeCompiler {
     return result;
   }
 
-  doGetWatchArgs(projectRoot: string, config: CompilerConfig, _srcdir: string): Array<string> {
+  doGetWatchArgs(
+    projectRoot: string,
+    config: CompilerConfig,
+    _srcdir: string
+  ): Array<string> {
     const minified = config.outputFormat === SASSOutputFormat.MinifiedOnly;
     const args = this.doGetArgs(projectRoot, config, minified);
     args.push("--watch");
@@ -142,10 +170,14 @@ export class NativeCompiler {
     return args;
   }
 
-  public watch(srcdir: string, projectRoot: string, config: CompilerConfig): Promise<ProcessOutput> {
+  public watch(
+    srcdir: string,
+    projectRoot: string,
+    config: CompilerConfig
+  ): Promise<ProcessOutput> {
     const watchArgs = this.doGetWatchArgs(projectRoot, config, srcdir);
     Log.debug(`Watching ${srcdir}.`);
-    let platform = getPlatform(config.isWindows);
+    const platform = getPlatform(config.isWindows);
     return platform.watch(config, projectRoot, watchArgs);
   }
 }

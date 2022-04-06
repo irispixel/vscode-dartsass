@@ -20,7 +20,7 @@ export async function CompileCurrentFile(
   }
   const err = validateTargetDirectories(document, extensionConfig);
   if (err) {
-    throw new Error('${err}');
+    throw new Error("${err}");
   }
   Log.debug(`About to compile current file: ${document.getFileName()}`);
   return getCurrentCompiler(extensionConfig).compileDocument(

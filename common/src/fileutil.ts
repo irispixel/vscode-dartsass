@@ -31,7 +31,10 @@ export function deleteFile(docPath: string) {
   }
 }
 
-export function readFileSync(docPath: string, encoding: BufferEncoding): string {
+export function readFileSync(
+  docPath: string,
+  encoding: BufferEncoding
+): string {
   if (fs.existsSync(docPath)) {
     return fs.readFileSync(docPath, encoding);
   } else {

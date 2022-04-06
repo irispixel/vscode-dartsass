@@ -35,16 +35,16 @@ export class DartSassCompiler {
 
   public async sayVersion(
     config: CompilerConfig,
-    projectRoot: string,
+    projectRoot: string
   ): Promise<string> {
-    const info = (sass as unknown) as Info;
+    const info = sass as unknown as Info;
     const version = info.info;
     return version;
   }
 
   public async compileDocument(
     document: IDocument,
-    config: CompilerConfig,
+    config: CompilerConfig
   ): Promise<string> {
     const output = getOutputCSS(document, config, false);
     Log.debug(
@@ -71,10 +71,7 @@ export class DartSassCompiler {
     return nativeCompiler.watch(srcdir, projectRoot, config);
   }
 
-  handleError(
-    err: sass.Exception,
-    config: CompilerConfig
-  ): string {
+  handleError(err: sass.Exception, config: CompilerConfig): string {
     // const fileonly = path.basename(err.);
     // const formattedMessage = ` ${err.line}:${err.column} ${err.formatted}`;
     const formattedMessage = `${err.name} : ${err.message}`;
@@ -108,9 +105,14 @@ export class DartSassCompiler {
       );
       const inputCSSFile = {
         css: result.css.toString(config.sourceEncoding),
-        sourceMap: (result.map ? result.map.toString() : null),
+        sourceMap: result.map ? result.map.toString() : null,
       };
-      const value = await autoPrefixCSSBytes(output, inputCSSFile, config.disableAutoPrefixer, config.disableCompileOnSave);
+      const value = await autoPrefixCSSBytes(
+        output,
+        inputCSSFile,
+        config.disableAutoPrefixer,
+        config.disableCompileOnSave
+      );
       return `${value}`;
     } catch (err) {
       const msg = this.handleError(err as sass.Exception, config);

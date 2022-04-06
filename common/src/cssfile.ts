@@ -15,7 +15,7 @@ export interface CSSFile {
 
 async function writeSourceMap(
   sourceMapFile: string,
-  value: any,
+  value: any
 ): Promise<number> {
   if (value === undefined || value === null) {
     Log.debug(
@@ -30,7 +30,7 @@ async function writeSourceMap(
 
 export async function writeCSSFile(
   filename: string,
-  cssfile: CSSFile,
+  cssfile: CSSFile
 ): Promise<number> {
   await writeToFile(filename, cssfile.css);
   Log.debug(`wrote raw css to ${filename}`);

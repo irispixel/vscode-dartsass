@@ -8,6 +8,7 @@ import browserslist from "browserslist";
 import { Info } from "./version";
 import { Log } from "./log";
 import { CSSFile, writeCSSFile } from "./cssfile";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const postcss = require("postcss");
 import { Warning } from "postcss";
 import autoprefixer from "autoprefixer";
@@ -17,7 +18,6 @@ function getProcessArgs(to: string, sourceMap: string | null): any {
     return {
       to: to,
     };
-
   }
   return {
     to: to,
@@ -37,7 +37,7 @@ export async function doAutoprefixCSS(
   if (disableAutoPrefixer) {
     return inputcss;
   }
-  // TODO: autoprefixer preferences have been removed. 
+  // TODO: autoprefixer preferences have been removed.
   const processor = postcss([autoprefixer()]);
   Log.debug(`Postcss: About to process`);
   const result = await processor.process(
@@ -48,11 +48,14 @@ export async function doAutoprefixCSS(
   result.warnings().forEach((warn: Warning[]) => {
     Log.warning(`Autoprefixer: ${warn}`);
   });
-  Log.debug(`Typeof result.css ${typeof result.css}`)
+  Log.debug(`Typeof result.css ${typeof result.css}`);
   return {
     css: result.css,
-    sourceMap: disableSourceMap ? null
-      : (result.map ? result.map.toString() : null),
+    sourceMap: disableSourceMap
+      ? null
+      : result.map
+      ? result.map.toString()
+      : null,
   };
 }
 
@@ -62,7 +65,12 @@ export async function autoPrefixCSSBytes(
   disableAutoPrefixer: boolean,
   disableSourceMap: boolean
 ): Promise<number> {
-  const cssfile = await doAutoprefixCSS(inFile, path.basename(output), disableAutoPrefixer, disableSourceMap);
+  const cssfile = await doAutoprefixCSS(
+    inFile,
+    path.basename(output),
+    disableAutoPrefixer,
+    disableSourceMap
+  );
   Log.debug(`doAutoprefixCSS completed to ${output}`);
   const value = await writeCSSFile(output, cssfile);
   Log.debug(`writeCSSFile completed to ${output}`);
@@ -72,13 +80,13 @@ export async function autoPrefixCSSBytes(
 export function getVersions(): Array<string> {
   const result = new Array<string>();
 
-  const postcssInfo = (postcss as unknown) as Info;
+  const postcssInfo = postcss as unknown as Info;
   result.push(`PostCSS: ${postcssInfo.info}`);
 
-  const autoprefixerInfo = (autoprefixer as unknown) as Info;
+  const autoprefixerInfo = autoprefixer as unknown as Info;
   result.push(`autoprefixer: ${autoprefixerInfo.info}`);
 
-  const browserslistInfo = (browserslist as unknown) as Info;
+  const browserslistInfo = browserslist as unknown as Info;
   result.push(`browserslist: ${browserslistInfo.info}`);
 
   return result;

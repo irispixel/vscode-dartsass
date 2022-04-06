@@ -4,14 +4,24 @@
 // https://opensource.org/licenses/MIT
 "use strict";
 import * as vscode from "vscode";
-import { ILog, WatchInfo, Watcher, CompilerConfig, Validate,
-  watchDirectory as commonWatchDirectory, xformPath, unwatchDirectory, isWindows, getPlatform } from "dartsass-plugin-common";
+import {
+  ILog,
+  WatchInfo,
+  Watcher,
+  CompilerConfig,
+  Validate,
+  watchDirectory as commonWatchDirectory,
+  xformPath,
+  unwatchDirectory,
+  isWindows,
+  getPlatform,
+} from "dartsass-plugin-common";
 import { GetProjectRoot } from "./doc";
 import { myStatusBarItem } from "./statusbar";
 import { GetActiveProjectRoot, PersistWatchers } from "./project";
 import {
   MementoKeyWatchDirectories,
-  GetPluginConfigurationAsObject
+  GetPluginConfigurationAsObject,
 } from "./config";
 
 const watcher = new Watcher();
@@ -93,10 +103,7 @@ export function UnwatchDirectory(
   );
 }
 
-export function ListWatchers(
-  workspaceState: vscode.Memento,
-  _log: ILog
-) {
+export function ListWatchers(workspaceState: vscode.Memento, _log: ILog) {
   const watchDirectories = workspaceState.get<string[]>(
     MementoKeyWatchDirectories
   );
@@ -149,13 +156,13 @@ export function ClearAllWatchers(
   }
 }
 
-export function RestartWatchers(
-  workspaceState: vscode.Memento,
-  _log: ILog
-) {
+export function RestartWatchers(workspaceState: vscode.Memento, _log: ILog) {
   const projectRoot = GetActiveProjectRoot();
   const extensionConfig = GetPluginConfigurationAsObject(workspaceState);
-  const sassBinPath = getPlatform(extensionConfig.isWindows).getSassBinPath(projectRoot, extensionConfig.sassBinPath);
+  const sassBinPath = getPlatform(extensionConfig.isWindows).getSassBinPath(
+    projectRoot,
+    extensionConfig.sassBinPath
+  );
   _log.debug(
     `Configuration reloaded with ${JSON.stringify(
       extensionConfig
@@ -185,6 +192,7 @@ function doRestartWatchers(
   const promises = watcher.Relaunch(projectRoot, config);
   for (const promise of promises) {
     promise.then(
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       (value) => {},
       (err) => {
         _log.notify(`Relaunch failed: ${err}`);

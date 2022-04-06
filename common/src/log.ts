@@ -21,18 +21,25 @@ export interface ILog {
 }
 
 export class NullLog {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   line(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   debug(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   warning(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   info(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   error(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   notify(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   clear(): any {}
 }
 

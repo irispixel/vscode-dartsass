@@ -13,7 +13,6 @@ export enum SASSOutputFormat {
 }
 
 export class CompilerConfig {
-
   sassBinPath = "";
 
   includePath: Array<string> = [];
@@ -22,7 +21,7 @@ export class CompilerConfig {
 
   disableSourceMap = false;
 
-  sourceEncoding: BufferEncoding = 'utf-8';
+  sourceEncoding: BufferEncoding = "utf-8";
 
   nodeExePath = "node.exe";
 
@@ -60,18 +59,18 @@ export class CompilerConfig {
 
   public static encodingFrom(encoding: string): BufferEncoding {
     if (encoding === undefined || encoding === null) {
-      return 'utf-8'
+      return "utf-8";
     }
-    switch(encoding) {
-      case 'ascii':
-        return 'ascii';
-      case 'utf-8':
-      case 'utf8':
-        return 'utf-8';
-      case 'utf161e':
-        return 'utf16le';
+    switch (encoding) {
+      case "ascii":
+        return "ascii";
+      case "utf-8":
+      case "utf8":
+        return "utf-8";
+      case "utf161e":
+        return "utf16le";
       default:
-        return 'utf-8';
+        return "utf-8";
     }
   }
 }

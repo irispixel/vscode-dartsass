@@ -7,7 +7,7 @@ import * as vscode from "vscode";
 import {
   CompilerConfig,
   SASSOutputFormat,
-  isWindows
+  isWindows,
 } from "dartsass-plugin-common";
 
 export const pluginName = "dartsass";
@@ -77,7 +77,7 @@ export class Config {
       "disableAutoPrefixer",
       false
     );
-    let execPlatform = configuration.get<string>("execPlatform", "host");
+    const execPlatform = configuration.get<string>("execPlatform", "host");
     config.isWindows = doesExecOnWindows(execPlatform);
     const watchDirectories = workspaceState.get<string[]>(
       MementoKeyWatchDirectories

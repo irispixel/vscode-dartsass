@@ -7,7 +7,6 @@ import { ILog } from "../src/log";
 
 export function getConsoleLog(): ILog {
   const _log: ILog = {
-
     line(msg: string): any {
       console.log(`${msg}`);
     },
@@ -32,6 +31,7 @@ export function getConsoleLog(): ILog {
       console.log(msg);
     },
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     clear(): any {},
   };
   return _log;
@@ -40,19 +40,25 @@ export function getConsoleLog(): ILog {
 export class BufLog {
   buf = Buffer.alloc(20);
 
-
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   line(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   debug(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   info(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   warning(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   error(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   notify(msg: string): any {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   clear(): any {}
 
   getInfo(): string {

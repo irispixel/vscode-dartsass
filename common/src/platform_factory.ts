@@ -12,7 +12,7 @@ const linuxPlatform: IPlatform = new LinuxCompiler();
 const windowsPlatform: IPlatform = new WindowsCompiler();
 
 export function getPlatform(isWindows: boolean) {
-  return isWindows ? windowsPlatform: linuxPlatform;
+  return isWindows ? windowsPlatform : linuxPlatform;
 }
 
 export function isWindows(): boolean {

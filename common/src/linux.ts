@@ -10,15 +10,14 @@ import { SIGINT } from "constants";
 import * as path from "path";
 
 export class LinuxCompiler {
-
-    getSassBinPath(projectRoot: string, sassBinPath: string): string {
-        if (!sassBinPath) {
-            sassBinPath = path.join("node_modules", ".bin", "sass");
-        }
-        return xformPath(projectRoot, sassBinPath);
+  getSassBinPath(projectRoot: string, sassBinPath: string): string {
+    if (!sassBinPath) {
+      sassBinPath = path.join("node_modules", ".bin", "sass");
     }
+    return xformPath(projectRoot, sassBinPath);
+  }
 
-    /**
+  /**
     validateCmd(relativeCmd: string, args: string[]): boolean {
         let validated = platform.validateCmd(relativeCmd);
         if (validated) {
@@ -34,39 +33,43 @@ export class LinuxCompiler {
     }
     */
 
-    verifySassBinPath(sassBinPath: string): boolean {
-        return true;
-    }
-    
-    public async sayVersion(
-        config: CompilerConfig,
-        projectRoot: string,
-        versionArgs: Array<string>
-    ): Promise<string> {
-        const sassBinPath = this.getSassBinPath(projectRoot, config.sassBinPath);
-        return Run(sassBinPath, versionArgs, projectRoot);        
-    }
+  verifySassBinPath(sassBinPath: string): boolean {
+    return true;
+  }
 
-    public async watch(config: CompilerConfig,
-        projectRoot: string,
-        watchArgs: string[]): Promise<ProcessOutput> {
-        const sassBinPath = this.getSassBinPath(projectRoot, config.sassBinPath);
-        return RunDetached(sassBinPath, projectRoot, watchArgs);
-    }
+  public async sayVersion(
+    config: CompilerConfig,
+    projectRoot: string,
+    versionArgs: Array<string>
+  ): Promise<string> {
+    const sassBinPath = this.getSassBinPath(projectRoot, config.sassBinPath);
+    return Run(sassBinPath, versionArgs, projectRoot);
+  }
 
-    public async compileDocument(config: CompilerConfig,
-        projectRoot: string,
-        cwd: string,
-        compileArgs: string[]): Promise<string> {
-        const sassBinPath = this.getSassBinPath(projectRoot, config.sassBinPath)
-        return Run(sassBinPath, compileArgs, cwd);
-    }
+  public async watch(
+    config: CompilerConfig,
+    projectRoot: string,
+    watchArgs: string[]
+  ): Promise<ProcessOutput> {
+    const sassBinPath = this.getSassBinPath(projectRoot, config.sassBinPath);
+    return RunDetached(sassBinPath, projectRoot, watchArgs);
+  }
 
-    public validateCmd(relativeCmd: string): boolean {
-        return true;
-    }
+  public async compileDocument(
+    config: CompilerConfig,
+    projectRoot: string,
+    cwd: string,
+    compileArgs: string[]
+  ): Promise<string> {
+    const sassBinPath = this.getSassBinPath(projectRoot, config.sassBinPath);
+    return Run(sassBinPath, compileArgs, cwd);
+  }
 
-    public killProcess(pid: number): void {
-        process.kill(-pid, SIGINT);
-    }
+  public validateCmd(relativeCmd: string): boolean {
+    return true;
+  }
+
+  public killProcess(pid: number): void {
+    process.kill(-pid, SIGINT);
+  }
 }

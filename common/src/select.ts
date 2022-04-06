@@ -13,13 +13,14 @@ import { NativeCompiler } from "./native";
 const sassCompiler: ISassCompiler = new DartSassCompiler();
 const nativeCompiler: ISassCompiler = new NativeCompiler();
 
-
 export function getCurrentCompiler(
   extensionConfig: CompilerConfig
 ): ISassCompiler {
-  if (extensionConfig.sassBinPath !== null &&
+  if (
+    extensionConfig.sassBinPath !== null &&
     extensionConfig.sassBinPath !== undefined &&
-    extensionConfig.sassBinPath.length > 0) {
+    extensionConfig.sassBinPath.length > 0
+  ) {
     return nativeCompiler;
   } else {
     return sassCompiler;

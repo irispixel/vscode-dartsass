@@ -31,7 +31,8 @@ function cmdWatchDirectory(
 function cmdUnwatchDirectory(
   _srcdir: vscode.Uri,
   workspaceState: vscode.Memento,
-  _log: ILog) {
+  _log: ILog
+) {
   UnwatchDirectory(_srcdir, workspaceState, _log);
 }
 

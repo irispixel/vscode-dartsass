@@ -51,7 +51,7 @@ export function safeMkdir(directory: string) {
     fs.mkdirSync(directory, { recursive: true });
     return null;
   } catch (err) {
-    let exc = err as NodeJS.ErrnoException;
+    const exc = err as NodeJS.ErrnoException;
     if (exc.code === "EEXIST") {
       return null;
     }
@@ -83,11 +83,7 @@ function doGetOutputMinifiedCSS(
 ): string {
   const targetDirectory = inferTargetCSSDirectory(document, config);
   const fileNameOnly = path.basename(document.getFileName(), ".scss");
-  return doGetMinCSS(
-    fileNameOnly,
-    targetDirectory,
-    defaultMinCSSExtension
-  );
+  return doGetMinCSS(fileNameOnly, targetDirectory, defaultMinCSSExtension);
 }
 export function getOutputCSS(
   document: IDocument,
