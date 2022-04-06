@@ -1,12 +1,12 @@
 {
-    "name": "@irispixel/dartsass-plugin-common",
+    "name": "@irispixel/vscode-dartsass",
     "license": "MIT",
     "version": "1.0.0",
     "main": "dist/index.cjs.js",
     "types": "types/index.d.ts",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/codelios/dartsass-plugin-common.git"
+      "url": "git+https://github.com/codelios/vscode-dartsass.git"
     },
     "author": "Karthik K <karthiknetworklink@gmail.com>",
     "private": true,
