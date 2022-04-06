@@ -33,7 +33,6 @@
     "dependencies": {
     },    
     "devDependencies": { 
-      "rimraf": "3.0.2"
     },
     "scripts": {
       "clean": "yarn workspaces run clean",
