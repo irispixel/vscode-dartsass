@@ -1,8 +1,0 @@
-version: '3'
-services:
-  web:
-    restart: "always"
-    image: "vscode-plugin-dartsass:12.14.1-alpine3.11"
-    volumes:
-      - /opt/code/src/github.com/codelios/vscode-dartsass:/tmp/web
-      - /opt/code/src/github.com/codelios/dartsass-plugin-common:/tmp/dartsass

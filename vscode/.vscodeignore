@@ -1,5 +1,7 @@
 .vscode/**
 .vscode-test/**
+../common
+common
 src/
 .gitignore
 vsc-extension-quickstart.md
@@ -7,8 +9,8 @@ vsc-extension-quickstart.md
 **/tslint.json
 **/*.map
 **/*.ts
-docker-compose.yml
-Dockerfile
+../docker-compose.yml
+../Dockerfile
 entrypoint.sh
 tsconfig.json
 webpack.config.js
@@ -19,5 +21,12 @@ node_modules
 out
 .dockerignore
 _config.yml
+../_config.yml
+../.vscode
+../.git
+../node_modules
+../error.log
+error.log
+.eslintignore
 
 

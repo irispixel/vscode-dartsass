@@ -2,7 +2,7 @@
     "name": "dartsass",
     "displayName": "DartJS Sass Compiler and Sass Watcher",
     "description": "Compile Sass and Scss files using DartSass Compiler - Visual Studio Code (vsce) plugin",
-    "publisher": "codelios",
+    "publisher": "irispixel",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -219,6 +219,7 @@
         "prod": "webpack --mode production",
         "watch": "webpack --mode development --watch",
         "pretest": "npm run test-compile",
+        "ovsx": "ovsx publish",
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
