@@ -44,7 +44,7 @@ VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS
 
 # Usage
 
-<img src="https://github.com/codelios/vscode-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
+<img src="https://github.com/irispixel/vscode-dartsass/raw/master/images/how_to_use_it.gif" width="600"/>
 
 It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automatically for the given .scss file in the editor.
 
@@ -55,7 +55,7 @@ It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automa
 You can install it from inside VSCode by using the following command
 
 `
-ext install codelios.dartsass
+ext install irispixel.dartsass
 `
 
 ## Marketplace
