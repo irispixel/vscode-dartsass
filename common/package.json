@@ -7,7 +7,7 @@
     "types": "lib/index.d.ts",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/codelios/vscode-dartsass.git"
+        "url": "git+https://github.com/irispixel/vscode-dartsass.git"
     },
     "keywords": [
         "scss compiler plugin",

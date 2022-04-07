@@ -6,7 +6,7 @@
     "types": "types/index.d.ts",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/codelios/vscode-dartsass.git"
+      "url": "git+https://github.com/irispixel/vscode-dartsass.git"
     },
     "author": "Karthik K <karthiknetworklink@gmail.com>",
     "private": true,
