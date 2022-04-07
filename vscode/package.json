@@ -208,7 +208,7 @@
         }
     },
     "scripts": {
-        "clean": "rimraf dist",
+        "clean": "rimraf dist && rimraf *.vsix",
         "vscode:prepublish": "yarn compile",
         "lint": "eslint src --ext ts",
         "fix": "eslint --fix src --ext .ts",
@@ -219,7 +219,7 @@
         "prod": "webpack --mode production",
         "watch": "webpack --mode development --watch",
         "pretest": "npm run test-compile",
-        "ovsx": "ovsx publish",
+        "ovsx": "vsce package --yarn && ovsx publish",
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
