@@ -40,6 +40,7 @@
       "fix": "yarn workspaces run fix",
       "build": "yarn workspaces run build",
       "test": "yarn workspaces run test",
+      "ovsx": "yarn workspace dartsass ovsx",
       "build:test":  "yarn workspaces run build:test",
       "prod": "NODE_ENV=production yarn workspaces run build"
     }
