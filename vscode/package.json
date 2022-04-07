@@ -222,7 +222,7 @@
         "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
-        "dartsass-plugin-common": "0.12.5"
+        "dartsass-plugin-common": "0.12.6"
     },
     "devDependencies": {
         "rimraf": "3.0.2",
