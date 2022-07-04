@@ -3,7 +3,7 @@
 "use strict";
 
 const path = require("path");
-const { IgnorePlugin } = require('webpack');
+const { IgnorePlugin } = require("webpack");
 
 const optionalPlugins = [];
 if (process.platform !== "darwin") {
@@ -22,9 +22,7 @@ const config = {
     library: "DartSassPluginCommon",
     umdNamedDefine: true,
   },
-  plugins: [
-      ...optionalPlugins,
-  ],
+  plugins: [...optionalPlugins],
   devtool: "source-map",
   externals: {
     vscode: "commonjs", // the vscode-module is created on-the-fly and must be excluded. Add other modules that cannot be webpack'ed, 📖 -> https://webpack.js.org/configuration/externals/
