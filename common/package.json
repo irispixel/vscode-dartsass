@@ -1,6 +1,6 @@
 {
   "name": "dartsass-plugin-common",
-  "version": "0.12.6",
+  "version": "0.12.7",
   "license": "MIT",
   "description": "Common Library code to compile sass files using Dart/JS compiler",
   "main": "dist/main.js",
@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "sass": "sass",
-    "prepublishOnly": "yarn prod",
+    "prepublishOnly": "yarn format && yarn lint && yarn prod",
     "clean": "rimraf lib",
     "lint": "prettier --check --plugin-search-dir=. . && eslint src --ext ts && eslint __tests__ --ext ts",
     "format": "prettier --write --plugin-search-dir=. .",
