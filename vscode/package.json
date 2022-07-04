@@ -211,7 +211,7 @@
     "clean": "rimraf dist && rimraf *.vsix",
     "vscode:prepublish": "yarn compile",
     "lint": "prettier --check --plugin-search-dir=. . && eslint src --ext ts",
-    "format": "prettier --write --plugin-search-dir=. .",
+    "format": "prettier --write --plugin-search-dir=. src",
     "fix": "eslint --fix src --ext .ts",
     "compile": "yarn prod",
     "test-compile": "webpack --mode development",
@@ -224,7 +224,7 @@
     "test": "node ./out/test/runTest.js"
   },
   "dependencies": {
-    "dartsass-plugin-common": "0.12.6"
+    "dartsass-plugin-common": "0.12.7"
   },
   "devDependencies": {
     "@types/glob": "7.2.0",
