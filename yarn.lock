@@ -1213,7 +1213,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dartsass-plugin-common@0.12.6, dartsass-plugin-common@workspace:common":
+"dartsass-plugin-common@0.12.7, dartsass-plugin-common@workspace:common":
   version: 0.0.0-use.local
   resolution: "dartsass-plugin-common@workspace:common"
   dependencies:
@@ -1260,7 +1260,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.30.4
     "@typescript-eslint/parser": 5.30.4
     "@vscode/test-electron": 2.1.5
-    dartsass-plugin-common: 0.12.6
+    dartsass-plugin-common: 0.12.7
     eslint: 8.19.0
     eslint-config-prettier: 8.5.0
     eslint-plugin-prettier: 4.2.1
@@ -1271,7 +1271,6 @@ __metadata:
     ts-loader: 9.3.1
     ts-node: 10.8.2
     typescript: 4.7.4
-    vscode-test: 1.6.1
     webpack: 5.73.0
     webpack-cli: 4.10.0
   languageName: unknown
@@ -3636,18 +3635,6 @@ __metadata:
   version: 2.3.0
   resolution: "v8-compile-cache@npm:2.3.0"
   checksum: adb0a271eaa2297f2f4c536acbfee872d0dd26ec2d76f66921aa7fc437319132773483344207bdbeee169225f4739016d8d2dbf0553913a52bb34da6d0334f8e
-  languageName: node
-  linkType: hard
-
-"vscode-test@npm:1.6.1":
-  version: 1.6.1
-  resolution: "vscode-test@npm:1.6.1"
-  dependencies:
-    http-proxy-agent: ^4.0.1
-    https-proxy-agent: ^5.0.0
-    rimraf: ^3.0.2
-    unzipper: ^0.10.11
-  checksum: 37779441eaccfe7eb4c5ec53950441d2084b213010c6cb40855d4126f41140d021dbc12388da025df0f2ea1bfa85a4e5bcdd7c13bf78144dee18fa9b35c90793
   languageName: node
   linkType: hard
 
