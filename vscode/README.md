@@ -1,46 +1,44 @@
-[![VSCode Marketplace Badge](https://img.shields.io/vscode-marketplace/v/codelios.dartsass.svg?label=VSCode%20Marketplace&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![Downloads](https://img.shields.io/open-vsx/v/irispixel/dartsass)](https://open-vsx.org/extension/irispixel/dartsass) [![Total Installs](https://img.shields.io/visual-studio-marketplace/i/codelios.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass)  [![Average Rating Badge](https://img.shields.io/vscode-marketplace/r/codelios.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/codelios/vscode-dartsass/)
-
+[![VSCode Marketplace Badge](https://img.shields.io/vscode-marketplace/v/codelios.dartsass.svg?label=VSCode%20Marketplace&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![Downloads](https://img.shields.io/open-vsx/v/irispixel/dartsass)](https://open-vsx.org/extension/irispixel/dartsass) [![Total Installs](https://img.shields.io/visual-studio-marketplace/i/codelios.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![Average Rating Badge](https://img.shields.io/vscode-marketplace/r/codelios.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/codelios/vscode-dartsass/)
 
 VSCode plugin (Visual Studio Code plugin) to compile scss files using [Dart SASS Compiler](https://sass-lang.com/dart-sass).
 
-
-* [Usage](#usage)
-* [Install](#install)
-   * [Inside VSCode](#inside-vscode)
-   * [VSCode Marketplace](#marketplace)
-* [Activation](#activation)
-* [Properties](#properties)
-   * [dartsass.autoPrefixBrowsersList](#dartsassautoprefixbrowserslist)
-   * [dartsass.disableAutoPrefixer](#dartsassdisableautoprefixer)
-   * [dartsass.disableSourceMap](#dartsassdisablesourcemap)
-   * [dartsass.disableCompileOnSave](#dartsassdisablecompileonsave)
-   * [dartsass.enableStartWithUnderscores](#dartsassenablestartwithunderscores)
-   * [dartsass.includePath](#dartsassincludepath)
-   * [dartsass.nodeExePath](#dartsassnodeexepath)
-   * [dartsass.outputFormat](#dartsassoutputformat)
-   * [dartsass.pauseInterval](#dartsasspauseinterval)
-   * [dartsass.sassBinPath](#dartsasssassbinpath)
-      * [Linux](#linux)
-      * [Windows](#windows)
-   * [dartsass.targetDirectory](#dartsasstargetdirectory)
-* [Menus](#menus)
-   * [DartSass: Sass Watch](#dartsass-sass-watch)
-   * [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
-* [Commands](#commands)
-   * [QuikSass: Compile Current File](#quiksass-compile-current-file)
-   * [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
-   * [QuikSass: View Watcher List](#quiksass-view-watcher-list)
-   * [QuikSass: Clear All Watchers](#quiksass-clear-all-watchers)
-* [Features](#features)
-   * [Sass Watcher](#sass-watcher)
-   * [Pure Javascript SASS](#pure-javascript-sass)
-   * [Customize Directory](#customize-directory)
-* [FAQ](#faq)
-* [License](#license)
-* [ChangeLog](#changelog)
-* [Contributing](#contributing)
-* [Credits](#credits)
-* [Share](#share)
+- [Usage](#usage)
+- [Install](#install)
+  - [Inside VSCode](#inside-vscode)
+  - [VSCode Marketplace](#marketplace)
+- [Activation](#activation)
+- [Properties](#properties)
+  - [dartsass.autoPrefixBrowsersList](#dartsassautoprefixbrowserslist)
+  - [dartsass.disableAutoPrefixer](#dartsassdisableautoprefixer)
+  - [dartsass.disableSourceMap](#dartsassdisablesourcemap)
+  - [dartsass.disableCompileOnSave](#dartsassdisablecompileonsave)
+  - [dartsass.enableStartWithUnderscores](#dartsassenablestartwithunderscores)
+  - [dartsass.includePath](#dartsassincludepath)
+  - [dartsass.nodeExePath](#dartsassnodeexepath)
+  - [dartsass.outputFormat](#dartsassoutputformat)
+  - [dartsass.pauseInterval](#dartsasspauseinterval)
+  - [dartsass.sassBinPath](#dartsasssassbinpath)
+    - [Linux](#linux)
+    - [Windows](#windows)
+  - [dartsass.targetDirectory](#dartsasstargetdirectory)
+- [Menus](#menus)
+  - [DartSass: Sass Watch](#dartsass-sass-watch)
+  - [DartSass: Sass Unwatch](#dartsass-sass-unwatch)
+- [Commands](#commands)
+  - [QuikSass: Compile Current File](#quiksass-compile-current-file)
+  - [QuikSass: Sass Compiler Version](#quiksass-sass-compiler-version)
+  - [QuikSass: View Watcher List](#quiksass-view-watcher-list)
+  - [QuikSass: Clear All Watchers](#quiksass-clear-all-watchers)
+- [Features](#features)
+  - [Sass Watcher](#sass-watcher)
+  - [Pure Javascript SASS](#pure-javascript-sass)
+  - [Customize Directory](#customize-directory)
+- [FAQ](#faq)
+- [License](#license)
+- [ChangeLog](#changelog)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [Share](#share)
 
 # Usage
 
@@ -54,26 +52,22 @@ It uses the Dart/JS Sass Compiler to generate the .css and .min.css files automa
 
 You can install it from inside VSCode by using the following command
 
-`
-ext install codelios.dartsass
-`
+`ext install codelios.dartsass`
 
 ## VSCode Marketplace
 
 You can install [codelios.dartsass](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass) from the VSCode Marketplace.
 
 **Like it , then feel free to share**
-<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dcodelios.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
+<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dcodelios.dartsass" aria-label="share extension on twitter" target="_blank"> <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button"> </a>
 
 ## OpenVSX Marketplace
 
 You can install [irispixel.dartsass](https://open-vsx.org/extension/irispixel/dartsass) from the OpenVSX Marketplace
 
-
 # Activation
 
 The plugin gets activated when .scss / .sass files are opened.
-
 
 More details of the plugin can be found at [vscode-dartsass Page](https://codelios.github.io/vscode-dartsass/).
 
@@ -87,7 +81,7 @@ Default: false. Disables postcss processing using autoprefixer library.
 
 ## `dartsass.disableSourceMap`
 
-Default: False. Flag to disable source maps file generation (*.map). Source Maps are generated by default though.
+Default: False. Flag to disable source maps file generation (\*.map). Source Maps are generated by default though.
 
 ## `dartsass.disableCompileOnSave`
 
@@ -98,8 +92,8 @@ Default: False. This disables a compilation with every save.
 Default: false. Enables compilation of files that start with underscores.
 
 ## `dartsass.includePath`
-  Default: [ ]. Set of directories to be specified as includePath for sass compilation. <b>Important:</b> Currently we do not support spaces in `includePath` given the quirks associated with that. So ensure that you do not have spaces in the same.
 
+Default: [ ]. Set of directories to be specified as includePath for sass compilation. <b>Important:</b> Currently we do not support spaces in `includePath` given the quirks associated with that. So ensure that you do not have spaces in the same.
 
 ## `dartsass.nodeExePath`
 
@@ -115,9 +109,9 @@ For the most part , this plugin attribute is best left untouched. In case when y
 
 Possible values:
 
-* `host`: Sass source files are compiled on the samae platform as that of the vscode editor
-* `linux`: Sass source files are compiled on the linux platform and accessed possibly but not necessarily from a windows host.
-* `windows`: Sass source files are compiled on the windows platform and accessed possibly but not necessarily from a windows host.
+- `host`: Sass source files are compiled on the samae platform as that of the vscode editor
+- `linux`: Sass source files are compiled on the linux platform and accessed possibly but not necessarily from a windows host.
+- `windows`: Sass source files are compiled on the windows platform and accessed possibly but not necessarily from a windows host.
 
 **Important: This property is experimental and not guaranteed to work though.**
 
@@ -127,9 +121,9 @@ Default: `both`. Property to customize the format of the output files, generated
 
 Possible values:
 
-* `cssonly`: Generetes only the compiled css file and not the minified file
-* `minified`: Generates only the minified css file and not the compiled css file
-* `both`: Generates both the compiled css file and the minified file as well. Default Value.
+- `cssonly`: Generetes only the compiled css file and not the minified file
+- `minified`: Generates only the minified css file and not the compiled css file
+- `both`: Generates both the compiled css file and the minified file as well. Default Value.
 
 **Important: This property replaces the formerly deprecated property `disableMinifiedFileGeneration` that is not used anymore.**
 
@@ -137,10 +131,9 @@ If you had earlier set `disableMinifiedFileGeneration` to be `true`, then you ca
 
 If you had earlier set `disableMinifiedFileGeneration` to be `false` ( default value for the property ) , then you can set `outputFormat` to be `both` ( again , default value for the new property as well ).
 
-
 ## `dartsass.pauseInterval`
-Default: 3. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
 
+Default: 3. Pause Interval (in seconds) before kicking off another scss compilation to not compile frequently and hog resources.
 
 ## `dartsass.sassBinPath`
 
@@ -148,39 +141,34 @@ Default: Empty.
 
 The watch functionality launches a `sass` command line process behind the scenes and delegates almost all of the watching functionality to the same.
 
-`sassBinPath` references the location of the sass binary that needs to be launched when we *watch* a directory of input scss files for changes. 
+`sassBinPath` references the location of the sass binary that needs to be launched when we _watch_ a directory of input scss files for changes.
 
 Hence, you need to install sass binary locally or globally for the watch functionality to work.
 
-
-
- [ Use a recent sass version or a different relevant version for your use case as appropriate ]
+[ Use a recent sass version or a different relevant version for your use case as appropriate ]
 
 ### Linux
 
 Sass Compiler can be installed locally as follows:
 
 > `npm install -D sass@1.47.0`
- 
+
 After installation, you can set the property `dartsass.sassBinPath` to be one of the following as applicable.
 
 > Set `dartsass.sassBinPath` to `node_modules/.bin/sass`
 
-
 Aliter (global sass installation):
 
->  Sass Compiler can also be installed globally, as follows:
+> Sass Compiler can also be installed globally, as follows:
 > `npm install -g sass@1.47.0`
 > Determine the path to global sass compiler returned by `which sass`. ( say, `/usr/local/bin/sass` ).
 > Set `dartsass.sassBinPath` to `/usr/local/bin/sass`.
 > (assuming , that was the path returned by `which sass` run previously ).
 > Having said that, we recommend local installation as mentioned above to prevent unnecessary quirks.
 
-
-
 ### Windows
 
-Sass Compiler can be installed locally as 
+Sass Compiler can be installed locally as
 
 > `npm install -D sass@1.47.0`
 
@@ -188,52 +176,47 @@ On Windows, the path to `sassBinPath` slightly differs because of a quirkiness [
 
 > Set `dartsass.sassBinPath` to `node_modules\\sass\\sass.js`.
 
-
-
 ## `dartsass.targetDirectory`
+
 Default: Empty. The target directory to write the generated css files.
 
 This can be an absolute directory or a directory, relative to project root.
-
 
 ## `dartsass.debug`
 
 Default: false. Best applicable for **developers of this extension** only. If you are the end-user, feel free to ignore this altogether.
 
-
-
 # Menus
 
 ## DartSass: Sass Watch
 
-  In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass Watch` .
-  This option appears only in the case of a directory and not in case of individual files.
+In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass Watch` .
+This option appears only in the case of a directory and not in case of individual files.
 
+This command `watches` the directory using the option `sass --watch input:output` .
 
-  This command `watches` the directory using the option `sass --watch input:output` .
+```
+Important: For this menu / feature to work, the sassBinPath
+property must point to an external sass binary.
+Otherwise it will indicate an error.
+```
 
-  ```
-  Important: For this menu / feature to work, the sassBinPath
-  property must point to an external sass binary.
-  Otherwise it will indicate an error.
-  ```
+After the directory is successfully watched, an entry is added to the statusbar on the lower right bottom - `Sass Watchers: 1` (or any number as appropriate).
 
-  After the directory is successfully watched, an entry is added to the statusbar on the lower right bottom - `Sass Watchers: 1` (or any number as appropriate).
+When the IDE is closed the subprocesses launched for watching get killed automatically.
 
-  When the IDE is closed the subprocesses launched for watching get killed automatically.
+To view the list of watched processes / directories, use the command: `DartSass: View Sass Watchers` and then check the `Output` under `DartJS Sass`.
 
-  To view the list of watched processes / directories, use the command: `DartSass: View Sass Watchers` and then check the `Output` under `DartJS Sass`.
-
-  It will list all the watched source directories and the pid (tested in unix) for those processes.
+It will list all the watched source directories and the pid (tested in unix) for those processes.
 
 ## DartSass: Sass Unwatch
 
-  In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass UnWatch` .
-  This option appears only in the case of a directory and not in case of individual files.
+In the file explorer on the left hand side, when we right-click on a directory, we get a menuitem `DartSass: Sass UnWatch` .
+This option appears only in the case of a directory and not in case of individual files.
 
-  If a directory was watched before, this kills the process used to watch the directory.
+If a directory was watched before, this kills the process used to watch the directory.
 
-  In case the directory was not watched before, a warning message appears indicating that no watcher exists for that directory.
+In case the directory was not watched before, a warning message appears indicating that no watcher exists for that directory.
 
 # Commands
 
@@ -276,36 +259,31 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
 # FAQ
 
- 1. **Does this plugin come pre-built with Sass Compiler ?**
+1.  **Does this plugin come pre-built with Sass Compiler ?**
 
     Yes. by default - the plugin comes pre-built with one of the more recent releases of sass compiler. So - you would not need to install sass compiler locally in your system for the plugin to be active.
 
- 1. **I already have Sass compiler installed in my system in PATH or would like to try a sass compiler installed in a specific path ? How can I configure the same ?**
+1.  **I already have Sass compiler installed in my system in PATH or would like to try a sass compiler installed in a specific path ? How can I configure the same ?**
 
     By default - the plugin uses the built-in sass compiler used internally. To use an external binary, see option `sassBinPath` mentioned above. Point `sassBinPath` to the binary (say, `/usr/local/bin/sass` ) in User / Workspace for vscode and then start saving the files. Now the plugin will use the external sass binary as opposed to the built-in sass library for the compilation.
 
- 1. **I don't have a global sass installation / I don't have the write permission to write to the global files / I don't want to have a single global sass binary. What are my options to set `sassBinPath` now ?**
+1.  **I don't have a global sass installation / I don't have the write permission to write to the global files / I don't want to have a single global sass binary. What are my options to set `sassBinPath` now ?**
 
     In your project `package.json` , under `devDependencies`, add an entry for `sass` (version 1.47.0 , say)
 
-    `
-    "devDependencies": {
-        "sass" : "1.47.0"
-    }
-    `
+    `"devDependencies": { "sass" : "1.47.0" }`
 
     Install the packages as `npm i --no-optional`
 
-    Modify the property `dartsass:sassBinPath: "node_modules/.bin/sass"` at the workspace level ( and *not at the user level*). This can also be done through "File -> Settings -> search for "DartSass" under workspace tab".
+    Modify the property `dartsass:sassBinPath: "node_modules/.bin/sass"` at the workspace level ( and _not at the user level_). This can also be done through "File -> Settings -> search for "DartSass" under workspace tab".
 
     This should help install a local sass binary in your project under your project tree, and can be used for `watching` Sass directories, if you don't have a global sass installation.
 
-1. **Can I use `node-sass` package in place of `sass` in step 3) above ?**
+1.  **Can I use `node-sass` package in place of `sass` in step 3) above ?**
 
     The plugin has been written for `sass` package only and does not support `node-sass`. Not to mention , `node-sass` is platform dependent and deprecated as well. Hence we do not support the same.
 
-
-1. **I have scss files that contain import statements that begin with "~" and used to work fine , until I had upgraded the plugin to v0.1.0+ ? What gives  ?**
+1.  **I have scss files that contain import statements that begin with "~" and used to work fine , until I had upgraded the plugin to v0.1.0+ ? What gives ?**
 
     So earlier, we used to support the "~" prefix in import statements by using an importer called `node-sass-package-importer` . Hence it used to work.
 
@@ -327,27 +305,27 @@ To customize the same, check `dartsass.sassWorkingDirectory`. More details below
 
     It is also better because eventually when the css files get packed /minified for distribution, they can be passed the conventional parameter `sass -I includeDir ..` to be compiled so avoiding any non-standard prefixes like **~** in the files helps that case.
 
- 1. **The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?**
+1.  **The autocompile (of sass) files that comes predefined with the plugin is too aggressive and is killing the CPU. What can I do ?**
 
-    By default, the Dart/JS compiler gets activated with every save of the current editor file.
-If that is too aggressive, see `pauseInterval` configuration option above ( in seconds ). It can be used to configure the pause interval between successive compilations to use resources less aggressively.
+        By default, the Dart/JS compiler gets activated with every save of the current editor file.
 
+    If that is too aggressive, see `pauseInterval` configuration option above ( in seconds ). It can be used to configure the pause interval between successive compilations to use resources less aggressively.
 
- 1. **I would like to use Autoprefixer for my compilation. Does this plugin support the same ?**
+1.  **I would like to use Autoprefixer for my compilation. Does this plugin support the same ?**
 
     The plugin comes built-in with autoprefixer support. See `autoPrefixBrowsersList` option to configure the browserslist for which autoprefixer needs to generate code (using postcss).
 
- 1.  **I would like to compile a directory of .scss files everytime the files in the directory are changed. How do we do that ?**
+1.  **I would like to compile a directory of .scss files everytime the files in the directory are changed. How do we do that ?**
 
-     The plugin has an option called "Watch Directory" that goes with the context menu associated with a directory in the file explorer panel.
+    The plugin has an option called "Watch Directory" that goes with the context menu associated with a directory in the file explorer panel.
 
-     This option launches a separate sass watch command in the background to implement the same.
+    This option launches a separate sass watch command in the background to implement the same.
 
-1. **When I launch a "Watch Directory" , I get an error saying - "Directory watcher is not supported.". What could be going wrong ?**
+1.  **When I launch a "Watch Directory" , I get an error saying - "Directory watcher is not supported.". What could be going wrong ?**
 
-   The directory watch functionality depends on the sass command line binary (platform-specific). So you need to install sass binary separately and then specify the binary using `sassBinPath` plugin configuration property ( See above ).
+    The directory watch functionality depends on the sass command line binary (platform-specific). So you need to install sass binary separately and then specify the binary using `sassBinPath` plugin configuration property ( See above ).
 
-1. **I have watched a directory. Now I would like to unwatch the same and kill external processes that are watching as well.**
+1.  **I have watched a directory. Now I would like to unwatch the same and kill external processes that are watching as well.**
 
     Right click on a directory that is being watched already. Click "DartSass: Unwatch directory". This will `unwatch` the directory and kill the sass watch external process, if any.
 
@@ -374,12 +352,11 @@ So if you are looking for a bug / feature, check the dartsass-plugin-comon repos
 
 # Credits
 
-  1. [ TOC Credit: [ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
+1. [ TOC Credit: [ekalinin/github-markdown-toc](https://github.com/ekalinin/github-markdown-toc) ]
 
 # Share
 
 [![Total Downloads](https://img.shields.io/visual-studio-marketplace/d/codelios.dartsass.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=codelios.dartsass)
 
 **Like it , then feel free to share**
-<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dcodelios.dartsass" aria-label="share extension on twitter" target="_blank">                                    <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button">                            </a>
-
+<a href="https://www.twitter.com/home?status=Just%20discovered%20this%20on%20the%20%23VSMarketplace%3A%20https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3Dcodelios.dartsass" aria-label="share extension on twitter" target="_blank"> <img alt="" src="https://cdn.vsassets.io/v/M162_20200107.6/_content/icon-social-twitter.png" class="social-link share-twitter-button"> </a>

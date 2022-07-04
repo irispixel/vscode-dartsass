@@ -5,44 +5,38 @@
     "main": "dist/index.cjs.js",
     "types": "types/index.d.ts",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/irispixel/vscode-dartsass.git"
+        "type": "git",
+        "url": "git+https://github.com/irispixel/vscode-dartsass.git"
     },
     "author": "Karthik K <karthiknetworklink@gmail.com>",
     "private": true,
     "workspaces": {
-      "packages": [
-        "common",
-        "vscode"
-      ],
-      "nohoist": [
-        "**"
-      ]
-    },    
+        "packages": [
+            "common",
+            "vscode"
+        ],
+        "nohoist": [
+            "**"
+        ]
+    },
     "browserslist": [
-      "> 1%",
-      "last 2 versions"
+        "> 1%",
+        "last 2 versions"
     ],
     "engines": {
-      "node": ">= 12.0.0",
-      "npm": ">= 3.0.0",
-      "yarn": "^1.22.0"
-    },    
-    "peerDependencies": {
-    },
-    "dependencies": {
-    },    
-    "devDependencies": { 
+        "node": ">= 12.0.0",
+        "npm": ">= 3.0.0",
+        "yarn": "^1.22.0"
     },
     "scripts": {
-      "clean": "yarn workspaces run clean",
-      "lint": "yarn workspaces run lint",
-      "fix": "yarn workspaces run fix",
-      "build": "yarn workspaces run build",
-      "test": "yarn workspaces run test",
-      "ovsx": "yarn workspace dartsass ovsx",
-      "build:test":  "yarn workspaces run build:test",
-      "prod": "NODE_ENV=production yarn workspaces run build"
+        "clean": "yarn workspaces foreach run clean",
+        "lint": "yarn workspaces foreach run lint",
+        "fix": "yarn workspaces foreach run fix",
+        "format": "yarn workspaces foreach run format",
+        "build": "yarn workspaces foreach run build",
+        "test": "yarn workspaces foreach run test",
+        "ovsx": "yarn workspace dartsass ovsx",
+        "build:test": "yarn workspaces foreach run build:test",
+        "prod": "NODE_ENV=production yarn workspaces foreach run build"
     }
 }
-  
